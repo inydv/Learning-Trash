@@ -1,0 +1,69 @@
+.navbar {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .left {
+    flex: 1;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    cursor: none;
+    user-select: none;
+}
+
+.navbar .left .title {
+    margin-right: 20px;
+    font-size: 50px;
+    text-decoration: line-through;
+}
+
+.navbar .left .name {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.navbar .left .little {
+    color: red;
+}
+
+.navbar .center {
+    padding: 10px 30px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.navbar .center div {
+    cursor: pointer;
+}
+
+.navbar .right {
+    font-size: 15px;
+    font-weight: 400;
+    padding: 10px 30px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navbar .right .user {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar .right .icon {
+    margin-right: 5px;
+}
+
+.navbar .right .cart {
+    cursor: pointer;
+}
