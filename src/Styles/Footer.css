@@ -1,0 +1,59 @@
+.footer {
+    padding: 20px;
+    display: flex;
+}
+
+.footer .left {
+    flex: 1;
+}
+
+.footer .left .logo {
+    text-decoration: line-through;
+    margin-bottom: 10px;
+}
+
+.footer .left .desc {
+    width: 300px;
+}
+
+.footer .center {
+    padding: 0 20px;
+    flex: 1;
+}
+
+.footer .center .usefulLinks {
+    margin-bottom: 10px;
+}
+
+.footer .center .links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer .center .links li {
+    width: 40%;
+}
+
+.footer .center .links li a {
+    text-decoration: none;
+}
+
+.footer .right {
+    flex: 1;
+}
+
+.footer .right .address {
+    margin-bottom: 10px;
+}
+
+.footer .right .addressDetail {
+    margin-bottom: 20px;
+}
+
+.footer .right .icons {
+    width: 100px;
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+}

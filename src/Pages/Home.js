@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../Components/Footer'
 import Navbar from '../Components/Navbar'
 import NewsLetter from '../Components/NewsLetter'
 import Products from '../Components/Products'
@@ -11,6 +12,7 @@ function Home() {
       <Slider />
       <Products />
       <NewsLetter />
+      <Footer />
     </div>
   )
 }
