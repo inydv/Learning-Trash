@@ -12,7 +12,6 @@ function Slider() {
     } else if (direction === "right") {
       setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
     }
-    console.log(slideIndex);
   }
 
   useEffect(() => {

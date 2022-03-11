@@ -1,0 +1,27 @@
+.products {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.productsList {
+    flex: 1;
+    margin: 10px;
+    background-color: rgba(30, 30, 32, 0.281);
+    height: 300px;
+    width: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.productsList:hover {
+    background-color: rgba(60, 60, 77, 0.281);
+    transition: all 0.5s ease;
+}
+
+.productsList .image {
+    height: 75%;
+}
