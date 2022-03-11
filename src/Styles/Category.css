@@ -1,0 +1,43 @@
+.category {
+    padding-top: 20px;
+    height: 70vh;
+    display: flex;
+    cursor: pointer;
+}
+
+.category .men {
+    flex: 1;
+    height: 100%;
+    position: relative;
+}
+
+.category .women {
+    flex: 1;
+    position: relative;
+}
+
+.category .men .imageContainer,
+.category .women .imageContainer {
+    height: 100%;
+}
+
+.category .men .imageContainer .image,
+.category .women .imageContainer .image {
+    height: 100%;
+    width: 100%;
+    opacity: 0.4;
+    filter: blur(2px)
+}
+
+.category .men .info,
+.category .women .info {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(48, 48, 48, 0.24);
+}

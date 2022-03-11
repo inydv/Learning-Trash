@@ -1,4 +1,5 @@
 import React from 'react'
+import Category from '../Components/Category'
 import Footer from '../Components/Footer'
 import Navbar from '../Components/Navbar'
 import NewsLetter from '../Components/NewsLetter'
@@ -10,6 +11,7 @@ function Home() {
     <div className='home'>
       <Navbar />
       <Slider />
+      <Category />
       <Products />
       <NewsLetter />
       <Footer />
