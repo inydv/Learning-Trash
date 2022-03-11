@@ -1,0 +1,79 @@
+.wrapper {
+    padding: 30px 100px;
+}
+
+.wrapper .title {
+    margin-bottom: 20px;
+}
+
+.wrapper .form .fieldForName {
+    border: 0;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.wrapper .form .fieldForName .nameLegend {
+    margin-bottom: 10px;
+}
+
+.wrapper .form .fieldForName .firstName {
+    margin-right: 10px;
+}
+
+.wrapper .form .fieldForName .firstName .firstNameLabel,
+.wrapper .form .fieldForName .lastName .lastNameLabel {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper .form .fieldForName .firstName .firstNameInput,
+.wrapper .form .fieldForName .lastName .lastNameInput {
+    padding: 10px;
+    margin-bottom: 5px;
+    width: 200px;
+    outline: 0;
+    color: black;
+}
+
+.wrapper .form .email,
+.wrapper .form .subject,
+.wrapper .form .message {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper .form .email .emailLabel,
+.wrapper .form .subject .subjectLabel,
+.wrapper .form .message .messageLabel {
+    margin-bottom: 10px;
+}
+
+.wrapper .form .email .emailInput,
+.wrapper .form .subject .subjectInput {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 440px;
+    outline: 0;
+    color: black;
+}
+
+.wrapper .form .message .messageTextarea {
+    padding: 10px;
+    height: 100px;
+    width: 440px;
+    margin-bottom: 20px;
+    outline: 0;
+    color: black;
+}
+
+.wrapper .form .btn {
+    margin-bottom: 20px;
+}
+
+.wrapper .form .btn button {
+    padding: 15px 30px;
+    font-size: 25px;
+    background-color: rgb(58, 57, 57);
+    border: 0;
+    cursor: pointer;
+}
