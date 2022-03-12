@@ -15,9 +15,9 @@ function App() {
       {/* <Contact /> */}
       {/* <About /> */}
       {/* <LogIn /> */}
-      {/* <SinglePage /> */}
+      <SinglePage />
       {/* <Shop /> */}
-      <Cart />
+      {/* <Cart /> */}
     </div>
   )
 }

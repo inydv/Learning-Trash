@@ -1,0 +1,54 @@
+.singlePage .page {
+    padding: 30px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.singlePage .page .imageContainer {
+    flex: 1;
+    height: 100%;
+}
+
+.singlePage .page .imageContainer .image {
+    background-color: rgba(30, 30, 32, 0.281);
+    height: 100%;
+    width: 100%;
+}
+
+.singlePage .page .info {
+    padding: 50px;
+    flex: 1;
+}
+
+.singlePage .page .info .name {
+    margin-bottom: 20px;
+}
+
+.singlePage .page .info .price {
+    margin-bottom: 20px;
+}
+
+.singlePage .page .info .desc {
+    margin-bottom: 20px;
+}
+
+.singlePage .page .info .quantity p {
+    margin-bottom: 5px;
+}
+
+.singlePage .page .info .quantity input {
+    margin-bottom: 30px;
+    outline: 0;
+    border: 0;
+    padding: 10px;
+    width: 50px;
+    color: black;
+}
+
+.singlePage .page .info .btn {
+    background-color: rgb(58, 57, 57);
+    cursor: pointer;
+    padding: 20px 25px;
+    border: 0;
+}
