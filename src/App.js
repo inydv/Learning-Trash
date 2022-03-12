@@ -4,6 +4,8 @@ import About from './Pages/About'
 import Contact from './Pages/Contact'
 import Home from './Pages/Home'
 import LogIn from './Pages/LogIn'
+import Shop from './Pages/Shop'
+import SinglePage from './Pages/SinglePage'
 
 function App() {
   return (
@@ -11,7 +13,9 @@ function App() {
       {/* <Home /> */}
       {/* <Contact /> */}
       {/* <About /> */}
-      <LogIn />
+      {/* <LogIn /> */}
+      {/* <SinglePage /> */}
+      <Shop />
     </div>
   )
 }
