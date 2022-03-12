@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import About from './Pages/About'
+import Cart from './Pages/Cart'
 import Contact from './Pages/Contact'
 import Home from './Pages/Home'
 import LogIn from './Pages/LogIn'
@@ -15,7 +16,8 @@ function App() {
       {/* <About /> */}
       {/* <LogIn /> */}
       {/* <SinglePage /> */}
-      <Shop />
+      {/* <Shop /> */}
+      <Cart />
     </div>
   )
 }
