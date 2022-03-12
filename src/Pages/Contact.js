@@ -8,7 +8,7 @@ function Contact() {
   return (
     <div>
       <Navbar />
-      <div className="wrapper">
+      <div className="wrap">
         <h3 className="title">Contact</h3>
         <form className="form">
           <fieldset className="fieldForName">

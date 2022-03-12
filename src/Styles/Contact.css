@@ -1,33 +1,33 @@
-.wrapper {
+.wrap {
     padding: 30px 100px;
 }
 
-.wrapper .title {
+.wrap .title {
     margin-bottom: 20px;
 }
 
-.wrapper .form .fieldForName {
+.wrap .form .fieldForName {
     border: 0;
     margin-bottom: 20px;
     display: flex;
 }
 
-.wrapper .form .fieldForName .nameLegend {
+.wrap .form .fieldForName .nameLegend {
     margin-bottom: 10px;
 }
 
-.wrapper .form .fieldForName .firstName {
+.wrap .form .fieldForName .firstName {
     margin-right: 10px;
 }
 
-.wrapper .form .fieldForName .firstName .firstNameLabel,
-.wrapper .form .fieldForName .lastName .lastNameLabel {
+.wrap .form .fieldForName .firstName .firstNameLabel,
+.wrap .form .fieldForName .lastName .lastNameLabel {
     display: flex;
     flex-direction: column;
 }
 
-.wrapper .form .fieldForName .firstName .firstNameInput,
-.wrapper .form .fieldForName .lastName .lastNameInput {
+.wrap .form .fieldForName .firstName .firstNameInput,
+.wrap .form .fieldForName .lastName .lastNameInput {
     padding: 10px;
     margin-bottom: 5px;
     width: 200px;
@@ -35,21 +35,21 @@
     color: black;
 }
 
-.wrapper .form .email,
-.wrapper .form .subject,
-.wrapper .form .message {
+.wrap .form .email,
+.wrap .form .subject,
+.wrap .form .message {
     display: flex;
     flex-direction: column;
 }
 
-.wrapper .form .email .emailLabel,
-.wrapper .form .subject .subjectLabel,
-.wrapper .form .message .messageLabel {
+.wrap .form .email .emailLabel,
+.wrap .form .subject .subjectLabel,
+.wrap .form .message .messageLabel {
     margin-bottom: 10px;
 }
 
-.wrapper .form .email .emailInput,
-.wrapper .form .subject .subjectInput {
+.wrap .form .email .emailInput,
+.wrap .form .subject .subjectInput {
     padding: 10px;
     margin-bottom: 20px;
     width: 440px;
@@ -57,7 +57,7 @@
     color: black;
 }
 
-.wrapper .form .message .messageTextarea {
+.wrap .form .message .messageTextarea {
     padding: 10px;
     height: 100px;
     width: 440px;
@@ -66,11 +66,11 @@
     color: black;
 }
 
-.wrapper .form .btn {
+.wrap .form .btn {
     margin-bottom: 20px;
 }
 
-.wrapper .form .btn button {
+.wrap .form .btn button {
     padding: 15px 30px;
     font-size: 25px;
     background-color: rgb(58, 57, 57);
