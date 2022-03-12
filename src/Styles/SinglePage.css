@@ -1,54 +1,66 @@
 .singlePage .page {
-    padding: 30px;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+  padding: 30px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 .singlePage .page .imageContainer {
-    flex: 1;
-    height: 100%;
+  flex: 1;
+  height: 100%;
+  overflow: scroll;
+  background-color: rgba(30, 30, 32, 0.281);
+}
+
+.singlePage .page .imageContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .singlePage .page .imageContainer .image {
-    background-color: rgba(30, 30, 32, 0.281);
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .singlePage .page .info {
-    padding: 50px;
-    flex: 1;
+  padding: 50px;
+  flex: 1;
 }
 
 .singlePage .page .info .name {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .singlePage .page .info .price {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .singlePage .page .info .desc {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .singlePage .page .info .quantity p {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .singlePage .page .info .quantity input {
-    margin-bottom: 30px;
-    outline: 0;
-    border: 0;
-    padding: 10px;
-    width: 50px;
-    color: black;
+  margin-bottom: 30px;
+  outline: 0;
+  border: 0;
+  padding: 10px;
+  width: 50px;
+  color: black;
+  caret-color: transparent;
+  cursor: context-menu;
+}
+
+.singlePage .page .info .quantity input::-webkit-inner-spin-button,
+.singlePage .page .info .quantity input::-webkit-outer-spin-button {
+  opacity: 1;
 }
 
 .singlePage .page .info .btn {
-    background-color: rgb(58, 57, 57);
-    cursor: pointer;
-    padding: 20px 25px;
-    border: 0;
+  background-color: rgb(58, 57, 57);
+  cursor: pointer;
+  padding: 20px 25px;
+  border: 0;
 }

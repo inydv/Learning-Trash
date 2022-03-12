@@ -3,6 +3,7 @@ import "../Styles/SinglePage.css";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import NewsLetter from "../Components/NewsLetter";
+import { imagesLoop } from "../data";
 
 function SinglePage() {
   return (
@@ -10,11 +11,14 @@ function SinglePage() {
       <Navbar />
       <div className="page">
         <div className="imageContainer">
-          <img
-            src="https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png"
-            alt=""
-            className="image"
-          />
+          {imagesLoop &&
+            imagesLoop.map((item) => (
+              <img
+                src={item.img}
+                alt=""
+                className="image"
+              />
+            ))}
         </div>
         <div className="info">
           <h2 className="name">Envelope Clutch Tan</h2>
@@ -27,7 +31,7 @@ function SinglePage() {
           </p>
           <div className="quantity">
             <p>Quantity :</p>
-            <input type="number" />
+            <input defaultValue='1' min='1' max='5' type="number" required/>
           </div>
           <button className="btn">Add To Cart</button>
         </div>
