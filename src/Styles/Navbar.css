@@ -44,6 +44,23 @@
     cursor: pointer;
 }
 
+.navbar .center .shop {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.navbar .center .shop .shopItems {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 0px;
+    top: 50px;
+    z-index: 2;
+}
+
 .navbar .right {
     font-size: 15px;
     font-weight: 400;

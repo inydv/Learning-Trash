@@ -11,11 +11,11 @@ import SinglePage from './Pages/SinglePage'
 function App() {
   return (
     <div className='app'>
-      {/* <Home /> */}
+      <Home />
       {/* <Contact /> */}
       {/* <About /> */}
       {/* <LogIn /> */}
-      <SinglePage />
+      {/* <SinglePage /> */}
       {/* <Shop /> */}
       {/* <Cart /> */}
     </div>

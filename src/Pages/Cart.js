@@ -29,7 +29,7 @@ function Cart() {
             <p className="name">Name</p>
           </div>
           <div className="number">
-            <input type="number" className="numberInput" />
+            <input type="number" min='1' max='5' className="numberInput" />
           </div>
           <div className="priceText">
             <p>$200.00</p>

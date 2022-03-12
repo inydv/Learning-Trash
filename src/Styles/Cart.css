@@ -75,6 +75,13 @@
     width: 70px;
     color: black;
     outline: 0;
+    caret-color: transparent;
+  cursor: context-menu;
+}
+
+.container .itemsContainer .number .numberInput::-webkit-inner-spin-button,
+.container .itemsContainer .number .numberInput::-webkit-outer-spin-button {
+  opacity: 1;
 }
 
 .container .itemsContainer .priceText {

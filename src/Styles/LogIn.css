@@ -32,7 +32,6 @@
 .logIn .wrapper .wraped .container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
 }
 
 .logIn .wrapper .wraped .container .signIn {

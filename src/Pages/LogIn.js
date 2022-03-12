@@ -11,7 +11,7 @@ function LogIn() {
           <div className="container">
             <h6 className="signIn">SIGN IN</h6>
             <input type="text" placeholder="Username" className="username" />
-            <input type="text" placeholder="Password" className="pw" />
+            <input type="password" placeholder="Password" className="pw" />
             <button className="btn">LOGIN</button>
             <a href="#" className="forgotPW">
               FORGOTTEN PASSWORD?
