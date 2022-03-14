@@ -116,7 +116,7 @@
     cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     .container {
         padding: 10px;
     }
@@ -142,6 +142,7 @@
     .container .itemsContainer .items {
         flex-direction: column;
         justify-content: center;
+        align-items: flex-start;
     }
     
     .container .itemsContainer .items .cross {
@@ -151,6 +152,7 @@
 
     .container .itemsContainer .items .name {
         margin-top: 10px;
+        margin-left: 30px;
     }
     
     .container .itemsContainer .number {

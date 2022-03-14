@@ -14,7 +14,7 @@
     margin-bottom: 40px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
   .aboutPage {
     padding: 20px;
   }
