@@ -6,22 +6,22 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 function Navbar() {
 
-  let hide = true;
+  const [TF, setTF] = useState(true)
   const [box, setBox] = useState({
     display: 'none',
   })
 
   function boxFunc() {
-    if (hide === true) {
+    if (TF === true) {
       setBox({
         display: 'flex',
       })
-      hide = !hide
-    } else if (hide === false) {
+      setTF(false)
+    } else if (TF === false) {
       setBox({
         display: 'none',
       })
-      hide = !hide
+      setTF(true)
     }
   }
 
@@ -36,7 +36,7 @@ function Navbar() {
       <div className="center">
         <div className="home">Home</div>
         <div className="shop">
-          <div className="name" onMouseOver={() => boxFunc()}>Shop</div>
+          <div className="name" onClick={() => boxFunc()}>Shop</div>
           <div className="shopItems" style={box}>
             <span className="men">Men</span>
             <span className="women">Women</span>
@@ -49,11 +49,11 @@ function Navbar() {
       <div className="right">
         <div className="user">
           <PersonIcon className="icon" />
-          Log In
+          LogIn
         </div>
         <div className="cart">
           <Badge badgeContent={4} color="primary">
-            <ShoppingCartIcon />
+            <ShoppingCartIcon className="icon"/>
           </Badge>
         </div>
       </div>

@@ -77,3 +77,43 @@
     border: 0;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 600px)  {
+    .wrap {
+        padding: 20px;
+    }
+
+    .wrap .form .fieldForName {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .wrap .form .fieldForName .nameLegend {
+        margin-bottom: 10px;
+    }
+    
+    .wrap .form .fieldForName .firstName .firstNameInput,
+    .wrap .form .fieldForName .lastName .lastNameInput {
+        width: 240px;
+        margin: 10px 0;
+    }
+    
+    .wrap .form .email .emailInput,
+    .wrap .form .subject .subjectInput {
+        margin-bottom: 10px;
+        width: 240px;
+    }
+    
+    .wrap .form .message .messageTextarea {
+        width: 240px;
+    }
+    
+    .wrap .form .btn {
+        margin-bottom: 10px;
+    }
+    
+    .wrap .form .btn button {
+        padding: 10px 20px;
+        font-size: 20px;
+    }
+}

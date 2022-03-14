@@ -9,10 +9,11 @@ function About() {
       <Navbar />
 
       <div className="aboutPage">
-        <h1>
+        <h1>ABOUT</h1>
+        <h3>
           ONLINE SHOPPING AT TheLittleThing IS HASSLE-FREE, CONVENIENT AND
           SUPER-EXCITING!
-        </h1>
+        </h3>
         <p>
           Online Shopping has always been a fun and exciting task for most and
           more so when the shopping mall is none other than your own house. We
@@ -25,7 +26,7 @@ function About() {
           amongst most online shopping sites in India, with many shopping
           filters to make your shopping experience truly hassle free. This in
           our own words is what we call TheLittleThing.com.
-          <br /><br />
+          </p><p>
           TheLittleThing, THE place to be when it comes to the coolest in online
           fashion, offers you fine, high-quality merchandise go ahead and
           indulge in a bit of online shopping for men and womens fashion. So
@@ -38,10 +39,10 @@ function About() {
           and dear ones while being absolutely certain that it will put a smile
           on their faces.
         </p>
-        <h1>
+        <h3>
           AVAIL OF ONLINE SHOPPING BENEFITS AT TheLittleThing.COM AND YOULL SHOP
           NOWHERE ELSE!
-        </h1>
+        </h3>
         <p>
           Choose your product, get it ordered online, and we ensure that its
           delivery happens right at your doorstep anywhere in India. You just
@@ -63,7 +64,7 @@ function About() {
           clothing head to TheLittleThing.com for a great online shopping india
           experience now! Could you have asked for more?
         </p>
-        <h1>COLOR OF THE MONTH- 30 DAYS, 1 SHADE!</h1>
+        <h3>COLOR OF THE MONTH- 30 DAYS, 1 SHADE!</h3>
         <p>
           When was the last time you played the colour game that we all loved in
           our childhood? Well, we believe that we are always children at heart
@@ -72,7 +73,7 @@ function About() {
           communicate that to our consumers and creating the mood for it is our
           sole purpose. Our palette refreshes every month and every color has a
           story to tell.
-          <br /><br /> A fresh new concept for online fashion, for fresh new looks.
+          </p><p> A fresh new concept for online fashion, for fresh new looks.
           Every month on the first, we choose a new colour and showcase all our
           products for that particular colour. Apparels, mostly solid colored
           plain t-shirts, are available at an exclusive discounted price every
@@ -83,7 +84,7 @@ function About() {
           shopping never seemed so fresh and exciting. So hurry up and stack
           your cart with your favourite colour before it goes out of stock!
         </p>
-        <h1>OUR PHILOSOPHY</h1>
+        <h3>OUR PHILOSOPHY</h3>
         <p>
           We believe in creating the kind of fashion, that makes you stand out
           as they are in line with the latest local and global trends of the

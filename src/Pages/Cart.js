@@ -18,6 +18,7 @@ function Cart() {
         <div className="line"></div>
         <div className="itemsContainer">
           <div className="items">
+            <div className="itom">
             <span className="cross">x</span>
             <div className="imageContainer">
               <img
@@ -25,6 +26,7 @@ function Cart() {
                 alt=""
                 className="image"
               />
+            </div>
             </div>
             <p className="name">Name</p>
           </div>

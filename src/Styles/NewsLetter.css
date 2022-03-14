@@ -21,7 +21,7 @@
 }
 
 .newsLetter .inputContainer {
-    margin: 20px 10px;
+    margin: 20px 0px;
 }
 
 .newsLetter .inputContainer .mail {
@@ -41,4 +41,32 @@
     cursor: pointer;
     background-color: rgb(58, 57, 57);
     border: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .newsLetter {
+        height: 30vh;
+    }
+    
+    .newsLetter .heading {
+        font-size: 30px;
+    }
+    
+    .newsLetter .para {
+        font-size: 15px;
+    }
+    
+    .newsLetter .inputContainer {
+        margin: 10px 0;
+    }
+    
+    .newsLetter .inputContainer .mail {
+        padding: 10px;
+        margin-right: 5px;
+        width: 150px;
+    }
+    
+    .newsLetter .inputContainer .btn {
+        padding: 10px 15px;
+    }
 }

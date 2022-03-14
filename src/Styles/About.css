@@ -6,6 +6,28 @@
     margin-bottom: 20px;
 }
 
+.aboutPage h3 {
+  margin-bottom: 20px;
+}
+
 .aboutPage p {
     margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+  .aboutPage {
+    padding: 20px;
+  }
+  
+  .aboutPage h1 {
+      margin-bottom: 20px;
+  }
+
+  .aboutPage h3 {
+    margin-bottom: 10px;
+}
+  
+  .aboutPage p {
+      margin-bottom: 20px;
+  }
 }

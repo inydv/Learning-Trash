@@ -41,3 +41,16 @@
     justify-content: center;
     background-color: rgba(48, 48, 48, 0.24);
 }
+
+@media only screen and (max-width: 600px) {
+    .category {
+        padding-top: 10px;
+        height: 80vh;
+        flex-direction: column;
+    }
+    
+    .category .men .info,
+    .category .women .info {
+        font-size: 25px;
+    }
+}

@@ -85,3 +85,47 @@
 .navbar .right .cart {
     cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+    .navbar {
+        height: 60px;
+    }
+    .navbar .left {
+        padding: 5px 10px;
+    }
+    
+    .navbar .left .title {
+        margin-right: 10px;
+        font-size: 20px;
+    }
+    
+    .navbar .left .name {
+        font-size: 10px;
+    }
+
+    .navbar .center {
+        padding: 0;
+        font-size: 10px;
+    }
+    
+    .navbar .center div {
+        padding: 5px;
+    }
+    
+    .navbar .center .shop .shopItems {
+        top: 40px;
+    }
+
+    .navbar .right {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+    
+    .navbar .right .user {
+        margin-right: 10px;
+    }
+    
+    .navbar .right .icon {
+        font-size: 20px;
+    }
+}
