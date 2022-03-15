@@ -26,7 +26,8 @@ function About() {
           amongst most online shopping sites in India, with many shopping
           filters to make your shopping experience truly hassle free. This in
           our own words is what we call TheLittleThing.com.
-          </p><p>
+        </p>
+        <p>
           TheLittleThing, THE place to be when it comes to the coolest in online
           fashion, offers you fine, high-quality merchandise go ahead and
           indulge in a bit of online shopping for men and womens fashion. So
@@ -73,8 +74,11 @@ function About() {
           communicate that to our consumers and creating the mood for it is our
           sole purpose. Our palette refreshes every month and every color has a
           story to tell.
-          </p><p> A fresh new concept for online fashion, for fresh new looks.
-          Every month on the first, we choose a new colour and showcase all our
+        </p>
+        <p>
+          {" "}
+          A fresh new concept for online fashion, for fresh new looks. Every
+          month on the first, we choose a new colour and showcase all our
           products for that particular colour. Apparels, mostly solid colored
           plain t-shirts, are available at an exclusive discounted price every
           first of the month. There are options available in sleeve styles

@@ -19,19 +19,19 @@ function Cart() {
         <div className="itemsContainer">
           <div className="items">
             <div className="itom">
-            <span className="cross">x</span>
-            <div className="imageContainer">
-              <img
-                src="https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png"
-                alt=""
-                className="image"
-              />
-            </div>
+              <span className="cross">x</span>
+              <div className="imageContainer">
+                <img
+                  src="https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png"
+                  alt=""
+                  className="image"
+                />
+              </div>
             </div>
             <p className="name">Name</p>
           </div>
           <div className="number">
-            <input type="number" min='1' max='5' className="numberInput" />
+            <input type="number" min="1" max="5" className="numberInput" />
           </div>
           <div className="priceText">
             <p>$200.00</p>

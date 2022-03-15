@@ -1,119 +1,119 @@
 .wrap {
-    padding: 30px 100px;
+  padding: 30px 100px;
 }
 
 .wrap .title {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .wrap .form .fieldForName {
-    border: 0;
-    margin-bottom: 20px;
-    display: flex;
+  border: 0;
+  margin-bottom: 20px;
+  display: flex;
 }
 
 .wrap .form .fieldForName .nameLegend {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .wrap .form .fieldForName .firstName {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .wrap .form .fieldForName .firstName .firstNameLabel,
 .wrap .form .fieldForName .lastName .lastNameLabel {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrap .form .fieldForName .firstName .firstNameInput,
 .wrap .form .fieldForName .lastName .lastNameInput {
-    padding: 10px;
-    margin-bottom: 5px;
-    width: 200px;
-    outline: 0;
-    color: black;
+  padding: 10px;
+  margin-bottom: 5px;
+  width: 200px;
+  outline: 0;
+  color: black;
 }
 
 .wrap .form .email,
 .wrap .form .subject,
 .wrap .form .message {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrap .form .email .emailLabel,
 .wrap .form .subject .subjectLabel,
 .wrap .form .message .messageLabel {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .wrap .form .email .emailInput,
 .wrap .form .subject .subjectInput {
-    padding: 10px;
-    margin-bottom: 20px;
-    width: 440px;
-    outline: 0;
-    color: black;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 440px;
+  outline: 0;
+  color: black;
 }
 
 .wrap .form .message .messageTextarea {
-    padding: 10px;
-    height: 100px;
-    width: 440px;
-    margin-bottom: 20px;
-    outline: 0;
-    color: black;
+  padding: 10px;
+  height: 100px;
+  width: 440px;
+  margin-bottom: 20px;
+  outline: 0;
+  color: black;
 }
 
 .wrap .form .btn {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .wrap .form .btn button {
-    padding: 15px 30px;
-    font-size: 25px;
-    background-color: rgb(58, 57, 57);
-    border: 0;
-    cursor: pointer;
+  padding: 15px 30px;
+  font-size: 25px;
+  background-color: rgb(58, 57, 57);
+  border: 0;
+  cursor: pointer;
 }
 
-@media only screen and (max-width: 800px)  {
-    .wrap {
-        padding: 20px;
-    }
+@media only screen and (max-width: 800px) {
+  .wrap {
+    padding: 20px;
+  }
 
-    .wrap .form .fieldForName {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .wrap .form .fieldForName .nameLegend {
-        margin-bottom: 10px;
-    }
-    
-    .wrap .form .fieldForName .firstName .firstNameInput,
-    .wrap .form .fieldForName .lastName .lastNameInput {
-        width: 240px;
-        margin: 10px 0;
-    }
-    
-    .wrap .form .email .emailInput,
-    .wrap .form .subject .subjectInput {
-        margin-bottom: 10px;
-        width: 240px;
-    }
-    
-    .wrap .form .message .messageTextarea {
-        width: 240px;
-    }
-    
-    .wrap .form .btn {
-        margin-bottom: 10px;
-    }
-    
-    .wrap .form .btn button {
-        padding: 10px 20px;
-        font-size: 20px;
-    }
+  .wrap .form .fieldForName {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wrap .form .fieldForName .nameLegend {
+    margin-bottom: 10px;
+  }
+
+  .wrap .form .fieldForName .firstName .firstNameInput,
+  .wrap .form .fieldForName .lastName .lastNameInput {
+    width: 240px;
+    margin: 10px 0;
+  }
+
+  .wrap .form .email .emailInput,
+  .wrap .form .subject .subjectInput {
+    margin-bottom: 10px;
+    width: 240px;
+  }
+
+  .wrap .form .message .messageTextarea {
+    width: 240px;
+  }
+
+  .wrap .form .btn {
+    margin-bottom: 10px;
+  }
+
+  .wrap .form .btn button {
+    padding: 10px 20px;
+    font-size: 20px;
+  }
 }

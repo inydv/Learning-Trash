@@ -38,26 +38,6 @@
   margin-bottom: 20px;
 }
 
-.singlePage .page .info .quantity p {
-  margin-bottom: 5px;
-}
-
-.singlePage .page .info .quantity input {
-  margin-bottom: 30px;
-  outline: 0;
-  border: 0;
-  padding: 10px;
-  width: 50px;
-  color: black;
-  caret-color: transparent;
-  cursor: context-menu;
-}
-
-.singlePage .page .info .quantity input::-webkit-inner-spin-button,
-.singlePage .page .info .quantity input::-webkit-outer-spin-button {
-  opacity: 1;
-}
-
 .singlePage .page .info .btn {
   background-color: rgb(58, 57, 57);
   cursor: pointer;
@@ -71,42 +51,42 @@
     height: 100vh;
     flex-direction: column;
   }
-  
+
   .singlePage .page .imageContainer {
     height: 100%;
     width: 90%;
     display: flex;
   }
-  
+
   .singlePage .page .imageContainer .image {
     height: 100%;
     width: 100%;
   }
-  
+
   .singlePage .page .info {
     padding: 0;
   }
-  
+
   .singlePage .page .info .name {
     margin: 10px 0;
   }
-  
+
   .singlePage .page .info .price {
     margin: 0;
   }
-  
+
   .singlePage .page .info .desc {
     margin: 10px 0;
   }
-  
+
   .singlePage .page .info .quantity p {
     margin-bottom: 5px;
   }
-  
+
   .singlePage .page .info .quantity input {
     margin-bottom: 20px;
   }
-  
+
   .singlePage .page .info .btn {
     padding: 10px 20px;
   }

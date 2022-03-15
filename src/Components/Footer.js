@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Twitter } from "@material-ui/icons";
 import React from "react";
 import "../Styles/Footer.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -17,28 +18,42 @@ function Footer() {
         <h4 className="usefulLinks">USEFUL LINKS</h4>
         <ul className="links">
           <li>
-            <a href="#">Home</a>
+            <Link exact to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <a href="#">Men</a>
+            <Link exact to="/shop">
+              Men
+            </Link>
           </li>
           <li>
-            <a href="#">Women</a>
+            <Link exact to="/shop">
+              Women
+            </Link>
           </li>
           <li>
-            <a href="#">Sale</a>
+            <Link exact to="/shop">
+              Sale
+            </Link>
           </li>
           <li>
-            <a href="#">Cart</a>
+            <Link exact to="/cart">
+              Cart
+            </Link>
           </li>
           <li>
             <a href="#">My Account</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <Link exact to="/about">
+              About
+            </Link>
           </li>
           <li>
-            <a href="#">Contact</a>
+            <Link exact to="/contact">
+              Contact
+            </Link>
           </li>
         </ul>
       </div>
@@ -49,15 +64,15 @@ function Footer() {
           123-456-7890
         </p>
         <div className="icons">
-            <div className="facebook">
-                <Facebook />
-            </div>
-            <div className="instagram">
-                <Instagram />
-            </div>
-            <div className="twitter">
-                <Twitter />
-            </div>
+          <div className="facebook">
+            <Facebook />
+          </div>
+          <div className="instagram">
+            <Instagram />
+          </div>
+          <div className="twitter">
+            <Twitter />
+          </div>
         </div>
       </div>
     </div>

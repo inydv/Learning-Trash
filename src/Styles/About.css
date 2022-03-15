@@ -3,7 +3,7 @@
 }
 
 .aboutPage h1 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .aboutPage h3 {
@@ -11,23 +11,23 @@
 }
 
 .aboutPage p {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 @media only screen and (max-width: 800px) {
   .aboutPage {
     padding: 20px;
   }
-  
+
   .aboutPage h1 {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
   }
 
   .aboutPage h3 {
     margin-bottom: 10px;
-}
-  
+  }
+
   .aboutPage p {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
   }
 }

@@ -1,131 +1,131 @@
 .navbar {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar .left {
-    flex: 1;
-    padding: 10px 30px;
-    display: flex;
-    align-items: center;
-    cursor: none;
-    user-select: none;
+  flex: 1;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  cursor: none;
+  user-select: none;
 }
 
 .navbar .left .title {
-    margin-right: 20px;
-    font-size: 50px;
-    text-decoration: line-through;
+  margin-right: 20px;
+  font-size: 50px;
+  text-decoration: line-through;
 }
 
 .navbar .left .name {
-    font-size: 20px;
-    font-weight: 500;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .navbar .left .little {
-    color: red;
+  color: red;
 }
 
 .navbar .center {
-    padding: 10px 30px;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 15px;
-    font-weight: 400;
+  padding: 10px 30px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 .navbar .center div {
-    padding: 10px;
-    cursor: pointer;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .navbar .center .shop {
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .navbar .center .shop .shopItems {
-    background-color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    left: 0px;
-    top: 50px;
-    z-index: 2;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 0px;
+  top: 50px;
+  z-index: 2;
 }
 
 .navbar .right {
-    font-size: 15px;
-    font-weight: 400;
-    padding: 10px 30px;
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 10px 30px;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .navbar .right .user {
-    margin-right: 20px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .navbar .right .icon {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .navbar .right .cart {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {
-    .navbar {
-        height: 60px;
-    }
-    .navbar .left {
-        padding: 5px 10px;
-    }
-    
-    .navbar .left .title {
-        margin-right: 10px;
-        font-size: 20px;
-    }
-    
-    .navbar .left .name {
-        font-size: 10px;
-    }
+  .navbar {
+    height: 60px;
+  }
+  .navbar .left {
+    padding: 5px 10px;
+  }
 
-    .navbar .center {
-        padding: 0;
-        font-size: 10px;
-    }
-    
-    .navbar .center div {
-        padding: 5px;
-    }
-    
-    .navbar .center .shop .shopItems {
-        top: 40px;
-    }
+  .navbar .left .title {
+    margin-right: 10px;
+    font-size: 20px;
+  }
 
-    .navbar .right {
-        font-size: 10px;
-        padding: 5px 10px;
-    }
-    
-    .navbar .right .user {
-        margin-right: 10px;
-    }
-    
-    .navbar .right .icon {
-        font-size: 20px;
-    }
+  .navbar .left .name {
+    font-size: 10px;
+  }
+
+  .navbar .center {
+    padding: 0;
+    font-size: 10px;
+  }
+
+  .navbar .center div {
+    padding: 5px;
+  }
+
+  .navbar .center .shop .shopItems {
+    top: 40px;
+  }
+
+  .navbar .right {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
+  .navbar .right .user {
+    margin-right: 10px;
+  }
+
+  .navbar .right .icon {
+    font-size: 20px;
+  }
 }

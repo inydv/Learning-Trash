@@ -13,11 +13,7 @@ function SinglePage() {
         <div className="imageContainer">
           {imagesLoop &&
             imagesLoop.map((item) => (
-              <img
-                src={item.img}
-                alt=""
-                className="image"
-              />
+              <img src={item.img} alt="" className="image" />
             ))}
         </div>
         <div className="info">
@@ -29,10 +25,6 @@ function SinglePage() {
             culpa corrupti aspernatur dolore doloribus suscipit aperiam,
             sapiente voluptatum voluptatem? Explicabo, necessitatibus!
           </p>
-          <div className="quantity">
-            <p>Quantity :</p>
-            <input defaultValue='1' min='1' max='5' type="number" required/>
-          </div>
           <button className="btn">Add To Cart</button>
         </div>
       </div>

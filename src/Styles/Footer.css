@@ -1,103 +1,102 @@
 .footer {
-    padding: 20px;
-    display: flex;
+  padding: 20px;
+  display: flex;
 }
 
 .footer .left {
-    flex: 1;
+  flex: 1;
 }
 
 .footer .left .logo {
-    text-decoration: line-through;
-    margin-bottom: 10px;
+  text-decoration: line-through;
+  margin-bottom: 10px;
 }
 
 .footer .left .desc {
-    width: 300px;
+  width: 300px;
 }
 
 .footer .center {
-    padding: 0 20px;
-    flex: 1;
+  padding: 0 20px;
+  flex: 1;
 }
 
 .footer .center .usefulLinks {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .footer .center .links {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .footer .center .links li {
-    width: 40%;
+  width: 40%;
 }
 
 .footer .center .links li a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .footer .right {
-    flex: 1;
+  flex: 1;
 }
 
 .footer .right .address {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .footer .right .addressDetail {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .footer .right .icons {
-    width: 100px;
-    display: flex;
-    cursor: pointer;
-    justify-content: space-between;
+  width: 100px;
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 800px) {
-    .footer {
-        padding: 10px;
-        flex-direction: column;
-    }
-    
-    .footer .left {
-        padding: 10px;
-    }
-    
-    .footer .left .logo {
-        margin-bottom: 5px;
-    }
-    
-    .footer .left .desc {
-        width: 100%;
-    }
-    
-    .footer .center {
-        padding: 30px 10px;
-    }
-    
-    .footer .center .usefulLinks {
-        margin-bottom: 5px;
-    }
-    
-    
-    .footer .center .links li {
-        width: 50%;
-    }
-    
-    .footer .right {
-        padding: 10px;
-    }
-    
-    .footer .right .address {
-        margin-bottom: 5px;
-    }
-    
-    .footer .right .addressDetail {
-        margin-bottom: 10px;
-    }
+  .footer {
+    padding: 10px;
+    flex-direction: column;
+  }
+
+  .footer .left {
+    padding: 10px;
+  }
+
+  .footer .left .logo {
+    margin-bottom: 5px;
+  }
+
+  .footer .left .desc {
+    width: 100%;
+  }
+
+  .footer .center {
+    padding: 30px 10px;
+  }
+
+  .footer .center .usefulLinks {
+    margin-bottom: 5px;
+  }
+
+  .footer .center .links li {
+    width: 50%;
+  }
+
+  .footer .right {
+    padding: 10px;
+  }
+
+  .footer .right .address {
+    margin-bottom: 5px;
+  }
+
+  .footer .right .addressDetail {
+    margin-bottom: 10px;
+  }
 }

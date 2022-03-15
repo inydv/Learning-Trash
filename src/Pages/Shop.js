@@ -3,7 +3,7 @@ import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import NewsLetter from "../Components/NewsLetter";
 import Products from "../Components/Products";
-import '../Styles/Shop.css'
+import "../Styles/Shop.css";
 
 function Shop() {
   return (

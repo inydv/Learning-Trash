@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../Styles/Slider.css";
 import { sliderItems } from "../data";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 function Slider() {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -18,7 +19,7 @@ function Slider() {
     const time = setTimeout(() => {
       handleClick("right");
     }, 5000);
-    return() => clearInterval(time);
+    return () => clearInterval(time);
   });
 
   return (
@@ -43,7 +44,9 @@ function Slider() {
               <div className="info">
                 <h1 className="title">{item.title}</h1>
                 <p className="desc">{item.desc}</p>
-                <button className="btn">SHOP NOW</button>
+                <Link exact to="/shop">
+                  <button className="btn">SHOP NOW</button>
+                </Link>
               </div>
             </div>
           ))}

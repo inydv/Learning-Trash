@@ -3,25 +3,25 @@ import "../Styles/Navbar.css";
 import PersonIcon from "@material-ui/icons/Person";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { Link } from "react-router-dom";
 
 function Navbar() {
-
-  const [TF, setTF] = useState(true)
+  const [TF, setTF] = useState(true);
   const [box, setBox] = useState({
-    display: 'none',
-  })
+    display: "none",
+  });
 
   function boxFunc() {
     if (TF === true) {
       setBox({
-        display: 'flex',
-      })
-      setTF(false)
+        display: "flex",
+      });
+      setTF(false);
     } else if (TF === false) {
       setBox({
-        display: 'none',
-      })
-      setTF(true)
+        display: "none",
+      });
+      setTF(true);
     }
   }
 
@@ -34,27 +34,57 @@ function Navbar() {
         </p>
       </div>
       <div className="center">
-        <div className="home">Home</div>
+        <div className="home">
+          <Link exact to="/">
+            Home
+          </Link>
+        </div>
         <div className="shop">
-          <div className="name" onClick={() => boxFunc()}>Shop</div>
+          <div className="name" onClick={() => boxFunc()}>
+            Shop
+          </div>
           <div className="shopItems" style={box}>
-            <span className="men">Men</span>
-            <span className="women">Women</span>
-            <span className="sale">Sale</span>
+            <span className="men">
+              <Link exact to="/shop">
+                Men
+              </Link>
+            </span>
+            <span className="women">
+              <Link exact to="/shop">
+                Women
+              </Link>
+            </span>
+            <span className="sale">
+              <Link exact to="/shop">
+                Sale
+              </Link>
+            </span>
           </div>
         </div>
-        <div className="about">About</div>
-        <div className="contact">Contact</div>
+        <div className="about">
+          <Link exact to="/about">
+            About
+          </Link>
+        </div>
+        <div className="contact">
+          <Link exact to="/contact">
+            Contact
+          </Link>
+        </div>
       </div>
       <div className="right">
         <div className="user">
-          <PersonIcon className="icon" />
-          LogIn
+          <Link exact to="/login">
+            <PersonIcon className="icon" />
+            LogIn
+          </Link>
         </div>
         <div className="cart">
-          <Badge badgeContent={4} color="primary">
-            <ShoppingCartIcon className="icon"/>
-          </Badge>
+          <Link exact to="/cart">
+            <Badge badgeContent={4} color="primary">
+              <ShoppingCartIcon />
+            </Badge>
+          </Link>
         </div>
       </div>
     </div>

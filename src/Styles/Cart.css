@@ -1,86 +1,86 @@
 .container {
-    padding: 30px;
+  padding: 30px;
 }
 
 .container .title {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .container .heading {
-    display: flex;
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: 400;
+  display: flex;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .container .heading .item {
-    flex: 7;
+  flex: 7;
 }
 
 .container .heading .quantity {
-    flex: 1;
-    margin: 0 20px;
+  flex: 1;
+  margin: 0 20px;
 }
 
 .container .heading .price {
-    flex: 1;
+  flex: 1;
 }
 
 .container .line {
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.205);
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.205);
 }
 
 .container .itemsContainer {
-    height: 20vh;
-    display: flex;
-    align-items: center;
+  height: 20vh;
+  display: flex;
+  align-items: center;
 }
 
 .container .itemsContainer .items {
-    flex: 7;
-    height: 100%;
-    display: flex;
-    align-items: center;
+  flex: 7;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .container .itemsContainer .items .itom {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .container .itemsContainer .items .cross {
-    margin: 0 20px;
-    padding: 10px;
-    cursor: pointer;
+  margin: 0 20px;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .container .itemsContainer .items .imageContainer {
-    height: 100px;
-    width: 100px;
-    margin-right: 20px;
+  height: 100px;
+  width: 100px;
+  margin-right: 20px;
 }
 
 .container .itemsContainer .items .imageContainer .image {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .container .itemsContainer .items .name {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .container .itemsContainer .number {
-    flex: 1;
-    margin: 0 20px;
+  flex: 1;
+  margin: 0 20px;
 }
 
 .container .itemsContainer .number .numberInput {
-    padding: 10px;
-    width: 70px;
-    color: black;
-    outline: 0;
-    caret-color: transparent;
+  padding: 10px;
+  width: 70px;
+  color: black;
+  outline: 0;
+  caret-color: transparent;
   cursor: context-menu;
 }
 
@@ -90,88 +90,88 @@
 }
 
 .container .itemsContainer .priceText {
-    flex: 1;
+  flex: 1;
 }
 
 .container .bottom {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 20px 0px;
 }
 
 .container .bottom .total {
-    display: flex;
-    margin-bottom: 20px;
+  display: flex;
+  margin-bottom: 20px;
 }
 
 .container .bottom .total .totalSpan {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .container .bottom .button .btn {
-    padding: 15px 20px;
-    background-color: rgb(58, 57, 57);
-    border: 0;
-    cursor: pointer;
+  padding: 15px 20px;
+  background-color: rgb(58, 57, 57);
+  border: 0;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {
-    .container {
-        padding: 10px;
-    }
-    
-    .container .title {
-        margin-bottom: 20px;
-    }
-    
-    .container .heading {
-        display: flex;
-        margin-bottom: 5px;
-        font-size: 15px;
-    }
-    
-    .container .heading .quantity {
-        margin: 0 30px;
-    }
-    
-    .container .itemsContainer {
-        height: 25vh;
-    }
-    
-    .container .itemsContainer .items {
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-    }
-    
-    .container .itemsContainer .items .cross {
-        margin: 0;
-        padding: 0;
-    }
+  .container {
+    padding: 10px;
+  }
 
-    .container .itemsContainer .items .name {
-        margin-top: 10px;
-        margin-left: 30px;
-    }
-    
-    .container .itemsContainer .number {
-        margin: 0 20px;
-    }
-    
-    .container .itemsContainer .number .numberInput {
-        width: 30px;
-    }
-    
-    .container .bottom {
-        margin: 10px 0px;
-    }
-    
-    .container .bottom .total {
-        margin-bottom: 10px;
-    }
-    
-    .container .bottom .total .totalSpan {
-        margin-left: 10px;
-    }
+  .container .title {
+    margin-bottom: 20px;
+  }
+
+  .container .heading {
+    display: flex;
+    margin-bottom: 5px;
+    font-size: 15px;
+  }
+
+  .container .heading .quantity {
+    margin: 0 30px;
+  }
+
+  .container .itemsContainer {
+    height: 25vh;
+  }
+
+  .container .itemsContainer .items {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .container .itemsContainer .items .cross {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container .itemsContainer .items .name {
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+
+  .container .itemsContainer .number {
+    margin: 0 20px;
+  }
+
+  .container .itemsContainer .number .numberInput {
+    width: 30px;
+  }
+
+  .container .bottom {
+    margin: 10px 0px;
+  }
+
+  .container .bottom .total {
+    margin-bottom: 10px;
+  }
+
+  .container .bottom .total .totalSpan {
+    margin-left: 10px;
+  }
 }

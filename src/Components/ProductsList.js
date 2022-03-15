@@ -1,10 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function ProductsList({ img }) {
   return (
-    <div className="productsList">
-        <img src={img} alt="" className="image" />
-    </div>
+    <>
+      <Link exact to="/singlepage">
+        <div component={Link} to="/singlepage" className="productsList">
+          <img src={img} alt="" className="image" />
+        </div>
+      </Link>
+    </>
   );
 }
 
