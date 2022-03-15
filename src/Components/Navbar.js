@@ -76,6 +76,8 @@ function Navbar() {
         <div className="user">
           <Link exact to="/login">
             <PersonIcon className="icon" />
+          </Link>
+          <Link exact to="/login">
             LogIn
           </Link>
         </div>
