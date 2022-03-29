@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../Styles/Cart.css";
 import StripeCheckout from "react-stripe-checkout";
+import axios from 'axios';
 
 function Cart() {
   const KEY =
@@ -22,7 +23,7 @@ function Cart() {
         console.log(err);
       }
     };
-    stripeToken && makeRequest  // call makeRequest
+    stripeToken && makeRequest()  // call makeRequest
   }, [stripeToken]);
 
   return (
