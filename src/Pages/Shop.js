@@ -1,18 +1,14 @@
-import React from "react";
-import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
-import NewsLetter from "../Components/NewsLetter";
-import Products from "../Components/Products";
+import React, { useEffect } from "react";
 import "../Styles/Shop.css";
 
 function Shop() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="shop">
-      <Navbar />
-      <h1 className="whichShop">MENS</h1>
-      <Products />
-      <NewsLetter />
-      <Footer />
+      <h1 className="whichShop">mens</h1>
     </div>
   );
 }

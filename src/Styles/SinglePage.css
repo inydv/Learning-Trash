@@ -7,9 +7,12 @@
 
 .singlePage .page .imageContainer {
   flex: 1;
-  height: 100%;
+  height: 90%;
   overflow: scroll;
   background-color: rgba(30, 30, 32, 0.281);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .singlePage .page .imageContainer::-webkit-scrollbar {
@@ -17,8 +20,9 @@
 }
 
 .singlePage .page .imageContainer .image {
+  padding: 10px;
   height: 100%;
-  width: 100%;
+  width: 80%;
 }
 
 .singlePage .page .info {
@@ -54,8 +58,7 @@
 
   .singlePage .page .imageContainer {
     height: 100%;
-    width: 90%;
-    display: flex;
+    flex-direction: row;
   }
 
   .singlePage .page .imageContainer .image {

@@ -1,13 +1,13 @@
-import React from "react";
-import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
+import React, { useEffect } from "react";
 import "../Styles/About.css";
 
 function About() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
-      <Navbar />
-
       <div className="aboutPage">
         <h1>ABOUT</h1>
         <h3>
@@ -116,8 +116,6 @@ function About() {
           different perspective!
         </p>
       </div>
-
-      <Footer />
     </div>
   );
 }

@@ -44,21 +44,21 @@ function Navbar() {
             Shop
           </div>
           <div className="shopItems" style={box}>
-            <span className="men">
+            <div className="men">
               <Link exact to="/shop">
                 Men
               </Link>
-            </span>
-            <span className="women">
+            </div>
+            <div className="women">
               <Link exact to="/shop">
                 Women
               </Link>
-            </span>
-            <span className="sale">
+            </div>
+            <div className="sale">
               <Link exact to="/shop">
                 Sale
               </Link>
-            </span>
+            </div>
           </div>
         </div>
         <div className="about">

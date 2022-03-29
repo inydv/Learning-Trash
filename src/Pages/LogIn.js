@@ -1,8 +1,12 @@
 import { Facebook, Mail, PhoneAndroidOutlined } from "@material-ui/icons";
-import React from "react";
+import React, { useEffect } from "react";
 import "../Styles/LogIn.css";
 
 function LogIn() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="logIn">
       <div className="bg"></div>

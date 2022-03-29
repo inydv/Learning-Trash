@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Styles/Contact.css";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
-import NewsLetter from "../Components/NewsLetter";
 
 function Contact() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
-      <Navbar />
       <div className="wrap">
         <h3 className="title">Contact</h3>
         <form className="form">
@@ -47,8 +47,6 @@ function Contact() {
           </div>
         </form>
       </div>
-      <NewsLetter />
-      <Footer />
     </div>
   );
 }

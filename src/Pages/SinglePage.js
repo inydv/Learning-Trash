@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Styles/SinglePage.css";
-import Footer from "../Components/Footer";
-import Navbar from "../Components/Navbar";
-import NewsLetter from "../Components/NewsLetter";
-import { imagesLoop } from "../data";
+import {imagesLoop} from '../data';
 
-function SinglePage() {
+function SinglePage(props) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="singlePage">
-      <Navbar />
-      <div className="page">
+      <div className="page" key={props.singlePageInfo[0].id}>
         <div className="imageContainer">
           {imagesLoop &&
             imagesLoop.map((item) => (
@@ -17,19 +17,22 @@ function SinglePage() {
             ))}
         </div>
         <div className="info">
-          <h2 className="name">Envelope Clutch Tan</h2>
-          <p className="price">$200.00</p>
-          <p className="desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
-            non? Voluptates at quam expedita dolores incidunt illum repudiandae,
-            culpa corrupti aspernatur dolore doloribus suscipit aperiam,
-            sapiente voluptatum voluptatem? Explicabo, necessitatibus!
+          <h2 className="name">tshirt</h2>
+          <p className="price">
+            500
           </p>
-          <button className="btn">Add To Cart</button>
+          <p
+          
+            className="desc"
+          >qwertyuiopasdfghjklzxcvbnm</p>
+          <button
+            className="btn"
+           
+          >
+            Add To Cart
+          </button>
         </div>
       </div>
-      <NewsLetter />
-      <Footer />
     </div>
   );
 }

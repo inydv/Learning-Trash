@@ -72,21 +72,16 @@
 
 .container .itemsContainer .number {
   flex: 1;
-  margin: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.container .itemsContainer .number .numberInput {
-  padding: 10px;
-  width: 70px;
-  color: black;
-  outline: 0;
-  caret-color: transparent;
-  cursor: context-menu;
-}
-
-.container .itemsContainer .number .numberInput::-webkit-inner-spin-button,
-.container .itemsContainer .number .numberInput::-webkit-outer-spin-button {
-  opacity: 1;
+.container .itemsContainer .number .plus,
+.container .itemsContainer .number .minus {
+  cursor: pointer;
+  padding: 0 10px;
+  font-size: 15px;
 }
 
 .container .itemsContainer .priceText {
@@ -136,7 +131,7 @@
   }
 
   .container .itemsContainer {
-    height: 25vh;
+    height: 30vh;
   }
 
   .container .itemsContainer .items {
@@ -146,7 +141,7 @@
   }
 
   .container .itemsContainer .items .cross {
-    margin: 0;
+    margin: 0 10px;
     padding: 0;
   }
 
