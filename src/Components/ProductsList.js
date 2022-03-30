@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function ProductsList({ item }) {
   return (
     <>
-      <Link exact to="/singlepage">
+      <Link to={`/singlepage/${item._id}`}>
         <div className="productsList">
           <img src={item.img} alt="" className="image" />
         </div>

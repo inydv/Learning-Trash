@@ -35,9 +35,7 @@ function Navbar() {
       </div>
       <div className="center">
         <div className="home">
-          <Link exact to="/">
-            Home
-          </Link>
+          <Link to="/">Home</Link>
         </div>
         <div className="shop">
           <div className="name" onClick={() => boxFunc()}>
@@ -45,44 +43,32 @@ function Navbar() {
           </div>
           <div className="shopItems" style={box}>
             <div className="men">
-              <Link exact to="/shop">
-                Men
-              </Link>
+              <Link to="/shop/men">Men</Link>
             </div>
             <div className="women">
-              <Link exact to="/shop">
-                Women
-              </Link>
+              <Link to="/shop/women">Women</Link>
             </div>
             <div className="sale">
-              <Link exact to="/shop">
-                Sale
-              </Link>
+              <Link to="/shop/sale">Sale</Link>
             </div>
           </div>
         </div>
         <div className="about">
-          <Link exact to="/about">
-            About
-          </Link>
+          <Link to="/about">About</Link>
         </div>
         <div className="contact">
-          <Link exact to="/contact">
-            Contact
-          </Link>
+          <Link to="/contact">Contact</Link>
         </div>
       </div>
       <div className="right">
         <div className="user">
-          <Link exact to="/login">
+          <Link to="/login">
             <PersonIcon className="icon" />
           </Link>
-          <Link exact to="/login">
-            LogIn
-          </Link>
+          <Link to="/login">LogIn</Link>
         </div>
         <div className="cart">
-          <Link exact to="/cart">
+          <Link to="/cart">
             <Badge badgeContent={4} color="primary">
               <ShoppingCartIcon />
             </Badge>

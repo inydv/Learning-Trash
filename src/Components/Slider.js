@@ -44,7 +44,7 @@ function Slider() {
               <div className="info">
                 <h1 className="title">{item.title}</h1>
                 <p className="desc">{item.desc}</p>
-                <Link exact to="/shop">
+                <Link to="/shop">
                   <button className="btn">SHOP NOW</button>
                 </Link>
               </div>

@@ -18,42 +18,28 @@ function Footer() {
         <h4 className="usefulLinks">USEFUL LINKS</h4>
         <ul className="links">
           <li>
-            <Link exact to="/">
-              Home
-            </Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link exact to="/shop">
-              Men
-            </Link>
+            <Link to="/shop">Men</Link>
           </li>
           <li>
-            <Link exact to="/shop">
-              Women
-            </Link>
+            <Link to="/shop">Women</Link>
           </li>
           <li>
-            <Link exact to="/shop">
-              Sale
-            </Link>
+            <Link to="/shop">Sale</Link>
           </li>
           <li>
-            <Link exact to="/cart">
-              Cart
-            </Link>
+            <Link to="/cart">Cart</Link>
           </li>
           <li>
             <a href="#">My Account</a>
           </li>
           <li>
-            <Link exact to="/about">
-              About
-            </Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <Link exact to="/contact">
-              Contact
-            </Link>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </div>
