@@ -7,8 +7,6 @@ function Products({ cat, sort }) {
   const [products, setProducts] = useState([]);
   const [sortProducts, setSortProducts] = useState([]);
 
-  console.log(products);
-
   useEffect(() => {
     const getProducts = async () => {
       try {

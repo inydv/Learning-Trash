@@ -49,6 +49,26 @@
   border: 0;
 }
 
+.singlePage .page .info .quantity {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.singlePage .page .info .quantity .num {
+  margin: 0 10px;
+  border: 1px solid white;
+  padding: 5px 15px;
+  border-radius: 25%;
+}
+
+.singlePage .page .info .quantity .inc,
+.singlePage .page .info .quantity .dec {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+}
+
 @media only screen and (max-width: 800px) {
   .singlePage .page {
     padding: 10px;

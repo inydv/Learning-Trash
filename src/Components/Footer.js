@@ -21,13 +21,13 @@ function Footer() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/shop">Men</Link>
+            <Link to="/shop/men">Men</Link>
           </li>
           <li>
-            <Link to="/shop">Women</Link>
+            <Link to="/shop/women">Women</Link>
           </li>
           <li>
-            <Link to="/shop">Sale</Link>
+            <Link to="/shop/sale">Sale</Link>
           </li>
           <li>
             <Link to="/cart">Cart</Link>

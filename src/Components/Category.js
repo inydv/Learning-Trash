@@ -8,7 +8,7 @@ function Category() {
   return (
     <div className="category">
       <div className="men">
-        <Link to="/shop">
+        <Link to="/shop/men">
           <div className="imageContainer">
             <img src={MensCollection} alt="" className="image" />
           </div>
@@ -16,7 +16,7 @@ function Category() {
         </Link>
       </div>
       <div className="women">
-        <Link to="/shop">
+        <Link to="/shop/women">
           <div className="imageContainer">
             <img src={WomenCollection} alt="" className="image" />
           </div>
