@@ -67,6 +67,7 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: 500;
+  user-select: none;
 }
 
 @media only screen and (max-width: 800px) {

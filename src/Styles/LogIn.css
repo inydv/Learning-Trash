@@ -57,6 +57,11 @@
   margin-bottom: 10px;
 }
 
+.logIn .wrapper .wraped .container .btn:disabled{
+  color: green;
+  cursor: not-allowed;
+}
+
 .logIn .wrapper .wraped .container .forgotPW {
   text-decoration: none;
 }

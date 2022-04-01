@@ -11,9 +11,11 @@ import Navbar from "./Components/Navbar";
 import NewsLetter from "./Components/NewsLetter";
 import Footer from "./Components/Footer";
 import { Switch, Route, Redirect } from "react-router-dom";
+import Success from "./Pages/Success";
+import { useSelector } from "react-redux";
 
 function App() {
-  const user = true;
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <div className="app">
       <Navbar />
@@ -24,6 +26,7 @@ function App() {
         <Route exact path="/singlepage/:id" component={() => <SinglePage />} />
         <Route exact path="/shop/:category" component={() => <Shop />} />
         <Route exact path="/cart" component={() => <Cart />} />
+        <Route exact path="/success" component={() => <Success />} />
         {user ? (
           <Redirect to="/" />
         ) : (

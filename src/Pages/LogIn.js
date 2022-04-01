@@ -1,11 +1,24 @@
 import { Facebook, Mail, PhoneAndroidOutlined } from "@material-ui/icons";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { login } from "../redux/apiCalls";
 import "../Styles/LogIn.css";
+import { useDispatch, useSelector } from "react-redux";
 
 function LogIn() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  const handleclick = (e) => {
+    login(dispatch, { username, password });
+  };
 
   return (
     <div className="logIn">
@@ -14,9 +27,21 @@ function LogIn() {
         <div className="wraped">
           <div className="container">
             <h6 className="signIn">SIGN IN</h6>
-            <input type="text" placeholder="Username" className="username" />
-            <input type="password" placeholder="Password" className="pw" />
-            <button className="btn">LOGIN</button>
+            <input
+              type="text"
+              placeholder="Username"
+              className="username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="pw"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button className="btn" onClick={handleClick} disabled={isFetching}>
+              LOGIN
+            </button>
             <a href="#" className="forgotPW">
               FORGOTTEN PASSWORD?
             </a>
