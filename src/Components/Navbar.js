@@ -65,10 +65,10 @@ function Navbar() {
       </div>
       <div className="right">
         <div className="user">
-          <Link to="/login">
+          <Link to="/signin">
             <PersonIcon className="icon" />
           </Link>
-          <Link to="/login">LogIn</Link>
+          <Link to="/signin">LogIn</Link>
         </div>
         <div className="cart">
           <Link to="/cart">

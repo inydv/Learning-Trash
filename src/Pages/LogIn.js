@@ -1,8 +1,8 @@
-import { Facebook, Mail, PhoneAndroidOutlined } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import { login } from "../redux/apiCalls";
 import "../Styles/LogIn.css";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function LogIn() {
   useEffect(() => {
@@ -16,7 +16,7 @@ function LogIn() {
 
   const { isFetching, error } = useSelector((state) => state.user);
 
-  const handleclick = (e) => {
+  const handleclick = () => {
     login(dispatch, { username, password });
   };
 
@@ -39,31 +39,18 @@ function LogIn() {
               className="pw"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="btn" onClick={handleClick} disabled={isFetching}>
-              LOGIN
+            <button className="btn" onClick={handleclick} disabled={isFetching}>
+              SIGNIN
             </button>
+            {error && <span>Something Went Wrong...</span>}
             <a href="#" className="forgotPW">
               FORGOTTEN PASSWORD?
             </a>
-          </div>
-          <div className="partition">
-            <div className="line"></div>
-            <div className="or">OR</div>
-            <div className="line"></div>
-          </div>
-          <div className="signUp">
-            <div className="phone">
-              <PhoneAndroidOutlined className="icon" />
-              CONTINUE WITH PHONE NUMBER
-            </div>
-            <div className="mail">
-              <Mail className="icon" />
-              MAIL
-            </div>
-            <div className="facebook">
-              <Facebook className="icon" />
-              FACEBOOK
-            </div>
+            <Link to="/signup">
+              <p className="forgotPW">
+                SIGN UP?
+              </p>
+            </Link>
           </div>
         </div>
       </div>

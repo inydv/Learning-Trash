@@ -7,18 +7,17 @@ import Home from "./Pages/Home";
 import LogIn from "./Pages/LogIn";
 import Shop from "./Pages/Shop";
 import SinglePage from "./Pages/SinglePage";
-import Navbar from "./Components/Navbar";
-import NewsLetter from "./Components/NewsLetter";
-import Footer from "./Components/Footer";
-import { Switch, Route, Redirect } from "react-router-dom";
 import Success from "./Pages/Success";
+import Signup from "./Pages/signup";
+import AfterSubmitForm from "./Components/AfterSubmitForm";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
   return (
     <div className="app">
-      <Navbar />
       <Switch>
         <Route exact path="/" component={() => <Home />} />
         <Route exact path="/contact" component={() => <Contact />} />
@@ -27,14 +26,14 @@ function App() {
         <Route exact path="/shop/:category" component={() => <Shop />} />
         <Route exact path="/cart" component={() => <Cart />} />
         <Route exact path="/success" component={() => <Success />} />
+        <Route exact path="/formsubmitted" component={() => <AfterSubmitForm /> } />
+        <Route exact path="/signup" component={() => <Signup /> } />
         {user ? (
           <Redirect to="/" />
         ) : (
-          <Route exact path="/login" component={LogIn} />
+          <Route exact path="/signin" component={LogIn} />
         )}
       </Switch>
-      <NewsLetter />
-      <Footer />
     </div>
   );
 }

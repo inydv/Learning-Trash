@@ -12,8 +12,8 @@ function Products({ cat, sort }) {
       try {
         const res = await axios.get(
           cat
-            ? `http://localhost:5000/products/findAllProducts?category=${cat}`
-            : `http://localhost:5000/products/findAllProducts`
+            ? `http://localhost:5000/products?category=${cat}`
+            : `http://localhost:5000/products`
         );
         setProducts(res.data);
       } catch (err) {}

@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import "../Styles/Contact.css";
+import Navbar from "../Components/Navbar";
+import NewsLetter from "../Components/NewsLetter";
+import Footer from "../Components/Footer";
 
 function Contact() {
   useEffect(() => {
@@ -8,6 +11,7 @@ function Contact() {
 
   return (
     <div>
+      <Navbar />
       <div className="wrap">
         <h3 className="title">Contact</h3>
         <form className="form">
@@ -47,6 +51,8 @@ function Contact() {
           </div>
         </form>
       </div>
+      <NewsLetter />
+      <Footer />
     </div>
   );
 }

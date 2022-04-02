@@ -33,7 +33,7 @@ function Footer() {
             <Link to="/cart">Cart</Link>
           </li>
           <li>
-            <a href="#">My Account</a>
+            <Link to="/success">My Orders</Link>
           </li>
           <li>
             <Link to="/about">About</Link>

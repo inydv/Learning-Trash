@@ -111,6 +111,10 @@
   cursor: pointer;
 }
 
+.emptyCart {
+  padding: 30px;
+}
+
 @media only screen and (max-width: 800px) {
   .container {
     padding: 10px;
@@ -168,5 +172,9 @@
 
   .container .bottom .total .totalSpan {
     margin-left: 10px;
+  }
+
+  .emptyCart {
+    padding: 10px;
   }
 }

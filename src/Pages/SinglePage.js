@@ -4,6 +4,9 @@ import { useLocation } from "react-router-dom";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import Navbar from "../Components/Navbar";
+import NewsLetter from "../Components/NewsLetter";
+import Footer from "../Components/Footer";
 
 function SinglePage() {
   useEffect(() => {
@@ -19,7 +22,7 @@ function SinglePage() {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await publicRequest.get("/products/findProduct/" + id);
+        const res = await publicRequest.get("/products/" + id);
         setSinglePageProduct(res.data);
       } catch (err) {}
     };
@@ -42,6 +45,7 @@ function SinglePage() {
 
   return (
     <div className="singlePage">
+      <Navbar />
       <div className="page">
         <div className="imageContainer">
           {/* {singlePageProduct &&
@@ -68,6 +72,8 @@ function SinglePage() {
           </button>
         </div>
       </div>
+      <NewsLetter />
+      <Footer />
     </div>
   );
 }
