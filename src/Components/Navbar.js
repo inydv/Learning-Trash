@@ -4,7 +4,7 @@ import PersonIcon from "@material-ui/icons/Person";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Link } from "react-router-dom";
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux";
 
 function Navbar() {
   const [TF, setTF] = useState(true);
@@ -26,7 +26,7 @@ function Navbar() {
     }
   }
 
-  const quantity = useSelector(state => state.cart.quantity)
+  const quantity = useSelector((state) => state.cart.quantity);
 
   return (
     <div className="navbar">
@@ -65,9 +65,7 @@ function Navbar() {
       </div>
       <div className="right">
         <div className="user">
-          <Link to="/signin">
-            <PersonIcon className="icon" />
-          </Link>
+          <PersonIcon className="icon" />
           <Link to="/signin">LogIn</Link>
         </div>
         <div className="cart">

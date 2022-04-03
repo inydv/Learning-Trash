@@ -5,7 +5,7 @@ import axios from "axios";
 
 function Products({ cat, sort }) {
   const [products, setProducts] = useState([]);
-  const [sortProducts, setSortProducts] = useState([]);
+  // const [sortProducts, setSortProducts] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -21,21 +21,21 @@ function Products({ cat, sort }) {
     getProducts();
   }, [cat]);
 
-  useEffect(() => {
-    if ((sort = "newest")) {
-      setSortProducts((prev) =>
-        [...prev].sort((a, b) => a.createdAt - b.createdAt)
-      );
-    } else if ((sort = "oldest")) {
-      setSortProducts((prev) =>
-        [...prev].sort((a, b) => b.createdAt - a.createdAt)
-      );
-    } else if ((sort = "asc")) {
-      setSortProducts((prev) => [...prev].sort((a, b) => a.price - b.price));
-    } else {
-      setSortProducts((prev) => [...prev].sort((a, b) => b.price - a.price));
-    }
-  }, [sort]);
+  // useEffect(() => {
+  //   if ((sort = "newest")) {
+  //     setSortProducts((prev) =>
+  //       [...prev].sort((a, b) => a.createdAt - b.createdAt)
+  //     );
+  //   } else if ((sort = "oldest")) {
+  //     setSortProducts((prev) =>
+  //       [...prev].sort((a, b) => b.createdAt - a.createdAt)
+  //     );
+  //   } else if ((sort = "asc")) {
+  //     setSortProducts((prev) => [...prev].sort((a, b) => a.price - b.price));
+  //   } else {
+  //     setSortProducts((prev) => [...prev].sort((a, b) => b.price - a.price));
+  //   }
+  // }, [sort]);
 
   return (
     <div className="products">

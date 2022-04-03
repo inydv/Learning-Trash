@@ -40,16 +40,14 @@ function LogIn() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <button className="btn" onClick={handleclick} disabled={isFetching}>
-              SIGNIN
+              SIGN IN
             </button>
-            {error && <span>Something Went Wrong...</span>}
+            {error && <span className="span">Something Went Wrong...</span>}
             <a href="#" className="forgotPW">
               FORGOTTEN PASSWORD?
             </a>
             <Link to="/signup">
-              <p className="forgotPW">
-                SIGN UP?
-              </p>
+              <p className="forgotPW">SIGN UP?</p>
             </Link>
           </div>
         </div>

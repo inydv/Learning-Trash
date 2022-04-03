@@ -15,7 +15,6 @@ import { useSelector } from "react-redux";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
-  console.log(user);
   return (
     <div className="app">
       <Switch>
@@ -26,13 +25,14 @@ function App() {
         <Route exact path="/shop/:category" component={() => <Shop />} />
         <Route exact path="/cart" component={() => <Cart />} />
         <Route exact path="/success" component={() => <Success />} />
-        <Route exact path="/formsubmitted" component={() => <AfterSubmitForm /> } />
-        <Route exact path="/signup" component={() => <Signup /> } />
-        {user ? (
-          <Redirect to="/" />
-        ) : (
-          <Route exact path="/signin" component={LogIn} />
-        )}
+        <Route
+          exact
+          path="/formsubmitted"
+          component={() => <AfterSubmitForm />}
+        />
+        <Route exact path="/signup" component={() => <Signup />} />
+        <Route exact path="/signin" component={LogIn} />
+        {user ? <Redirect to="/" /> : <Redirect to="/signin" />}
       </Switch>
     </div>
   );

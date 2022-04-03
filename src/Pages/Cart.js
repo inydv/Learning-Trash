@@ -21,7 +21,6 @@ function Cart() {
   };
 
   useEffect(() => {
-    console.log("hnn");
     const makeRequest = async () => {
       try {
         const res = await userRequest.post("/checkout/payment", {
@@ -65,7 +64,7 @@ function Cart() {
                     <p className="qty">{item.quantity}</p>
                   </div>
                   <div className="priceText">
-                    <p>{item.price * item.quantity}</p>
+                    <p>${item.price * item.quantity}</p>
                   </div>
                 </div>
                 <div className="line"></div>
@@ -74,7 +73,7 @@ function Cart() {
           <div className="bottom">
             <div className="total">
               <p className="subTotal">SUBTOTAL</p>
-              <span className="totalSpan">{cart.total}</span>
+              <span className="totalSpan">${cart.total}</span>
             </div>
             <StripeCheckout
               name="THE LITTLE THINGS"

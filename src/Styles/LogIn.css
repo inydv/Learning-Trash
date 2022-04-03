@@ -57,7 +57,7 @@
   margin-bottom: 10px;
 }
 
-.logIn .wrapper .wraped .container .btn:disabled{
+.logIn .wrapper .wraped .container .btn:disabled {
   cursor: not-allowed;
 }
 
@@ -65,3 +65,8 @@
   text-decoration: none;
 }
 
+.logIn .wrapper .wraped .span {
+  color: rgba(255, 0, 0, 0.521);
+  font-size: 15px;
+  margin: 10px 0;
+}

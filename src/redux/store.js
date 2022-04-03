@@ -33,10 +33,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 // });
 
 export const store = configureStore({
-  reducer: {
-    cart: persistedReducer,
-    user: persistedReducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

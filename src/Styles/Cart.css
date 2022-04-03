@@ -77,13 +77,6 @@
   justify-content: flex-start;
 }
 
-.container .itemsContainer .number .plus,
-.container .itemsContainer .number .minus {
-  cursor: pointer;
-  padding: 0 10px;
-  font-size: 15px;
-}
-
 .container .itemsContainer .priceText {
   flex: 1;
 }
