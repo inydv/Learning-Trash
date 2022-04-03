@@ -27,7 +27,7 @@ function Cart() {
           tokenId: stripeToken.id,
           amount: cart.total * 100,
         });
-        history.push("/success", { data: res.data });
+        history.push("/order", { stripeData: res.data, products: cart });
       } catch (err) {
         console.log(err);
       }

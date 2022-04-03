@@ -1,0 +1,16 @@
+.order .orderContainer {
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.order .orderContainer .homepageButton {
+  margin-top: 10px;
+  background-color: rgb(58, 57, 57);
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}

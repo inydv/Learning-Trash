@@ -64,10 +64,9 @@ function Navbar() {
         </div>
       </div>
       <div className="right">
-        <div className="user">
+        {/* <div className="user">
           <PersonIcon className="icon" />
-          <Link to="/signin">LogIn</Link>
-        </div>
+        </div> */}
         <div className="cart">
           <Link to="/cart">
             <Badge badgeContent={quantity} color="primary">

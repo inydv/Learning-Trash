@@ -7,14 +7,23 @@ import Home from "./Pages/Home";
 import LogIn from "./Pages/LogIn";
 import Shop from "./Pages/Shop";
 import SinglePage from "./Pages/SinglePage";
-import Success from "./Pages/Success";
 import Signup from "./Pages/signup";
+import Order from "./Pages/Order";
 import AfterSubmitForm from "./Components/AfterSubmitForm";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
+
+  if (user !== null) {
+    console.log(user);
+    <Redirect to="/" />;
+  } else {
+    console.log(user);
+    <Redirect to="/signin" />;
+  }
+
   return (
     <div className="app">
       <Switch>
@@ -24,15 +33,19 @@ function App() {
         <Route exact path="/singlepage/:id" component={() => <SinglePage />} />
         <Route exact path="/shop/:category" component={() => <Shop />} />
         <Route exact path="/cart" component={() => <Cart />} />
-        <Route exact path="/success" component={() => <Success />} />
+        <Route exact path="/order" component={() => <Order />} />
         <Route
           exact
           path="/formsubmitted"
           component={() => <AfterSubmitForm />}
         />
-        <Route exact path="/signup" component={() => <Signup />} />
-        <Route exact path="/signin" component={LogIn} />
-        {user ? <Redirect to="/" /> : <Redirect to="/signin" />}
+        <Route exact path="/signin">
+          {user ? <Redirect to="/" /> : <LogIn />}
+        </Route>
+
+        <Route exact path="/signup">
+          {user ? <Redirect to="/" /> : <Signup />}
+        </Route>
       </Switch>
     </div>
   );
