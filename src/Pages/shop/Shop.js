@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Products from "../Components/Products";
-import "../Styles/Shop.css";
-import Navbar from "../Components/Navbar";
-import NewsLetter from "../Components/NewsLetter";
-import Footer from "../Components/Footer";
+import Products from "../../Components/productList/Products";
+import "./Shop.css";
+import Navbar from "../../Components/navbar/Navbar";
+import NewsLetter from "../../Components/newsLetter/NewsLetter";
+import Footer from "../../Components/footer/Footer";
 
 function Shop() {
   useEffect(() => {

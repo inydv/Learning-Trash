@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "../Styles/SinglePage.css";
+import "./SinglePage.css";
 import { useLocation } from "react-router-dom";
-import { publicRequest } from "../requestMethods";
-import { addProduct } from "../redux/cartRedux";
+import { publicRequest } from "../../requestMethods";
+import { addProduct } from "../../redux/cartRedux";
 import { useDispatch } from "react-redux";
-import Navbar from "../Components/Navbar";
-import NewsLetter from "../Components/NewsLetter";
-import Footer from "../Components/Footer";
+import Navbar from "../../Components/navbar/Navbar";
+import NewsLetter from "../../Components/newsLetter/NewsLetter";
+import Footer from "../../Components/footer/Footer";
 
 function SinglePage() {
   useEffect(() => {

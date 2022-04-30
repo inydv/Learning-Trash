@@ -1,52 +1,44 @@
 import React from "react";
 import "./App.css";
-import About from "./Pages/About";
-import Cart from "./Pages/Cart";
-import Contact from "./Pages/Contact";
-import Home from "./Pages/Home";
-import LogIn from "./Pages/LogIn";
-import Shop from "./Pages/Shop";
-import SinglePage from "./Pages/SinglePage";
-import Signup from "./Pages/signup";
-import Order from "./Pages/Order";
-import AfterSubmitForm from "./Components/AfterSubmitForm";
-import { Switch, Route, Redirect } from "react-router-dom";
+import About from "./Pages/about/About";
+import Cart from "./Pages/cart/Cart";
+import Contact from "./Pages/contact/Contact";
+import Home from "./Pages//home/Home";
+import LogIn from "./Pages/login/LogIn";
+import Shop from "./Pages/shop/Shop";
+import SinglePage from "./Pages/singlePage/SinglePage";
+import Signup from "./Pages/signup/signup";
+import Order from "./Pages/order/Order";
+import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
 
-  if (user !== null) {
-    console.log(user);
-    <Redirect to="/" />;
-  } else {
-    console.log(user);
-    <Redirect to="/signin" />;
-  }
-
   return (
     <div className="app">
-      <Switch>
-        <Route exact path="/" component={() => <Home />} />
-        <Route exact path="/contact" component={() => <Contact />} />
-        <Route exact path="/about" component={() => <About />} />
-        <Route exact path="/singlepage/:id" component={() => <SinglePage />} />
-        <Route exact path="/shop/:category" component={() => <Shop />} />
-        <Route exact path="/cart" component={() => <Cart />} />
-        <Route exact path="/order" component={() => <Order />} />
-        <Route
-          exact
-          path="/formsubmitted"
-          component={() => <AfterSubmitForm />}
-        />
-        <Route exact path="/signin">
-          {user ? <Redirect to="/" /> : <LogIn />}
-        </Route>
-
-        <Route exact path="/signup">
-          {user ? <Redirect to="/" /> : <Signup />}
-        </Route>
-      </Switch>
+      {/* <Routes>
+        <Route exact path="/" element={user? <Home /> : <LogIn/>} />
+        <Route exact path="/contact" element={user? <Contact /> : <LogIn/>} />
+        <Route exact path="/about" element={user? <About /> : <LogIn/>} />
+        <Route exact path="/singlepage/:id" element={user? <SinglePage /> : <LogIn/>} />
+        <Route exact path="/shop/:category" element={user? <Shop /> : <LogIn/>} />
+        <Route exact path="/cart" element={user? <Cart /> : <LogIn/>} />
+        <Route exact path="/order" element={ user? <Order /> : <LogIn/>} />
+        <Route exact path="/signin" element={user ? <Home /> : <LogIn />} />
+        <Route exact path="/signup" element={user ? <Home /> : <Signup />} />
+      </Routes> */}
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/about" element={ <About />} />
+        <Route exact path="/singlepage/:id" element={<SinglePage />} />
+        <Route exact path="/shop/:category" element={<Shop />} />
+        <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/order" element={<Order />} />
+        <Route exact path="/signin" element={<LogIn />} />
+        <Route exact path="/signup" element={<Signup />} />
+      </Routes>
     </div>
   );
 }

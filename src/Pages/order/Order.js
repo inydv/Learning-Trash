@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
-import Navbar from "../Components/Navbar";
-import NewsLetter from "../Components/NewsLetter";
-import Footer from "../Components/Footer";
-import "../Styles/Order.css";
-import { userRequest } from "../requestMethods";
+import Navbar from "../../Components/navbar/Navbar";
+import NewsLetter from "../../Components/newsLetter/NewsLetter";
+import Footer from "../../Components/footer/Footer";
+import "./Order.css";
+import { userRequest } from "../../requestMethods";
 import { Link } from "react-router-dom";
 
 function Order() {

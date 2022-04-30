@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import "../Styles/About.css";
-import Navbar from "../Components/Navbar";
-import NewsLetter from "../Components/NewsLetter";
-import Footer from "../Components/Footer";
+import "./About.css";
+import Navbar from "../../Components/navbar/Navbar";
+import NewsLetter from "../../Components/newsLetter/NewsLetter";
+import Footer from "../../Components/footer/Footer";
 
 function About() {
   useEffect(() => {

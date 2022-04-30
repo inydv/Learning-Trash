@@ -1,9 +1,0 @@
-.AfterSubmitForm .thanks {
-    padding: 30px;
-}
-
-@media only screen and (max-width: 800px) {
-    .AfterSubmitForm .thanks {
-        padding: 10px;
-    }
-}

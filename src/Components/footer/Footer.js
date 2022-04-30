@@ -1,6 +1,6 @@
-import { Facebook, Instagram, Twitter } from "@material-ui/icons";
+import { Facebook, Instagram, LinkedIn } from "@material-ui/icons";
 import React from "react";
-import "../Styles/Footer.css";
+import "./Footer.css";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -51,13 +51,25 @@ function Footer() {
         </p>
         <div className="icons">
           <div className="facebook">
-            <Facebook />
+            <a href="https://www.facebook.com/Nitin9900" target="_blank">
+              <Facebook />
+            </a>
           </div>
           <div className="instagram">
-            <Instagram />
+            <a
+              href="https://instagram.com/i_nydv?igshid=YmMyMTA2M2Y="
+              target="_blank"
+            >
+              <Instagram />
+            </a>
           </div>
           <div className="twitter">
-            <Twitter />
+            <a
+              href="https://www.linkedin.com/in/lokesh-yadav-31318a225/"
+              target="_blank"
+            >
+              <LinkedIn />
+            </a>
           </div>
         </div>
       </div>

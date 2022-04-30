@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import "../Styles/Cart.css";
-import Navbar from "../Components/Navbar";
-import NewsLetter from "../Components/NewsLetter";
-import Footer from "../Components/Footer";
+import "./Cart.css";
+import Navbar from "../../Components/navbar/Navbar";
+import NewsLetter from "../../Components/newsLetter/NewsLetter";
+import Footer from "../../Components/footer/Footer";
 import StripeCheckout from "react-stripe-checkout";
-import { userRequest } from "../requestMethods";
+import { userRequest } from "../../requestMethods";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import logo from "../Images/logo.jpg";
+import logo from "../../Images/logo.jpg";
 
 function Cart() {
   const KEY = process.env.REACT_APP_STRIPE;
   const [stripeToken, setStripeToken] = useState(null);
-  const history = useHistory();
+  // const history = useHistory();
 
   const cart = useSelector((state) => state.cart);
 
@@ -27,13 +26,17 @@ function Cart() {
           tokenId: stripeToken.id,
           amount: cart.total * 100,
         });
-        history.push("/order", { stripeData: res.data, products: cart });
+        // history.push("/order", { stripeData: res.data, products: cart });
       } catch (err) {
         console.log(err);
       }
     };
     stripeToken && makeRequest(); // call makeRequest
-  }, [stripeToken, cart.total, history]);
+  }, [
+    stripeToken,
+    cart.total,
+    // ,history
+  ]);
 
   return (
     <div className="cart">

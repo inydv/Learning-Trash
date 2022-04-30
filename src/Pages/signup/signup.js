@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "../Styles/LogIn.css";
+import "../login/LogIn.css";
 import { Link } from "react-router-dom";
 
 function Signup() {

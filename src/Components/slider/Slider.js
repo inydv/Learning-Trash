@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../Styles/Slider.css";
-import { sliderItems } from "../data";
+import "./Slider.css";
+import { sliderItems } from "../../data";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 

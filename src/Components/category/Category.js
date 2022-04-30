@@ -1,7 +1,7 @@
 import React from "react";
-import "../Styles/Category.css";
-import MensCollection from "../Images/MensCollection.jpg";
-import WomenCollection from "../Images/WomenCollection.jpg";
+import "./Category.css";
+import MensCollection from "../../Images/MensCollection.jpg";
+import WomenCollection from "../../Images/WomenCollection.jpg";
 import { Link } from "react-router-dom";
 
 function Category() {

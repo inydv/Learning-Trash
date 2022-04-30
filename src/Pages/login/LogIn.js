@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { login } from "../redux/apiCalls";
-import "../Styles/LogIn.css";
+import { login } from "../../redux/apiCalls";
+import "./LogIn.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 

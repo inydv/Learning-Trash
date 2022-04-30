@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Styles/Navbar.css";
+import "./Navbar.css";
 import PersonIcon from "@material-ui/icons/Person";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
