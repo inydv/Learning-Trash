@@ -48,16 +48,12 @@ function SinglePage() {
       <Navbar />
       <div className="page">
         <div className="imageContainer">
-          {/* {singlePageProduct &&
-            singlePageProduct.map((item) => (
-              <img src={item.img} alt="" className="image" />
-            ))} */}
           <img src={singlePageProduct.img} alt="" className="image" />
         </div>
         <div className="info">
           <h2 className="name">{singlePageProduct.title}</h2>
-          <p className="price">{singlePageProduct.price}</p>
-          <p className="desc">{singlePageProduct.desc}</p>
+          <p className="price">{`$${singlePageProduct.price}`}</p>
+          <p className="desc" dangerouslySetInnerHTML={{__html: `${singlePageProduct.desc}`}}></p>
           <div className="quantity">
             <p className="dec" onClick={dec}>
               -

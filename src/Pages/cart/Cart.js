@@ -7,8 +7,13 @@ import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
 import { useSelector } from "react-redux";
 import logo from "../../Images/logo.jpg";
+import { Link } from "react-router-dom";
 
 function Cart() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const KEY = process.env.REACT_APP_STRIPE;
   const [stripeToken, setStripeToken] = useState(null);
   // const history = useHistory();
@@ -58,7 +63,9 @@ function Cart() {
                     <div className="itom">
                       <span className="cross">x</span>
                       <div className="imageContainer">
-                        <img src={item.img} alt="" className="image" />
+                        <Link to={`/singlepage/${item._id}`}>
+                          <img src={item.img} alt="" className="image" />
+                        </Link>
                       </div>
                     </div>
                     <p className="name">{item.title}</p>

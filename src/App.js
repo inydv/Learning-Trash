@@ -17,27 +17,24 @@ function App() {
 
   return (
     <div className="app">
-      {/* <Routes>
-        <Route exact path="/" element={user? <Home /> : <LogIn/>} />
-        <Route exact path="/contact" element={user? <Contact /> : <LogIn/>} />
-        <Route exact path="/about" element={user? <About /> : <LogIn/>} />
-        <Route exact path="/singlepage/:id" element={user? <SinglePage /> : <LogIn/>} />
-        <Route exact path="/shop/:category" element={user? <Shop /> : <LogIn/>} />
-        <Route exact path="/cart" element={user? <Cart /> : <LogIn/>} />
-        <Route exact path="/order" element={ user? <Order /> : <LogIn/>} />
+      <Routes>
+        <Route exact path="/" element={user ? <Home /> : <LogIn />} />
+        <Route exact path="/contact" element={user ? <Contact /> : <LogIn />} />
+        <Route exact path="/about" element={user ? <About /> : <LogIn />} />
+        <Route
+          exact
+          path="/singlepage/:id"
+          element={user ? <SinglePage /> : <LogIn />}
+        />
+        <Route
+          exact
+          path="/shop/:category"
+          element={user ? <Shop /> : <LogIn />}
+        />
+        <Route exact path="/cart" element={user ? <Cart /> : <LogIn />} />
+        <Route exact path="/order" element={user ? <Order /> : <LogIn />} />
         <Route exact path="/signin" element={user ? <Home /> : <LogIn />} />
         <Route exact path="/signup" element={user ? <Home /> : <Signup />} />
-      </Routes> */}
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/contact" element={<Contact />} />
-        <Route exact path="/about" element={ <About />} />
-        <Route exact path="/singlepage/:id" element={<SinglePage />} />
-        <Route exact path="/shop/:category" element={<Shop />} />
-        <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/order" element={<Order />} />
-        <Route exact path="/signin" element={<LogIn />} />
-        <Route exact path="/signup" element={<Signup />} />
       </Routes>
     </div>
   );

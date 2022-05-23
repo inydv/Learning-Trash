@@ -59,6 +59,7 @@
 
 .logIn .wrapper .wraped .container .btn:disabled {
   cursor: not-allowed;
+  color: rgb(58, 57, 57);
 }
 
 .logIn .wrapper .wraped .container .forgotPW {

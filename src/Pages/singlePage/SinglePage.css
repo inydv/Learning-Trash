@@ -1,32 +1,25 @@
 .singlePage .page {
-  padding: 30px;
-  height: 100vh;
+  padding: 10px 50px;
   display: flex;
   align-items: center;
 }
 
 .singlePage .page .imageContainer {
   flex: 1;
-  height: 90%;
-  overflow: scroll;
   background-color: rgba(30, 30, 32, 0.281);
   display: flex;
-  flex-direction: column;
   align-items: center;
-}
-
-.singlePage .page .imageContainer::-webkit-scrollbar {
-  display: none;
+  justify-content: center;
 }
 
 .singlePage .page .imageContainer .image {
   padding: 10px;
-  height: 100%;
-  width: 80%;
+  height: 70%;
+  width: 70%;
 }
 
 .singlePage .page .info {
-  padding: 50px;
+  margin-left: 50px;
   flex: 1;
 }
 
@@ -72,23 +65,27 @@
 
 @media only screen and (max-width: 800px) {
   .singlePage .page {
-    padding: 10px;
-    height: 100vh;
+    padding: 20px;
     flex-direction: column;
+    align-items: flex-start;
   }
 
   .singlePage .page .imageContainer {
     height: 100%;
+    width: 100%;
     flex-direction: row;
+    flex: 0;
   }
 
   .singlePage .page .imageContainer .image {
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
   }
 
   .singlePage .page .info {
-    padding: 0;
+    padding-top: 20px;
+    margin-left: 10px;
+    flex: 0;
   }
 
   .singlePage .page .info .name {

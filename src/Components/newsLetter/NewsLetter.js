@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import "./NewsLetter.css";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {changeState} from "../../redux/newsLetterRedux"
 
 function NewsLetter() {
-  const [TF, setTF] = useState(true);
+  const TF = useSelector((state) => state.newsLetter.show);
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTF(false);
+    dispatch(changeState());
   };
 
   return (
@@ -21,6 +26,7 @@ function NewsLetter() {
                 type="email"
                 placeholder="Email Address"
                 className="mail"
+                required
               />
               <button className="btn" type="submit">
                 Sign up

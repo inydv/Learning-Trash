@@ -15,15 +15,19 @@
 
 .container .heading .item {
   flex: 7;
+  margin-left: 20px;
 }
 
 .container .heading .quantity {
   flex: 1;
-  margin: 0 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .container .heading .price {
   flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .container .line {
@@ -66,19 +70,16 @@
   width: 100%;
 }
 
-.container .itemsContainer .items .name {
-  cursor: pointer;
-}
-
 .container .itemsContainer .number {
   flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .container .itemsContainer .priceText {
   flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .container .bottom {
@@ -118,19 +119,22 @@
   }
 
   .container .heading {
-    display: flex;
     margin-bottom: 5px;
     font-size: 15px;
   }
 
+  .container .heading .item {
+    margin-left: 10px;
+  }
+
   .container .heading .quantity {
-    margin: 0 30px;
+    margin-right: 30px;
   }
 
   .container .itemsContainer {
     height: 30vh;
   }
-
+  
   .container .itemsContainer .items {
     flex-direction: column;
     justify-content: center;
@@ -148,7 +152,7 @@
   }
 
   .container .itemsContainer .number {
-    margin: 0 20px;
+    margin-right: 45px;
   }
 
   .container .itemsContainer .number .numberInput {

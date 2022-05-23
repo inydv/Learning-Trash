@@ -16,7 +16,8 @@ function LogIn() {
 
   const { isFetching, error } = useSelector((state) => state.user);
 
-  const handleclick = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     login(dispatch, { username, password });
   };
 
@@ -25,31 +26,36 @@ function LogIn() {
       <div className="bg"></div>
       <div className="wrapper">
         <div className="wraped">
-          <div className="container">
-            <h6 className="signIn">SIGN IN</h6>
-            <input
-              type="text"
-              placeholder="Username"
-              className="username"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              className="pw"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button className="btn" onClick={handleclick} disabled={isFetching}>
-              SIGN IN
-            </button>
-            {error && <span className="span">Something Went Wrong...</span>}
-            <a href="#" className="forgotPW">
-              FORGOTTEN PASSWORD?
-            </a>
-            <Link to="/signup">
-              <p className="forgotPW">SIGN UP?</p>
-            </Link>
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="container">
+              <h6 className="signIn">SIGN IN</h6>
+              <input
+                type="text"
+                placeholder="Username"
+                className="username"
+                autoFocus={true}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                className="pw"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button className="btn" type="submit" disabled={isFetching}>
+                SIGN IN
+              </button>
+              {error && <span className="span">Something Went Wrong...</span>}
+              <a href="#" className="forgotPW">
+                FORGOTTEN PASSWORD?
+              </a>
+              <Link to="/signup">
+                <p className="forgotPW">SIGN UP?</p>
+              </Link>
+            </div>
+          </form>
         </div>
       </div>
     </div>
