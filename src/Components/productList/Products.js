@@ -36,8 +36,6 @@ function Products({ cat, sort }) {
     }
   }, [sort]);
 
-  console.log(products);
-
   return (
     <div className="products">
       {cat
