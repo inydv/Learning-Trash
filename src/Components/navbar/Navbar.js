@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import PersonIcon from "@material-ui/icons/Person";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { signout } from "../../redux/apiCalls";
 
 function Navbar() {
   const [TF, setTF] = useState(true);
@@ -26,7 +28,13 @@ function Navbar() {
     }
   }
 
-  const quantity = useSelector((state) => state.cart.quantity);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    signout(dispatch);
+  };
+
+  // const quantity = useSelector((state) => state.cart.quantity);
 
   return (
     <div className="navbar">
@@ -65,11 +73,11 @@ function Navbar() {
       </div>
       <div className="right">
         <div className="user">
-          <PersonIcon className="icon" />
+          <ExitToAppIcon onClick={handleLogout} className="icon" />
         </div>
         <div className="cart">
           <Link to="/cart">
-            <Badge badgeContent={quantity} color="primary">
+            <Badge badgeContent={5} color="primary">
               <ShoppingCartIcon />
             </Badge>
           </Link>

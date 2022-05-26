@@ -5,7 +5,7 @@ import NewsLetter from "../../Components/newsLetter/NewsLetter";
 import Footer from "../../Components/footer/Footer";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import logo from "../../Images/logo.jpg";
 import { Link } from "react-router-dom";
 
@@ -20,23 +20,23 @@ function Cart() {
 
   const cart = 0;
 
-  const user = useSelector((state) => state.user.currentUser.others._id);
+  // const user = useSelector((state) => state.user.currentUser.others._id);
 
   const ontoken = (token) => {
     setStripeToken(token);
   };
 
-  useEffect(() => {
-    const getProduct = async () => {
-      try {
-        const res = await userRequest.get(`/cart/${user}`);
-        console.log(res);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getProduct();
-  }, []);
+  // useEffect(() => {
+  //   const getProduct = async () => {
+  //     try {
+  //       const res = await userRequest.get(`/cart/${user}`);
+  //       console.log(res);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   getProduct();
+  // }, []);
 
   useEffect(() => {
     const makeRequest = async () => {
