@@ -18,11 +18,25 @@ function Cart() {
   const [stripeToken, setStripeToken] = useState(null);
   // const history = useHistory();
 
-  const cart = useSelector((state) => state.cart);
+  const cart = 0;
+
+  const user = useSelector((state) => state.user.currentUser.others._id);
 
   const ontoken = (token) => {
     setStripeToken(token);
   };
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await userRequest.get(`/cart/${user}`);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProduct();
+  }, []);
 
   useEffect(() => {
     const makeRequest = async () => {

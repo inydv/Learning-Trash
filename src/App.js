@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import About from "./Pages/about/About";
 import Cart from "./Pages/cart/Cart";
@@ -11,6 +11,7 @@ import Signup from "./Pages/signup/signup";
 import Order from "./Pages/order/Order";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
+import {userRequest} from "./requestMethods";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);

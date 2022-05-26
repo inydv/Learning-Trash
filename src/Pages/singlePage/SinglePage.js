@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./SinglePage.css";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
-import { addProduct } from "../../redux/cartRedux";
-import { useDispatch } from "react-redux";
 import Navbar from "../../Components/navbar/Navbar";
 import NewsLetter from "../../Components/newsLetter/NewsLetter";
 import Footer from "../../Components/footer/Footer";
+import { userRequest } from "../../requestMethods";
+import { useSelector } from "react-redux";
 
 function SinglePage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const user = useSelector((state) => state.user.currentUser.others._id);
 
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -29,10 +31,18 @@ function SinglePage() {
     getProduct();
   }, [id]);
 
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    dispatch(addProduct({ ...singlePageProduct, quantity }));
+  const handleClick = async () => {
+    try {
+      await userRequest.post(`/cart/${user}`, {
+        userId: user,
+        products: {
+          productId: singlePageProduct._id,
+          quantity: quantity,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const inc = () => {
@@ -53,7 +63,10 @@ function SinglePage() {
         <div className="info">
           <h2 className="name">{singlePageProduct.title}</h2>
           <p className="price">{`$${singlePageProduct.price}`}</p>
-          <p className="desc" dangerouslySetInnerHTML={{__html: `${singlePageProduct.desc}`}}></p>
+          <p
+            className="desc"
+            dangerouslySetInnerHTML={{ __html: `${singlePageProduct.desc}` }}
+          ></p>
           <div className="quantity">
             <p className="dec" onClick={dec}>
               -
