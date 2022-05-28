@@ -4,7 +4,6 @@ import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { signout } from "../../redux/apiCalls";
 
@@ -33,8 +32,6 @@ function Navbar() {
   const handleLogout = () => {
     signout(dispatch);
   };
-
-  // const quantity = useSelector((state) => state.cart.quantity);
 
   return (
     <div className="navbar">

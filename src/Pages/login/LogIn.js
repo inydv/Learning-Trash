@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { login } from "../../redux/apiCalls";
 import "./LogIn.css";
+import { login, reload } from "../../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function LogIn() {
+  const { isFetching, error } = useSelector((state) => state.user);
+
   useEffect(() => {
+    reload(dispatch);
     window.scrollTo(0, 0);
   }, []);
 
@@ -13,8 +16,6 @@ function LogIn() {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-
-  const { isFetching, error } = useSelector((state) => state.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +48,7 @@ function LogIn() {
               <button className="btn" type="submit" disabled={isFetching}>
                 SIGN IN
               </button>
-              {error && <span className="span">Something Went Wrong...</span>}
+              {error && <span className="span">Wrong credentials...</span>}
               <Link to="/reset-password">
                 <p className="forgotPW">RESET PASSWORD?</p>
               </Link>

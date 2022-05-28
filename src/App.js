@@ -10,9 +10,9 @@ import SinglePage from "./Pages/singlePage/SinglePage";
 import Signup from "./Pages/signup/signup";
 import ResetPW from "./Pages/resetPW/ResetPW";
 import Order from "./Pages/order/Order";
+import PWReset from "./Pages/pwReset/PWReset";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import PWReset from "./Pages/pwReset/PWReset";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -36,9 +36,17 @@ function App() {
         <Route exact path="/cart" element={user ? <Cart /> : <LogIn />} />
         <Route exact path="/order" element={user ? <Order /> : <LogIn />} />
         <Route exact path="/signin" element={user ? <Home /> : <LogIn />} />
-        <Route exact path="/reset-password" element={user ? <Home /> : <ResetPW /> } />
+        <Route
+          exact
+          path="/reset-password"
+          element={user ? <Home /> : <ResetPW />}
+        />
         <Route exact path="/signup" element={user ? <Home /> : <Signup />} />
-        <Route exact path="/password-reset/:id/:token" element={user ? <Home /> : <PWReset />} />
+        <Route
+          exact
+          path="/password-reset/:id/:token"
+          element={user ? <Home /> : <PWReset />}
+        />
       </Routes>
     </div>
   );

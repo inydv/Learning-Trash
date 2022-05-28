@@ -11,15 +11,20 @@ function ResetPW() {
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
+  const [isFetching, setIsFetching] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsFetching(true);
     try {
       const data = await publicRequest.post("/password-reset", { email });
       setMsg(data.message);
       setError("");
-      window.location.replace("/signin");
+      setTimeout(function () {
+        window.location.replace("/signin");
+      }, 2000);
     } catch (error) {
+      setIsFetching(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -47,9 +52,11 @@ function ResetPW() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <button className="btn" type="submit">
+              <button className="btn" type="submit" disabled={isFetching}>
                 RESET
               </button>
+              {error && <span className="span">{error}</span>}
+              {msg && <span className="span">{msg}</span>}
               <Link to="/signin">
                 <p className="forgotPW">LOGIN?</p>
               </Link>
@@ -58,8 +65,6 @@ function ResetPW() {
               </Link>
             </div>
           </form>
-          {error && <div>{error}</div>}
-          {msg && <div>{msg}</div>}
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -15,6 +16,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsFetching(true);
     setError(false);
     try {
       const res = await publicRequest.post("/auth/signup", {
@@ -25,6 +27,7 @@ function Signup() {
       res.data && window.location.replace("/signin");
     } catch (err) {
       setError(true);
+      setIsFetching(false);
     }
   };
 
@@ -58,7 +61,7 @@ function Signup() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button className="btn" type="submit">
+              <button className="btn" type="submit" disabled={isFetching}>
                 SIGNUP
               </button>
               {error && <span className="span">something went wrong!</span>}

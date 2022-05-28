@@ -2,7 +2,7 @@ import React from "react";
 import "./NewsLetter.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {changeState} from "../../redux/newsLetterRedux"
+import { changeState } from "../../redux/newsLetterRedux";
 
 function NewsLetter() {
   const TF = useSelector((state) => state.newsLetter.show);

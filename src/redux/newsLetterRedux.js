@@ -6,7 +6,7 @@ const newsLetter = createSlice({
     show: true,
   },
   reducers: {
-    changeState: (state, action) => {
+    changeState: (state) => {
       state.show = false;
     },
   },

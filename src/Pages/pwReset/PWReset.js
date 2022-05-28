@@ -9,6 +9,8 @@ function PWReset() {
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
+  const [isFetching, setIsFetching] = useState(false);
+
   const param = useParams();
   const url = `http://localhost:5000/password-reset/${param.id}/${param.token}`;
 
@@ -26,6 +28,7 @@ function PWReset() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsFetching(true);
     try {
       const data = await publicRequest.post(
         `/password-reset/${param.id}/${param.token}`,
@@ -33,8 +36,11 @@ function PWReset() {
       );
       setMsg(data.message);
       setError("");
-      window.location.replace("/signin");
+      setTimeout(function () {
+        window.location.replace("/signin");
+      }, 2000);
     } catch (error) {
+      setIsFetching(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -64,18 +70,30 @@ function PWReset() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
-                  <button className="btn" type="submit">
+                  <button className="btn" type="submit" disabled={isFetching}>
                     CLICK
                   </button>
+                  {error && <span className="span">{error}</span>}
+                  {msg && <span className="span">{msg}</span>}
                 </div>
               </form>
-              {error && <div>{error}</div>}
-              {msg && <div>{msg}</div>}
             </div>
           </div>
         </div>
       ) : (
-        <h1>404 Not Found</h1>
+        <div
+          style={{
+            height: "100vh",
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <span style={{ color: "red", fontSize: "100px" }}>404</span>
+          <p style={{ fontSize: "50px" }}>Not Found</p>
+        </div>
       )}
     </div>
   );
