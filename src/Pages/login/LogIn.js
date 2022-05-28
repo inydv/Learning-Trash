@@ -48,9 +48,9 @@ function LogIn() {
                 SIGN IN
               </button>
               {error && <span className="span">Something Went Wrong...</span>}
-              <a href="#" className="forgotPW">
-                FORGOTTEN PASSWORD?
-              </a>
+              <Link to="/reset-password">
+                <p className="forgotPW">RESET PASSWORD?</p>
+              </Link>
               <Link to="/signup">
                 <p className="forgotPW">SIGN UP?</p>
               </Link>
