@@ -6,12 +6,15 @@ import Navbar from "../../Components/navbar/Navbar";
 import NewsLetter from "../../Components/newsLetter/NewsLetter";
 import Footer from "../../Components/footer/Footer";
 import { userRequest } from "../../requestMethods";
-import { useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
+import {fetchProducts} from "../../redux/apiCalls"
 
 function SinglePage() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user.currentUser.others._id);
 
@@ -38,8 +41,12 @@ function SinglePage() {
         products: {
           productId: singlePageProduct._id,
           quantity: quantity,
+          price: singlePageProduct.price * quantity,
+          title: singlePageProduct.title,
+          img: singlePageProduct.img
         },
       });
+      fetchProducts(dispatch);
     } catch (error) {
       console.log(error);
     }

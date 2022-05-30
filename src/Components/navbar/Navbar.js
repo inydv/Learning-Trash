@@ -4,7 +4,7 @@ import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signout } from "../../redux/apiCalls";
 
 function Navbar() {
@@ -27,6 +27,7 @@ function Navbar() {
     }
   }
 
+  const badgeCount = useSelector((state) => state.cart.products.length);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -74,7 +75,7 @@ function Navbar() {
         </div>
         <div className="cart">
           <Link to="/cart">
-            <Badge badgeContent={5} color="primary">
+            <Badge badgeContent={badgeCount} color="primary">
               <ShoppingCartIcon />
             </Badge>
           </Link>

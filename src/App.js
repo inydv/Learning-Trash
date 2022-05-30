@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./App.css";
 import About from "./Pages/about/About";
 import Cart from "./Pages/cart/Cart";
@@ -12,10 +12,17 @@ import ResetPW from "./Pages/resetPW/ResetPW";
 import Order from "./Pages/order/Order";
 import PWReset from "./Pages/pwReset/PWReset";
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "./redux/apiCalls";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchProducts(dispatch);
+  });
 
   return (
     <div className="app">
