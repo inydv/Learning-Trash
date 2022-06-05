@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import "./App.css";
 import About from "./Pages/about/About";
 import Cart from "./Pages/cart/Cart";
@@ -11,50 +11,43 @@ import Signup from "./Pages/signup/signup";
 import ResetPW from "./Pages/resetPW/ResetPW";
 import Order from "./Pages/order/Order";
 import PWReset from "./Pages/pwReset/PWReset";
+import Navbar from "./Components/navbar/Navbar";
+import NewsLetter from "./Components/newsLetter/NewsLetter";
+import Footer from "./Components/footer/Footer";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "./redux/apiCalls";
+import { useSelector } from "react-redux";
 
 function App() {
-  const user = useSelector((state) => state.user.currentUser);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetchProducts(dispatch);
-  });
+  const user = useSelector((state) => state.auth.currentUser);
+  console.log(user)
 
   return (
     <div className="app">
+      <Navbar />
       <Routes>
-        <Route exact path="/" element={user ? <Home /> : <LogIn />} />
-        <Route exact path="/contact" element={user ? <Contact /> : <LogIn />} />
-        <Route exact path="/about" element={user ? <About /> : <LogIn />} />
-        <Route
-          exact
-          path="/singlepage/:id"
-          element={user ? <SinglePage /> : <LogIn />}
-        />
-        <Route
-          exact
-          path="/shop/:category"
-          element={user ? <Shop /> : <LogIn />}
-        />
-        <Route exact path="/cart" element={user ? <Cart /> : <LogIn />} />
-        <Route exact path="/order" element={user ? <Order /> : <LogIn />} />
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/shop" element={<Shop />} />
+        <Route exact path="/shop/:id" element={<SinglePage />} />
+        <Route exact path="/search" element={<SinglePage />} />
+        <Route exact path="/cart" element={<Cart />} />
+        <Route exact path="/order" element={<Order />} />
         <Route exact path="/signin" element={user ? <Home /> : <LogIn />} />
+        <Route exact path="/signup" element={user ? <Home /> : <Signup />} />
         <Route
           exact
           path="/reset-password"
           element={user ? <Home /> : <ResetPW />}
         />
-        <Route exact path="/signup" element={user ? <Home /> : <Signup />} />
         <Route
           exact
           path="/password-reset/:id/:token"
           element={user ? <Home /> : <PWReset />}
         />
       </Routes>
+      {user ? <NewsLetter /> : ""}
+      <Footer />
     </div>
   );
 }

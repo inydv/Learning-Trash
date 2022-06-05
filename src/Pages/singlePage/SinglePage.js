@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./SinglePage.css";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
-import Navbar from "../../Components/navbar/Navbar";
-import NewsLetter from "../../Components/newsLetter/NewsLetter";
-import Footer from "../../Components/footer/Footer";
 import { userRequest } from "../../requestMethods";
 import { useDispatch,useSelector } from "react-redux";
-import {fetchProducts} from "../../redux/apiCalls"
 
 function SinglePage() {
   useEffect(() => {
@@ -46,7 +42,7 @@ function SinglePage() {
           img: singlePageProduct.img
         },
       });
-      fetchProducts(dispatch);
+      // fetchProducts(dispatch);
     } catch (error) {
       console.log(error);
     }
@@ -62,7 +58,6 @@ function SinglePage() {
 
   return (
     <div className="singlePage">
-      <Navbar />
       <div className="page">
         <div className="imageContainer">
           <img src={singlePageProduct.img} alt="" className="image" />
@@ -88,8 +83,6 @@ function SinglePage() {
           </button>
         </div>
       </div>
-      <NewsLetter />
-      <Footer />
     </div>
   );
 }

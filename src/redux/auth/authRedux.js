@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const userSlice = createSlice({
-  name: "user",
+const authSlice = createSlice({
+  name: "auth",
   initialState: {
     currentUser: null,
     isFetching: false,
@@ -24,13 +24,13 @@ const userSlice = createSlice({
       state.isFetching = false;
       state.error = false;
     },
-    refresh: (state) => {
+    clearError: (state) => {
       state.isFetching = false;
       state.error = false;
     }
   },
 });
 
-export const { loginStart, loginOrder, loginFailure, logout, refresh } =
-  userSlice.actions;
-export default userSlice.reducer;
+export const { loginStart, loginOrder, loginFailure, logout, clearError } =
+  authSlice.actions;
+export default authSlice.reducer;

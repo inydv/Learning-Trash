@@ -3,6 +3,7 @@
   padding: 0;
   color: white;
   text-decoration: none;
+  scroll-behavior: smooth;
 }
 
 body {

@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
-import Navbar from "../../Components/navbar/Navbar";
-import NewsLetter from "../../Components/newsLetter/NewsLetter";
-import Footer from "../../Components/footer/Footer";
 import "./Order.css";
 import { userRequest } from "../../requestMethods";
 import { Link } from "react-router-dom";
@@ -35,7 +32,6 @@ function Order() {
 
   return (
     <div className="order">
-      <Navbar />
       <div className="orderContainer">
         {orderId
           ? `Order has been created successfully. Your order number is ${orderId}`
@@ -44,8 +40,6 @@ function Order() {
           <button className="homepageButton">Go to Homepage</button>
         </Link>
       </div>
-      <NewsLetter />
-      <Footer />
     </div>
   );
 }

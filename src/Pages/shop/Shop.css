@@ -5,6 +5,22 @@
   justify-content: space-between;
 }
 
+.shop .container-item .search {
+  display: flex;
+}
+
+.shop .container-item .search .searchInput {
+  outline: none;
+  color: black;
+  padding: 5px 10px;
+  height: 10px;
+}
+
+.shop .container-item .search .searchIcon {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
 .shop .container-item .filter .filterTitle {
   margin-right: 15px;
 }

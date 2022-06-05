@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Contact.css";
-import Navbar from "../../Components/navbar/Navbar";
-import NewsLetter from "../../Components/newsLetter/NewsLetter";
-import Footer from "../../Components/footer/Footer";
 
 function Contact() {
   const [TF, setTF] = useState(true);
@@ -22,7 +19,6 @@ function Contact() {
 
   return (
     <div>
-      <Navbar />
       <div className="wrap">
         {TF ? (
           <>
@@ -68,8 +64,6 @@ function Contact() {
           <h1 className="title">Thanks For Contacting Us...</h1>
         )}
       </div>
-      <NewsLetter />
-      <Footer />
     </div>
   );
 }

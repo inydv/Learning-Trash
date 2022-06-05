@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./LogIn.css";
-import { login, reload } from "../../redux/apiCalls";
+import { login, clearErrors } from "../../redux/auth/authApiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function LogIn() {
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { isFetching, error } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    reload(dispatch);
+    clearErrors(dispatch);
     window.scrollTo(0, 0);
   }, []);
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(dispatch, { username, password });
+    login(dispatch, { email, password });
   };
 
   return (
@@ -32,10 +32,10 @@ function LogIn() {
               <h6 className="signIn">SIGN IN</h6>
               <input
                 type="text"
-                placeholder="Username"
+                placeholder="Email"
                 className="username"
                 autoFocus={true}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
               <input

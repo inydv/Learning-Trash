@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
-import Navbar from "../../Components/navbar/Navbar";
-import NewsLetter from "../../Components/newsLetter/NewsLetter";
-import Footer from "../../Components/footer/Footer";
 import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
 import { useSelector } from "react-redux";
@@ -46,7 +43,6 @@ function Cart() {
 
   return (
     <div className="cart">
-      <Navbar />
       {cart.length > 0 ? (
         <div className="container">
           <h1 className="title">SHOPPING CART</h1>
@@ -104,9 +100,6 @@ function Cart() {
       ) : (
         <h1 className="emptyCart">Cart is Empty... </h1>
       )}
-
-      <NewsLetter />
-      <Footer />
     </div>
   );
 }

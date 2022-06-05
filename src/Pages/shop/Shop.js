@@ -1,27 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import Products from "../../Components/productList/Products";
 import "./Shop.css";
-import Navbar from "../../Components/navbar/Navbar";
-import NewsLetter from "../../Components/newsLetter/NewsLetter";
-import Footer from "../../Components/footer/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  clearErrors,
+  fetchingProducts,
+} from "../../redux/product/productsApiCall";
+import SearchIcon from '@material-ui/icons/Search';
 
 function Shop() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  const location = useLocation();
-  const cat = location.pathname.split("/")[2].toLowerCase();
+    fetchingProducts(dispatch);
+  }, [dispatch]);
 
   const [sort, setSort] = useState("newest");
 
+  const { products, isFetching, error, productsCount } = useSelector(
+    (state) => state.products
+  );
+
   return (
     <div className="shop">
-      <Navbar />
       <div className="container-item">
-        <h1 className="whichShop">{cat.toUpperCase()}</h1>
-        <div className="filter">
+        <h1 className="whichShop">Products</h1>
+        <div className="search">
+          <input type="text" className="searchInput" placeholder="Search Here..." />
+          <SearchIcon className="searchIcon" />
+        </div>
+        {/* <div className="filter">
           <span className="filterTitle">Sort:</span>
           <select className="select" onChange={(e) => setSort(e.target.value)}>
             <option className="option" value="newest">
@@ -30,18 +39,10 @@ function Shop() {
             <option className="option" value="oldest">
               Oldest
             </option>
-            <option className="option" value="asc">
-              Price (asc)
-            </option>
-            <option className="option" value="desc">
-              Price (desc)
-            </option>
           </select>
-        </div>
+        </div> */}
       </div>
-      <Products cat={cat} sort={sort} />
-      <NewsLetter />
-      <Footer />
+      <Products products={products} />
     </div>
   );
 }
