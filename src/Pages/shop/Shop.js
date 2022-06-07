@@ -4,31 +4,45 @@ import "./Shop.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrors,
-  fetchingProducts,
+  fetchingAllProducts,
 } from "../../redux/product/productsApiCall";
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from "@material-ui/icons/Search";
+import Loading from "../../Components/loading/Loading";
 
 function Shop() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const [keyword, setKeyword] = useState("");
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    fetchingProducts(dispatch);
-  }, [dispatch]);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  //   dispatch(fetchingAllProducts(keyword));
+  // }, [dispatch, keyword]);
 
-  const [sort, setSort] = useState("newest");
 
   const { products, isFetching, error, productsCount } = useSelector(
     (state) => state.products
   );
+
+    const searchSubmitHandler = () => {
+      // if (keyword.trim()) { // remove space
+      //   window.location.replace(`/shop/${keyword}`);
+      // } else {
+      //   window.location.replace("/shop");
+      // }
+    }
 
   return (
     <div className="shop">
       <div className="container-item">
         <h1 className="whichShop">Products</h1>
         <div className="search">
-          <input type="text" className="searchInput" placeholder="Search Here..." />
-          <SearchIcon className="searchIcon" />
+          <input
+            type="text"
+            className="searchInput"
+            placeholder="Search Here..."
+            onChange={(e) => setKeyword(e.target.value)}
+          />
+          <SearchIcon className="searchIcon" onClick={searchSubmitHandler} />
         </div>
         {/* <div className="filter">
           <span className="filterTitle">Sort:</span>
@@ -42,7 +56,16 @@ function Shop() {
           </select>
         </div> */}
       </div>
-      <Products products={products} />
+      {isFetching ? (
+        <Loading />
+      ) : (
+        <>
+          {products &&
+            products
+              .slice(0, 8)
+              .map((product) => <Products product={product} key={product._id} />)}
+        </>
+      )}
     </div>
   );
 }

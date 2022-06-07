@@ -14,3 +14,17 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.452);
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.greenColor {
+  color: green;
+}
+
+.redColor {
+  color: red;
+}

@@ -19,7 +19,6 @@ import { useSelector } from "react-redux";
 
 function App() {
   const user = useSelector((state) => state.auth.currentUser);
-  console.log(user)
 
   return (
     <div className="app">
@@ -29,8 +28,8 @@ function App() {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/shop" element={<Shop />} />
-        <Route exact path="/shop/:id" element={<SinglePage />} />
-        <Route exact path="/search" element={<SinglePage />} />
+        <Route exact path="/product/:id" element={<SinglePage />} />
+        {/* <Route path="/shop/:keyword" element={<SinglePage />} /> */}
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/order" element={<Order />} />
         <Route exact path="/signin" element={user ? <Home /> : <LogIn />} />

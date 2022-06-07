@@ -1,0 +1,16 @@
+.reviewCard {
+    /* flex: none; */
+    box-shadow: 0 0 5px whitesmoke;
+    border: 1px solid white;
+    width: 30vmax;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1vmax;
+    padding: 3vmax;
+}
+
+.reviewCard > img {
+    width: 5vmax;
+    margin-bottom: 5px;
+}

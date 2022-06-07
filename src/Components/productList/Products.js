@@ -2,19 +2,14 @@ import React from "react";
 import "./Products.css";
 import { Link } from "react-router-dom";
 
-function Products({ products }) {
+function Products({ product }) {
   return (
-    <div className="products">
-      {products &&
-        products
-          // .slice(0, 8)
-          .map((item) => (
-            <Link to={`/singlepage/${item._id}`}>
-              <div className="productsList">
-                <img src={item.img[0].url} alt="" className="image" />
-              </div>
-            </Link>
-          ))}
+    <div className="products" key={product._id}>
+      <Link to={`/product/${product._id}`}>
+        <div className="productsList">
+          <img src={product.img[0].url} alt="" className="image" />
+        </div>
+      </Link>
     </div>
   );
 }

@@ -9,17 +9,17 @@ const productsSlice = createSlice({
     productsCount: 0,
   },
   reducers: {
-    fetchingStart: (state) => {
+    ALL_PRODUCT_REQUEST: (state) => {
       state.isFetching = true;
     },
-    fetchingOrder: (state, action) => {
+    ALL_PRODUCT_SUCCESS: (state, action) => {
       state.isFetching = false;
       state.products = action.payload;
       state.productsCount = action.payload.productsCount;
     },
-    fetchingFailure: (state) => {
+    ALL_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;
-      state.error = true;
+      state.error = action.payload;
     },
     clearError: (state) => {
       state.isFetching = false;
@@ -28,6 +28,10 @@ const productsSlice = createSlice({
   },
 });
 
-export const { fetchingStart, fetchingOrder, fetchingFailure, clearError } =
-  productsSlice.actions;
+export const {
+  ALL_PRODUCT_SUCCESS,
+  ALL_PRODUCT_REQUEST,
+  ALL_PRODUCT_FAIL,
+  clearError,
+} = productsSlice.actions;
 export default productsSlice.reducer;

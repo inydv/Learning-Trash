@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Cart.css";
-import StripeCheckout from "react-stripe-checkout";
+// import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../../requestMethods";
 import { useSelector } from "react-redux";
 import logo from "../../Images/logo.jpg";
@@ -22,24 +22,24 @@ function Cart() {
     total += ele.products.price;
   });
 
-  const ontoken = (token) => {
-    setStripeToken(token);
-  };
+  // const ontoken = (token) => {
+  //   setStripeToken(token);
+  // };
 
-  useEffect(() => {
-    const makeRequest = async () => {
-      try {
-        const res = await userRequest.post("/checkout/payment", {
-          tokenId: stripeToken.id,
-          amount: cart.total * 100,
-        });
-        window.location.replace("/order")
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    stripeToken && makeRequest(); // call makeRequest
-  }, [stripeToken, total]);
+  // useEffect(() => {
+  //   const makeRequest = async () => {
+  //     try {
+  //       const res = await userRequest.post("/checkout/payment", {
+  //         tokenId: stripeToken.id,
+  //         amount: cart.total * 100,
+  //       });
+  //       window.location.replace("/order")
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   stripeToken && makeRequest(); // call makeRequest
+  // }, [stripeToken, total]);
 
   return (
     <div className="cart">
@@ -81,7 +81,7 @@ function Cart() {
               <p className="subTotal">TOTAL</p>
               <span className="totalSpan">${total}</span>
             </div>
-            <StripeCheckout
+            {/* <StripeCheckout
               name="THE LITTLE THINGS"
               image={logo}
               description={`Your Total : $${total}`}
@@ -94,7 +94,7 @@ function Cart() {
               <div className="button">
                 <button className="btn">CHECKOUT</button>
               </div>
-            </StripeCheckout>
+            </StripeCheckout> */}
           </div>
         </div>
       ) : (
