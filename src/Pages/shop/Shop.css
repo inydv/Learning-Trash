@@ -34,6 +34,51 @@
 .shop .container-item .filter .option {
   color: black;
 }
+
+.paginationBox {
+  display: flex;
+  justify-content: center;
+  margin: 6vmax;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.page-item {
+  list-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.452);
+  padding: 1vmax 1.5vmax;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.page-link {
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.page-item:hover .page-link {
+  color: rgba(105, 105, 105, 0.219);
+}
+
+.pageItemActive {
+  background-color: aqua;
+}
+
+.pageLinkActive {
+  color: white;
+}
+
+.filterBox {
+  width: 10vmax;
+  position: absolute;
+  top: 10vmax;
+  left: 4vmax;
+}
+
 @media only screen and (max-width: 800px) {
   .shop .container-item {
     padding: 15px;

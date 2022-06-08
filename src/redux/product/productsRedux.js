@@ -7,6 +7,7 @@ const productsSlice = createSlice({
     isFetching: false,
     error: false,
     productsCount: 0,
+    resultPerPage: 0,
   },
   reducers: {
     ALL_PRODUCT_REQUEST: (state) => {
@@ -16,6 +17,7 @@ const productsSlice = createSlice({
       state.isFetching = false;
       state.products = action.payload;
       state.productsCount = action.payload.productsCount;
+      state.resultPerPage = action.payload.resultPerPage;
     },
     ALL_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;
