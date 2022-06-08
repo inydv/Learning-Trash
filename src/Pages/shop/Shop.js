@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Products from "../../Components/productList/Products";
 import "./Shop.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,43 +6,29 @@ import {
   clearErrors,
   fetchingAllProducts,
 } from "../../redux/product/productsApiCall";
-import SearchIcon from "@material-ui/icons/Search";
 import Loading from "../../Components/loading/Loading";
+import Search from "../../Components/search/Search";
+import { useParams } from "react-router-dom";
 
 function Shop() {
-  // const dispatch = useDispatch();
-  const [keyword, setKeyword] = useState("");
+  const dispatch = useDispatch();
+  const keyword = useParams();
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  //   dispatch(fetchingAllProducts(keyword));
-  // }, [dispatch, keyword]);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(fetchingAllProducts(keyword.keyword));
+  }, [dispatch, keyword]);
 
   const { products, isFetching, error, productsCount } = useSelector(
     (state) => state.products
   );
-
-    const searchSubmitHandler = () => {
-      // if (keyword.trim()) { // remove space
-      //   window.location.replace(`/shop/${keyword}`);
-      // } else {
-      //   window.location.replace("/shop");
-      // }
-    }
 
   return (
     <div className="shop">
       <div className="container-item">
         <h1 className="whichShop">Products</h1>
         <div className="search">
-          <input
-            type="text"
-            className="searchInput"
-            placeholder="Search Here..."
-            onChange={(e) => setKeyword(e.target.value)}
-          />
-          <SearchIcon className="searchIcon" onClick={searchSubmitHandler} />
+          <Search />
         </div>
         {/* <div className="filter">
           <span className="filterTitle">Sort:</span>
@@ -62,8 +48,9 @@ function Shop() {
         <>
           {products &&
             products
-              .slice(0, 8)
-              .map((product) => <Products product={product} key={product._id} />)}
+              .map((product) => (
+                <Products product={product} key={product._id} />
+              ))}
         </>
       )}
     </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SinglePage.css";
-import { useLocation } from "react-router-dom";
-// import { useParams } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "react-material-ui-carousel";
 import { getProductDetails } from "../../redux/product/productsApiCall";
@@ -15,13 +15,13 @@ function SinglePage() {
 
   const dispatch = useDispatch();
 
-  const location = useLocation();
-  const id = location.pathname.split("/")[2];
+  // const location = useLocation();
+  // const id = location.pathname.split("/")[2];
 
-  // const id = useParams();
+  const id = useParams();
 
   useEffect(() => {
-    dispatch(getProductDetails(id));
+    dispatch(getProductDetails(id.id));
   }, [dispatch]);
 
   const { product, isFetching, error } = useSelector(

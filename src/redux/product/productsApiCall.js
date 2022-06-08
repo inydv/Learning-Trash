@@ -11,10 +11,10 @@ import {
 } from "./productRedux";
 import { publicRequest } from "../../requestMethods";
 
-export const fetchingAllProducts = async (dispatch) => {
+export const fetchingAllProducts = (keyword = "") => async (dispatch) => {
   dispatch(ALL_PRODUCT_REQUEST());
   try {
-    let link = `/products`;
+    let link = `/products?keyword=${keyword}`;
     const { data } = await publicRequest.get(link);
     dispatch(ALL_PRODUCT_SUCCESS(data));
   } catch (error) {

@@ -29,7 +29,7 @@ function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/shop" element={<Shop />} />
         <Route exact path="/product/:id" element={<SinglePage />} />
-        {/* <Route path="/shop/:keyword" element={<SinglePage />} /> */}
+        <Route path="/shop/:keyword" element={<Shop />} />
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/order" element={<Order />} />
         <Route exact path="/signin" element={user ? <Home /> : <LogIn />} />
