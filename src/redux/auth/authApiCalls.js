@@ -12,6 +12,17 @@ export const login = async (dispatch, user) => {
   }
 };
 
+export const Register = async (dispatch, user) => {
+  dispatch(loginStart());
+  try {
+    const config = { headers: { "content-Type": "multipart/form-data"}}
+    const res = await publicRequest.post("/register", user);
+    dispatch(loginOrder(res.data));
+  } catch (err) {
+    dispatch(loginFailure());
+  }
+};
+
 export const signout = (dispatch) => {
   dispatch(logout());
 };

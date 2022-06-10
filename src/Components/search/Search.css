@@ -1,0 +1,21 @@
+.search {
+  display: flex;
+}
+
+.searchInput {
+  outline: none;
+  color: black;
+  padding: 5px 10px;
+  height: 10px;
+}
+
+.searchIcon {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px){
+  .searchInput {
+    padding: 5px 5px;
+  }
+}

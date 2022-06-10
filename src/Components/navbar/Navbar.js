@@ -2,17 +2,17 @@ import React from "react";
 import "./Navbar.css";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { signout } from "../../redux/auth/authApiCalls";
+// import { useDispatch } from "react-redux";
+// import { signout } from "../../redux/auth/authApiCalls";
 
 function Navbar() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    signout(dispatch);
-  };
+  // const handleLogout = () => {
+  //   signout(dispatch);
+  // };
 
   return (
     <div className="navbar">
@@ -40,7 +40,7 @@ function Navbar() {
       </div>
       <div className="right">
         <div className="user">
-          <ExitToAppIcon onClick={handleLogout} className="icon" />
+          <AccountCircleIcon className="icon" />
         </div>
         <div className="cart">
           <Link to="/cart">

@@ -17,7 +17,7 @@ function Search() {
     }
   };
   return (
-    <div>
+    <div className="search">
       <input
         type="text"
         className="searchInput"

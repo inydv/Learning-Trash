@@ -1,16 +1,8 @@
-.products {
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
 .productsList {
-  flex: 1;
   margin: 10px;
   background-color: rgba(30, 30, 32, 0.281);
   height: 300px;
-  width: 280px;
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,21 +10,16 @@
 }
 
 .productsList:hover {
-  background-color: rgba(60, 60, 77, 0.281);
+  background-color: rgba(255, 255, 255, 0.137);
   transition: all 0.5s ease;
 }
 
 .productsList .image {
-  height: 75%;
+  height: 95%;
 }
 
 @media only screen and (max-width: 800px) {
-  .products {
-    padding: 10px;
-  }
-
   .productsList {
-    margin: 5px;
     height: 200px;
     width: 150px;
   }

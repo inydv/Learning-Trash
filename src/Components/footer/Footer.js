@@ -1,6 +1,6 @@
-import { Facebook, Instagram, LinkedIn } from "@material-ui/icons";
 import React from "react";
 import "./Footer.css";
+import { Facebook, Instagram, LinkedIn } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -27,13 +27,13 @@ function Footer() {
             <Link to="/shop/women">Women</Link>
           </li>
           <li>
-            <Link to="/shop/sale">Sale</Link>
+            <Link to="/shop">Shop</Link>
           </li>
           <li>
             <Link to="/cart">Cart</Link>
           </li>
           <li>
-            <Link to="/order">My Orders</Link>
+            <Link to="/order">My Account</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
@@ -46,12 +46,14 @@ function Footer() {
       <div className="right">
         <h4 className="address">ADDRESS</h4>
         <p className="addressDetail">
-          826 Kapashera New Delhi, 110037 <br /> info@mysite.com <br /> Tel:
-          123-456-7890
+          826 Kapashera New Delhi, 110037 <br /> im.nydv@gmail.com <br /> Tel:
+          7303405787
         </p>
         <div className="icons">
           <div className="facebook">
-            <a href="https://www.facebook.com/Nitin9900" target="_blank">
+            <a href="https://www.facebook.com/Nitin9900"
+              target="_blank"
+              rel="noreferrer">
               <Facebook />
             </a>
           </div>
@@ -59,6 +61,7 @@ function Footer() {
             <a
               href="https://instagram.com/i_nydv?igshid=YmMyMTA2M2Y="
               target="_blank"
+              rel="noreferrer"
             >
               <Instagram />
             </a>
@@ -67,6 +70,7 @@ function Footer() {
             <a
               href="https://www.linkedin.com/in/lokesh-yadav-31318a225/"
               target="_blank"
+              rel="noreferrer"
             >
               <LinkedIn />
             </a>

@@ -8,7 +8,7 @@ function Category() {
   return (
     <div className="category">
       <div className="men">
-        <Link to="/shop/men">
+        <Link to="/shop/mens">
           <div className="imageContainer">
             <img src={MensCollection} alt="" className="image" />
           </div>

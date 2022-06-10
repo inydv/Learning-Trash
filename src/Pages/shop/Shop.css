@@ -1,38 +1,61 @@
-.shop .container-item {
+.shop {
   padding: 30px;
+}
+
+.topThings {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.shop .container-item .search {
-  display: flex;
+.filterBox {
+  width: 150px;
+  position: absolute;
+  top: 200px;
 }
 
-.shop .container-item .search .searchInput {
-  outline: none;
-  color: black;
-  padding: 5px 10px;
-  height: 10px;
+.forCategories {
+  margin-top: 30px;
 }
 
-.shop .container-item .search .searchIcon {
-  margin-left: 5px;
+.categoryBox {
+  list-style: none;
+}
+
+.category-link {
+  margin: 5px 20px;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
-.shop .container-item .filter .filterTitle {
-  margin-right: 15px;
+.category-link:hover {
+  color: tomato;
 }
 
-.shop .container-item .filter .select {
-  padding: 5px 10px;
+.filterBox > fieldset {
+  margin-top: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.329);
+}
+
+.sort {
+  margin-top: 30px;
+}
+
+.sort .select {
+  padding: 5px 40px;
   outline: 0;
   color: black;
 }
 
-.shop .container-item .filter .option {
+.sort .option {
   color: black;
+}
+
+.products {
+  padding: 0px 250px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .paginationBox {
@@ -61,26 +84,56 @@
 }
 
 .page-item:hover .page-link {
-  color: rgba(105, 105, 105, 0.219);
+  color: tomato;
 }
 
 .pageItemActive {
-  background-color: aqua;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .pageLinkActive {
-  color: white;
+  color: green;
 }
 
-.filterBox {
-  width: 10vmax;
-  position: absolute;
-  top: 10vmax;
-  left: 4vmax;
+.error {
+  color: tomato;
 }
 
 @media only screen and (max-width: 800px) {
-  .shop .container-item {
+  .shop {
     padding: 15px;
+  }
+
+  .shopTitle {
+    font-size: 25px;
+  }
+
+  .filterBox {
+    width: 150px;
+    position: relative;
+    top: 0;
+  }
+
+  .forCategories {
+    margin-top: 0px;
+  }
+
+  .filterBox > fieldset {
+    margin-top: 15px;
+  }
+
+  .sort {
+    margin-top: 0px;
+  }
+
+  .lineSketch {
+    margin: 15px 0px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.493);
+    width: auto;
+  }
+
+  .products {
+    padding: 20px 0;
   }
 }
