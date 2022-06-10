@@ -18,7 +18,8 @@
 .detailsBlock-1,
 .detailsBlock-3,
 .detailsBlock-4,
-.detailsBlock-5,.detailsBlock-6 {
+.detailsBlock-5,
+.detailsBlock-6 {
   margin-bottom: 10px;
 }
 
@@ -28,7 +29,7 @@
   margin-bottom: 10px;
 }
 
-.detailsBlock-6 > button, .addToCart > button {
+.detailsBlock-6 > button {
   border: none;
   padding: 0.5vmax;
   cursor: pointer;
@@ -37,7 +38,17 @@
   transition: all 0.5s;
 }
 
-.detailsBlock-6 > button:hover, .addToCart > button:hover {
+.addToCart > button {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(58, 57, 57);
+  transition: all 0.5s;
+}
+
+.detailsBlock-6 > button:hover,
+.addToCart > button:hover {
   background-color: rgba(58, 57, 57, 0.5);
 }
 
@@ -60,6 +71,24 @@
   margin-top: 2vmax;
 }
 
+.addReview {
+  margin-left: 20px;
+}
+
+.addReview > button {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(58, 57, 57);
+  transition: all 0.5s;
+}
+
+.addReview > button:hover {
+  background-color: tomato;
+  transform: scale(1.1);
+}
+
 .review {
   display: flex;
   overflow: auto;
@@ -67,8 +96,41 @@
 }
 
 .noReviews {
+  width: 100%;
+  font-size: 50px;
+  font-weight: 100;
   text-align: center;
 }
 
 @media only screen and (max-width: 800px) {
+  .singlePage {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .CarouselImage {
+    height: 50vh;
+  }
+
+  .detailsBlock {
+    margin-top: 25px;
+    margin-left: 0px;
+  }
+
+  .detailsBlock-6 > button {
+    padding: 6px;
+  }
+
+  .detailsBlock-6 > input {
+    padding: 6px;
+    width: 15px;
+  }
+
+  .reviewsHeading {
+    margin-top: 1vmax;
+  }
+
+  .addReview {
+    margin-bottom: 10px;
+  }
 }

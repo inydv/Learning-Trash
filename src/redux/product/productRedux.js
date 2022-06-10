@@ -10,14 +10,16 @@ const productSlice = createSlice({
   reducers: {
     PRODUCT_DETAILS_REQUEST: (state) => {
       state.isFetching = true;
+      state.error = null;
     },
     PRODUCT_DETAILS_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.product = action.payload;
+      state.product = action.payload.product;
     },
     PRODUCT_DETAILS_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
+      state.product = null;
     },
   },
 });

@@ -23,7 +23,6 @@ export const fetchingAllProducts =
 
         const { data } = await publicRequest.get(link);
         dispatch(ALL_PRODUCT_SUCCESS(data));
-        console.log(data)
       } catch (error) {
         dispatch(ALL_PRODUCT_FAIL(error.message));
       }
@@ -35,6 +34,6 @@ export const getProductDetails = (id) => async (dispatch) => {
     const { data } = await publicRequest.get(`/product/${id}`);
     dispatch(PRODUCT_DETAILS_SUCCESS(data));
   } catch (error) {
-    dispatch(PRODUCT_DETAILS_FAIL(error.response.data.message));
+    dispatch(PRODUCT_DETAILS_FAIL(error.message));
   }
 };

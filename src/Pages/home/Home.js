@@ -5,7 +5,7 @@ import Products from "../../Components/productList/Products";
 import Slider from "../../Components/slider/Slider";
 import Loading from "../../Components/loading/Loading";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchingAllProducts } from "../../redux/product/productsApiCall";
+import { fetchingAllProducts } from "../../redux/product/productsApiCall"
 
 function Home() {
   const dispatch = useDispatch();
@@ -15,10 +15,15 @@ function Home() {
   );
 
   useEffect(() => {
-    dispatch(fetchingAllProducts)
+    const keyword = ""
+    const currentPage = 1
+    const price = [0, 25000]
+    const category = ""
+    const ratings = 0
+    const sort = "oldest"
+    dispatch(fetchingAllProducts(keyword, currentPage, price, category, ratings, sort))
   }, [dispatch]);
 
-  console.log(error)
   return (
     <div className="home">
       {isFetching ? (
@@ -26,15 +31,20 @@ function Home() {
       ) : (
         <>
           <Slider />
-          <Category />
-          <div className="product">
-            {products &&
-              products
-                // .slice(0, 8) // why didn't use this?? becz we use pagination
-                .map((product) => (
-                  <Products product={product} key={product._id} />
-                ))}
-          </div>
+          <Category />{
+            error ? (<div>
+              <h1 className="error">Error : {error}</h1>
+            </div>) : (
+              <div className="product">
+                {products &&
+                  products
+                    // .slice(0, 8) // why didn't use this?? becz we use pagination
+                    .map((product) => (
+                      <Products product={product} key={product._id} />
+                    ))}
+              </div>
+            )
+          }
         </>
       )}
     </div>
