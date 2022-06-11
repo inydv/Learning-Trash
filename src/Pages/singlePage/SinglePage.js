@@ -40,7 +40,7 @@ function SinglePage() {
     color: "rgba(255, 255, 255,0.2)",
     activeColor: "tomato",
     size: window.innerWidth < 600 ? 20 : 25,
-    value: product.ratings,
+    value: product && product.ratings,
   };
 
   return (

@@ -7,7 +7,7 @@ export const login = (email, password) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await publicRequest.post("/login", {email,password}, config);
     dispatch(loginOrder(res.data));
-    // res.data && window.location.replace("/");
+    res.data && window.location.replace("/");
   } catch (error) {
     dispatch(loginFailure(error.response.data.message));
   }
