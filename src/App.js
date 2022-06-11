@@ -4,10 +4,9 @@ import About from "./Pages/about/About";
 import Cart from "./Pages/cart/Cart";
 import Contact from "./Pages/contact/Contact";
 import Home from "./Pages//home/Home";
-import LogIn from "./Pages/login/LogIn";
 import Shop from "./Pages/shop/Shop";
 import SinglePage from "./Pages/singlePage/SinglePage";
-import Signup from "./Pages/signup/signup";
+import Auth from "./Pages/auth/Auth";
 import ResetPW from "./Pages/resetPW/ResetPW";
 import Order from "./Pages/order/Order";
 import PWReset from "./Pages/pwReset/PWReset";
@@ -32,8 +31,7 @@ function App() {
         <Route path="/shop/:keyword" element={<Shop />} />
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/order" element={<Order />} />
-        <Route exact path="/signin" element={user ? <Home /> : <LogIn />} />
-        <Route exact path="/signup" element={user ? <Home /> : <Signup />} />
+        <Route exact path="/register" element={user ? <Home /> : <Auth />} />
         <Route
           exact
           path="/reset-password"

@@ -10,20 +10,16 @@ import Carousel from "react-material-ui-carousel";
 import ReactStars from "react-rating-stars-component";
 
 function SinglePage() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const dispatch = useDispatch();
-
-  // const location = useLocation();
-  // const id = location.pathname.split("/")[2];
-
   const id = useParams();
 
   useEffect(() => {
     dispatch(getProductDetails(id.id));
+    window.scrollTo(0, 0);
   }, [dispatch, id.id]);
+
+  // const location = useLocation();
+  // const id = location.pathname.split("/")[2];
 
   const { product, isFetching, error } = useSelector(
     (state) => state.product
@@ -40,12 +36,17 @@ function SinglePage() {
   // };
 
   const options = {
-    edit: false,
-    color: "rgba(255, 255, 255,0.2)",
-    activeColor: "tomato",
-    size: window.innerWidth < 600 ? 20 : 25,
+    // edit: false,
+    // color: "rgba(255, 255, 255,0.2)",
+    // activeColor: "tomato",
+    // size: window.innerWidth < 600 ? 20 : 25,
+    // value: product.ratings,
+    // isHalf: true,
+
+    size: "large",
     value: product.ratings,
-    isHalf: true,
+    readOnly: true,
+    precision: 0.5,
   };
 
   return (

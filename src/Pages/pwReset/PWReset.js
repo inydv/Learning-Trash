@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../login/LogIn.css";
+// import "../login/LogIn.css";
 import { useParams } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
 import axios from "axios";

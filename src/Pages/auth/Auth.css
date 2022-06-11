@@ -1,102 +1,3 @@
-/* .logIn {
-  height: 100vh;
-  position: relative;
-}
-
-.logIn .bg {
-  height: 100%;
-  background-image: url("../../Images/LogInImage.jpeg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  filter: blur(4px) grayscale(60%) brightness(50%);
-}
-
-.logIn .wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.logIn .wrapper .wraped {
-  background-color: black;
-  padding: 20px;
-}
-
-.logIn .wrapper .wraped .container {
-  display: flex;
-  flex-direction: column;
-}
-
-.logIn .wrapper .wraped .container .signIn {
-  font-size: 30px;
-  font-weight: 300;
-  margin-bottom: 10px;
-}
-
-.logIn .wrapper .wraped .container .username,
-.logIn .wrapper .wraped .container .pw {
-  color: black;
-  padding: 5px;
-  margin-bottom: 5px;
-  outline: none;
-}
-
-.logIn .wrapper .wraped .container .btn {
-  border: none;
-  width: 100px;
-  padding: 10px 20px;
-  cursor: pointer;
-  background-color: rgb(58, 57, 57);
-  margin-bottom: 10px;
-}
-
-.logIn .wrapper .wraped .container .btn:disabled {
-  cursor: not-allowed;
-  color: rgb(58, 57, 57);
-}
-
-.logIn .wrapper .wraped .container .forgotPW {
-  text-decoration: none;
-}
-
-.logIn .wrapper .wraped .span {
-  color: rgba(255, 0, 0, 0.521);
-  font-size: 15px;
-  margin: 10px 0;
-}
-
-#registerImage > img {
-  width: 3vmax;
-  border-radius: 100%;
-}
-
-#registerImage > input {
-  display: flex;
-  padding: 0%;
-}
-
-#registerImage > input::file-selector-button {
-  cursor: pointer;
-  width: 100%;
-  z-index: 2;
-  height: 5vh;
-  margin: 0;
-  border: none;
-  padding: 0 1vmax;
-  transition: all 0.5s;
-}
-
-#registerImage > input::file-selector-button:hover {
-
-} */
-
 .LoginSignUpContainer {
   width: 100vw;
   height: 100vh;
@@ -104,26 +5,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(231, 231, 231);
-  position: fixed;
+  /* position: fixed;
   top: 0%;
-  left: 0;
+  left: 0; */
 }
 
 .LoginSignUpBox {
-  background-color: white;
+  background-color: black;
   width: 25vw;
-  height: 70vh;
+  height: 60vh;
   box-sizing: border-box;
   overflow: hidden;
 }
+
 .login_signUp_toggle {
   display: flex;
   height: 3vmax;
 }
+
 .login_signUp_toggle > p {
-  color: rgba(0, 0, 0, 0.678);
-  font: 300 1vmax "Roboto";
+  color: white;
   transition: all 0.5s;
   cursor: pointer;
   display: grid;
@@ -135,7 +36,7 @@
 }
 
 .LoginSignUpBox > div > button {
-  background-color: tomato;
+  background-color: rgb(58, 57, 57);
   height: 3px;
   width: 50%;
   border: none;
@@ -164,36 +65,37 @@
   width: 100%;
   align-items: center;
 }
+
 .loginForm > div > input,
 .signUpForm > div > input {
-  padding: 1vmax 4vmax;
-  padding-right: 1vmax;
+  color: black;
+  padding: 6px 15px;
   width: 100%;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
   border-radius: 4px;
-  font: 300 0.9vmax cursive;
   outline: none;
+  margin-left: 10px;
 }
 
-.loginForm > div > svg,
+/* .loginForm > div > svg,
 .signUpForm > div > svg {
   position: absolute;
   transform: translateX(1vmax);
   font-size: 1.6vmax;
   color: rgba(0, 0, 0, 0.623);
-}
+} */
 
 .loginForm > a {
-  color: rgba(0, 0, 0, 0.651);
+  color: white;
+  font-size: 15px;
   text-decoration: none;
   align-self: flex-end;
   transition: all 0.5s;
-  font: 500 0.8vmax "Gill Sans";
 }
 
 .loginForm > a:hover {
-  color: black;
+  color: tomato;
 }
 
 #registerImage > img {
@@ -212,7 +114,6 @@
   height: 5vh;
   border: none;
   margin: 0%;
-  font: 400 0.8vmax cursive;
   transition: all 0.5s;
   padding: 0 1vmax;
   color: rgba(0, 0, 0, 0.623);
@@ -226,9 +127,8 @@
 .loginBtn,
 .signUpBtn {
   border: none;
-  background-color: tomato;
+  background-color: rgb(58, 57, 57);
   color: white;
-  font: 300 0.9vmax "Roboto";
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -240,7 +140,7 @@
 
 .loginBtn:hover,
 .signUpBtn:hover {
-  background-color: rgb(179, 66, 46);
+  background-color: tomato;
 }
 
 .shiftToLeft {
@@ -264,7 +164,7 @@
   }
   .LoginSignUpBox {
     width: 100vw;
-    height: 95vh;
+    height: 100vh;
   }
   .login_signUp_toggle {
     height: 5vmax;
