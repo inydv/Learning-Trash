@@ -6,42 +6,49 @@ const authSlice = createSlice({
     currentUser: null,
     isFetching: false,
     error: false,
+    message: null,
   },
   reducers: {
     loginStart: (state) => {
       state.isFetching = true;
+      state.error = false;
     },
     loginOrder: (state, action) => {
       state.isFetching = false;
       state.currentUser = action.payload;
     },
-    loginFailure: (state) => {
+    loginFailure: (state,action) => {
       state.isFetching = false;
-      state.error = true;
+      state.error = action.payload;
+      state.currentUser = null;
     },
     RegisterStart: (state) => {
       state.isFetching = true;
-    },
-    RegisterOrder: (state, action) => {
-      state.isFetching = false;
-      state.currentUser = action.payload;
-    },
-    RegisterFailure: (state) => {
-      state.isFetching = false;
-      state.error = true;
-    },
-    logout: (state) => {
-      state.currentUser = null;
-      state.isFetching = false;
       state.error = false;
+      state.message = null;
     },
+    RegisterOrder: (state) => {
+      state.isFetching = false;
+      state.message = "Check Your Mail";
+    },
+    RegisterFailure: (state,action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+      state.message = null;
+    },
+    // logout: (state) => {
+    //   state.currentUser = null;
+    //   state.isFetching = false;
+    //   state.error = false;
+    // },
     clearError: (state) => {
       state.isFetching = false;
       state.error = false;
+      state.message = null;
     }
   },
 });
 
-export const { loginStart, loginOrder, loginFailure, RegisterStart, RegisterOrder, RegisterFailure, logout, clearError } =
+export const { loginStart, loginOrder, loginFailure, RegisterStart, RegisterOrder, RegisterFailure, clearError } =
   authSlice.actions;
 export default authSlice.reducer;

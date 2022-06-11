@@ -8,12 +8,17 @@
   /* position: fixed;
   top: 0%;
   left: 0; */
+  background-image: url("../../Images/LogInImage.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* filter: blur(4px) grayscale(60%) brightness(50%); */
 }
 
 .LoginSignUpBox {
   background-color: black;
   width: 25vw;
-  height: 60vh;
+  height: 70vh;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -21,6 +26,7 @@
 .login_signUp_toggle {
   display: flex;
   height: 3vmax;
+  margin-top: 15px;
 }
 
 .login_signUp_toggle > p {
@@ -158,54 +164,28 @@
   transform: translateX(100%);
 }
 
+.authError {
+  color: tomato;
+}
+
 @media screen and (max-width: 600px) {
-  .LoginSignUpContainer {
-    background-color: white;
-  }
   .LoginSignUpBox {
-    width: 100vw;
-    height: 100vh;
-  }
-  .login_signUp_toggle {
-    height: 5vmax;
-  }
-  .login_signUp_toggle > p {
-    font: 300 1.5vmax "Roboto";
+    width: 90vw;
+    height: 60vh;
   }
 
   .loginForm,
   .signUpForm {
-    padding: 5vmax;
+    padding: 2vmax 5vmax;
   }
 
   .loginForm > div > input,
   .signUpForm > div > input {
-    padding: 2.5vmax 5vmax;
-    font: 300 1.7vmax cursive;
-  }
-
-  .loginForm > div > svg,
-  .signUpForm > div > svg {
-    font-size: 2.8vmax;
-  }
-
-  .loginForm > a {
-    font: 500 1.8vmax "Gill Sans";
-  }
-
-  #registerImage > img {
-    width: 8vmax;
-    border-radius: 100%;
-  }
-
-  #registerImage > input::file-selector-button {
-    height: 7vh;
-    font: 400 1.8vmax cursive;
+    padding: 10px 15px;
   }
 
   .loginBtn,
   .signUpBtn {
-    font: 300 1.9vmax "Roboto";
     padding: 1.8vmax;
   }
 }

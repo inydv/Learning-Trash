@@ -36,118 +36,117 @@ function SinglePage() {
   // };
 
   const options = {
-    // edit: false,
-    // color: "rgba(255, 255, 255,0.2)",
-    // activeColor: "tomato",
-    // size: window.innerWidth < 600 ? 20 : 25,
-    // value: product.ratings,
-    // isHalf: true,
-
-    size: "large",
+    edit: false,
+    color: "rgba(255, 255, 255,0.2)",
+    activeColor: "tomato",
+    size: window.innerWidth < 600 ? 20 : 25,
     value: product.ratings,
-    readOnly: true,
-    precision: 0.5,
   };
 
   return (
     <>
-      {
-        error ? (
-
-          <div>
-            <h1 className="error">Error : {error}</h1>
-          </div>
-
-        ) : (<>
+      {product ? (
+        <>
           {
+            error ? (
 
-            isFetching ? (
+              <div>
+                <h1 className="error">Error : {error}</h1>
+              </div>
 
-              <Loading />
+            ) : (<>
+              {
 
-            ) : (
-              <>
+                isFetching ? (
 
-                <div className="singlePage">
-                  <div>
-                    <Carousel>
-                      {product.img &&
-                        product.img.map((item, i) => (
-                          <img
-                            className="CarouselImage"
-                            key={item._id}
-                            src={item.url}
-                            alt={`${i} Slide`}
-                          />
-                        ))}
-                    </Carousel>
-                  </div>
+                  <Loading />
 
-                  <div className="detailsBlock">
+                ) : (
+                  <>
 
-                    <div className="detailsBlock-1">
-                      <h2>{product.title}</h2>
-                      <p>Product #{product._id}</p>
+                    <div className="singlePage">
+                      <div>
+                        <Carousel>
+                          {product.img &&
+                            product.img.map((item, i) => (
+                              <img
+                                className="CarouselImage"
+                                key={item._id}
+                                src={item.url}
+                                alt={`${i} Slide`}
+                              />
+                            ))}
+                        </Carousel>
+                      </div>
+
+                      <div className="detailsBlock">
+
+                        <div className="detailsBlock-1">
+                          <h2>{product.title}</h2>
+                          <p>Product #{product._id}</p>
+                        </div>
+
+                        <div className="detailsBlock-2">
+                          <ReactStars {...options} />
+                          <span> ({product.numOfReviews} Reviews)</span>
+                        </div>
+
+                        <div className="detailsBlock-3">
+                          <h1>{`₹ ${product.price}`}</h1>
+                        </div>
+
+                        <div className="detailsBlock-4">
+                          <b>Description:</b>
+                          <p dangerouslySetInnerHTML={{ __html: `${product.desc}` }}></p>
+                        </div>
+
+                        <div className="detailsBlock-5">
+                          <p>
+                            Status :
+                            <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
+                              {product.Stock < 1 ? " OutOfStock" : " InStock"}
+                            </b>
+                          </p>
+                        </div>
+
+                        <div className="detailsBlock-6">
+                          <button>-</button>
+                          <input type="number" value="1" />
+                          <button>+</button>
+                        </div>
+
+                        <div className="addToCart">
+                          <button>Add to Cart</button>
+                        </div>
+
+                      </div>
                     </div>
 
-                    <div className="detailsBlock-2">
-                      <ReactStars {...options} />
-                      <span> ({product.numOfReviews} Reviews)</span>
+                    <h1 className="reviewsHeading">REVIEWS</h1>
+                    <div className="addReview">
+                      <button>Wanna Add Review?</button>
                     </div>
 
-                    <div className="detailsBlock-3">
-                      <h1>{`₹ ${product.price}`}</h1>
+                    <div className="review">
+                      {product.reviews && product.reviews[0] ?
+                        (<div className="reviews">
+                          {
+                            product.reviews && product.reviews.map((review) => <Reviews review={review} />)
+                          }
+                        </div>) : (
+                          <p className="noReviews">No Reviews Yet</p>
+                        )}
                     </div>
 
-                    <div className="detailsBlock-4">
-                      <b>Description:</b>
-                      <p dangerouslySetInnerHTML={{ __html: `${product.desc}` }}></p>
-                    </div>
+                  </>
+                )
+              }
 
-                    <div className="detailsBlock-5">
-                      <p>
-                        Status :
-                        <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                          {product.Stock < 1 ? " OutOfStock" : " InStock"}
-                        </b>
-                      </p>
-                    </div>
-
-                    <div className="detailsBlock-6">
-                      <button>-</button>
-                      <input type="number" value="1" />
-                      <button>+</button>
-                    </div>
-
-                    <div className="addToCart">
-                      <button>Add to Cart</button>
-                    </div>
-
-                  </div>
-                </div>
-
-                <h1 className="reviewsHeading">REVIEWS</h1>
-                <div className="addReview">
-                  <button>Wanna Add Review?</button>
-                </div>
-
-                <div className="review">
-                  {product.reviews && product.reviews[0] ?
-                    (<div className="reviews">
-                      {
-                        product.reviews && product.reviews.map((review) => <Reviews review={review} />)
-                      }
-                    </div>) : (
-                      <p className="noReviews">No Reviews Yet</p>
-                    )}
-                </div>
-
-              </>
-            )
+            </>)
           }
+        </>
+      ) : ""}
 
-        </>)
-      }
 
 
     </>

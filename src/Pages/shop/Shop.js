@@ -102,6 +102,7 @@ function Shop() {
             aria-labelledby="range-slider"
             min={0}
             max={25000}
+            style={{"backgroundColor": "black"}}
           />
 
           <div className="forCategories">
