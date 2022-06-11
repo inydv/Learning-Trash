@@ -115,7 +115,6 @@ function Signup() {
                       autoFocus={true}
                       type="email"
                       placeholder="Email"
-                      required
                       value={loginEmail}
                       onChange={(e) => setLoginEmail(e.target.value)}
                     />
@@ -126,7 +125,6 @@ function Signup() {
                     <input
                       type="password"
                       placeholder="Password"
-                      required
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
                     />
@@ -152,7 +150,6 @@ function Signup() {
                     <input
                       type="text"
                       placeholder="Name"
-                      required
                       name="username"
                       value={username}
                       onChange={registerDataChange}
@@ -164,7 +161,6 @@ function Signup() {
                     <input
                       type="email"
                       placeholder="Email"
-                      required
                       name="email"
                       value={email}
                       onChange={registerDataChange}
@@ -176,7 +172,6 @@ function Signup() {
                     <input
                       type="password"
                       placeholder="Password"
-                      required
                       name="password"
                       value={password}
                       onChange={registerDataChange}

@@ -24,7 +24,7 @@ export const fetchingAllProducts =
         const { data } = await publicRequest.get(link);
         dispatch(ALL_PRODUCT_SUCCESS(data));
       } catch (error) {
-        dispatch(ALL_PRODUCT_FAIL(error.message));
+        dispatch(ALL_PRODUCT_FAIL(error.response.data.message));
       }
     };
 
@@ -34,6 +34,6 @@ export const getProductDetails = (id) => async (dispatch) => {
     const { data } = await publicRequest.get(`/product/${id}`);
     dispatch(PRODUCT_DETAILS_SUCCESS(data));
   } catch (error) {
-    dispatch(PRODUCT_DETAILS_FAIL(error.message));
+    dispatch(PRODUCT_DETAILS_FAIL(error.response.data.message));
   }
 };

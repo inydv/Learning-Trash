@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginOrder, RegisterStart, RegisterOrder, RegisterFailure, logout, clearError } from "./authRedux";
+import { loginFailure, loginStart, loginOrder, RegisterStart, RegisterOrder, RegisterFailure, clearError } from "./authRedux";
 import { publicRequest } from "../../requestMethods";
 
 export const login = (email, password) => async (dispatch) => {
@@ -9,7 +9,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(loginOrder(res.data));
     // res.data && window.location.replace("/");
   } catch (error) {
-    dispatch(loginFailure(error.message));
+    dispatch(loginFailure(error.response.data.message));
   }
 };
 
@@ -17,10 +17,10 @@ export const Register = (userData) => async (dispatch) => {
   dispatch(RegisterStart());
   try {
     const config = { headers: { "content-Type": "multipart/form-data"}}
-    const res = await publicRequest.post("/register", userData, config);
+    await publicRequest.post("/register", userData, config, {withCredentials: true});
     dispatch(RegisterOrder());
   } catch (error) {
-    dispatch(RegisterFailure(error.message));
+    dispatch(RegisterFailure(error.response.data.message));
   }
 };
 

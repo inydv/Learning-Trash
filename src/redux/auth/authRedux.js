@@ -6,7 +6,6 @@ const authSlice = createSlice({
     currentUser: null,
     isFetching: false,
     error: false,
-    message: null,
   },
   reducers: {
     loginStart: (state) => {
@@ -29,7 +28,6 @@ const authSlice = createSlice({
     },
     RegisterOrder: (state) => {
       state.isFetching = false;
-      state.message = "Check Your Mail";
     },
     RegisterFailure: (state,action) => {
       state.isFetching = false;
