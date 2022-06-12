@@ -3,6 +3,7 @@ import authReducer from "./auth/authRedux";
 import newsLetterRedux from "./newsLetter/newsLetterRedux";
 import productsRedux from "./product/productsRedux";
 import productRedux from "./product/productRedux";
+import userRedux from "./user/userRedux";
 
 import {
   persistStore,
@@ -27,7 +28,8 @@ const rootReducer = combineReducers({
   auth: authReducer,
   newsLetter: newsLetterRedux,
   products: productsRedux,
-  product: productRedux
+  product: productRedux,
+  user: userRedux
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

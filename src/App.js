@@ -15,6 +15,8 @@ import NewsLetter from "./Components/newsLetter/NewsLetter";
 import Footer from "./Components/footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Account from "./Pages/account/Account";
+import UpdateProfile from "./Pages/updateProfile/UpdateProfile";
 
 function App() {
   const user = useSelector((state) => state.auth.currentUser);
@@ -30,8 +32,10 @@ function App() {
         <Route exact path="/product/:id" element={<SinglePage />} />
         <Route path="/shop/:keyword" element={<Shop />} />
         <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/order" element={<Order />} />
+        {user && <Route exact path="/MyOrders" element={<Order />} />}
         <Route exact path="/register" element={user ? <Home /> : <Auth />} />
+        {user && <Route exact path="/account" element={<Account />} />}
+        {user && <Route exact path="/me/update" element={<UpdateProfile />} />}
         <Route
           exact
           path="/reset-password"

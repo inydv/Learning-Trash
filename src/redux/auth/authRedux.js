@@ -16,7 +16,7 @@ const authSlice = createSlice({
       state.isFetching = false;
       state.currentUser = action.payload;
     },
-    loginFailure: (state,action) => {
+    loginFailure: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
       state.currentUser = null;
@@ -24,29 +24,48 @@ const authSlice = createSlice({
     RegisterStart: (state) => {
       state.isFetching = true;
       state.error = false;
-      state.message = null;
     },
     RegisterOrder: (state) => {
       state.isFetching = false;
     },
-    RegisterFailure: (state,action) => {
+    RegisterFailure: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
-      state.message = null;
     },
     // logout: (state) => {
     //   state.currentUser = null;
     //   state.isFetching = false;
     //   state.error = false;
     // },
+    Load_User_Start: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    Load_User_Order: (state, action) => {
+      state.isFetching = false;
+      state.currentUser = action.payload;
+    },
+    Load_User_Failure: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+      state.currentUser = null;
+    },
+    Logout_Success: (state) => {
+      state.isFetching = false;
+      state.error = false;
+      state.currentUser = null;
+    },
+    Logout_Failure: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    },
     clearError: (state) => {
       state.isFetching = false;
       state.error = false;
-      state.message = null;
     }
   },
 });
 
-export const { loginStart, loginOrder, loginFailure, RegisterStart, RegisterOrder, RegisterFailure, clearError } =
+export const { loginStart, loginOrder, loginFailure, RegisterStart, RegisterOrder, RegisterFailure, Load_User_Start, Load_User_Order, Load_User_Failure, Logout_Success, Logout_Failure, clearError } =
   authSlice.actions;
 export default authSlice.reducer;

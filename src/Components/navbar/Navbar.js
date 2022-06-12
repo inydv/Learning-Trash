@@ -1,27 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import PersonIcon from '@material-ui/icons/Person';
+import Backdrop from "@material-ui/core/Backdrop";
+import { logout } from '../../redux/auth/authApiCalls';
 import { Link } from "react-router-dom";
-// import { useDispatch } from "react-redux";
-// import { signout } from "../../redux/auth/authApiCalls";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 
 function Navbar() {
-  // const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.currentUser);
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
-  // const handleLogout = () => {
-  //   signout(dispatch);
-  // };
+  const handleOpen = () => {
+    setOpen(!open);
+  }
+
+  const option = [
+    { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser }
+  ]
+
+  if (user) {
+    option.unshift({
+      icon: <ListAltIcon />,
+      name: "My Orders",
+      func: orders,
+    })
+    option.unshift({
+      icon: <PersonIcon />,
+      name: "Profile",
+      func: account,
+    })
+  }
+
+  if (user && user.user.role === "admin") {
+    option.unshift({
+      icon: <DashboardIcon />,
+      name: "Dashboard",
+      func: dashboard,
+    })
+  }
+
+  function dashboard() {
+    navigate("/dashboard")
+  }
+
+  function orders() {
+    navigate("/orders")
+  }
+
+  function account() {
+    navigate("/account");
+  }
+
+  const dispatch = useDispatch();
+
+  function logoutUser() {
+    dispatch(logout())
+  }
 
   return (
     <div className="navbar">
+
       <div className="left">
         <h1 className="title">TLT</h1>
         <p className="name">
           THE<span className="little"> LITTLE </span> THING
         </p>
       </div>
+
       <div className="center">
         <div className="home">
           <Link to="/">Home</Link>
@@ -38,10 +92,33 @@ function Navbar() {
           <Link to="/contact">Contact</Link>
         </div>
       </div>
+
       <div className="right">
         <div className="user">
-          <AccountCircleIcon className="icon" />
+
+          <Backdrop open={open} style={{ zIndex: "9" }} />
+
+          <SpeedDial
+            ariaLabel="SpeedDial tooltip example"
+            // onClose={() => setOpen(false)}
+            // onOpen={() => setOpen(true)}
+            open={open}
+            onClick={handleOpen}
+            direction="down"
+            FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }}
+            icon={user ? (
+              <img src={user.user.avatar.url} className="speedDialIcon" alt="Profile" />
+            ) : (
+              <AccountCircleIcon className="icon" />
+            )}
+          >
+            {option.map((item) => (
+              <SpeedDialAction FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }} key={item.name} icon={item.icon} tooltipTitle={item.name} onClick={item.func} />
+            ))}
+          </SpeedDial>
+
         </div>
+
         <div className="cart">
           <Link to="/cart">
             <Badge badgeContent={5} color="primary">
@@ -49,6 +126,7 @@ function Navbar() {
             </Badge>
           </Link>
         </div>
+
       </div>
     </div>
   );

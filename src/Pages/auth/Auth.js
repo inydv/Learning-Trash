@@ -65,7 +65,7 @@ function Signup() {
     }
   }
 
-  const { isFetching, error, message } = useSelector((state) => state.auth);
+  const { isFetching, error } = useSelector((state) => state.auth);
 
   const loginTab = useRef(null);
   const registerTab = useRef(null);
@@ -133,7 +133,6 @@ function Signup() {
                   <Link to="/password/forgot">Forget Password ?</Link>
 
                   {error && (<p className="authError">{error}</p>)}
-                  {message && (<p className="authError">{message}</p>)}
 
                   <input type="submit" value="Login" className="loginBtn" />
                 </form>
@@ -189,7 +188,6 @@ function Signup() {
                   </div>
 
                   {error && (<p className="authError">{error}</p>)}
-                  {message && (<p className="authError">{message}</p>)}
 
                   <input type="submit" value="Register" className="signUpBtn" />
                 </form>

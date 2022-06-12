@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Contact.css";
+import { useNavigate } from "react-router-dom";
 
 function Contact() {
+  const navigate = useNavigate();
+
   const [TF, setTF] = useState(true);
 
   useEffect(() => {
@@ -13,7 +16,7 @@ function Contact() {
     setTF(false);
     window.scrollTo(0, 0);
     setTimeout(function () {
-      window.location.replace("/");
+      navigate("/");
     }, 2000);
   };
 
