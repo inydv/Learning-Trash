@@ -6,6 +6,7 @@ const authSlice = createSlice({
     currentUser: null,
     isFetching: false,
     error: false,
+    message: null,
   },
   reducers: {
     loginStart: (state) => {
@@ -59,6 +60,30 @@ const authSlice = createSlice({
       state.isFetching = false;
       state.error = action.payload;
     },
+    Forgot_Password_Request: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    Forgot_Password_Success: (state, action) => {
+      state.isFetching = false;
+      state.message = action.payload;
+    },
+    Forgot_Password_Fail: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    },
+    Reset_Password_Request: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    Reset_Password_Success: (state, action) => {
+      state.isFetching = false;
+      state.message = action.payload;
+    },
+    Reset_Password_Fail: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    },
     clearError: (state) => {
       state.isFetching = false;
       state.error = false;
@@ -66,6 +91,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { loginStart, loginOrder, loginFailure, RegisterStart, RegisterOrder, RegisterFailure, Load_User_Start, Load_User_Order, Load_User_Failure, Logout_Success, Logout_Failure, clearError } =
+export const { loginStart, loginOrder, loginFailure, RegisterStart, RegisterOrder, RegisterFailure, Load_User_Start, Load_User_Order, Load_User_Failure, Logout_Success, Logout_Failure, Forgot_Password_Request, Forgot_Password_Success, Forgot_Password_Fail, Reset_Password_Request, Reset_Password_Success, Reset_Password_Fail, clearError } =
   authSlice.actions;
 export default authSlice.reducer;

@@ -1,72 +1,69 @@
 import React, { useEffect, useState } from "react";
-// import "../login/LogIn.css";
-import { Link } from "react-router-dom";
-import { publicRequest } from "../../requestMethods";
+import "./ResetPW.css"
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import { useDispatch, useSelector } from "react-redux";
+import { forgotPassword, clearErrors } from "../../redux/auth/authApiCalls";
+import { useNavigate } from "react-router-dom"
+import Loading from "../../Components/loading/Loading"
 
 function ResetPW() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [msg, setMsg] = useState("");
-  const [error, setError] = useState("");
-  const [isFetching, setIsFetching] = useState(false);
+  const { error, isFetching, message } = useSelector((state) => state.user);
 
-  const handleSubmit = async (e) => {
+  const [email, setEmail] = useState("")
+
+  const forgotPasswordSubmit = (e) => {
     e.preventDefault();
-    setIsFetching(true);
-    try {
-      const data = await publicRequest.post("/password-reset", { email });
-      setMsg(data.message);
-      setError("");
-      setTimeout(function () {
-        window.location.replace("/signin");
-      }, 2000);
-    } catch (error) {
-      setIsFetching(false);
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.data.message);
-        setMsg("");
-      }
-    }
+
+    const myForm = new FormData();
+
+    myForm.set("email", email);
+    dispatch(forgotPassword(myForm));
   };
 
+  useEffect(() => {
+    if (error) {
+      dispatch(clearErrors());
+    }
+  }, [dispatch, error]);
+
   return (
-    <div className="logIn">
-      <div className="bg"></div>
-      <div className="wrapper">
-        <div className="wraped">
-          <form onSubmit={handleSubmit}>
-            <div className="container">
-              <h6 className="signIn">RESET PASSWORD</h6>
-              <input
-                type="email"
-                placeholder="Email"
-                className="username"
-                autoFocus={true}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <button className="btn" type="submit" disabled={isFetching}>
-                RESET
-              </button>
-              {error && <span className="span">{error}</span>}
-              {msg && <span className="span">{msg}</span>}
-              <Link to="/signin">
-                <p className="forgotPW">LOGIN?</p>
-              </Link>
-              <Link to="/signup">
-                <p className="forgotPW">SIGN UP?</p>
-              </Link>
+    <div>
+      {isFetching ? (
+        <Loading />
+      ) : (
+        <div>
+          <div className="forgotPasswordContainer">
+            <div className="forgotPasswordBox">
+              <h2 className="forgotPasswordHeading">Forgot Password</h2>
+
+              <form
+                className="forgotPasswordForm"
+                onSubmit={forgotPasswordSubmit}
+              >
+                <div className="forgotPasswordEmail">
+                  <MailOutlineIcon />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <input
+                  type="submit"
+                  value="Send"
+                  className="forgotPasswordBtn"
+                />
+              </form>
             </div>
-          </form>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -1,101 +1,84 @@
 import React, { useEffect, useState } from "react";
-// import "../login/LogIn.css";
-import { useParams } from "react-router-dom";
-import { publicRequest } from "../../requestMethods";
-import axios from "axios";
+import "./PWReset.css";
+import { useDispatch, useSelector } from "react-redux";
+import { ResetPassword } from "../../redux/auth/authApiCalls";
+import { useNavigate, useParams } from "react-router-dom"
+import Loading from "../../Components/loading/Loading"
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import LockIcon from "@material-ui/icons/Lock"
 
 function PWReset() {
-  const [validUrl, setValidUrl] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const token = useParams();
+
+  const { isUpdated, isFetching } = useSelector((state) => state.user);
+
   const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
-  const [error, setError] = useState("");
-  const [isFetching, setIsFetching] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const param = useParams();
-  const url = `http://localhost:5000/password-reset/${param.id}/${param.token}`;
+  const resetPasswordSubmit = (e) => {
+      e.preventDefault();
 
-  useEffect(() => {
-    const verifyUrl = async () => {
-      try {
-        await axios.get(url);
-        setValidUrl(true);
-      } catch (error) {
-        setValidUrl(false);
-      }
-    };
-    verifyUrl();
-  }, [param, url]);
+      const myForm = new FormData();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsFetching(true);
-    try {
-      const data = await publicRequest.post(
-        `/password-reset/${param.id}/${param.token}`,
-        { password }
-      );
-      setMsg(data.message);
-      setError("");
-      setTimeout(function () {
-        window.location.replace("/signin");
-      }, 2000);
-    } catch (error) {
-      setIsFetching(false);
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.data.message);
-        setMsg("");
-      }
-    }
+      myForm.set("password", password);
+      myForm.set("confirmPassword", confirmPassword);
+      dispatch(ResetPassword(token,myForm));
   };
 
+  useEffect(() => {
+      // if (error) {
+      //   dispatch(clearErrors());
+      // }
+
+      if (isUpdated) {
+          navigate("/login");
+      }
+  }, [dispatch, navigate, isUpdated]);
   return (
     <div>
-      {validUrl ? (
-        <div className="logIn">
-          <div className="bg"></div>
-          <div className="wrapper">
-            <div className="wraped">
-              <form onSubmit={handleSubmit}>
-                <div className="container">
-                  <h6 className="signIn">PASSWORD</h6>
-                  <input
-                    type="password"
-                    placeholder="New PassWord"
-                    className="username"
-                    autoFocus={true}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                  <button className="btn" type="submit" disabled={isFetching}>
-                    CLICK
-                  </button>
-                  {error && <span className="span">{error}</span>}
-                  {msg && <span className="span">{msg}</span>}
+    {isFetching ? (
+        <Loading />
+    ) : (
+        <div>
+            <div className="resetPasswordContainer">
+                <div className="resetPasswordBox">
+                    <h2 className="resetPasswordHeading">Update Profile</h2>
+
+                    <form
+                        className="resetPasswordForm"
+                        onSubmit={resetPasswordSubmit}
+                    >
+                        <div className="loginPassword">
+                            <LockOpenIcon className="Icon" />
+                            <input
+                                type="password"
+                                placeholder="New Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+                        <div className="loginPassword">
+                            <LockIcon className="Icon" />
+                            <input
+                                type="password"
+                                placeholder="Confirm Password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+                        </div>
+                        <input
+                            type="submit"
+                            value="Update"
+                            className="resetPasswordBtn"
+                        />
+                    </form>
                 </div>
-              </form>
             </div>
-          </div>
         </div>
-      ) : (
-        <div
-          style={{
-            height: "100vh",
-            textAlign: "center",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <span style={{ color: "red", fontSize: "100px" }}>404</span>
-          <p style={{ fontSize: "50px" }}>Not Found</p>
-        </div>
-      )}
-    </div>
+    )}
+</div>
   );
 }
 

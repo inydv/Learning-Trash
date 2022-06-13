@@ -17,6 +17,7 @@ import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Account from "./Pages/account/Account";
 import UpdateProfile from "./Pages/updateProfile/UpdateProfile";
+import UpdatePassword from "./Pages/updatePassword/UpdatePassword";
 
 function App() {
   const user = useSelector((state) => state.auth.currentUser);
@@ -34,17 +35,18 @@ function App() {
         <Route exact path="/cart" element={<Cart />} />
         {user && <Route exact path="/MyOrders" element={<Order />} />}
         <Route exact path="/register" element={user ? <Home /> : <Auth />} />
+        <Route exact path="/password/update" element={<UpdatePassword />} />
         {user && <Route exact path="/account" element={<Account />} />}
         {user && <Route exact path="/me/update" element={<UpdateProfile />} />}
         <Route
           exact
-          path="/reset-password"
-          element={user ? <Home /> : <ResetPW />}
+          path="/password/forgot"
+          element={<ResetPW />}
         />
         <Route
           exact
-          path="/password-reset/:id/:token"
-          element={user ? <Home /> : <PWReset />}
+          path="/password/reset/:token"
+          element={<PWReset />}
         />
       </Routes>
       {user ? <NewsLetter /> : ""}
