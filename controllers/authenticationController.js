@@ -126,7 +126,7 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
     );
   }
 
-  if (req.body.password !== req.body.confirmPassWord) {
+  if (req.body.password !== req.body.confirmPassword) {
     return next(new ErrorHandler("Password does not match", 400));
   }
 
