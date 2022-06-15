@@ -61,13 +61,13 @@ const user = require("./routes/userRoute");
 const auth = require("./routes/authRoute");
 const Product = require("./routes/productRoute");
 const Order = require("./routes/orderRoute");
-const stripe = require("./routes/stripe");
+const payment = require("./routes/paymentRoute");
 
 app.use("/api", auth);
 app.use("/api", user);
 app.use("/api", Product);
 app.use("/api", Order);
-app.use("/api", stripe);
+app.use("/api", payment);
 
 // Error Handler
 const errorMiddleware = require("./middleware/error");
