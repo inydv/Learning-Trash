@@ -6,6 +6,7 @@ import Loading from "../../Components/loading/Loading";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../redux/product/productsApiCall";
+import { addItemsToCart } from "../../redux/cart/cartApiCall";
 import Carousel from "react-material-ui-carousel";
 import ReactStars from "react-rating-stars-component";
 
@@ -25,15 +26,20 @@ function SinglePage() {
     (state) => state.product
   );
 
-  // const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 
-  // const inc = () => {
-  //   setQuantity(quantity + 1);
-  // };
+  const inc = () => {
+    if (product.inStock <= quantity) return;
+    setQuantity(quantity + 1);
+  };
 
-  // const dec = () => {
-  //   if (quantity > 1) setQuantity(quantity - 1);
-  // };
+  const dec = () => {
+    if (quantity > 1) setQuantity(quantity - 1);
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(id.id, quantity));
+  }
 
   const options = {
     edit: false,
@@ -110,13 +116,13 @@ function SinglePage() {
                         </div>
 
                         <div className="detailsBlock-6">
-                          <button>-</button>
-                          <input type="number" value="1" />
-                          <button>+</button>
+                          <button onClick={dec}>-</button>
+                          <input type="number" value={quantity} />
+                          <button onClick={inc}>+</button>
                         </div>
 
                         <div className="addToCart">
-                          <button>Add to Cart</button>
+                          <button onClick={addToCartHandler}>Add to Cart</button>
                         </div>
 
                       </div>

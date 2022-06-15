@@ -61,11 +61,11 @@ export const forgotPassword = (email) => async (dispatch) => {
   }
 };
 
-export const ResetPassword = (token, passwords) => async (dispatch) => {
+export const ResetPassword = (token, myForm) => async (dispatch) => {
   dispatch(Reset_Password_Request());
   try {
     const config = { headers: { "Content-Type": "application/json" } };
-    const res = await publicRequest.put(`/password/reset/${token}`, passwords, config);
+    const res = await publicRequest.put(`/password/reset/${token}`, myForm, config);
     dispatch(Reset_Password_Success(res.data.message));
   } catch (error) {
     dispatch(Reset_Password_Fail(error.response.data.message));

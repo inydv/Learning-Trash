@@ -24,7 +24,7 @@ function PWReset() {
 
       myForm.set("password", password);
       myForm.set("confirmPassword", confirmPassword);
-      dispatch(ResetPassword(token,myForm));
+      dispatch(ResetPassword(token.token,myForm));
   };
 
   useEffect(() => {

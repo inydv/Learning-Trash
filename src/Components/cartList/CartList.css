@@ -1,0 +1,56 @@
+.cartList {
+    display: flex;
+    padding: 1vmax;
+    height: 8vmax;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.cartList > img {
+    width: 5vmax;
+}
+
+.cartList > div {
+    display: flex;
+    flex-direction: column;
+    margin: 0.3vmax 1vmax; 
+}
+
+.cartList > div > a {
+    color: tomato;
+    text-decoration: none;
+}
+
+.cartList > div > span {
+    
+}
+
+.cartList > div > p{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .cartList {
+        padding: 3vmax;
+        height: 25vmax;
+    }
+
+    .cartList > img {
+        width: 10vmax;
+    }
+
+    .cartList > div {
+        margin: 1vmax 2vmax; 
+    }
+    
+    .cartList > div > a {
+
+    }
+    
+    .cartList > div > span {
+        
+    }
+    
+    .cartList > div > p{
+    }
+}

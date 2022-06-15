@@ -1,104 +1,113 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Cart.css";
-// import StripeCheckout from "react-stripe-checkout";
-import { userRequest } from "../../requestMethods";
-import { useSelector } from "react-redux";
-import logo from "../../Images/logo.jpg";
-import { Link } from "react-router-dom";
+import CartList from "../../Components/cartList/CartList";
+import { useSelector, useDispatch } from "react-redux";
+import { addItemsToCart, removeItemsFromCart } from "../../redux/cart/cartApiCall";
+import { Typography } from "@material-ui/core";
+import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
+import { Link, useNavigate } from "react-router-dom";
 
 function Cart() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const KEY = process.env.REACT_APP_STRIPE;
-  const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cart);
 
-  const user = useSelector((state) => state.user.currentUser.others._id);
-  const cart = useSelector((state) => state.cart.products);
+  const increaseQuantity = (id, quantity, stock) => {
+    const newQty = quantity + 1;
+    if (stock <= quantity) {
+      return;
+    }
+    dispatch(addItemsToCart(id, newQty));
+  };
 
-  let total = 0;
-  cart.forEach((ele) => {
-    total += ele.products.price;
-  });
+  const decreaseQuantity = (id, quantity) => {
+    const newQty = quantity - 1;
+    if (1 >= quantity) {
+      return;
+    }
+    dispatch(addItemsToCart(id, newQty));
+  };
 
-  // const ontoken = (token) => {
-  //   setStripeToken(token);
-  // };
+  const deleteCartItems = (id) => {
+    dispatch(removeItemsFromCart(id));
+  };
 
-  // useEffect(() => {
-  //   const makeRequest = async () => {
-  //     try {
-  //       const res = await userRequest.post("/checkout/payment", {
-  //         tokenId: stripeToken.id,
-  //         amount: cart.total * 100,
-  //       });
-  //       window.location.replace("/order")
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   stripeToken && makeRequest(); // call makeRequest
-  // }, [stripeToken, total]);
+  const checkoutHandler = () => {
+    navigate("/register?redirect=shipping");
+  };
 
   return (
     <div className="cart">
-      {cart.length > 0 ? (
-        <div className="container">
-          <h1 className="title">SHOPPING CART</h1>
-          <div className="heading">
-            <p className="item">ITEM</p>
-            <p className="quantity">QUANTITY</p>
-            <p className="price">PRICE</p>
-          </div>
-          <div className="line"></div>
-          {cart.map((item) => (
-            <div key={item._id}>
-              <div className="itemsContainer">
-                <div className="items">
-                  <div className="itom">
-                    <span className="cross">x</span>
-                    <div className="imageContainer">
-                      <Link to={`/singlepage/${item.products.productId}`}>
-                        <img src={item.products.img} alt="" className="image" />
-                      </Link>
-                    </div>
-                  </div>
-                  <p className="name">{item.products.title}</p>
-                </div>
-                <div className="number">
-                  <p className="qty">{item.products.quantity}</p>
-                </div>
-                <div className="priceText">
-                  <p>${item.products.price}</p>
-                </div>
-              </div>
-              <div className="line"></div>
-            </div>
-          ))}
-          <div className="bottom">
-            <div className="total">
-              <p className="subTotal">TOTAL</p>
-              <span className="totalSpan">${total}</span>
-            </div>
-            {/* <StripeCheckout
-              name="THE LITTLE THINGS"
-              image={logo}
-              description={`Your Total : $${total}`}
-              billingAddress
-              shippingAddress
-              amount={cart.total * 100} // because equal to dollar
-              token={ontoken}
-              stripeKey={KEY}
-            >
-              <div className="button">
-                <button className="btn">CHECKOUT</button>
-              </div>
-            </StripeCheckout> */}
-          </div>
+      {cartItems.length === 0 ? (
+        <div className="emptyCart">
+          <RemoveShoppingCartIcon />
+
+          <Typography>No Product in Your Cart</Typography>
+          <Link to="/shop">View Products</Link>
         </div>
       ) : (
-        <h1 className="emptyCart">Cart is Empty... </h1>
+        <>
+          <div className="cartPage">
+            <div className="cartHeader">
+              <p>Product</p>
+              <p>Quantity</p>
+              <p>Subtotal</p>
+            </div>
+
+            {cartItems &&
+              cartItems.map((item) => (
+                <div className="cartContainer" key={item.product}>
+                  <CartList item={item}
+                    deleteCartItems={deleteCartItems}
+                  />
+                  <div className="cartInput">
+                    <button
+                      onClick={() =>
+                        decreaseQuantity(item.product, item.quantity)
+                      }
+                    >
+                      -
+                    </button>
+                    <input type="number" value={item.quantity} readOnly />
+                    <button
+                      onClick={() =>
+                        increaseQuantity(
+                          item.product,
+                          item.quantity,
+                          item.stock
+                        )
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
+                  <p className="cartSubtotal">{`₹${item.price * item.quantity
+                    }`}</p>
+                </div>
+              ))}
+
+            <div className="cartGrossProfit">
+              <div></div>
+              <div className="cartGrossProfitBox">
+                <p>Gross Total</p>
+                <p>{`₹${cartItems.reduce(
+                  (acc, item) => acc + item.quantity * item.price,
+                  0
+                )}`}</p>
+              </div>
+              <div></div>
+              <div className="checkOutBtn">
+                <button
+                  onClick={checkoutHandler}
+                >Check Out</button>
+              </div>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

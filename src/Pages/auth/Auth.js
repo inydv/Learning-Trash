@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Auth.css";
 import profileImage from "../../Images/profileImage.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, Register, clearErrors } from "../../redux/auth/authApiCalls";
 import MailIcon from '@material-ui/icons/Mail';
@@ -12,9 +12,19 @@ import Loading from "../../Components/loading/Loading";
 function Signup() {
 
   const dispatch = useDispatch();
+  const { currentUser, isFetching, error } = useSelector((state) => state.auth);
+
+  const location = useLocation();
+  const redirect = location.search ? location.search.split("=")[1] : "/account";
+  const navigate = useNavigate();
 
   useEffect(() => {
     clearErrors(dispatch);
+
+    if (currentUser) {
+      navigate(redirect)
+    }
+
     window.scrollTo(0, 0);
   }, [dispatch]);
 
@@ -65,7 +75,6 @@ function Signup() {
     }
   }
 
-  const { isFetching, error } = useSelector((state) => state.auth);
 
   const loginTab = useRef(null);
   const registerTab = useRef(null);

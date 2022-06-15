@@ -16,6 +16,7 @@ import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 
 function Navbar() {
   const user = useSelector((state) => state.auth.currentUser);
+  const cart = useSelector((state) => state.cart.cartItems);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
 
@@ -113,7 +114,7 @@ function Navbar() {
             )}
           >
             {option.map((item) => (
-              <SpeedDialAction FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }} key={item.name} icon={item.icon} tooltipTitle={item.name} onClick={item.func} />
+              <SpeedDialAction FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }} key={item.name} icon={item.icon} tooltipTitle={item.name} onClick={item.func} />  // tooltipOpen -- usefull in phones 
             ))}
           </SpeedDial>
 
@@ -121,7 +122,7 @@ function Navbar() {
 
         <div className="cart">
           <Link to="/cart">
-            <Badge badgeContent={5} color="primary">
+            <Badge badgeContent={cart.length} color="primary">
               <ShoppingCartIcon />
             </Badge>
           </Link>
