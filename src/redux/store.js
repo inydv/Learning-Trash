@@ -1,9 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import authReducer from "./auth/authRedux";
+import userRedux from "./user/userRedux";
 import newsLetterRedux from "./newsLetter/newsLetterRedux";
 import productsRedux from "./product/productsRedux";
-import productRedux from "./product/productRedux";
-import userRedux from "./user/userRedux";
 import cartRedux from "./cart/cartRedux";
 import newOrderRedux from "./order/newOrderRedux";
 
@@ -27,23 +25,14 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  auth: authReducer,
+  user: userRedux,
   newsLetter: newsLetterRedux,
   products: productsRedux,
-  product: productRedux,
-  user: userRedux,
   cart: cartRedux,
   newOrder: newOrderRedux
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-
-// export default configureStore({
-//   reducer: {
-//     cart: cartReducer,
-//     user: userReducer,
-//   },
-// });
 
 export const store = configureStore({
   reducer: persistedReducer,

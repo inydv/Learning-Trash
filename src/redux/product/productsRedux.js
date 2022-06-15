@@ -10,7 +10,7 @@ const productsSlice = createSlice({
     resultPerPage: 0,
   },
   reducers: {
-    ALL_PRODUCT_REQUEST: (state) => {
+    ALL_PRODUCT_START: (state) => {
       state.isFetching = true;
       state.error = null;
     },
@@ -27,12 +27,31 @@ const productsSlice = createSlice({
       state.productsCount = 0;
       state.resultPerPage = 0;
     },
+
+    PRODUCT_DETAILS_START: (state) => {
+      state.isFetching = true;
+      state.error = null;
+      state.productsCount = 0;
+      state.resultPerPage = 0;
+    },
+    PRODUCT_DETAILS_SUCCESS: (state, action) => {
+      state.isFetching = false;
+      state.products = action.payload.product;
+    },
+    PRODUCT_DETAILS_FAIL: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+      state.products = null;
+    },
   },
 });
 
 export const {
+  ALL_PRODUCT_START,
   ALL_PRODUCT_SUCCESS,
-  ALL_PRODUCT_REQUEST,
   ALL_PRODUCT_FAIL,
+  PRODUCT_DETAILS_START,
+  PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_DETAILS_FAIL,
 } = productsSlice.actions;
 export default productsSlice.reducer;

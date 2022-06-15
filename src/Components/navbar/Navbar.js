@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import ListAltIcon from '@material-ui/icons/ListAlt';
-import PersonIcon from '@material-ui/icons/Person';
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import ListAltIcon from "@material-ui/icons/ListAlt";
+import PersonIcon from "@material-ui/icons/Person";
 import Backdrop from "@material-ui/core/Backdrop";
-import { logout } from '../../redux/auth/authApiCalls';
+import { LOGOUT } from "../../redux/user/userApiCall";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -22,23 +22,23 @@ function Navbar() {
 
   const handleOpen = () => {
     setOpen(!open);
-  }
+  };
 
   const option = [
-    { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser }
-  ]
+    { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
+  ];
 
   if (user) {
     option.unshift({
       icon: <ListAltIcon />,
       name: "My Orders",
       func: orders,
-    })
+    });
     option.unshift({
       icon: <PersonIcon />,
       name: "Profile",
       func: account,
-    })
+    });
   }
 
   if (user && user.user.role === "admin") {
@@ -46,15 +46,15 @@ function Navbar() {
       icon: <DashboardIcon />,
       name: "Dashboard",
       func: dashboard,
-    })
+    });
   }
 
   function dashboard() {
-    navigate("/dashboard")
+    navigate("/dashboard");
   }
 
   function orders() {
-    navigate("/orders")
+    navigate("/orders");
   }
 
   function account() {
@@ -64,12 +64,11 @@ function Navbar() {
   const dispatch = useDispatch();
 
   function logoutUser() {
-    dispatch(logout())
+    dispatch(LOGOUT());
   }
 
   return (
     <div className="navbar">
-
       <div className="left">
         <h1 className="title">TLT</h1>
         <p className="name">
@@ -96,7 +95,6 @@ function Navbar() {
 
       <div className="right">
         <div className="user">
-
           <Backdrop open={open} style={{ zIndex: "9" }} />
 
           <SpeedDial
@@ -107,17 +105,28 @@ function Navbar() {
             onClick={handleOpen}
             direction="down"
             FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }}
-            icon={user ? (
-              <img src={user.user.avatar.url} className="speedDialIcon" alt="Profile" />
-            ) : (
-              <AccountCircleIcon className="icon" />
-            )}
+            icon={
+              user ? (
+                <img
+                  src={user.user.avatar.url}
+                  className="speedDialIcon"
+                  alt="Profile"
+                />
+              ) : (
+                <AccountCircleIcon className="icon" />
+              )
+            }
           >
             {option.map((item) => (
-              <SpeedDialAction FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }} key={item.name} icon={item.icon} tooltipTitle={item.name} onClick={item.func} />  // tooltipOpen -- usefull in phones 
+              <SpeedDialAction
+                FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }}
+                key={item.name}
+                icon={item.icon}
+                tooltipTitle={item.name}
+                onClick={item.func}
+              /> // tooltipOpen -- usefull in phones
             ))}
           </SpeedDial>
-
         </div>
 
         <div className="cart">
@@ -127,7 +136,6 @@ function Navbar() {
             </Badge>
           </Link>
         </div>
-
       </div>
     </div>
   );

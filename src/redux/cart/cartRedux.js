@@ -31,7 +31,7 @@ const cartSlice = createSlice({
         REMOVE_CART_ITEM: (state, action) => {
             state.cartItems = state.cartItems.filter((i) => i.product !== action.payload)
         },
-        SAVE_SHIPPING_INFO: (state, action) => {
+        SAVE_SHIPPING_DETAIL: (state, action) => {
             state.shippingInfo = action.payload
         },
     },
@@ -40,6 +40,6 @@ const cartSlice = createSlice({
 export const {
     ADD_TO_CART,
     REMOVE_CART_ITEM,
-    SAVE_SHIPPING_INFO,
+    SAVE_SHIPPING_DETAIL,
 } = cartSlice.actions;
 export default cartSlice.reducer;

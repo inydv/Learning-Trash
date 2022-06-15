@@ -1,16 +1,19 @@
 import {
-  CREATE_ORDER_FAIL, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, CLEAR_ERROR
+  CREATE_ORDER_FAIL,
+  CREATE_ORDER_REQUEST,
+  CREATE_ORDER_SUCCESS,
+  CLEAR_ERROR,
 } from "./newOrderRedux";
 import { publicRequest } from "../../requestMethods";
 
-export const createOrder = (order) => async (dispatch) => {
+export const CREATE_ORDER = (order) => async (dispatch) => {
   dispatch(CREATE_ORDER_REQUEST());
   try {
     const config = {
       headers: {
         "Content-Type": "application/json",
-      }
-    }
+      },
+    };
     const { data } = await publicRequest.post("/order/new", order, config);
     dispatch(CREATE_ORDER_SUCCESS(data));
   } catch (error) {
@@ -18,6 +21,6 @@ export const createOrder = (order) => async (dispatch) => {
   }
 };
 
-export const clearErrors = () => async (dispatch) => {
-  dispatch(CLEAR_ERROR())
-}
+export const CLEAR_ERRORS = () => async (dispatch) => {
+  dispatch(CLEAR_ERROR());
+};

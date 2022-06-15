@@ -6,11 +6,11 @@ const newsLetter = createSlice({
     show: true,
   },
   reducers: {
-    changeState: (state) => {
+    CHANGE_STATE: (state) => {
       state.show = false;
     },
   },
 });
 
-export const { changeState } = newsLetter.actions;
+export const { CHANGE_STATE } = newsLetter.actions;
 export default newsLetter.reducer;

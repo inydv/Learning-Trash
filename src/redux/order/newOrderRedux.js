@@ -23,12 +23,12 @@ const newOrderSlice = createSlice({
       state.products = null;
     },
     CLEAR_ERROR: (state) => {
-        state.error = null;
+      state.error = null;
     }
   },
 });
 
 export const {
-  CREATE_ORDER_FAIL,CREATE_ORDER_REQUEST,CREATE_ORDER_SUCCESS, CLEAR_ERROR
+  CREATE_ORDER_FAIL, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, CLEAR_ERROR
 } = newOrderSlice.actions;
 export default newOrderSlice.reducer;

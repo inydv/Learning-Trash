@@ -1,19 +1,24 @@
 import {
+  ALL_PRODUCT_START,
   ALL_PRODUCT_SUCCESS,
-  ALL_PRODUCT_REQUEST,
-  ALL_PRODUCT_FAIL
-} from "./productsRedux";
-import {
-  PRODUCT_DETAILS_REQUEST,
+  ALL_PRODUCT_FAIL,
+  PRODUCT_DETAILS_START,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
-} from "./productRedux";
+} from "./productsRedux";
 import { publicRequest } from "../../requestMethods";
 
-export const fetchingAllProducts =
-  (keyword = "", currentPage = 1, price = [0, 25000], category, ratings = 0, sort = "oldest") =>
+export const FETCHING_ALL_PRODUCT =
+  (
+    keyword = "",
+    currentPage = 1,
+    price = [0, 25000],
+    category,
+    ratings = 0,
+    sort = "oldest"
+  ) =>
     async (dispatch) => {
-      dispatch(ALL_PRODUCT_REQUEST());
+      dispatch(ALL_PRODUCT_START());
       try {
         let link = `/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&sort=${sort}`;
 
@@ -28,8 +33,8 @@ export const fetchingAllProducts =
       }
     };
 
-export const getProductDetails = (id) => async (dispatch) => {
-  dispatch(PRODUCT_DETAILS_REQUEST());
+export const GET_PRODUCT_DETAIL = (id) => async (dispatch) => {
+  dispatch(PRODUCT_DETAILS_START());
   try {
     const { data } = await publicRequest.get(`/product/${id}`);
     dispatch(PRODUCT_DETAILS_SUCCESS(data));

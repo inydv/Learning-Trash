@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Home from "./Pages//home/Home";
-import Contact from "./Pages/contact/Contact";
-import About from "./Pages/about/About";
-import Shop from "./Pages/shop/Shop";
-import SinglePage from "./Pages/singlePage/SinglePage";
-import Auth from "./Pages/auth/Auth";
-import Cart from "./Pages/cart/Cart";
-import ResetPW from "./Pages/resetPW/ResetPW";
-import Order from "./Pages/order/Order";
-import PWReset from "./Pages/pwReset/PWReset";
 import Navbar from "./Components/navbar/Navbar";
+import Home from "./Pages/staticPages/home/Home";
+import Contact from "./Pages/staticPages/contact/Contact";
+import About from "./Pages/staticPages/about/About";
+import Shop from "./Pages/forProducts/shop/Shop";
+import SinglePage from "./Pages/forProducts/singlePage/SinglePage";
+import Auth from "./Pages/userAuth/auth/Auth";
+import ResetPW from "./Pages/userAuth/resetPW/ResetPW";
+import PWReset from "./Pages/userAuth/pwReset/PWReset";
+import Account from "./Pages/userUpdate/account/Account";
+import UpdateProfile from "./Pages/userUpdate/updateProfile/UpdateProfile";
+import UpdatePassword from "./Pages/userUpdate/updatePassword/UpdatePassword";
+import Cart from "./Pages/makingOrders/cart/Cart";
+import Shipping from "./Pages/makingOrders/shipping/Shipping";
+import ConfirmOrder from "./Pages/makingOrders/confirmOrder/ConfirmOrder";
+import Wrapper from "./Pages/makingOrders/payment/Payment";
+import OrderSuccess from "./Pages/makingOrders/orderSuccess/OrderSuccess";
+import Order from "./Pages/makingOrders/order/Order";
 import NewsLetter from "./Components/newsLetter/NewsLetter";
 import Footer from "./Components/footer/Footer";
-import Account from "./Pages/account/Account";
-import UpdateProfile from "./Pages/updateProfile/UpdateProfile";
-import UpdatePassword from "./Pages/updatePassword/UpdatePassword";
-import Shipping from "./Pages/shipping/Shipping";
-import ConfirmOrder from "./Pages/confirmOrder/ConfirmOrder";
-import OrderSuccess from "./Pages/orderSuccess/OrderSuccess";
-import Wrapper from "./Pages/payment/Payment";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { publicRequest } from "./requestMethods";
@@ -42,6 +42,7 @@ function App() {
     <div className="app">
       <Navbar />
       <Routes>
+
         <Route exact path="/" element={<Home />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About />} />
@@ -66,7 +67,9 @@ function App() {
         )}
         <Route exact path="/success" element={<OrderSuccess />} />
         {user && <Route exact path="/MyOrders" element={<Order />} />}
+
       </Routes>
+
       {user ? <NewsLetter /> : ""}
       <Footer />
     </div>
