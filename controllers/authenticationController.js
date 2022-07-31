@@ -13,7 +13,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     width: 150,
     crop: "scale"
   })
-  
+
   const { username, email, password } = req.body;
 
   const user = await User.create({
@@ -75,22 +75,22 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   // Get resetPW Token
   const resetToken = user.getResetPasswordToken();
 
-  
+
   await user.save();
-  
+
   const resetPasswordUrl = `${req.protocol}://${req.get(
     "host"
   )}/password/reset/${resetToken}`;
 
   const message = `Your password reset token is -- \n\n ${resetPasswordUrl} \n\n If you have not requested this email then, Please ignore it`;
-  
+
   try {
     await sendEmail({
       email: user.email,
       subject: `Ecommerce Password Recovery`,
       message,
     });
-    
+
     res.status(200).json({
       message: `Email sent to ${user.email} successfully`,
     });

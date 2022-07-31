@@ -18,7 +18,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
   // const productsCount = await Product.countDocuments();
 
   // console.log(req.cookies)
-  
+
   let products = await Product.find();
 
   const queries = req.query;
@@ -75,7 +75,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 
   res
     .status(200)
-    .json({products, productsCount, resultPerPage});
+    .json({ products, productsCount, resultPerPage });
 });
 
 // Get one Products -- User and Admin
