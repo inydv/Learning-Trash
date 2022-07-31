@@ -15,7 +15,7 @@
   }
   
   .confirmshippingArea > p {
-    font: 400 1.8vmax "Roboto";
+    font: 400 1.8vmax ;
   }
   
   .confirmshippingAreaBox,
@@ -29,17 +29,17 @@
   }
   
   .confirmshippingAreaBox > div > p {
-    font: 400 1vmax "Roboto";
+    font: 400 1vmax ;
     color: black;
   }
   .confirmshippingAreaBox > div > span {
     margin: 0 1vmax;
-    font: 100 1vmax "Roboto";
+    font: 100 1vmax ;
     color: #575757;
   }
   
   .confirmCartItems > p {
-    font: 400 1.8vmax "Roboto";
+    font: 400 1.8vmax ;
   }
   
   .confirmCartItems {
@@ -54,7 +54,7 @@
   
   .confirmCartItemsContainer > div {
     display: flex;
-    font: 400 1vmax "Roboto";
+    font: 400 1vmax ;
     align-items: center;
     justify-content: space-between;
     margin: 2vmax 0;
@@ -72,7 +72,7 @@
   }
   
   .confirmCartItemsContainer > div > span {
-    font: 100 1vmax "Roboto";
+    font: 100 1vmax ;
     color: #5e5e5e;
   }
   
@@ -82,7 +82,7 @@
   
   .orderSummary > p {
     text-align: center;
-    font: 400 1.8vmax "Roboto";
+    font: 400 1.8vmax ;
     border-bottom: 1px solid rgba(0, 0, 0, 0.267);
     padding: 1vmax;
     width: 100%;
@@ -92,7 +92,7 @@
   
   .orderSummary > div > div {
     display: flex;
-    font: 300 1vmax "Roboto";
+    font: 300 1vmax ;
     justify-content: space-between;
     margin: 2vmax 0;
   }
@@ -102,7 +102,7 @@
   
   .orderSummaryTotal {
     display: flex;
-    font: 300 1vmax "Roboto";
+    font: 300 1vmax ;
     justify-content: space-between;
     border-top: 1px solid rgba(0, 0, 0, 0.363);
     padding: 2vmax 0;
@@ -117,7 +117,7 @@
     margin: auto;
     cursor: pointer;
     transition: 0.5s;
-    font: 400 1vmax "Roboto";
+    font: 400 1vmax ;
   }
   
   .orderSummary > button:hover {
@@ -136,7 +136,7 @@
     }
   
     .confirmshippingArea > p {
-      font: 400 6vw "Roboto";
+      font: 400 6vw ;
     }
   
     .confirmshippingAreaBox > div {
@@ -145,14 +145,14 @@
     }
   
     .confirmshippingAreaBox > div > p {
-      font: 400 4vw "Roboto";
+      font: 400 4vw ;
     }
     .confirmshippingAreaBox > div > span {
-      font: 100 4vw "Roboto";
+      font: 100 4vw ;
     }
   
     .confirmCartItems > p {
-      font: 400 6vw "Roboto";
+      font: 400 6vw ;
     }
   
     .confirmCartItemsContainer {
@@ -160,7 +160,7 @@
     }
   
     .confirmCartItemsContainer > div {
-      font: 400 4vw "Roboto";
+      font: 400 4vw ;
       margin: 4vw 0;
     }
   
@@ -174,7 +174,7 @@
     }
   
     .confirmCartItemsContainer > div > span {
-      font: 100 4vw "Roboto";
+      font: 100 4vw ;
     }
   
     .orderSummary {
@@ -182,22 +182,22 @@
     }
   
     .orderSummary > p {
-      font: 400 6vw "Roboto";
+      font: 400 6vw ;
       padding: 4vw;
     }
   
     .orderSummary > div > div {
-      font: 300 4vw "Roboto";
+      font: 300 4vw ;
     }
   
     .orderSummaryTotal {
-      font: 300 4vw "Roboto";
+      font: 300 4vw ;
       padding: 5vw 0;
     }
   
     .orderSummary > button {
       padding: 4vw;
       margin: 4vw auto;
-      font: 400 4vw "Roboto";
+      font: 400 4vw ;
     }
   }

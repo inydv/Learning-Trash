@@ -9,10 +9,10 @@ import LockIcon from '@material-ui/icons/Lock';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Loading from "../../../Components/loading/Loading";
 
-function Signup() {
+function Auth() {
 
   const dispatch = useDispatch();
-  const { currentUser, isFetching, error } = useSelector((state) => state.auth);
+  const { currentUser, isFetching, error } = useSelector((state) => state.user);
 
   const location = useLocation();
   const redirect = location.search ? location.search.split("=")[1] : "/account";
@@ -210,4 +210,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Auth;

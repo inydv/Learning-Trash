@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Contact.css";
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 import { useNavigate } from "react-router-dom";
 
 function Contact() {
@@ -22,6 +24,7 @@ function Contact() {
 
   return (
     <div>
+      <Navbar />
       <div className="wrap">
         {TF ? (
           <>
@@ -67,6 +70,7 @@ function Contact() {
           <h1 className="title">Thanks For Contacting Us...</h1>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

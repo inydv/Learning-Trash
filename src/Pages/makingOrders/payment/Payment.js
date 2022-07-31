@@ -36,7 +36,7 @@ function Payment() {
   const payBtn = useRef(null);
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
-  const { user } = useSelector((state) => state.auth.currentUser);
+  const { user } = useSelector((state) => state.user.currentUser);
   const { error } = useSelector((state) => state.newOrder);
 
   const paymentData = {

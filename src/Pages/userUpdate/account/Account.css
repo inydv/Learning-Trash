@@ -56,7 +56,7 @@
   
   .profileContainer > div:last-child > div > h4 {
     color: white;
-    font: 400 1.2vmax "Roboto";
+    font: 400 1.2vmax ;
   }
   
   .profileContainer > div:last-child > div > p {
@@ -74,7 +74,7 @@
   .profileContainer > div:last-child > div:last-child > a {
     border: none;
     background-color: rgb(58, 57, 57);
-    font: 400 1vmax "Roboto";
+    font: 400 1vmax ;
     color: white;
     text-decoration: none;
     padding: 0.5vmax;
@@ -93,12 +93,12 @@
     }
   
     .profileContainer > div:first-child > h1 {
-      font: 500 3.2vmax "Roboto";
+      font: 500 3.2vmax ;
       transform: translateY(-2vmax);
     }
   
     .profileContainer > div:first-child > a {
-      font: 400 1.7vmax "Roboto";
+      font: 400 1.7vmax ;
       padding: 1vmax;
     }
   
@@ -108,7 +108,7 @@
     }
   
     .profileContainer > div:last-child > div > h4 {
-      font: 400 2.5vmax "Roboto";
+      font: 400 2.5vmax ;
     }
   
     .profileContainer > div:last-child > div > p {
@@ -117,7 +117,7 @@
     }
   
     .profileContainer > div:last-child > div:last-child > a {
-      font: 400 1.8vmax "Roboto";
+      font: 400 1.8vmax ;
       padding: 1vmax;
       margin: 2vmax 0;
     }

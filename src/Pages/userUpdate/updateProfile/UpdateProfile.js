@@ -5,6 +5,8 @@ import FaceIcon from "@material-ui/icons/Face";
 import profileImage from "../../../Images/profileImage.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_PROFILE, ISUPDATED, LOAD_USER } from "../../../redux/user/userApiCall";
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 import { useNavigate } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
 
@@ -12,7 +14,7 @@ const UpdateProfile = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const user = useSelector((state) => state.auth.currentUser.user);
+    const user = useSelector((state) => state.user.currentUser.user);
     const { isUpdated, isFetching } = useSelector((state) => state.user);
 
     const [username, setUsername] = useState("");
@@ -66,6 +68,7 @@ const UpdateProfile = () => {
 
     return (
         <div>
+            <Navbar />
             {isFetching ? (
                 <Loading />
             ) : (
@@ -121,6 +124,7 @@ const UpdateProfile = () => {
                     </div>
                 </div>
             )}
+            <Footer />
         </div>
     );
 };

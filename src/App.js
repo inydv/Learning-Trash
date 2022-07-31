@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Navbar from "./Components/navbar/Navbar";
+import { publicRequest } from "./requestMethods";
 import Home from "./Pages/staticPages/home/Home";
 import Contact from "./Pages/staticPages/contact/Contact";
 import About from "./Pages/staticPages/about/About";
@@ -18,14 +18,11 @@ import ConfirmOrder from "./Pages/makingOrders/confirmOrder/ConfirmOrder";
 import Wrapper from "./Pages/makingOrders/payment/Payment";
 import OrderSuccess from "./Pages/makingOrders/orderSuccess/OrderSuccess";
 import Order from "./Pages/makingOrders/order/Order";
-import NewsLetter from "./Components/newsLetter/NewsLetter";
-import Footer from "./Components/footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { publicRequest } from "./requestMethods";
 
 function App() {
-  const user = useSelector((state) => state.auth.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
 
   const [stripeApiKey, setStripeApiKey] = useState("")
 
@@ -40,10 +37,14 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar />
       <Routes>
 
+        <Route exact path="/register" element={<Auth />} />
+        <Route exact path="/password/forgot" element={<ResetPW />} />
+        <Route exact path="/password/reset/:token" element={<PWReset />} />
+
         <Route exact path="/" element={<Home />} />
+
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About />} />
 
@@ -51,13 +52,11 @@ function App() {
         <Route path="/shop/:keyword" element={<Shop />} />
         <Route exact path="/product/:id" element={<SinglePage />} />
 
-        <Route exact path="/register" element={user ? <Home /> : <Auth />} />
-        <Route exact path="/password/forgot" element={<ResetPW />} />
-        <Route exact path="/password/reset/:token" element={<PWReset />} />
-
-        {user && <Route exact path="/account" element={<Account />} />}
-        {user && <Route exact path="/me/update" element={<UpdateProfile />} />}
+        <Route exact path="/account" element={<Account />} />
+        <Route exact path="/me/update" element={<UpdateProfile />} />
         <Route exact path="/password/update" element={<UpdatePassword />} />
+
+        <Route exact path="/MyOrders" element={<Order />} />
 
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/shipping" element={<Shipping />} />
@@ -66,12 +65,8 @@ function App() {
           <Route exact path="/process/payment" element={<Wrapper stripeApiKey={stripeApiKey} />} />
         )}
         <Route exact path="/success" element={<OrderSuccess />} />
-        {user && <Route exact path="/MyOrders" element={<Order />} />}
 
       </Routes>
-
-      {user ? <NewsLetter /> : ""}
-      <Footer />
     </div>
   );
 }

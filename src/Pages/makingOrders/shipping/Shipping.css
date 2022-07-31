@@ -18,7 +18,7 @@
   .shippingHeading {
     text-align: center;
     color: rgba(0, 0, 0, 0.664);
-    font: 400 1.3vmax "Roboto";
+    font: 400 1.3vmax ;
     padding: 1.3vmax;
     border-bottom: 1px solid rgba(0, 0, 0, 0.205);
     width: 50%;
@@ -65,7 +65,7 @@
     border: none;
     background-color: tomato;
     color: white;
-    font: 300 1vmax "Roboto";
+    font: 300 1vmax ;
     width: 100%;
     padding: 1vmax;
     cursor: pointer;
@@ -85,7 +85,7 @@
     }
   
     .shippingHeading {
-      font: 400 6vw "Roboto";
+      font: 400 6vw ;
       padding: 5vw;
     }
   
@@ -105,7 +105,7 @@
     }
   
     .shippingBtn {
-      font: 300 4vw "Roboto";
+      font: 300 4vw ;
       padding: 4vw;
     }
   }

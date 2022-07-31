@@ -3,6 +3,8 @@ import "./Shop.css";
 import Products from "../../../Components/productList/Products";
 import Loading from "../../../Components/loading/Loading";
 import Search from "../../../Components/search/Search";
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { FETCHING_ALL_PRODUCT } from "../../../redux/product/productsApiCall";
 import { useParams } from "react-router-dom";
@@ -41,6 +43,8 @@ function Shop() {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="shop">
       <div className="container-item">
         {error ? (
@@ -150,6 +154,8 @@ function Shop() {
       )}
 
     </div>
+    <Footer />
+    </>
   );
 }
 

@@ -12,7 +12,7 @@
   }
   
   .paymentForm > p {
-    font: 400 2vmax "Roboto";
+    font: 400 2vmax ;
     color: rgba(0, 0, 0, 0.753);
     border-bottom: 1px solid rgba(0, 0, 0, 0.13);
     padding: 1vmax 0;
@@ -48,7 +48,7 @@
     border: none;
     background-color: tomato;
     color: white;
-    font: 300 0.9vmax "Roboto";
+    font: 300 0.9vmax ;
     width: 100%;
     padding: 0.8vmax;
     cursor: pointer;
@@ -66,7 +66,7 @@
     }
   
     .paymentForm > p {
-      font: 400 8vw "Roboto";
+      font: 400 8vw ;
       padding: 4vw 0;
       width: 60%;
     }
@@ -84,7 +84,7 @@
     }
   
     .paymentFormBtn {
-      font: 300 4vw "Roboto";
+      font: 300 4vw ;
       padding: 4vw;
     }
   }

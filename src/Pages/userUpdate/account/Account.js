@@ -1,14 +1,17 @@
 import React from 'react'
 import "./Account.css"
 import Loading from "../../../Components/loading/Loading";
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Account() {
-    const { user, loading } = useSelector((state) => state.auth.currentUser);
+    const { user, loading } = useSelector((state) => state.user.currentUser);
 
     return (
         <div>
+            <Navbar />
             {loading ? (
                 <Loading />
             ) : (
@@ -40,6 +43,7 @@ function Account() {
                         </div>
                     </div>
                 </div>)}
+                <Footer />
         </div>
     )
 }

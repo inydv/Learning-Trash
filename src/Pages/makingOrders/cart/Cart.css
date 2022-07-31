@@ -21,7 +21,7 @@
     border: none;
     padding: 1vmax 3vmax;
     cursor: pointer;
-    font: 400 1vmax "Roboto";
+    font: 400 1vmax ;
     text-decoration: none;
   }
   
@@ -37,7 +37,7 @@
     color: white;
     display: grid;
     grid-template-columns: 4fr 1fr 1fr;
-    font: 300 0.7vmax "Roboto";
+    font: 300 0.7vmax ;
   }
   .cartHeader > p {
     margin: 10px;
@@ -77,7 +77,7 @@
     width: 1vmax;
     text-align: center;
     outline: none;
-    font: 400 0.8vmax "Roboto";
+    font: 400 0.8vmax ;
     color: rgba(0, 0, 0, 0.74);
   }
   
@@ -102,7 +102,7 @@
     margin: 1vmax 4vmax;
     box-sizing: border-box;
     padding: 2vmax 0;
-    font: 300 1vmax "Roboto";
+    font: 300 1vmax ;
     display: flex;
     justify-content: space-between;
   }
@@ -117,7 +117,7 @@
     border: none;
     padding: 0.8vmax 4vmax;
     width: 50%;
-    font: 300 0.8vmax "Roboto";
+    font: 300 0.8vmax ;
     margin: 1vmax 4vmax;
     cursor: pointer;
     border-radius: 30px;
@@ -131,7 +131,7 @@
   
     .cartHeader {
       width: 100%;
-      font: 300 1.7vmax "Roboto";
+      font: 300 1.7vmax ;
       grid-template-columns: 3fr 1fr 1fr;
     }
   
@@ -151,13 +151,13 @@
     .cartInput > input {
       width: 2vmax;
       padding: 1.5vmax;
-      font: 400 1.8vmax "Roboto";
+      font: 400 1.8vmax ;
     }
   
     .cartSubtotal {
       padding: 1.5vmax;
       height: 20vmax;
-      font: 300 2vmax "Roboto";
+      font: 300 2vmax ;
     }
   
     .cartGrossProfit {
@@ -167,12 +167,12 @@
   
     .cartGrossProfitBox {
       padding: 2vmax;
-      font: 300 2vmax "Roboto";
+      font: 300 2vmax ;
     }
   
     .checkOutBtn > button {
       padding: 2vmax 4vmax;
       width: 100%;
-      font: 300 2vmax "Roboto";
+      font: 300 2vmax ;
     }
   }

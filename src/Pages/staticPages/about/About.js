@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import "./About.css";
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 
 function About() {
   useEffect(() => {
@@ -8,6 +10,8 @@ function About() {
 
   return (
     <div>
+
+      <Navbar />
       <div className="aboutPage">
         <h1>ABOUT</h1>
         <h3>
@@ -116,6 +120,7 @@ function About() {
           different perspective!
         </p>
       </div>
+      <Footer />
     </div>
   );
 }

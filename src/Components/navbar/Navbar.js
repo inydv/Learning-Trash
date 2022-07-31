@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
 
 function Navbar() {
-  const user = useSelector((state) => state.auth.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
   const cart = useSelector((state) => state.cart.cartItems);
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -131,7 +131,7 @@ function Navbar() {
 
         <div className="cart">
           <Link to="/cart">
-            <Badge badgeContent={cart.length} color="primary">
+            <Badge badgeContent={cart.length} overlap="rectangular" color="primary">
               <ShoppingCartIcon />
             </Badge>
           </Link>

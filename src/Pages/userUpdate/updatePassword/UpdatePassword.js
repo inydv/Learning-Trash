@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_PW, ISUPDATED } from "../../../redux/user/userApiCall";
 import { useNavigate } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockIcon from "@material-ui/icons/Lock"
 import VpnKeyIcon from "@material-ui/icons/VpnKey"
@@ -41,6 +43,7 @@ function UpdatePassword() {
     }, [dispatch, navigate, isUpdated]);
     return (
         <div>
+            <Navbar />
             {isFetching ? (
                 <Loading />
             ) : (
@@ -90,6 +93,7 @@ function UpdatePassword() {
                     </div>
                 </div>
             )}
+            <Footer />
         </div>
     )
 }
