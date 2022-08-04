@@ -24,7 +24,7 @@
     color: white;
     padding: 1.3vmax;
     border-bottom: 1px solid white;
-    width: 50%;
+    width: 80%;
     margin: auto;
   }
   
@@ -81,6 +81,18 @@
   }
   
   .authError {
+    color: tomato;
+  }
+
+  .forgotPasswordForm > a {
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+    align-self: flex-end;
+    transition: all 0.5s;
+  }
+  
+  .forgotPasswordForm > a:hover {
     color: tomato;
   }
   

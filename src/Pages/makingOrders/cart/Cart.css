@@ -10,7 +10,7 @@
   }
   .emptyCart > svg {
     font-size: 5vmax;
-    color: tomato;
+    color: rgb(58, 57, 57);
   }
   .emptyCart > p {
     font-size: 2vmax;
@@ -23,15 +23,21 @@
     cursor: pointer;
     font: 400 1vmax ;
     text-decoration: none;
+    transition: all 0.5s;
+  }
+
+  .emptyCart > a:hover {
+    background-color: tomato;
   }
   
   .cartPage {
-    padding: 5vmax;
+    padding: 10px 30px;
+    margin-bottom: 20px;
   }
   
   .cartHeader {
-    background-color: tomato;
-    width: 90%;
+    background-color: rgb(58, 57, 57);
+    width: 100%;
     box-sizing: border-box;
     margin: auto;
     color: white;
@@ -39,15 +45,17 @@
     grid-template-columns: 4fr 1fr 1fr;
     font: 300 0.7vmax ;
   }
+
   .cartHeader > p {
     margin: 10px;
   }
+
   .cartHeader > p:last-child {
     text-align: end;
   }
   
   .cartContainer {
-    width: 90%;
+    width: 100%;
     margin: auto;
     display: grid;
     grid-template-columns: 4fr 1fr 1fr;
@@ -61,7 +69,7 @@
   
   .cartInput > button {
     border: none;
-    background-color: rgba(0, 0, 0, 0.616);
+    background-color: rgb(58, 57, 57);
     padding: 0.5vmax;
     cursor: pointer;
     color: white;
@@ -78,7 +86,7 @@
     text-align: center;
     outline: none;
     font: 400 0.8vmax ;
-    color: rgba(0, 0, 0, 0.74);
+    color: black;
   }
   
   .cartSubtotal {
@@ -89,17 +97,17 @@
     box-sizing: border-box;
     font: 300 1vmax cursive;
     justify-content: flex-end;
-    color: rgba(0, 0, 0, 0.753);
+    color: white;
   }
   
   .cartGrossProfit {
     display: grid;
-    grid-template-columns: 2fr 1.2fr;
+    grid-template-columns: 2fr 1fr;
   }
   
   .cartGrossProfitBox {
-    border-top: 3px solid tomato;
-    margin: 1vmax 4vmax;
+    border-top: 3px solid rgb(58, 57, 57);
+    margin: 1vmax 0vmax;
     box-sizing: border-box;
     padding: 2vmax 0;
     font: 300 1vmax ;
@@ -112,13 +120,13 @@
     justify-content: flex-end;
   }
   .checkOutBtn > button {
-    background-color: tomato;
+    background-color: rgb(58, 57, 57);
     color: white;
     border: none;
     padding: 0.8vmax 4vmax;
     width: 50%;
     font: 300 0.8vmax ;
-    margin: 1vmax 4vmax;
+    margin: 1vmax 0vmax;
     cursor: pointer;
     border-radius: 30px;
   }

@@ -13,12 +13,6 @@ import { FETCHING_ALL_PRODUCT } from "../../../redux/product/productsApiCall"
 function Home() {
   const dispatch = useDispatch();
 
-  const { products, isFetching, error } = useSelector(
-    (state) => state.products
-  );
-
-  const show = useSelector((state) => state.newsLetter.show);
-
   useEffect(() => {
     const keyword = ""
     const currentPage = 1
@@ -28,6 +22,12 @@ function Home() {
     const sort = "oldest"
     dispatch(FETCHING_ALL_PRODUCT(keyword, currentPage, price, category, ratings, sort))
   }, [dispatch]);
+
+  const { products, isFetching, error } = useSelector(
+    (state) => state.products
+  );
+
+  const show = useSelector((state) => state.newsLetter.show);
 
   return (
     <>

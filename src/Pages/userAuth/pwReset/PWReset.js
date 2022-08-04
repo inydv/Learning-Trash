@@ -8,78 +8,79 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockIcon from "@material-ui/icons/Lock"
 
 function PWReset() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const token = useParams();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const token = useParams();
 
-  const { isUpdated, isFetching } = useSelector((state) => state.user);
+    const { isUpdated, isFetching } = useSelector((state) => state.user);
 
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
-  const resetPasswordSubmit = (e) => {
-      e.preventDefault();
+    const resetPasswordSubmit = (e) => {
+        e.preventDefault();
 
-      const myForm = new FormData();
+        const myForm = new FormData();
 
-      myForm.set("password", password);
-      myForm.set("confirmPassword", confirmPassword);
-      dispatch(RESET_PW(token.token,myForm));
-  };
+        myForm.set("password", password);
+        myForm.set("confirmPassword", confirmPassword);
+        dispatch(RESET_PW(token.token, myForm));
+    };
 
-  useEffect(() => {
-      // if (error) {
-      //   dispatch(clearErrors());
-      // }
+    useEffect(() => {
+        // if (error) {
+        //   dispatch(clearErrors());
+        // }
 
-      if (isUpdated) {
-          navigate("/login");
-      }
-  }, [dispatch, navigate, isUpdated]);
-  return (
-    <div>
-    {isFetching ? (
-        <Loading />
-    ) : (
+        if (isUpdated) {
+            navigate("/login");
+        }
+    }, [dispatch, navigate, isUpdated]);
+    return (
         <div>
-            <div className="resetPasswordContainer">
-                <div className="resetPasswordBox">
-                    <h2 className="resetPasswordHeading">Update Profile</h2>
+            {isFetching ? (
+                <Loading />
+            ) : (
+                <div>
+                    <div className="resetPasswordContainer">
+                        <div className="resetPasswordBox">
+                            <h2 className="resetPasswordHeading">Update Password</h2>
 
-                    <form
-                        className="resetPasswordForm"
-                        onSubmit={resetPasswordSubmit}
-                    >
-                        <div className="loginPassword">
-                            <LockOpenIcon className="Icon" />
-                            <input
-                                type="password"
-                                placeholder="New Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
+                            <form
+                                className="resetPasswordForm"
+                                onSubmit={resetPasswordSubmit}
+                            >
+                                <div className="loginPassword">
+                                    <LockOpenIcon className="Icon" />
+                                    <input
+                                        autoFocus={true}
+                                        type="password"
+                                        placeholder="New Password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                </div>
+                                <div className="loginPassword">
+                                    <LockIcon className="Icon" />
+                                    <input
+                                        type="password"
+                                        placeholder="Confirm Password"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                    />
+                                </div>
+                                <input
+                                    type="submit"
+                                    value="Update"
+                                    className="resetPasswordBtn"
+                                />
+                            </form>
                         </div>
-                        <div className="loginPassword">
-                            <LockIcon className="Icon" />
-                            <input
-                                type="password"
-                                placeholder="Confirm Password"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
-                            />
-                        </div>
-                        <input
-                            type="submit"
-                            value="Update"
-                            className="resetPasswordBtn"
-                        />
-                    </form>
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
-    )}
-</div>
-  );
+    );
 }
 
 export default PWReset;

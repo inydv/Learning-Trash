@@ -25,7 +25,7 @@ function SinglePage() {
   // const id = location.pathname.split("/")[2];
 
   const { product, isFetching, error } = useSelector(
-    (state) => state.product
+    (state) => state.products
   );
 
   const [quantity, setQuantity] = useState(1);

@@ -8,7 +8,7 @@
   }
   
   .shippingBox {
-    background-color: white;
+    background-color: black;
     width: 25vw;
     height: 90vh;
     box-sizing: border-box;
@@ -17,10 +17,10 @@
   
   .shippingHeading {
     text-align: center;
-    color: rgba(0, 0, 0, 0.664);
+    color: white;
     font: 400 1.3vmax ;
     padding: 1.3vmax;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.205);
+    border-bottom: 1px solid whitesmoke;
     width: 50%;
     margin: auto;
   }

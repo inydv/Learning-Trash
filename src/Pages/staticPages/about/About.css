@@ -1,5 +1,5 @@
 .aboutPage {
-  padding: 30px 100px;
+  padding: 10px 30px;
 }
 
 .aboutPage h1 {
@@ -16,7 +16,7 @@
 
 @media only screen and (max-width: 800px) {
   .aboutPage {
-    padding: 20px;
+    padding: 5px 10px;
   }
 
   .aboutPage h1 {

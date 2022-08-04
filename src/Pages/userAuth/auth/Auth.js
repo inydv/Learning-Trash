@@ -1,32 +1,32 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Auth.css";
 import profileImage from "../../../Images/profileImage.jpg";
+import Loading from "../../../Components/loading/Loading";
+import { LOGIN, REGISTER, CLEAR_ERRORS } from "../../../redux/user/userApiCall";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { LOGIN, REGISTER, CLEAR_ERRORS } from "../../../redux/user/userApiCall";
 import MailIcon from '@material-ui/icons/Mail';
 import LockIcon from '@material-ui/icons/Lock';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import Loading from "../../../Components/loading/Loading";
 
 function Auth() {
-
   const dispatch = useDispatch();
   const { currentUser, isFetching, error } = useSelector((state) => state.user);
 
   const location = useLocation();
   const redirect = location.search ? location.search.split("=")[1] : "/account";
+
   const navigate = useNavigate();
 
   useEffect(() => {
     CLEAR_ERRORS(dispatch);
 
     if (currentUser) {
-      navigate(redirect)
+      navigate(`/${redirect}`)
     }
 
     window.scrollTo(0, 0);
-  }, [dispatch]);
+  }, [dispatch, navigate, currentUser, redirect]);
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("")

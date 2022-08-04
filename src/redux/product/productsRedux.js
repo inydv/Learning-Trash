@@ -4,6 +4,7 @@ const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: null,
+    product: null,
     isFetching: false,
     error: null,
     productsCount: 0,
@@ -36,12 +37,12 @@ const productsSlice = createSlice({
     },
     PRODUCT_DETAILS_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.products = action.payload.product;
+      state.product = action.payload.product;
     },
     PRODUCT_DETAILS_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
-      state.products = null;
+      state.product = null;
     },
   },
 });

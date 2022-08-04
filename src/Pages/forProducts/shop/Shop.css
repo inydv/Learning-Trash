@@ -1,5 +1,5 @@
 .shop {
-  padding: 30px;
+  padding: 10px 30px;
 }
 
 .topThings {
@@ -101,7 +101,7 @@
 
 @media only screen and (max-width: 800px) {
   .shop {
-    padding: 15px;
+    padding: 5px 10px;
   }
 
   .shopTitle {

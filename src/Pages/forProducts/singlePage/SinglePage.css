@@ -4,7 +4,7 @@
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  padding: 10px 50px;
+  padding: 10px 30px;
 }
 
 .CarouselImage {
@@ -105,7 +105,7 @@
 @media only screen and (max-width: 800px) {
   .singlePage {
     flex-direction: column;
-    padding: 20px;
+    padding: 5px 10px;
   }
 
   .CarouselImage {

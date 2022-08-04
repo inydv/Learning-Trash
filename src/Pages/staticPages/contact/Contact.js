@@ -34,7 +34,7 @@ function Contact() {
                 <legend className="nameLegend">Name *</legend>
                 <div className="firstName">
                   <label className="firstNameLabel">
-                    <input type="text" className="firstNameInput" required />
+                    <input type="text" className="firstNameInput" autoFocus={true} required />
                     <span className="firstNameSpan">First Name</span>
                   </label>
                 </div>

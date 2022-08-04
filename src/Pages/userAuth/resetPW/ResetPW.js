@@ -3,7 +3,7 @@ import "./ResetPW.css"
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { FORGOT_PW, CLEAR_ERRORS } from "../../../redux/user/userApiCall";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
 
 function ResetPW() {
@@ -46,6 +46,7 @@ function ResetPW() {
                 <div className="forgotPasswordEmail">
                   <MailOutlineIcon />
                   <input
+                    autoFocus={true}
                     type="email"
                     placeholder="Email"
                     required
@@ -54,6 +55,9 @@ function ResetPW() {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
+
+                <Link to="/register">Back To LogIn ?</Link>
+
                 <input
                   type="submit"
                   value="Send"

@@ -1,5 +1,5 @@
 .wrap {
-  padding: 30px 100px;
+  padding: 10px 30px;
 }
 
 .wrap .title {
@@ -80,7 +80,7 @@
 
 @media only screen and (max-width: 800px) {
   .wrap {
-    padding: 20px;
+    padding: 5px 10px;
   }
 
   .wrap .form .fieldForName {
