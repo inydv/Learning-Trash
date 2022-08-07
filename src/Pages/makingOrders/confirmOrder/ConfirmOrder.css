@@ -1,16 +1,16 @@
 .confirmOrderPage {
     height: 100vh;
-    background-color: white;
+    background-color: black;
     display: grid;
     grid-template-columns: 6fr 3fr;
   }
   
   .confirmOrderPage > div:last-child {
-    border-left: 1px solid rgba(0, 0, 0, 0.247);
+    border-left: 1px solid whitesmoke;
   }
   
   .confirmshippingArea {
-    padding: 5vmax;
+    padding: 1vmax;
     padding-bottom: 0%;
   }
   
@@ -20,7 +20,7 @@
   
   .confirmshippingAreaBox,
   .confirmCartItemsContainer {
-    margin: 2vmax;
+    margin: 1vmax;
   }
   
   .confirmshippingAreaBox > div {
@@ -30,12 +30,12 @@
   
   .confirmshippingAreaBox > div > p {
     font: 400 1vmax ;
-    color: black;
+    color: white;
   }
   .confirmshippingAreaBox > div > span {
     margin: 0 1vmax;
     font: 100 1vmax ;
-    color: #575757;
+    color: #ffffffd5;
   }
   
   .confirmCartItems > p {
@@ -43,7 +43,7 @@
   }
   
   .confirmCartItems {
-    padding: 5vmax;
+    padding: 1vmax;
     padding-top: 2vmax;
   }
   
@@ -65,7 +65,7 @@
   }
   
   .confirmCartItemsContainer > div > a {
-    color: #575757;
+    color: #ffffff;
     margin: 0 2vmax;
     width: 60%;
     text-decoration: none;
@@ -73,7 +73,7 @@
   
   .confirmCartItemsContainer > div > span {
     font: 100 1vmax ;
-    color: #5e5e5e;
+    color: #ffffff;
   }
   
   .orderSummary {
@@ -83,7 +83,7 @@
   .orderSummary > p {
     text-align: center;
     font: 400 1.8vmax ;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.267);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.267);
     padding: 1vmax;
     width: 100%;
     margin: auto;
@@ -97,14 +97,14 @@
     margin: 2vmax 0;
   }
   .orderSummary > div > div > span {
-    color: rgba(0, 0, 0, 0.692);
+    color: rgba(255, 255, 255, 0.692);
   }
   
   .orderSummaryTotal {
     display: flex;
     font: 300 1vmax ;
     justify-content: space-between;
-    border-top: 1px solid rgba(0, 0, 0, 0.363);
+    border-top: 1px solid rgba(255, 255, 255, 0.363);
     padding: 2vmax 0;
   }
   

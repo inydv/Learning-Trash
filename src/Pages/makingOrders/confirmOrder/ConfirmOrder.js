@@ -1,5 +1,7 @@
 import React from 'react'
 import './ConfirmOrder.css'
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import { useSelector } from "react-redux";
@@ -38,6 +40,7 @@ function ConfirmOrder() {
 
   return (
     <div>
+      <Navbar />
       <CheckoutSteps activeStep={1} />
       <div className="confirmOrderPage">
         <div>
@@ -107,6 +110,7 @@ function ConfirmOrder() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

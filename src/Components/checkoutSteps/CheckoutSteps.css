@@ -6,8 +6,13 @@
     height: 1px;
     background-color: white;
   }
-  
+
   .MuiStepConnector-active,
   .MuiStepConnector-completed {
-    background-color: tomato;
+    color: tomato !important;
   }
+
+/* In-built css */
+.MuiPaper-root {
+  background-color: black !important;
+}

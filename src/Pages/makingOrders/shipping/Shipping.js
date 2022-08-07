@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import "./Shipping.css"
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import PinDropIcon from "@material-ui/icons/PinDrop";
 import HomeIcon from "@material-ui/icons/Home";
@@ -39,6 +41,7 @@ function Shipping() {
 
     return (
         <div>
+            <Navbar />
             <CheckoutSteps activeStep={0} />
 
             <div className="shippingContainer">
@@ -103,7 +106,7 @@ function Shipping() {
                                 value={country}
                                 onChange={(e) => setCountry(e.target.value)}
                             >
-                                <option value="">Country</option>
+                                <option className="option" value="">Country</option>
                                 {Country &&
                                     Country.getAllCountries().map((item) => (
                                         <option key={item.isoCode} value={item.isoCode}>
@@ -122,7 +125,7 @@ function Shipping() {
                                     value={state}
                                     onChange={(e) => setState(e.target.value)}
                                 >
-                                    <option value="">State</option>
+                                    <option className="option" value="">State</option>
                                     {State &&
                                         State.getStatesOfCountry(country).map((item) => (
                                             <option key={item.isoCode} value={item.isoCode}>
@@ -142,6 +145,7 @@ function Shipping() {
                     </form>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

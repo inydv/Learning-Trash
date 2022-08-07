@@ -10,7 +10,7 @@
   .shippingBox {
     background-color: black;
     width: 25vw;
-    height: 90vh;
+    height: 80vh;
     box-sizing: border-box;
     overflow: hidden;
   }
@@ -21,7 +21,7 @@
     font: 400 1.3vmax ;
     padding: 1.3vmax;
     border-bottom: 1px solid whitesmoke;
-    width: 50%;
+    width: 70%;
     margin: auto;
   }
   
@@ -30,7 +30,7 @@
     flex-direction: column;
     align-items: center;
     margin: auto;
-    padding: 2vmax;
+    padding: 1vmax;
     justify-content: space-evenly;
     height: 80%;
     transition: all 0.5s;
@@ -44,28 +44,27 @@
   
   .shippingForm > div > input,
   .shippingForm > div > select {
-    padding: 1vmax 4vmax;
-    padding-right: 1vmax;
+    padding: 1vmax;
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.267);
+    border: 1px solid black;
     border-radius: 4px;
-    font: 300 0.9vmax cursive;
     outline: none;
+    color: black;
+  }
+
+  .shippingForm > div > select > option {
+    color: black;
   }
   
   .shippingForm > div > svg {
-    position: absolute;
-    transform: translateX(1vmax);
-    font-size: 1.6vmax;
-    color: rgba(0, 0, 0, 0.623);
+    transform: translateX(-0.5vmax);
   }
   
   .shippingBtn {
     border: none;
     background-color: tomato;
     color: white;
-    font: 300 1vmax ;
     width: 100%;
     padding: 1vmax;
     cursor: pointer;
@@ -75,7 +74,7 @@
   }
   
   .shippingBtn:hover {
-    background-color: rgb(179, 66, 46);
+    background-color: tomato;
   }
   
   @media screen and (max-width: 600px) {
@@ -85,7 +84,6 @@
     }
   
     .shippingHeading {
-      font: 400 6vw ;
       padding: 5vw;
     }
   
@@ -96,16 +94,13 @@
     .shippingForm > div > input,
     .shippingForm > div > select {
       padding: 5vw 10vw;
-      font: 300 4vw cursive;
     }
   
     .shippingForm > div > svg {
-      font-size: 6vw;
-      transform: translateX(3vw);
+      transform: translateX(-3vw);
     }
   
     .shippingBtn {
-      font: 300 4vw ;
       padding: 4vw;
     }
   }

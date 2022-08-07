@@ -1,7 +1,7 @@
 .paymentContainer {
     display: grid;
     place-items: center;
-    background-color: rgb(255, 255, 255);
+    background-color: black;
     height: 65vh;
     margin: 2vmax;
   }
@@ -13,8 +13,8 @@
   
   .paymentForm > p {
     font: 400 2vmax ;
-    color: rgba(0, 0, 0, 0.753);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+    color: white;
+    border-bottom: 1px solid white;
     padding: 1vmax 0;
     text-align: center;
     width: 50%;
@@ -28,20 +28,17 @@
   }
   
   .paymentInput {
-    padding: 1vmax 4vmax;
-    padding-right: 1vmax;
+    padding: 1vmax;
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.267);
+    background-color: white;
     border-radius: 4px;
     outline: none;
+    color: black;
   }
   
   .paymentForm > div > svg {
-    position: absolute;
-    transform: translateX(1vmax);
-    font-size: 1.6vmax;
-    color: rgba(0, 0, 0, 0.623);
+    transform: translateX(-0.5vmax);
   }
   
   .paymentFormBtn {

@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import './Payment.css'
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 import CheckoutSteps from "../../../Components/checkoutSteps/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import { Typography } from "@material-ui/core";
@@ -63,7 +65,8 @@ function Payment() {
           "Content-Type": "application/json",
         },
       };
-      const { data } = publicRequest.post(
+
+      const { data } = await publicRequest.post(
         "/payment/process",
         paymentData,
         config
@@ -116,12 +119,14 @@ function Payment() {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      // alert.error(error);
       dispatch(CLEAR_ERRORS());
     }
-  }, [dispatch, error, alert]);
+  }, [dispatch]);
+
   return (
     <div>
+      <Navbar />
         <CheckoutSteps activeStep={2} />
         <div className="paymentContainer">
           <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
@@ -147,6 +152,7 @@ function Payment() {
             />
           </form>
         </div>
+        <Footer />
     </div>
   )
 }
