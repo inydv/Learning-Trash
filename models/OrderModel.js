@@ -19,7 +19,7 @@ const OrderSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      pincode: {
+      pinCode: {
         type: Number,
         required: true,
       },
@@ -31,7 +31,7 @@ const OrderSchema = new mongoose.Schema(
 
     orderItems: [
       {
-        name: {
+        product: {
           type: String,
           required: true,
         },
