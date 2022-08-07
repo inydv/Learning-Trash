@@ -5,7 +5,7 @@ import {
 } from "./cartRedux";
 import { publicRequest } from "../../requestMethods";
 
-export const ADD_ITEMS_TO_CART = (id, quantity) => async (dispatch) => {
+export const ADD_ITEMS_TO_CART = (id, quantity) => async (dispatch, getState) => {
   // async (dispatch, getState)
   const { data } = await publicRequest.get(`/product/${id}`);
   dispatch(
@@ -18,13 +18,15 @@ export const ADD_ITEMS_TO_CART = (id, quantity) => async (dispatch) => {
       quantity,
     })
   );
-  // localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems))
+  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems))
 };
 
-export const REMOVE_ITEMS_FROM_CART = (id) => async (dispatch) => {
+export const REMOVE_ITEMS_FROM_CART = (id) => async (dispatch, getState) => {
   dispatch(REMOVE_CART_ITEM(id));
+  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
 
 export const SAVE_SHIPPING_INFO = (data) => async (dispatch) => {
   dispatch(SAVE_SHIPPING_DETAIL(data));
+  localStorage.setItem("shippingInfo", JSON.stringify(data));
 };
