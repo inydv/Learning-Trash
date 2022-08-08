@@ -6,13 +6,15 @@ import newsLetterRedux from "./newsLetter/newsLetterRedux";
 import productsRedux from "./product/productsRedux";
 import cartRedux from "./cart/cartRedux";
 import newOrderRedux from "./order/newOrderRedux";
+import myOrderRedux from "./order/myOrderRedux";
 
 const reducer = combineReducers({
   user: userRedux,
   newsLetter: newsLetterRedux,
   products: productsRedux,
   cart: cartRedux,
-  newOrder: newOrderRedux
+  newOrder: newOrderRedux,
+  myOrders: myOrderRedux
 });
 
 let initialState = {

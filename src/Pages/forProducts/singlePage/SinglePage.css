@@ -102,6 +102,19 @@
   text-align: center;
 }
 
+.submitDialog {
+  display: flex;
+  flex-direction: column;
+}
+
+.submitDialogTextArea {
+  border: 1px solid rgba(0, 0, 0, 0.082);
+  margin: 1vmax 0;
+  outline: none;
+  padding: 1rem;
+  font: 300 1rem "Roboto";
+}
+
 @media only screen and (max-width: 800px) {
   .singlePage {
     flex-direction: column;

@@ -11,14 +11,32 @@ import { GET_PRODUCT_DETAIL } from "../../../redux/product/productsApiCall";
 import { ADD_ITEMS_TO_CART } from "../../../redux/cart/cartApiCall";
 import Carousel from "react-material-ui-carousel";
 import ReactStars from "react-rating-stars-component";
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button} from "@material-ui/core";
+import { Rating } from "@material-ui/lab";
 
 function SinglePage() {
   const dispatch = useDispatch();
   const id = useParams();
 
+  const [open, setOpen] = useState(false);
+  const [rating, setRating] = useState(0);
+  const[comment, setComment] = useState("");
+
+  const submitReviewToggle = () => {
+    open ? setOpen(false) : setOpen(true);
+  }
+
   useEffect(() => {
     dispatch(GET_PRODUCT_DETAIL(id.id));
     window.scrollTo(0, 0);
+
+    if (reviewError) {
+      dispatch(clearError());
+    }
+
+    if (success) {
+      dispatch(newreview)
+    }
   }, [dispatch, id.id]);
 
   // const location = useLocation();
@@ -27,6 +45,10 @@ function SinglePage() {
   const { product, isFetching, error } = useSelector(
     (state) => state.products
   );
+
+  const {success, error: reviewError} = useSelector(
+    (state) => state.newReview
+  )
 
   const [quantity, setQuantity] = useState(1);
 
@@ -44,12 +66,28 @@ function SinglePage() {
   }
 
   const options = {
-    edit: false,
-    color: "rgba(255, 255, 255,0.2)",
-    activeColor: "tomato",
-    size: window.innerWidth < 600 ? 20 : 25,
-    value: product && product.ratings,
+    // edit: false,
+    // color: "rgba(255, 255, 255,0.2)",
+    // activeColor: "tomato",
+    // size: window.innerWidth < 600 ? 20 : 25,
+    // value: product && product.ratings,
+    size: "large",
+    value: product.ratings,
+    readOnly: true,
+    precision: 0.5,
   };
+
+  const reviewSubmitHandler = () => {
+    const myForm = new FormData();
+
+    myForm.set("rating", rating);
+    myForm.set("comment", comment);
+    myForm.set("productId", match.params.id);
+
+    dispatch(newReview(myForm));
+
+    setOpen(false);
+  }
 
   return (
     <>
@@ -96,7 +134,7 @@ function SinglePage() {
                         </div>
 
                         <div className="detailsBlock-2">
-                          <ReactStars {...options} />
+                          <Rating {...options} />
                           <span> ({product.numOfReviews} Reviews)</span>
                         </div>
 
@@ -125,7 +163,7 @@ function SinglePage() {
                         </div>
 
                         <div className="addToCart">
-                          <button onClick={addToCartHandler}>Add to Cart</button>
+                          <button disabled={product.inStock < 1 ? true : false} onClick={addToCartHandler}>Add to Cart</button>
                         </div>
 
                       </div>
@@ -133,10 +171,36 @@ function SinglePage() {
 
                     <h1 className="reviewsHeading">REVIEWS</h1>
                     <div className="addReview">
-                      <button>Wanna Add Review?</button>
+                      <button onClick={
+                        submitReviewToggle
+                      }>Wanna Add Review?</button>
                     </div>
 
                     <div className="review">
+
+                      <Dialog aria-labelledby="simple-dialog-title"
+                      open={open}
+                      onClose={submitReviewToggle} >
+                        <DialogTitle>Submit Review</DialogTitle>
+                        <DialogContent className="submitDialog">
+                          <Rating
+                          onChange={(e) => setRating(e.target.value)}
+                          value={rating}
+                          size="large" />
+                          <textarea
+                            className="submitDialogTextArea"
+                            cols="30"
+                            rows="5"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                          ></textarea>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button>Cancel</Button>
+                          <Button onClick={reviewSubmitHandler}>Submit</Button>
+                        </DialogActions>
+                      </Dialog>
+
                       {product.reviews && product.reviews[0] ?
                         (<div className="reviews">
                           {

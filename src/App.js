@@ -20,6 +20,7 @@ import OrderSuccess from "./Pages/makingOrders/orderSuccess/OrderSuccess";
 import Order from "./Pages/makingOrders/order/Order";
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
+import OrderDetails from "./Pages/makingOrders/orderDetails/OrderDetails";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -57,6 +58,7 @@ function App() {
         <Route exact path="/password/update" element={<UpdatePassword />} />
 
         <Route exact path="/MyOrders" element={<Order />} />
+        <Route exact path="/order/:id" element={<OrderDetails />} />
 
         <Route exact path="/cart" element={<Cart />} />
         <Route exact path="/shipping" element={<Shipping />} />
