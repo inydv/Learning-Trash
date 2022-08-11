@@ -1,40 +1,35 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './OrderDetails.css'
 import { useSelector, useDispatch } from "react-redux";
-import MetaData from "../layout/MetaData";
-import { Link } from "react-router-dom";
-import { Typography } from "@material-ui/core";
-import { getOrderDetails, clearErrors } from "../../actions/orderAction";
-import Loader from "../layout/Loader/Loader";
-import { useAlert } from "react-alert";
+import { Link, useParams } from "react-router-dom";
+import { GETTING_ORDER, CLEAR_ERRORS } from "../../../redux/order/myOrderApiCall";
+import Loading from "../../../Components/loading/Loading";
 
 function OrderDetails() {
-    const { order, error, loading } = useSelector((state) => state.orderDetails);
+  const { order, error, isFetching } = useSelector((state) => state.orderDetails);
 
   const dispatch = useDispatch();
-  const alert = useAlert();
+  const params = useParams();
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERRORS());
     }
 
-    dispatch(getOrderDetails(match.params.id));
-  }, [dispatch, alert, error, match.params.id]);
+    dispatch(GETTING_ORDER(params.id));
+  }, [dispatch, error, params.id]);
   return (
     <div>
-      {loading ? (
-        <Loader />
+      {isFetching ? (
+        <Loading />
       ) : (
         <div>
-          <MetaData title="Order Details" />
           <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
-              <Typography component="h1">
+              <h1 component="h1">
                 Order #{order && order._id}
-              </Typography>
-              <Typography>Shipping Info</Typography>
+              </h1>
+              <h1>Shipping Info</h1>
               <div className="orderDetailsContainerBox">
                 <div>
                   <p>Name:</p>
@@ -54,7 +49,7 @@ function OrderDetails() {
                   </span>
                 </div>
               </div>
-              <Typography>Payment</Typography>
+              <h1>Payment</h1>
               <div className="orderDetailsContainerBox">
                 <div>
                   <p
@@ -78,7 +73,7 @@ function OrderDetails() {
                 </div>
               </div>
 
-              <Typography>Order Status</Typography>
+              <h1>Order Status</h1>
               <div className="orderDetailsContainerBox">
                 <div>
                   <p
@@ -95,7 +90,7 @@ function OrderDetails() {
             </div>
 
             <div className="orderDetailsCartItems">
-              <Typography>Order Items:</Typography>
+              <h1>Order Items:</h1>
               <div className="orderDetailsCartItemsContainer">
                 {order.orderItems &&
                   order.orderItems.map((item) => (

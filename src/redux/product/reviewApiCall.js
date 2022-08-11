@@ -1,9 +1,9 @@
 import {
   NEW_REVIEW_REQUEST, NEW_REVIEW_SUCCESS, NEW_REVIEW_FAIL, CLEAR_ERRORS
-} from "./productsRedux";
+} from "./reviewRedux";
 import { publicRequest } from "../../requestMethods";
 
-export const newRev = (reviewData) => async (dispatch) => {
+export const NEW_REVIEW = (reviewData) => async (dispatch) => {
   dispatch(NEW_REVIEW_REQUEST());
   try {
     const config = {

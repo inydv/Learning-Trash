@@ -7,6 +7,7 @@ import productsRedux from "./product/productsRedux";
 import cartRedux from "./cart/cartRedux";
 import newOrderRedux from "./order/newOrderRedux";
 import myOrderRedux from "./order/myOrderRedux";
+import reviewRedux from "./product/reviewRedux";
 
 const reducer = combineReducers({
   user: userRedux,
@@ -14,7 +15,8 @@ const reducer = combineReducers({
   products: productsRedux,
   cart: cartRedux,
   newOrder: newOrderRedux,
-  myOrders: myOrderRedux
+  myOrders: myOrderRedux,
+  review: reviewRedux
 });
 
 let initialState = {

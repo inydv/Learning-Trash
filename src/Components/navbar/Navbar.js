@@ -54,7 +54,7 @@ function Navbar() {
   }
 
   function orders() {
-    navigate("/orders");
+    navigate("/MyOrders");
   }
 
   function account() {

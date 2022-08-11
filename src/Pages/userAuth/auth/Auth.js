@@ -14,7 +14,7 @@ function Auth() {
   const { currentUser, isFetching, error } = useSelector((state) => state.user);
 
   const location = useLocation();
-  const redirect = location.search ? location.search.split("=")[1] : "/account";
+  const redirect = location.search ? location.search.split("=")[1] : "";
 
   const navigate = useNavigate();
 

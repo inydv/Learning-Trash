@@ -9,8 +9,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_PRODUCT_DETAIL } from "../../../redux/product/productsApiCall";
 import { ADD_ITEMS_TO_CART } from "../../../redux/cart/cartApiCall";
+import { NEW_REVIEW, CLEAR_ERROR} from '../../../redux/product/reviewApiCall';
 import Carousel from "react-material-ui-carousel";
-import ReactStars from "react-rating-stars-component";
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button} from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 
@@ -31,12 +31,12 @@ function SinglePage() {
     window.scrollTo(0, 0);
 
     if (reviewError) {
-      dispatch(clearError());
+      dispatch(CLEAR_ERROR());
     }
 
-    if (success) {
-      dispatch(newreview)
-    }
+    // if (success) { // new review reset
+    //   dispatch(NEW_REVIEW)
+    // }
   }, [dispatch, id.id]);
 
   // const location = useLocation();
@@ -82,9 +82,9 @@ function SinglePage() {
 
     myForm.set("rating", rating);
     myForm.set("comment", comment);
-    myForm.set("productId", match.params.id);
+    myForm.set("productId", id.id);
 
-    dispatch(newReview(myForm));
+    dispatch(NEW_REVIEW(myForm));
 
     setOpen(false);
   }

@@ -2,17 +2,16 @@ import React, { useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";  // make table auto, wehave to pass row and column only
 import "./Order.css";
 import { useSelector, useDispatch } from "react-redux";
-import { GETTING_ORDER, CLEAR_ERRORS } from "../../../redux/order/myOrderApiCall";
+import { MY_ORDER, CLEAR_ERRORS } from "../../../redux/order/myOrderApiCall";
 import Loading from "../../../Components/loading/Loading";
 import { Link } from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
 import LaunchIcon from "@material-ui/icons/Launch";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
 
   const { isFetching, error, orders } = useSelector((state) => state.myOrders);
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user.currentUser);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
@@ -74,12 +73,11 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
       dispatch(CLEAR_ERRORS());
     }
 
-    dispatch(GETTING_ORDER());
-  }, [dispatch, alert, error]);
+    dispatch(MY_ORDER());
+  }, [dispatch, error]);
 
   return (
     <div>
@@ -97,7 +95,7 @@ const MyOrders = () => {
             autoHeight
           />
 
-          <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
+          <h1 id="myOrdersHeading">{user.username}'s Orders</h1>
         </div>
       )}
     </div>
