@@ -16,7 +16,7 @@ exports.isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
 
   if (!req.user) {
     return next(
-      new ErrorHandler(`user does not exist with Id: ${decodedData._id}`, 400)
+      new ErrorHandler(`user does not exist with Id: ${decodedData.id}`, 400)
     );
   }
 
