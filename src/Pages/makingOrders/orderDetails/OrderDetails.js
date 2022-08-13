@@ -6,7 +6,7 @@ import { GETTING_ORDER, CLEAR_ERRORS } from "../../../redux/order/myOrderApiCall
 import Loading from "../../../Components/loading/Loading";
 
 function OrderDetails() {
-  const { order, error, isFetching } = useSelector((state) => state.orderDetails);
+  const { order, error, isFetching } = useSelector((state) => state.myOrders);
 
   const dispatch = useDispatch();
   const params = useParams();

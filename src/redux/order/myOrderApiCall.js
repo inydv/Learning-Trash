@@ -7,7 +7,7 @@ export const MY_ORDER = () => async (dispatch) => {
   dispatch(My_ORDER_REQUEST());
   try {
     const { data } = await publicRequest.get("/order/me");
-    dispatch(My_ORDER_SUCCESS(data.orders));
+    dispatch(My_ORDER_SUCCESS(data.order));
   } catch (error) {
     dispatch(My_ORDER_FAIL(error.response.data.message));
   }
@@ -17,7 +17,7 @@ export const GETTING_ORDER = (id) => async (dispatch) => {
   dispatch(ORDER_DETAILS_START());
   try {
     const { data } = await publicRequest.get(`/order/${id}`);
-    dispatch(ORDER_DETAILS_SUCCESS(data.orders));
+    dispatch(ORDER_DETAILS_SUCCESS(data.order));
   } catch (error) {
     dispatch(ORDER_DETAILS_FAIL(error.response.data.message));
   }

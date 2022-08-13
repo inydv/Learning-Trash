@@ -28,7 +28,7 @@ const myOrderSlice = createSlice({
         },
         ORDER_DETAILS_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.order = action.payload.order;
+            state.order = action.payload;
         },
         ORDER_DETAILS_FAIL: (state, action) => {
             state.isFetching = false;
