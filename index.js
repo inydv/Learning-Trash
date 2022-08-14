@@ -12,7 +12,7 @@ dotenv.config();
 
 //MONGOOSE
 const mongoose = require("mongoose");
-mongoose.connect(process.env.MONGO_URL).then(() => console.log("DB CONNECTED"));
+mongoose.connect(process.env.MONGO_URL).then(() => console.log("DB CONNECTED")).catch((err) => console.log(err));
 
 // for cloud congiguration
 const cloudinary = require("cloudinary")
