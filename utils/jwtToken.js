@@ -8,14 +8,17 @@ const sendToken = (user, statusCode, res) => {
     //   Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 100 // Expire in days * hours * minutes * seconds * miniSeconds
     // ),
     maxAge: new Date(
-      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 100 // Expire in days * hours * minutes * seconds * miniSeconds
+      Date.now() + 24 // Expire in days * hours * minutes * seconds * miniSeconds
     ),
     httpOnly: true,
   };
 
+  const { password, verified, createdAt, updatedAt, __v, ...others } = user._doc;
+
+  user = others;
+
   res.cookie("token", token, options).status(statusCode).json({
-    user,
-    token,
+    user
   });
 };
 
