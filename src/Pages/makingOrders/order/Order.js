@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";  // make table auto, wehave to pass row and column only
 import "./Order.css";
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { MY_ORDER, CLEAR_ERRORS } from "../../../redux/order/myOrderApiCall";
 import Loading from "../../../Components/loading/Loading";
@@ -81,6 +83,7 @@ const MyOrders = () => {
 
   return (
     <div>
+      <Navbar />
 
       {isFetching ? (
         <Loading />
@@ -98,6 +101,7 @@ const MyOrders = () => {
           <h1 id="myOrdersHeading">{user.username}'s Orders</h1>
         </div>
       )}
+      <Footer />
     </div>
   );
 };
