@@ -19,10 +19,13 @@ import Wrapper from "./Pages/makingOrders/payment/Payment";
 import OrderSuccess from "./Pages/makingOrders/orderSuccess/OrderSuccess";
 import Order from "./Pages/makingOrders/order/Order";
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import OrderDetails from "./Pages/makingOrders/orderDetails/OrderDetails";
+import { LOAD_USER } from "./redux/user/userApiCall";
 
 function App() {
+  const dispatch = useDispatch();
+
   const user = useSelector((state) => state.user.currentUser);
 
   const [stripeApiKey, setStripeApiKey] = useState("")
@@ -34,6 +37,8 @@ function App() {
 
   useEffect(() => {
     getStripeApiKey();
+
+    dispatch(LOAD_USER());
   }, [])
 
   return (
