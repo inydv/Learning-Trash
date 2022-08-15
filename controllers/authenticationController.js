@@ -139,36 +139,27 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
-exports.refreshToken = catchAsyncErrors(async (req, res, next) => {
-  // const headers = req.headers[`authorization`];
-  // const token = headers.split(" ")[1];
+// exports.refreshToken = catchAsyncErrors(async (req, res, next) => {
+//   // const headers = req.headers[`authorization`];
+//   // const token = headers.split(" ")[1];
 
-  const cookies = req.headers.cookie;
-  const prevToken = cookies.split("=")[1];
+//   // const cookies = req.headers.cookie;
+//   // const prevToken = cookies.split("=")[1];
 
-  if (!prevToken) {
-    return next(new ErrorHandler("No token found", 401));
-  }
+//   const { token } = req.cookies;
 
-  jwt.verify(String(prevToken), process.env.JWT_SEC, (err, user) => {
-    if (err) {
-      return next(new ErrorHandler("Invalid Token", 401));
-    }
-    res.clearCookie(`${user.id}`);
-    req.cookies[`${user.id}`] = "";
+//   if (!token) {
+//     return next(new ErrorHandler("No token found", 401));
+//   }
 
-    const token = jwt.sign({id: user.id}, JWT_SEC, {
-      expiresIn: "30s"
-    })
+//   jwt.verify(token, process.env.JWT_SEC, (err, user) => {
+//     if (err) {
+//       return next(new ErrorHandler("Invalid Token", 401));
+//     }
 
-    res.cookie(String(user.id), token, {
-path: "/",
-expires: new Date(Date.now() + 1000 * 30),
-httpOnly: true,
-sameSite: "lax",
-    });
+//     res.clearCookie(`${user.id}`);
+//     req.cookies[`${user.id}`] = "";
 
-    req.id = user.id;
-    next();
-  });
-})
+//     sendToken(user, 200, res);
+//   });
+// })

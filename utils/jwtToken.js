@@ -4,6 +4,7 @@ const sendToken = (user, statusCode, res) => {
 
   // Option for cookie
   const options = {
+    // expires: new Date(Date.now() + 1000 * 20),
     expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * process.env.COOKIE_EXPIRE  // Expire in days * hours * minutes * seconds * miniSeconds
     ),
     // maxAge: new Date(Date.now() + 24),

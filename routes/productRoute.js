@@ -11,7 +11,7 @@ const {
   deleteReview,
 } = require("../controllers/productController");
 
-router.route("/products").get(getAllProducts);
+router.route("/products").get(isAuthenticatedUser, getAllProducts);
 
 router
   .route("/admin/product/new")
@@ -24,7 +24,7 @@ router
   .get(isAuthenticatedUser, getProductReviews)
   .delete(isAuthenticatedUser, deleteReview);
 
-router.route("/product/:id").get(getProductDetails);
+router.route("/product/:id").get(isAuthenticatedUser, getProductDetails);
 
 router
   .route("/admin/product/:id")
