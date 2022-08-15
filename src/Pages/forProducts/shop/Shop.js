@@ -44,117 +44,117 @@ function Shop() {
 
   return (
     <>
-    <Navbar />
-    <div className="shop">
-      <div className="container-item">
-        {error ? (
-          <div>
-            <h1 className="error">Error : {error}</h1>
-          </div>
-        ) : (
-          <>
-            <div className="topThings">
-              <h1 className="shopTitle">Products</h1>
-
-              <div className="search">
-                <Search />
-              </div>
+      <Navbar />
+      <div className="shop">
+        <div className="container-item">
+          {error ? (
+            <div>
+              <h1 className="error">Error : {error}</h1>
             </div>
-          </>
+          ) : (
+            <>
+              <div className="topThings">
+                <h1 className="shopTitle">Products</h1>
+
+                <div className="search">
+                  <Search />
+                </div>
+              </div>
+            </>
+          )}
+
+        </div>
+
+        {isFetching ? (
+          <Loading />
+        ) : (
+          <div className="products">
+            {products &&
+              products.map((product) => (
+                <Products product={product} key={product._id} />
+              ))}
+          </div>
+        )}
+
+        {resultPerPage < productsCount && (
+          <div className="paginationBox">
+            <Pagination
+              activePage={currentPage}
+              itemsCountPerPage={resultPerPage}
+              totalItemsCount={productsCount}
+              onChange={setCurrentPageNo}
+              nextPageText="NEXT"
+              prevPageText="PREV"
+              firstPageText="FIRST"
+              lastPageText="LAST"
+              itemClass="page-item"
+              linkClass="page-link"
+              activeClass="pageItemActive"
+              activeLinkClass="pageLinkActive"
+            />
+          </div>
+        )}
+
+        {!error && (<>
+          <div className="lineSketch"></div>
+          <div className="filterBox">
+            <Typography>Price</Typography>
+            <Slider
+              value={price}
+              onChange={priceHandler}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              min={0}
+              max={25000}
+              style={{ "backgroundColor": "black" }}
+            />
+
+            <div className="forCategories">
+              <Typography>Categories</Typography>
+              <ul className="categoryBox">
+                {categories.map((category) => (
+                  <li
+                    className="category-link"
+                    key={category}
+                    onClick={() => setCategory(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <fieldset>
+              <Typography component="legend">Ratings Above</Typography>
+              <Slider
+                value={ratings}
+                onChange={(e, newRating) => {
+                  setRatings(newRating);
+                }}
+                aria-labelledby="continuous-slider"
+                min={0}
+                max={5}
+              />
+            </fieldset>
+
+            <div className="sort">
+              <Typography component="legend">Sort</Typography>
+              <select className="select" onChange={(e) => setSort(e.target.value)}>
+                <option className="option" value="oldest">
+                  Oldest
+                </option>
+                <option className="option" value="newest">
+                  Newest
+                </option>
+              </select>
+            </div>
+          </div>
+          <div className="lineSketch"></div>
+        </>
         )}
 
       </div>
-
-      {isFetching ? (
-        <Loading />
-      ) : (
-        <div className="products">
-          {products &&
-            products.map((product) => (
-              <Products product={product} key={product._id} />
-            ))}
-        </div>
-      )}
-
-      {resultPerPage < productsCount && (
-        <div className="paginationBox">
-          <Pagination
-            activePage={currentPage}
-            itemsCountPerPage={resultPerPage}
-            totalItemsCount={productsCount}
-            onChange={setCurrentPageNo}
-            nextPageText="NEXT"
-            prevPageText="PREV"
-            firstPageText="FIRST"
-            lastPageText="LAST"
-            itemClass="page-item"
-            linkClass="page-link"
-            activeClass="pageItemActive"
-            activeLinkClass="pageLinkActive"
-          />
-        </div>
-      )}
-
-      {!error && (<>
-        <div className="lineSketch"></div>
-        <div className="filterBox">
-          <Typography>Price</Typography>
-          <Slider
-            value={price}
-            onChange={priceHandler}
-            valueLabelDisplay="auto"
-            aria-labelledby="range-slider"
-            min={0}
-            max={25000}
-            style={{"backgroundColor": "black"}}
-          />
-
-          <div className="forCategories">
-            <Typography>Categories</Typography>
-            <ul className="categoryBox">
-              {categories.map((category) => (
-                <li
-                  className="category-link"
-                  key={category}
-                  onClick={() => setCategory(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <fieldset>
-            <Typography component="legend">Ratings Above</Typography>
-            <Slider
-              value={ratings}
-              onChange={(e, newRating) => {
-                setRatings(newRating);
-              }}
-              aria-labelledby="continuous-slider"
-              min={0}
-              max={5}
-            />
-          </fieldset>
-
-          <div className="sort">
-            <Typography component="legend">Sort</Typography>
-            <select className="select" onChange={(e) => setSort(e.target.value)}>
-              <option className="option" value="oldest">
-                Oldest
-              </option>
-              <option className="option" value="newest">
-                Newest
-              </option>
-            </select>
-          </div>
-        </div>
-        <div className="lineSketch"></div>
-      </>
-      )}
-
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 }

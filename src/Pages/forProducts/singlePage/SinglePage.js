@@ -46,8 +46,8 @@ function SinglePage() {
     (state) => state.products
   );
 
-  const {success, error: reviewError} = useSelector(
-    (state) => state.newReview
+  const {error: reviewError} = useSelector(
+    (state) => state.review
   )
 
   const [quantity, setQuantity] = useState(1);
@@ -72,7 +72,7 @@ function SinglePage() {
     // size: window.innerWidth < 600 ? 20 : 25,
     // value: product && product.ratings,
     size: "large",
-    value: product.ratings,
+    // value: product.ratings,
     readOnly: true,
     precision: 0.5,
   };
