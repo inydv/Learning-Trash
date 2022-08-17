@@ -18,6 +18,7 @@ const sendToken = async (user, statusCode, res) => {
   };
 
   const options2 = {
+    expires: new Date(Date.now() + 1000 * 60),
     httpOnly: true,
     sameSite: 'lax',
     path: '/',

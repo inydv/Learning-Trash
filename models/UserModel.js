@@ -69,7 +69,9 @@ UserSchema.methods.getJWTToken = function () {
 
 // Get Refresh JWT Token
 UserSchema.methods.getRefreshJWTToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SEC)
+  return this.refreshTokens = jwt.sign({ id: this._id }, process.env.JWT_SEC, {
+    expiresIn: process.env.REFRESH_JWT_EXPIRE,
+  }); 
 }
 
 // Compare Password
