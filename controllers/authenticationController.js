@@ -3,12 +3,12 @@ const catchAsyncErrors = require("../middleware/catchAsyncError");
 const sendEmail = require("../utils/sendEmail");
 const ErrorHandler = require("../utils/errorhandler");
 const sendToken = require("../utils/jwtToken");
+const sendTokenAfterRefresh = require("../utils/jwtTokenAfterRefresh");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
-const jwt = require("jsonwebtoken");
 
 // Register
-exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+exports.registerUser = catchAsyncErrors(async (req, res) => {
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
     folder: "avatars",
     width: 150,
@@ -54,9 +54,13 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 // Logout
-exports.logout = catchAsyncErrors(async (req, res, next) => {
+exports.logout = catchAsyncErrors(async (req, res) => {
   res.cookie("token", null, {
     expires: new Date(Date.now()),
+    httpOnly: true,
+  });
+
+  res.cookie("refreshTokens", null, {
     httpOnly: true,
   });
 
@@ -139,27 +143,7 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
-// exports.refreshToken = catchAsyncErrors(async (req, res, next) => {
-//   // const headers = req.headers[`authorization`];
-//   // const token = headers.split(" ")[1];
-
-//   // const cookies = req.headers.cookie;
-//   // const prevToken = cookies.split("=")[1];
-
-//   const { token } = req.cookies;
-
-//   if (!token) {
-//     return next(new ErrorHandler("No token found", 401));
-//   }
-
-//   jwt.verify(token, process.env.JWT_SEC, (err, user) => {
-//     if (err) {
-//       return next(new ErrorHandler("Invalid Token", 401));
-//     }
-
-//     res.clearCookie(`${user.id}`);
-//     req.cookies[`${user.id}`] = "";
-
-//     sendToken(user, 200, res);
-//   });
-// })
+// refresh Token
+exports.refreshToken = catchAsyncErrors(async (req, res) => {
+  sendTokenAfterRefresh(req.user, 201, res);
+})

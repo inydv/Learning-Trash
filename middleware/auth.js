@@ -23,6 +23,32 @@ exports.isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
   next();
 });
 
+exports.checkForRefreshToken = catchAsyncError(async (req, res, next) => {
+  const { refreshToken } = req.cookies;
+
+  if (!refreshToken) {
+    return next(new ErrorHandler("You are not authenticated!", 401));
+  }
+
+  const decodedData = jwt.verify(refreshToken, process.env.JWT_SEC);
+
+  req.user = await User.findById(decodedData.id);
+
+  if (!req.user) {
+    return next(
+      new ErrorHandler(`user does not exist with Id: ${decodedData.id}`, 400)
+    );
+  }
+
+  if (req.user.refreshTokens !== refreshToken) {
+    return next(
+      new ErrorHandler(`Refresh token is not valid!`, 400)
+    );
+  }
+
+  next();
+});
+
 exports.authorizeRoles = (...roles) => {
   // ...roles as array
   return (req, res, next) => {

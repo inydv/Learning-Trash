@@ -39,6 +39,7 @@ const UserSchema = new mongoose.Schema(
       default: "user",
     },
     verified: { type: Boolean, default: false },
+    refreshTokens: String,
     resetPasswordToken: String,
     resetPasswordExpire: Date,
   },
@@ -65,6 +66,11 @@ UserSchema.methods.getJWTToken = function () {
     expiresIn: process.env.JWT_EXPIRE,
   });
 };
+
+// Get Refresh JWT Token
+UserSchema.methods.getRefreshJWTToken = function () {
+  return jwt.sign({ id: this._id }, process.env.JWT_SEC)
+}
 
 // Compare Password
 UserSchema.methods.comparePassword = function (enteredPassword) {
