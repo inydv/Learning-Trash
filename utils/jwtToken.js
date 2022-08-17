@@ -1,9 +1,7 @@
 // Create Token And Save in Cookie
-const sendToken = async (user, statusCode, res) => {
+const sendToken = (user, statusCode, res) => {
   const token = user.getJWTToken();
-  const refreshTokens = user.getRefreshJWTToken();
-
-  await user.save();
+  const refreshToken = user.getRefreshJWTToken();
 
   // Option for cookie
   const options1 = {
@@ -24,11 +22,11 @@ const sendToken = async (user, statusCode, res) => {
     path: '/',
   };
 
-  const { password, verified, createdAt, updatedAt, __v, ...others } = user._doc;
+  const { password, verified, createdAt, updatedAt, refreshTokens, __v, ...others } = user._doc;
 
   user = others;
 
-  res.cookie("token", token, options1).cookie("refreshToken", refreshTokens, options2).status(statusCode).json({
+  res.cookie("token", token, options1).cookie("refreshToken", refreshToken, options2).status(statusCode).json({
     user
   });
 };
