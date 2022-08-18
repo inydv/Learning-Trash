@@ -147,10 +147,3 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 exports.refreshToken = catchAsyncErrors(async (req, res) => {
   sendTokenAfterRefresh(req.user, 201, res);
 })
-
-// Functions
-exports = {
-  display: function() {
-    console.log("yes")
-  }
-}

@@ -1,7 +1,17 @@
+const User = require("../models/UserModel");
+
 // Create Token And Save in Cookie
-const sendToken = (user, statusCode, res) => {
+const sendToken = async (user, statusCode, res) => {
   const token = user.getJWTToken();
   const refreshToken = user.getRefreshJWTToken();
+
+  user = await User.findByIdAndUpdate(
+    user._id,
+    {
+      refreshTokens: refreshToken,
+    },
+    { new: true }
+  );
 
   // Option for cookie
   const options1 = {
