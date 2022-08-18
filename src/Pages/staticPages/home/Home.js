@@ -13,15 +13,19 @@ import { FETCHING_ALL_PRODUCT } from "../../../redux/product/productsApiCall"
 function Home() {
   const dispatch = useDispatch();
 
+  const user = useSelector((state) => state.user.currentUser);
+
   useEffect(() => {
-    const keyword = ""
-    const currentPage = 1
-    const price = [0, 25000]
-    const category = ""
-    const ratings = 0
-    const sort = "oldest"
-    dispatch(FETCHING_ALL_PRODUCT(keyword, currentPage, price, category, ratings, sort))
-  }, [dispatch]);
+    if (user) {
+      const keyword = ""
+      const currentPage = 1
+      const price = [0, 25000]
+      const category = ""
+      const ratings = 0
+      const sort = "oldest"
+      dispatch(FETCHING_ALL_PRODUCT(keyword, currentPage, price, category, ratings, sort))
+    }
+  }, [dispatch, user]);
 
   const { products, isFetching, error } = useSelector(
     (state) => state.products

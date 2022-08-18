@@ -36,10 +36,11 @@ function App() {
   }
 
   useEffect(() => {
-    getStripeApiKey();
-
-    dispatch(LOAD_USER());
-  }, [])
+    if (user) {
+      getStripeApiKey();
+      dispatch(LOAD_USER());
+    }
+  }, [user])
 
   return (
     <div className="app">

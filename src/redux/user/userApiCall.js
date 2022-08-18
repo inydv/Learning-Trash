@@ -2,6 +2,9 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  REFRESH_START,
+  REFRESH_SUCCESS,
+  REFRESH_FAIL,
   REGISTER_START,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -35,6 +38,17 @@ export const LOGIN = (email, password) => async (dispatch) => {
     dispatch(LOGIN_SUCCESS(res.data));
   } catch (error) {
     dispatch(LOGIN_FAIL(error.response.data.message));
+  }
+};
+
+export const refreshToken = () => async (dispatch) => {
+  dispatch(REFRESH_START());
+  try {
+    const config = { headers: { "Content-Type": "application/json" } };
+    const res = await publicRequest.post("/refresh", config);
+    dispatch(REFRESH_SUCCESS(res.data));
+  } catch (error) {
+    dispatch(REFRESH_FAIL(error.response.data.message));
   }
 };
 
