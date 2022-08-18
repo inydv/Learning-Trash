@@ -13,9 +13,12 @@ const sendToken = async (user, statusCode, res) => {
     { new: true }
   );
 
+  const TokenDate = new Date(Date.now() + 1000 * 20);
+  const RefreshTokenDate = new Date(Date.now() + 1000 * 60);
+
   // Option for cookie
   const options1 = {
-    expires: new Date(Date.now() + 1000 * 20),
+    expires: TokenDate,
     // expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * process.env.COOKIE_EXPIRE  // Expire in days * hours * minutes * seconds * miniSeconds
     // ),
     // maxAge: new Date(Date.now() + 24),
@@ -26,7 +29,7 @@ const sendToken = async (user, statusCode, res) => {
   };
 
   const options2 = {
-    expires: new Date(Date.now() + 1000 * 60),
+    expires: RefreshTokenDate,
     httpOnly: true,
     sameSite: 'lax',
     path: '/',
@@ -37,7 +40,7 @@ const sendToken = async (user, statusCode, res) => {
   user = others;
 
   res.cookie("token", token, options1).cookie("refreshToken", refreshToken, options2).status(statusCode).json({
-    user
+    user, TokenDate, RefreshTokenDate
   });
 };
 
