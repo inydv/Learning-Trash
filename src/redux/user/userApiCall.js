@@ -25,7 +25,7 @@ import {
   UPDATE_PASSWORD_FAIL,
   UPDATE_ISUPDATED,
 } from "./userRedux";
-import { publicRequest } from "../../requestMethods";
+import { publicRequest, axiosJWT } from "../../requestMethods";
 
 export const LOGIN = (email, password) => async (dispatch) => {
   dispatch(LOGIN_START());
@@ -52,7 +52,7 @@ export const REGISTER = (userData) => async (dispatch) => {
 export const LOAD_USER = () => async (dispatch) => {
   dispatch(LOAD_USER_START());
   try {
-    const res = await publicRequest.get("/me");
+    const res = await axiosJWT.get("/me");
     dispatch(LOAD_USER_SUCCESS(res.data));
   } catch (error) {
     dispatch(LOAD_USER_FAIL(error.response.data.message));
@@ -61,7 +61,7 @@ export const LOAD_USER = () => async (dispatch) => {
 
 export const LOGOUT = () => async (dispatch) => {
   try {
-    await publicRequest.get('/logout')
+    await axiosJWT.get('/logout')
     dispatch(LOGOUT_SUCCESS());
   } catch (error) {
     dispatch(LOGOUT_FAIL());
@@ -99,7 +99,7 @@ export const UPDATE_PROFILE = (userData) => async (dispatch) => {
   dispatch(UPDATE_PROFILE_START());
   try {
     const config = { headers: { "Content-Type": "multipart/form-data" } };
-    const res = await publicRequest.put("/me/update", userData, config);
+    const res = await axiosJWT.put("/me/update", userData, config);
     dispatch(UPDATE_PROFILE_SUCCESS(res.data));
   } catch (error) {
     dispatch(UPDATE_PROFILE_FAIL(error.response.data.message));
@@ -110,7 +110,7 @@ export const UPDATE_PW = (password) => async (dispatch) => {
   dispatch(UPDATE_PASSWORD_START());
   try {
     const config = { headers: { "Content-Type": "application/json" } };
-    const res = await publicRequest.put("/password/update", password, config);
+    const res = await axiosJWT.put("/password/update", password, config);
     dispatch(UPDATE_PASSWORD_SUCCESS(res.data));
   } catch (error) {
     dispatch(UPDATE_PASSWORD_FAIL(error.response.data.message));

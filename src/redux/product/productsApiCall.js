@@ -6,7 +6,7 @@ import {
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
 } from "./productsRedux";
-import { publicRequest } from "../../requestMethods";
+import { axiosJWT } from "../../requestMethods";
 
 export const FETCHING_ALL_PRODUCT =
   (
@@ -26,7 +26,7 @@ export const FETCHING_ALL_PRODUCT =
           link = `/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}}&ratings[gte]=${ratings}&sort=${sort}`;
         }
 
-        const { data } = await publicRequest.get(link);
+        const { data } = await axiosJWT.get(link);
         dispatch(ALL_PRODUCT_SUCCESS(data));
       } catch (error) {
         dispatch(ALL_PRODUCT_FAIL(error.response.data.message));
@@ -36,7 +36,7 @@ export const FETCHING_ALL_PRODUCT =
 export const GET_PRODUCT_DETAIL = (id) => async (dispatch) => {
   dispatch(PRODUCT_DETAILS_START());
   try {
-    const { data } = await publicRequest.get(`/product/${id}`);
+    const { data } = await axiosJWT.get(`/product/${id}`);
     dispatch(PRODUCT_DETAILS_SUCCESS(data));
   } catch (error) {
     dispatch(PRODUCT_DETAILS_FAIL(error.response.data.message));

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { publicRequest } from "./requestMethods";
+import { axiosJWT } from "./requestMethods";
 import Home from "./Pages/staticPages/home/Home";
 import Contact from "./Pages/staticPages/contact/Contact";
 import About from "./Pages/staticPages/about/About";
@@ -31,7 +31,7 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("")
 
   async function getStripeApiKey() {
-    const { data } = await publicRequest.get("/stripeapikey")
+    const { data } = await axiosJWT.get("/stripeapikey")
     setStripeApiKey(data.stripeApiKey)
   }
 

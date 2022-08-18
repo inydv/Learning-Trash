@@ -3,11 +3,11 @@ import {
   REMOVE_CART_ITEM,
   SAVE_SHIPPING_DETAIL,
 } from "./cartRedux";
-import { publicRequest } from "../../requestMethods";
+import { axiosJWT } from "../../requestMethods";
 
 export const ADD_ITEMS_TO_CART = (id, quantity) => async (dispatch, getState) => {
   // async (dispatch, getState)
-  const { data } = await publicRequest.get(`/product/${id}`);
+  const { data } = await axiosJWT.get(`/product/${id}`);
   dispatch(
     ADD_TO_CART({
       product: data.product._id,

@@ -16,7 +16,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-import { publicRequest } from '../../../requestMethods';
+import { axiosJWT } from '../../../requestMethods';
 import { useNavigate } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js"
@@ -66,7 +66,7 @@ function Payment() {
         },
       };
 
-      const { data } = await publicRequest.post(
+      const { data } = await axiosJWT.post(
         "/payment/process",
         paymentData,
         config
