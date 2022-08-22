@@ -1,34 +1,29 @@
 import axios from "axios";
-import { refreshToken } from "./redux/user/userApiCall";
-import { useDispatch, useSelector } from "react-redux";
 
-export const axiosJWT = axios.create()
+const BASE_URL = "http://localhost:5000/api";
 
-const MyComponent = () => {
-  const dispatch = useDispatch();
-  const { TokenDate } = useSelector((state) => state.user.currentUser);
-  
-  axiosJWT.interceptors.request.use(
-    async (config) => {
-      let currentDate = new Date();
-      console.log(TokenDate, currentDate)
-      if (TokenDate < currentDate.getTime()) {
-       dispatch(refreshToken())
-      }
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
+export const axiosJWT = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true
+})
+
+axiosJWT.interceptors.request.use(
+  async (config) => {
+    let currentDate = new Date();
+    if (localStorage.getItem("TokenDate").getTime() < currentDate.getTime()) {
+      const res = await axios.post("http://localhost:5000/api/refresh");
+      localStorage.setItem("TokenDate", res.data.TokenDate);
+      localStorage.setItem("RefreshTokenDate", res.data.RefreshTokenDate);
     }
-  );
-
-  return null;
-}
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 // RefreshTokenDate
 // For Login, Register, Forgot PW, reset Pw
-const BASE_URL = "http://localhost:5000/api";
-
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
   withCredentials: true

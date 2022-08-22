@@ -36,9 +36,12 @@ function App() {
   }
 
   useEffect(() => {
+    dispatch(LOAD_USER());
+  }, [dispatch])
+
+  useEffect(() => {
     if (user) {
       getStripeApiKey();
-      dispatch(LOAD_USER());
     }
   }, [user])
 

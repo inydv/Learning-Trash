@@ -2,9 +2,6 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  REFRESH_START,
-  REFRESH_SUCCESS,
-  REFRESH_FAIL,
   REGISTER_START,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -36,19 +33,10 @@ export const LOGIN = (email, password) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await publicRequest.post("/login", { email, password }, config);
     dispatch(LOGIN_SUCCESS(res.data));
+    localStorage.setItem("TokenDate", res.data.TokenDate);
+    localStorage.setItem("RefreshTokenDate", res.data.RefreshTokenDate);
   } catch (error) {
     dispatch(LOGIN_FAIL(error.response.data.message));
-  }
-};
-
-export const refreshToken = () => async (dispatch) => {
-  dispatch(REFRESH_START());
-  try {
-    const config = { headers: { "Content-Type": "application/json" } };
-    const res = await publicRequest.post("/refresh", config);
-    dispatch(REFRESH_SUCCESS(res.data));
-  } catch (error) {
-    dispatch(REFRESH_FAIL(error.response.data.message));
   }
 };
 
@@ -68,6 +56,8 @@ export const LOAD_USER = () => async (dispatch) => {
   try {
     const res = await axiosJWT.get("/me");
     dispatch(LOAD_USER_SUCCESS(res.data));
+    localStorage.setItem("TokenDate", res.data.TokenDate);
+    localStorage.setItem("RefreshTokenDate", res.data.RefreshTokenDate);
   } catch (error) {
     dispatch(LOAD_USER_FAIL(error.response.data.message));
   }
@@ -99,6 +89,8 @@ export const RESET_PW = (token, myForm) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await publicRequest.put(`/password/reset/${token}`, myForm, config);
     dispatch(RESET_PASSWORD_SUCCESS(res.data.message));
+    localStorage.setItem("TokenDate", res.data.TokenDate);
+    localStorage.setItem("RefreshTokenDate", res.data.RefreshTokenDate);
   } catch (error) {
     dispatch(RESET_PASSWORD_FAIL(error.response.data.message));
   }
@@ -126,6 +118,8 @@ export const UPDATE_PW = (password) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await axiosJWT.put("/password/update", password, config);
     dispatch(UPDATE_PASSWORD_SUCCESS(res.data));
+    localStorage.setItem("TokenDate", res.data.TokenDate);
+    localStorage.setItem("RefreshTokenDate", res.data.RefreshTokenDate);
   } catch (error) {
     dispatch(UPDATE_PASSWORD_FAIL(error.response.data.message));
   }
