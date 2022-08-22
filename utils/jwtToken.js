@@ -13,8 +13,8 @@ const sendToken = async (user, statusCode, res) => {
     { new: true }
   );
 
-  const TokenDate = new Date(Date.now() + 1000 * 20);
-  const RefreshTokenDate = new Date(Date.now() + 1000 * 60);
+  let TokenDate = new Date(Date.now() + 1000 * 20);
+  let RefreshTokenDate = new Date(Date.now() + 1000 * 60);
 
   // Option for cookie
   const options1 = {
