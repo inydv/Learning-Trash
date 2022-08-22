@@ -8,7 +8,7 @@ const cloudinary = require("cloudinary");
 exports.getUserDetails = catchAsyncErrors(async (req, res) => {
   const user = await User.findById(req.user.id);
 
-  res.status(200).json({ user });
+  sendToken(user, 200, res);
 });
 
 // Update User password

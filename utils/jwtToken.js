@@ -39,6 +39,9 @@ const sendToken = async (user, statusCode, res) => {
 
   user = others;
 
+  TokenDate = TokenDate.getTime();
+  RefreshTokenDate = RefreshTokenDate.getTime();
+
   res.cookie("token", token, options1).cookie("refreshToken", refreshToken, options2).status(statusCode).json({
     user, TokenDate, RefreshTokenDate
   });
