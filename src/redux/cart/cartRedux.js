@@ -14,8 +14,6 @@ const cartSlice = createSlice({
 
             state.cartItems.forEach((search) => {
                 if (search.product === item.product) {
-                    console.log(search.product)
-                    console.log(item)
                     state.cartItems = state.cartItems.map((i) =>
                         i.product === item.product ? item : i
                     )

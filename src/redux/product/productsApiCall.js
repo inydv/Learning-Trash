@@ -29,7 +29,7 @@ export const FETCHING_ALL_PRODUCT =
         const { data } = await axiosJWT.get(link);
         dispatch(ALL_PRODUCT_SUCCESS(data));
       } catch (error) {
-        dispatch(ALL_PRODUCT_FAIL(error.response.data.message));
+        // dispatch(ALL_PRODUCT_FAIL(error.response.data.message));
       }
     };
 

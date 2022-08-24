@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { axiosJWT } from "./requestMethods";
+import { axiosJWT, publicRequest } from "./requestMethods";
 import Home from "./Pages/staticPages/home/Home";
 import Contact from "./Pages/staticPages/contact/Contact";
 import About from "./Pages/staticPages/about/About";
@@ -28,6 +28,27 @@ function App() {
 
   const user = useSelector((state) => state.user.currentUser);
 
+  const refreshToken = async () => {
+    try {
+      await publicRequest.post("/refresh");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  axiosJWT.interceptors.request.use(
+    async (config) => {
+      let currentDate = new Date(Date.now());
+      if (user && user.TokenDate <= currentDate.getTime()) {
+        await refreshToken(); 
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
   const [stripeApiKey, setStripeApiKey] = useState("")
 
   async function getStripeApiKey() {
@@ -35,9 +56,9 @@ function App() {
     setStripeApiKey(data.stripeApiKey)
   }
 
-  useEffect(() => {
-    dispatch(LOAD_USER());
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(LOAD_USER());
+  // }, [dispatch])
 
   useEffect(() => {
     if (user) {
