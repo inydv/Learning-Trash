@@ -21,26 +21,22 @@ import Order from "./Pages/makingOrders/order/Order";
 import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import OrderDetails from "./Pages/makingOrders/orderDetails/OrderDetails";
-import { LOAD_USER } from "./redux/user/userApiCall";
+import { LOAD_USER, refreshToken } from "./redux/user/userApiCall";
 
 function App() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user.currentUser);
 
-  const refreshToken = async () => {
-    try {
-      await publicRequest.post("/refresh");
-    } catch (err) {
-      console.log(err);
-    }
+  const refreshTokens = async () => {
+    dispatch(refreshToken());
   };
 
   axiosJWT.interceptors.request.use(
     async (config) => {
       let currentDate = new Date(Date.now());
       if (user && user.TokenDate <= currentDate.getTime()) {
-        await refreshToken(); 
+        await refreshTokens(); 
       }
       return config;
     },
