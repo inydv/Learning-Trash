@@ -8,7 +8,7 @@ const sendTokenAfterRefresh = async (user, statusCode, res) => {
   user = await User.findByIdAndUpdate(
     user._id,
     {
-      refreshTokens: refreshTokens,
+      refreshTokens: refreshToken,
     },
     { new: true }
   );
