@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
+const { checkForRefreshToken, isAuthenticatedUser, authorizeRoles } = require("../middleware/auth");
 const {
   getUserDetails,
   updatePassword,
@@ -10,7 +10,7 @@ const {
   deleteUserProfile,
 } = require("../controllers/userController");
 
-router.route("/me").get(isAuthenticatedUser, getUserDetails);
+router.route("/me").get(checkForRefreshToken, getUserDetails);
 
 router
   .route("/admin/users")
