@@ -24,20 +24,6 @@ const userSlice = createSlice({
       state.currentUser = null;
     },
 
-    REFRESH_START: (state) => {
-      state.isFetching = true;
-      state.error = false;
-    },
-    REFRESH_SUCCESS: (state, action) => {
-      state.isFetching = false;
-      state.currentUser = action.payload;
-    },
-    REFRESH_FAIL: (state, action) => {
-      state.isFetching = false;
-      state.error = action.payload;
-      state.currentUser = null;
-    },
-
     REGISTER_START: (state) => {
       state.isFetching = true;
       state.error = false;
@@ -143,9 +129,6 @@ export const {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  REFRESH_START,
-  REFRESH_SUCCESS,
-  REFRESH_FAIL,
   REGISTER_START,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
