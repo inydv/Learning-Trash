@@ -31,8 +31,9 @@ function App() {
   axiosJWT.interceptors.request.use(
     async (config) => {
       let currentDate = new Date(Date.now());
-      if (user && user.TokenDate <= currentDate.getTime()) {
-        await publicRequest.post("/refresh");
+      if (localStorage.getItem("time") <= currentDate.getTime()) {
+        const res = await publicRequest.post("/refresh");
+        localStorage.setItem("time", res.data.TokenDate);
       }
       return config;
     },

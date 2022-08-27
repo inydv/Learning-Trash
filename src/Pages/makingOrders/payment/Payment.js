@@ -122,7 +122,7 @@ function Payment() {
       // alert.error(error);
       dispatch(CLEAR_ERRORS());
     }
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   return (
     <div>

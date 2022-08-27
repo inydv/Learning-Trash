@@ -32,6 +32,7 @@ export const LOGIN = (email, password) => async (dispatch) => {
   try {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await publicRequest.post("/login", { email, password }, config);
+    localStorage.setItem("time", res.data.TokenDate);
     dispatch(LOGIN_SUCCESS(res.data));
   } catch (error) {
     dispatch(LOGIN_FAIL(error.response.data.message));
@@ -42,7 +43,8 @@ export const REGISTER = (userData) => async (dispatch) => {
   dispatch(REGISTER_START());
   try {
     const config = { headers: { "content-Type": "multipart/form-data" } }
-    await publicRequest.post("/register", userData, config, { withCredentials: true });
+    const res = await publicRequest.post("/register", userData, config, { withCredentials: true });
+    localStorage.setItem("time", res.data.TokenDate);
     dispatch(REGISTER_SUCCESS());
   } catch (error) {
     dispatch(REGISTER_FAIL(error.response.data.message));
@@ -53,6 +55,7 @@ export const LOAD_USER = () => async (dispatch) => {
   dispatch(LOAD_USER_START());
   try {
     const res = await axiosJWT.get("/me");
+    localStorage.setItem("time", res.data.TokenDate);
     dispatch(LOAD_USER_SUCCESS(res.data));
   } catch (error) {
     dispatch(LOAD_USER_FAIL(error.response.data.message));
@@ -84,6 +87,7 @@ export const RESET_PW = (token, myForm) => async (dispatch) => {
   try {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await publicRequest.put(`/password/reset/${token}`, myForm, config);
+    localStorage.setItem("time", res.data.TokenDate);
     dispatch(RESET_PASSWORD_SUCCESS(res.data.message));
   } catch (error) {
     dispatch(RESET_PASSWORD_FAIL(error.response.data.message));
@@ -111,6 +115,7 @@ export const UPDATE_PW = (password) => async (dispatch) => {
   try {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await axiosJWT.put("/password/update", password, config);
+    localStorage.setItem("time", res.data.TokenDate);
     dispatch(UPDATE_PASSWORD_SUCCESS(res.data));
   } catch (error) {
     dispatch(UPDATE_PASSWORD_FAIL(error.response.data.message));
