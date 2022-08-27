@@ -39,7 +39,7 @@ const sendTokenAfterRefresh = async (user, statusCode, res) => {
   TokenDate = TokenDate.getTime();
 
   res.cookie("token", token, options1).cookie("refreshToken", refreshToken, options2).status(statusCode).json({
-    message: "Token Refreshed!!!", user, TokenDate
+    user, TokenDate
   });
 };
 
