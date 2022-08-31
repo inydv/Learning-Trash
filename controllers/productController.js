@@ -87,6 +87,15 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
     .json({ products, productsCount, resultPerPage });
 });
 
+// Get All products -- Admin
+exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
+  const products = await Product.find();
+
+  res
+    .status(200)
+    .json({ products });
+});
+
 // Get one Products -- User and Admin
 exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
