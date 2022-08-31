@@ -29,6 +29,22 @@ const productsSlice = createSlice({
       state.resultPerPage = 0;
     },
 
+    ADMIN_PRODUCT_START: (state) => {
+      state.isFetching = true;
+      state.error = null;
+    },
+    ADMIN_PRODUCT_SUCCESS: (state, action) => {
+      state.isFetching = false;
+      state.products = action.payload.products;
+    },
+    ADMIN_PRODUCT_FAIL: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+      state.products = null;
+      state.productsCount = 0;
+      state.resultPerPage = 0;
+    },
+
     PRODUCT_DETAILS_START: (state) => {
       state.isFetching = true;
       state.error = null;
@@ -51,6 +67,9 @@ export const {
   ALL_PRODUCT_START,
   ALL_PRODUCT_SUCCESS,
   ALL_PRODUCT_FAIL,
+  ADMIN_PRODUCT_START,
+  ADMIN_PRODUCT_SUCCESS,
+  ADMIN_PRODUCT_FAIL,
   PRODUCT_DETAILS_START,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,

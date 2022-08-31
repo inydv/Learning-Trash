@@ -2,6 +2,9 @@ import {
   ALL_PRODUCT_START,
   ALL_PRODUCT_SUCCESS,
   ALL_PRODUCT_FAIL,
+  ADMIN_PRODUCT_START,
+  ADMIN_PRODUCT_SUCCESS,
+  ADMIN_PRODUCT_FAIL,
   PRODUCT_DETAILS_START,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
@@ -30,6 +33,16 @@ export const FETCHING_ALL_PRODUCT =
         dispatch(ALL_PRODUCT_SUCCESS(data));
       } catch (error) {
         // dispatch(ALL_PRODUCT_FAIL(error.response.data.message));
+      }
+    };
+
+    export const ADMIN_ALL_PRODUCT = () => async (dispatch) => {
+      dispatch(ADMIN_PRODUCT_START());
+      try {
+        const { data } = await axiosJWT.get(`/admin/products`);
+        dispatch(ADMIN_PRODUCT_SUCCESS(data));
+      } catch (error) {
+        dispatch(ADMIN_PRODUCT_FAIL(error.response.data.message));
       }
     };
 

@@ -22,6 +22,15 @@ import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import OrderDetails from "./Pages/makingOrders/orderDetails/OrderDetails";
 import { LOAD_USER } from "./redux/user/userApiCall";
+import Dashboard from "./Pages/admin/dashboard/Dashboard";
+import ProductList from "./Pages/admin/productList/ProductList";
+import NewProduct from "./Pages/admin/newProduct/NewProduct";
+import UpdateProduct from "./Pages/admin/updateProduct/UpdateProduct";
+import OrderList from "./Pages/admin/orderList/OrderList";
+import ProcessOrder from "./Pages/admin/processOrder/ProcessOrder";
+import UsersList from "./Pages/admin/usersList/UsersList";
+import UpdateUser from "./Pages/admin/updateUser/UpdateUser";
+import ProductReviews from "./Pages/admin/productReviews/ProductReviews";
 
 function App() {
   const dispatch = useDispatch();
@@ -90,6 +99,16 @@ function App() {
           <Route exact path="/process/payment" element={<Wrapper stripeApiKey={stripeApiKey} />} />
         )}
         <Route exact path="/success" element={<OrderSuccess />} />
+
+        <Route exact path="/admin/dashboard" element={<Dashboard />} />
+        <Route exact path="/admin/products" element={<ProductList />} />
+        <Route exact path="/admin/product" element={<NewProduct />} />
+        <Route exact path="//admin/product/:id" element={<UpdateProduct />} />
+        <Route exact path="/admin/orders" element={<OrderList />} />
+        <Route exact path="/admin/order/:id" element={<ProcessOrder />} />
+        <Route exact path="/admin/users" element={<UsersList />} />
+        <Route exact path="/admin/user/:id" element={<UpdateUser />} />
+        <Route exact path="/admin/reviews" element={<ProductReviews />} />
 
       </Routes>
     </div>
