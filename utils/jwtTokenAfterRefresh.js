@@ -13,8 +13,8 @@ const sendTokenAfterRefresh = async (user, statusCode, res) => {
     { new: true }
   );
 
-  let TokenDate = new Date(Date.now() + 1000 * 20);
-  let RefreshTokenDate = new Date(Date.now() + 1000 * 60);
+  let TokenDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * process.env.COOKIE_EXPIRE);
+  let RefreshTokenDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * process.env.REFRESH_COOKIE_EXPIRE);
 
   // Option for cookie
   const options1 = {
