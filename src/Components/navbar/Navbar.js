@@ -50,7 +50,7 @@ function Navbar() {
   }
 
   function dashboard() {
-    navigate("/dashboard");
+    navigate("/admin/dashboard");
   }
 
   function orders() {

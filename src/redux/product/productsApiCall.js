@@ -5,6 +5,10 @@ import {
   ADMIN_PRODUCT_START,
   ADMIN_PRODUCT_SUCCESS,
   ADMIN_PRODUCT_FAIL,
+  NEW_PRODUCT_REQUEST, 
+  NEW_PRODUCT_SUCCESS, 
+  NEW_PRODUCT_FAIL, 
+  NEW_PRODUCT_RESET,
   PRODUCT_DETAILS_START,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
@@ -43,6 +47,19 @@ export const FETCHING_ALL_PRODUCT =
         dispatch(ADMIN_PRODUCT_SUCCESS(data));
       } catch (error) {
         dispatch(ADMIN_PRODUCT_FAIL(error.response.data.message));
+      }
+    };
+
+    export const NEW_PRODUCT = (productData) => async (dispatch) => {
+      dispatch(NEW_PRODUCT_REQUEST());
+      try {
+        const config = {
+          headers: {"Content-Type": "application/json"}
+        }
+        const { data } = await axiosJWT.post(`/admin/product/new`, productData, config);
+        dispatch(NEW_PRODUCT_SUCCESS(data));
+      } catch (error) {
+        dispatch(NEW_PRODUCT_FAIL(error.response.data.message));
       }
     };
 
