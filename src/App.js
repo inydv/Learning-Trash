@@ -68,6 +68,8 @@ function App() {
     }
   }, [user])
 
+  // window.addEventListener("contextmenu", (e) => e.preventDefault());
+
   return (
     <div className="app">
       <Routes>
