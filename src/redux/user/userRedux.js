@@ -122,6 +122,62 @@ const userSlice = createSlice({
     UPDATE_ISUPDATED: (state) => {
       state.isUpdated = null;
     },
+
+    ALL_USERS_REQUEST: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    ALL_USERS_SUCCESS: (state, action) => {
+      state.isFetching = false;
+      state.currentUser = action.payload;
+    },
+    ALL_USERS_FAIL: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+      state.currentUser = null;
+    },
+
+    USER_DETAILS_REQUEST: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    USER_DETAILS_SUCCESS: (state, action) => {
+      state.isFetching = false;
+      state.currentUser = action.payload;
+    },
+    USER_DETAILS_FAIL: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+      state.currentUser = null;
+    },
+    
+    UPDATE_USER_START: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    UPDATE_USER_SUCCESS: (state, action) => {
+      state.isFetching = false;
+      state.currentUser = action.payload;
+    },
+    UPDATE_USER_FAIL: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+      state.currentUser = null;
+    },
+
+    DELETE_USER_START: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
+    DELETE_USER_SUCCESS: (state, action) => {
+      state.isFetching = false;
+      state.currentUser = action.payload;
+    },
+    DELETE_USER_FAIL: (state, action) => {
+      state.isFetching = false;
+      state.error = action.payload;
+      state.currentUser = null;
+    },
   },
 });
 
@@ -151,5 +207,17 @@ export const {
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PASSWORD_FAIL,
   UPDATE_ISUPDATED,
+  ALL_USERS_START,
+  ALL_USERS_SUCCESS,
+  ALL_USERS_FAIL,
+  USER_DETAILS_START,
+  USER_DETAILS_SUCCESS,
+  USER_DETAILS_FAIL,
+  UPDATE_USER_START,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAIL,
+  DELETE_USER_START,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAIL,
 } = userSlice.actions;
 export default userSlice.reducer;

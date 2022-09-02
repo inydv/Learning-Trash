@@ -24,6 +24,18 @@ import {
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PASSWORD_FAIL,
   UPDATE_ISUPDATED,
+  ALL_USERS_START,
+  ALL_USERS_SUCCESS,
+  ALL_USERS_FAIL,
+  USER_DETAILS_START,
+  USER_DETAILS_SUCCESS,
+  USER_DETAILS_FAIL,
+  UPDATE_USER_START,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_FAIL,
+  DELETE_USER_START,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAIL,
 } from "./userRedux";
 import { publicRequest, axiosJWT } from "../../requestMethods";
 
@@ -125,3 +137,43 @@ export const UPDATE_PW = (password) => async (dispatch) => {
 export const ISUPDATED = (dispatch) => {
   dispatch(UPDATE_ISUPDATED());
 }
+
+export const GET_ALL_USER = () => async (dispatch) => {
+  dispatch(ALL_USERS_START());
+  try {
+    const res = await axiosJWT.get("/admin/users");
+    dispatch(ALL_USERS_SUCCESS(res.data));
+  } catch (error) {
+    dispatch(ALL_USERS_FAIL(error.response.data.message));
+  }
+};
+
+export const GET_USER_DETAILS = (id) => async (dispatch) => {
+  dispatch(USER_DETAILS_START());
+  try {
+    const res = await axiosJWT.get(`/admin/user/${id}`);
+    dispatch(USER_DETAILS_SUCCESS(res.data));
+  } catch (error) {
+    dispatch(USER_DETAILS_FAIL(error.response.data.message));
+  }
+};
+
+export const UPDATE_USER = (id) => async (dispatch) => {
+  dispatch(UPDATE_USER_START());
+  try {
+    const res = await axiosJWT.put(`/admin/user/${id}`);
+    dispatch(UPDATE_USER_SUCCESS(res.data));
+  } catch (error) {
+    dispatch(UPDATE_USER_FAIL(error.response.data.message));
+  }
+};
+
+export const DELETE_USER = (id) => async (dispatch) => {
+  dispatch(DELETE_USER_START());
+  try {
+    const res = await axiosJWT.delete(`/admin/user/${id}`);
+    dispatch(DELETE_USER_SUCCESS(res.data));
+  } catch (error) {
+    dispatch(DELETE_USER_FAIL(error.response.data.message));
+  }
+};

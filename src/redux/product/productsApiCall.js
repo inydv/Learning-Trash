@@ -5,10 +5,16 @@ import {
   ADMIN_PRODUCT_START,
   ADMIN_PRODUCT_SUCCESS,
   ADMIN_PRODUCT_FAIL,
-  NEW_PRODUCT_REQUEST, 
-  NEW_PRODUCT_SUCCESS, 
-  NEW_PRODUCT_FAIL, 
+  NEW_PRODUCT_REQUEST,
+  NEW_PRODUCT_SUCCESS,
+  NEW_PRODUCT_FAIL,
   NEW_PRODUCT_RESET,
+  DELETE_PRODUCT_REQUEST,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
+  UPDATE_PRODUCT_REQUEST,
+  UPDATE_PRODUCT_SUCCESS,
+  UPDATE_PRODUCT_FAIL,
   PRODUCT_DETAILS_START,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
@@ -40,28 +46,48 @@ export const FETCHING_ALL_PRODUCT =
       }
     };
 
-    export const ADMIN_ALL_PRODUCT = () => async (dispatch) => {
-      dispatch(ADMIN_PRODUCT_START());
-      try {
-        const { data } = await axiosJWT.get(`/admin/products`);
-        dispatch(ADMIN_PRODUCT_SUCCESS(data));
-      } catch (error) {
-        dispatch(ADMIN_PRODUCT_FAIL(error.response.data.message));
-      }
-    };
+export const ADMIN_ALL_PRODUCT = () => async (dispatch) => {
+  dispatch(ADMIN_PRODUCT_START());
+  try {
+    const { data } = await axiosJWT.get(`/admin/products`);
+    dispatch(ADMIN_PRODUCT_SUCCESS(data));
+  } catch (error) {
+    dispatch(ADMIN_PRODUCT_FAIL(error.response.data.message));
+  }
+};
 
-    export const NEW_PRODUCT = (productData) => async (dispatch) => {
-      dispatch(NEW_PRODUCT_REQUEST());
-      try {
-        const config = {
-          headers: {"Content-Type": "application/json"}
-        }
-        const { data } = await axiosJWT.post(`/admin/product/new`, productData, config);
-        dispatch(NEW_PRODUCT_SUCCESS(data));
-      } catch (error) {
-        dispatch(NEW_PRODUCT_FAIL(error.response.data.message));
-      }
-    };
+export const NEW_PRODUCT = (productData) => async (dispatch) => {
+  dispatch(NEW_PRODUCT_REQUEST());
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" }
+    }
+    const { data } = await axiosJWT.post(`/admin/product/new`, productData, config);
+    dispatch(NEW_PRODUCT_SUCCESS(data));
+  } catch (error) {
+    dispatch(NEW_PRODUCT_FAIL(error.response.data.message));
+  }
+};
+
+export const DELETE_PRODUCT = (id) => async (dispatch) => {
+  dispatch(DELETE_PRODUCT_REQUEST());
+  try {
+    const { data } = await axiosJWT.delete(`/admin/product/${id}`);
+    dispatch(DELETE_PRODUCT_SUCCESS(data));
+  } catch (error) {
+    dispatch(DELETE_PRODUCT_FAIL(error.response.data.message));
+  }
+};
+
+export const UPDATE_PRODUCT = (id) => async (dispatch) => {
+  dispatch(UPDATE_PRODUCT_REQUEST());
+  try {
+    const { data } = await axiosJWT.put(`/admin/product/${id}`);
+    dispatch(UPDATE_PRODUCT_SUCCESS(data));
+  } catch (error) {
+    dispatch(UPDATE_PRODUCT_FAIL(error.response.data.message));
+  }
+};
 
 export const GET_PRODUCT_DETAIL = (id) => async (dispatch) => {
   dispatch(PRODUCT_DETAILS_START());

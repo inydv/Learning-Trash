@@ -3,7 +3,7 @@ import './ProductList.css';
 import '../dashboard/Dashboard.css'
 import {DataGrid} from '@material-ui/data-grid';
 import {useSelector, useDispatch} from "react-redux";
-import {ADMIN_ALL_PRODUCT} from '../../../redux/product/productsApiCall';
+import {ADMIN_ALL_PRODUCT, DELETE_PRODUCT} from '../../../redux/product/productsApiCall';
 import {Link} from "react-router-dom";
 import { Button } from '@material-ui/core';
 import EditIcon from "@material-ui/icons/Edit";
@@ -23,6 +23,10 @@ export default function ProductList() {
 
     const {products, error} = useSelector((state) => state.products);
 
+    const deleteProductHandler = (id) => {
+        dispatch(DELETE_PRODUCT(id))
+    }
+
     const columns =[
         {field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5},
         {field: "name", headerName: "Name", minWidth: 350, flex: 1,},
@@ -36,7 +40,7 @@ export default function ProductList() {
                         <EditIcon />
                     </Link>
 
-                    <Button>
+                    <Button onClick={() => deleteProductHandler(params.getValue(params.id, "id"))}>
                         <DeleteIcon />
                     </Button>
                 </div>
