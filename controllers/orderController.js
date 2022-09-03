@@ -96,10 +96,11 @@ exports.UpdateOrders = catchAsyncErrors(async (req, res, next) => {
     order.deliveredAt = Date.now();
   }
 
-  await order.save();
+  const updatedOrder = await order.save();
 
   res.status(200).json({
     message: "updation Complete",
+    updatedOrder
   });
 });
 
@@ -119,9 +120,10 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHander("Order not found with this Id", 404));
   }
 
-  await order.remove();
+  const deletedOrder = await order.remove();
 
   res.status(200).json({
     message: "Deletion Complete",
+    deletedOrder
   });
 });

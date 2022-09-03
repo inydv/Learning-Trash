@@ -67,6 +67,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res) => {
 
   res.status(200).json({
     message: "changes Done",
+    user
   });
 });
 
@@ -95,6 +96,7 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     message: "changes Done",
+    usered
   });
 });
 
@@ -111,12 +113,13 @@ exports.deleteUserProfile = catchAsyncErrors(async (req, res, next) => {
   const imageId = user.avatar.public_id;
     await cloudinary.v2.uploader.destroy(imageId);
 
-  await user.remove();
+  const deletedUser = await user.remove();
 
   // we will remove cloudinary later
 
   res.status(200).json({
     message: "User Deleted Successfully",
+    deletedUser
   });
 });
 

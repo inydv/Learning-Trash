@@ -191,10 +191,11 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
     await cloudinary.v2.uploader.destroy(product.images[i].public_id);
   }
 
-  await product.remove();
+  const deletedProduct = await product.remove();
 
   res.status(200).json({
     message: "Product Delete Successfully",
+    deletedProduct
   });
 });
 
@@ -232,10 +233,11 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
 
   product.ratings = avg / product.reviews.length;
 
-  await product.save();
+  const Updatedproduct = await product.save();
 
   res.status(200).json({
     message: `Reviews Added`,
+    Updatedproduct
   });
 });
 
@@ -279,7 +281,7 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
 
   const numofReviews = reviews.length;
 
-  await Product.findByIdAndUpdate(req.query.productId, {
+  const deletedReview = await Product.findByIdAndUpdate(req.query.productId, {
     reviews,
     ratings,
     numofReviews,
@@ -287,5 +289,6 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
 
   res.status(200).json({
     message: "Review deleted successfully",
+    deletedReview
   });
 });
