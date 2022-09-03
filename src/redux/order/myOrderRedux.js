@@ -3,8 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const myOrderSlice = createSlice({
     name: "myOrders",
     initialState: {
-        orders: null,
-        order: null,
+        myOrders: null,
+        singleOrder: null,
+        allOrders: null,
+        deleteOrder: null,
+        updateOrder: null,
         isFetching: false,
         error: null,
     },
@@ -15,12 +18,12 @@ const myOrderSlice = createSlice({
         },
         My_ORDER_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.orders = action.payload;
+            state.myOrders = action.payload;
         },
         My_ORDER_FAIL: (state, action) => {
             state.isFetching = false;
             state.error = action.payload;
-            state.products = null;
+            state.myOrders = null;
         },
 
         ALL_ORDER_REQUEST: (state) => {
@@ -29,12 +32,12 @@ const myOrderSlice = createSlice({
         },
         ALL_ORDER_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.orders = action.payload;
+            state.allOrders = action.payload;
         },
         ALL_ORDER_FAIL: (state, action) => {
             state.isFetching = false;
             state.error = action.payload;
-            state.products = null;
+            state.allOrders = null;
         },
 
         UPDATE_ORDER_REQUEST: (state) => {
@@ -43,12 +46,12 @@ const myOrderSlice = createSlice({
         },
         UPDATE_ORDER_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.orders = action.payload;
+            state.updateOrder = action.payload;
         },
         UPDATE_ORDER_FAIL: (state, action) => {
             state.isFetching = false;
             state.error = action.payload;
-            state.products = null;
+            state.updateOrder = null;
         },
 
         DELETE_ORDER_REQUEST: (state) => {
@@ -57,12 +60,12 @@ const myOrderSlice = createSlice({
         },
         DELETE_ORDER_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.orders = action.payload;
+            state.deleteOrder = action.payload;
         },
         DELETE_ORDER_FAIL: (state, action) => {
             state.isFetching = false;
             state.error = action.payload;
-            state.products = null;
+            state.deleteOrder = null;
         },
 
         ORDER_DETAILS_START: (state) => {
@@ -71,13 +74,14 @@ const myOrderSlice = createSlice({
         },
         ORDER_DETAILS_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.order = action.payload;
+            state.singleOrder = action.payload;
         },
         ORDER_DETAILS_FAIL: (state, action) => {
             state.isFetching = false;
             state.error = action.payload;
-            state.order = null;
+            state.singleOrder = null;
         },
+
         CLEAR_ERROR: (state) => {
             state.error = null;
         }

@@ -16,14 +16,12 @@ import {
   RESET_PASSWORD_START,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAIL,
-  CLEAR_ERROR,
   UPDATE_PROFILE_START,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAIL,
   UPDATE_PASSWORD_START,
   UPDATE_PASSWORD_SUCCESS,
   UPDATE_PASSWORD_FAIL,
-  UPDATE_ISUPDATED,
   ALL_USERS_START,
   ALL_USERS_SUCCESS,
   ALL_USERS_FAIL,
@@ -106,11 +104,6 @@ export const RESET_PW = (token, myForm) => async (dispatch) => {
   }
 };
 
-// CALLING BY DIFFERENT METHOD
-export const CLEAR_ERRORS = (dispatch) => {
-  dispatch(CLEAR_ERROR());
-}
-
 export const UPDATE_PROFILE = (userData) => async (dispatch) => {
   dispatch(UPDATE_PROFILE_START());
   try {
@@ -134,9 +127,9 @@ export const UPDATE_PW = (password) => async (dispatch) => {
   }
 };
 
-export const ISUPDATED = (dispatch) => {
-  dispatch(UPDATE_ISUPDATED());
-}
+// export const ISUPDATED = (dispatch) => {
+//   dispatch(UPDATE_ISUPDATED());
+// }
 
 export const GET_ALL_USER = () => async (dispatch) => {
   dispatch(ALL_USERS_START());
@@ -177,3 +170,8 @@ export const DELETE_USER = (id) => async (dispatch) => {
     dispatch(DELETE_USER_FAIL(error.response.data.message));
   }
 };
+
+// CALLING BY DIFFERENT METHOD
+// export const CLEAR_ERRORS = (dispatch) => {
+//   dispatch(CLEAR_ERROR());
+// }

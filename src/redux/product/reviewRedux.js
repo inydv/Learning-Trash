@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const reviewsSlice = createSlice({
     name: "reviews",
     initialState: {
-        review: null,
+        newReview: null,
+        allReview: null,
+        deleteReview: null,
         isFetching: false,
         error: null,
     },
@@ -30,11 +32,12 @@ const reviewsSlice = createSlice({
         },
         ALL_REVIEW_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.review = action.payload.review;
+            state.allReview = action.payload.review;
         },
         ALL_REVIEW_FAIL: (state, action) => {
             state.isFetching = false;
             state.error = action.payload;
+            state.allReview = null;
         },
 
         DELETE_REVIEW_REQUEST: (state) => {
@@ -43,11 +46,12 @@ const reviewsSlice = createSlice({
         },
         DELETE_REVIEW_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.review = action.payload.review;
+            state.deleteReview = action.payload.review;
         },
         DELETE_REVIEW_FAIL: (state, action) => {
             state.isFetching = false;
             state.error = action.payload;
+            state.deleteReview = null;
         },
 
         CLEAR_ERRORS: (state) => {

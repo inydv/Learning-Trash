@@ -4,6 +4,10 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     currentUser: null,
+    allUser: null,
+    singleUser: null,
+    updateUser: null,
+    deleteUser: null,
     isFetching: false,
     error: false,
     message: null,
@@ -30,10 +34,12 @@ const userSlice = createSlice({
     },
     REGISTER_SUCCESS: (state) => {
       state.isFetching = false;
+      state.currentUser = action.payload;
     },
     REGISTER_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
+      state.currentUser = null;
     },
 
     LOAD_USER_START: (state) => {
@@ -50,6 +56,10 @@ const userSlice = createSlice({
       state.currentUser = null;
     },
 
+    LOGOUT_START: (state) => {
+      state.isFetching = true;
+      state.error = false;
+    },
     LOGOUT_SUCCESS: (state) => {
       state.isFetching = false;
       state.error = false;
@@ -84,11 +94,6 @@ const userSlice = createSlice({
     RESET_PASSWORD_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
-    },
-
-    CLEAR_ERROR: (state) => {
-      state.isFetching = false;
-      state.error = false;
     },
 
     UPDATE_PROFILE_START: (state) => {
@@ -129,12 +134,12 @@ const userSlice = createSlice({
     },
     ALL_USERS_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.currentUser = action.payload;
+      state.allUser = action.payload;
     },
     ALL_USERS_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
-      state.currentUser = null;
+      state.allUser = null;
     },
 
     USER_DETAILS_REQUEST: (state) => {
@@ -143,26 +148,26 @@ const userSlice = createSlice({
     },
     USER_DETAILS_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.currentUser = action.payload;
+      state.singleUser = action.payload;
     },
     USER_DETAILS_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
-      state.currentUser = null;
+      state.singleUser = null;
     },
-    
+
     UPDATE_USER_START: (state) => {
       state.isFetching = true;
       state.error = false;
     },
     UPDATE_USER_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.currentUser = action.payload;
+      state.updateUser = action.payload;
     },
     UPDATE_USER_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
-      state.currentUser = null;
+      state.updateUser = null;
     },
 
     DELETE_USER_START: (state) => {
@@ -171,12 +176,17 @@ const userSlice = createSlice({
     },
     DELETE_USER_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.currentUser = action.payload;
+      state.deleteUser = action.payload;
     },
     DELETE_USER_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
-      state.currentUser = null;
+      state.deleteUser = null;
+    },
+
+    CLEAR_ERROR: (state) => {
+      state.isFetching = false;
+      state.error = false;
     },
   },
 });
@@ -199,7 +209,6 @@ export const {
   RESET_PASSWORD_START,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAIL,
-  CLEAR_ERROR,
   UPDATE_PROFILE_START,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAIL,
@@ -219,5 +228,6 @@ export const {
   DELETE_USER_START,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
+  CLEAR_ERROR,
 } = userSlice.actions;
 export default userSlice.reducer;

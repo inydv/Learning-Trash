@@ -4,7 +4,11 @@ const productsSlice = createSlice({
   name: "products",
   initialState: {
     products: null,
-    product: null,
+    adminProducts: null,
+    newProduct: null,
+    deleteProduct: null,
+    updateProduct: null,
+    singleproduct: null,
     isFetching: false,
     error: null,
     productsCount: 0,
@@ -35,12 +39,12 @@ const productsSlice = createSlice({
     },
     ADMIN_PRODUCT_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.products = action.payload.products;
+      state.adminProducts = action.payload.products;
     },
     ADMIN_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
-      state.products = null;
+      state.adminProducts = null;
       state.productsCount = 0;
       state.resultPerPage = 0;
     },
@@ -51,14 +55,15 @@ const productsSlice = createSlice({
     },
     NEW_PRODUCT_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.product = action.payload;
+      state.newProduct = action.payload;
     },
     NEW_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
+      state.newProduct = null;
     },
     NEW_PRODUCT_RESET: (state) => {
-      state.product = null;
+      state.newProduct = null;
     },
 
     DELETE_PRODUCT_REQUEST: (state) => {
@@ -67,11 +72,12 @@ const productsSlice = createSlice({
     },
     DELETE_PRODUCT_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.product = action.payload;
+      state.deleteProduct = action.payload;
     },
     DELETE_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
+      state.deleteProduct = null;
     },
 
     UPDATE_PRODUCT_REQUEST: (state) => {
@@ -80,11 +86,12 @@ const productsSlice = createSlice({
     },
     UPDATE_PRODUCT_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.product = action.payload;
+      state.updateProduct = action.payload;
     },
     UPDATE_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
+      state.updateProduct = null;
     },
 
     PRODUCT_DETAILS_START: (state) => {
@@ -95,12 +102,12 @@ const productsSlice = createSlice({
     },
     PRODUCT_DETAILS_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.product = action.payload.product;
+      state.singleproduct = action.payload.product;
     },
     PRODUCT_DETAILS_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
-      state.product = null;
+      state.singleproduct = null;
     },
   },
 });

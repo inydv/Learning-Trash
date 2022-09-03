@@ -6,7 +6,6 @@ import {
 import { axiosJWT } from "../../requestMethods";
 
 export const ADD_ITEMS_TO_CART = (id, quantity) => async (dispatch, getState) => {
-  // async (dispatch, getState)
   const { data } = await axiosJWT.get(`/product/${id}`);
   dispatch(
     ADD_TO_CART({

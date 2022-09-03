@@ -15,7 +15,6 @@ const newOrderSlice = createSlice({
     CREATE_ORDER_SUCCESS: (state, action) => {
       state.isFetching = false;
       state.orders = action.payload;
-
     },
     CREATE_ORDER_FAIL: (state, action) => {
       state.isFetching = false;
@@ -29,6 +28,9 @@ const newOrderSlice = createSlice({
 });
 
 export const {
-  CREATE_ORDER_FAIL, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, CLEAR_ERROR
+  CREATE_ORDER_FAIL, 
+  CREATE_ORDER_REQUEST, 
+  CREATE_ORDER_SUCCESS, 
+  CLEAR_ERROR
 } = newOrderSlice.actions;
 export default newOrderSlice.reducer;

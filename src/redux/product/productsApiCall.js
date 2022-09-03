@@ -8,7 +8,6 @@ import {
   NEW_PRODUCT_REQUEST,
   NEW_PRODUCT_SUCCESS,
   NEW_PRODUCT_FAIL,
-  NEW_PRODUCT_RESET,
   DELETE_PRODUCT_REQUEST,
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAIL,
@@ -42,7 +41,7 @@ export const FETCHING_ALL_PRODUCT =
         const { data } = await axiosJWT.get(link);
         dispatch(ALL_PRODUCT_SUCCESS(data));
       } catch (error) {
-        // dispatch(ALL_PRODUCT_FAIL(error.response.data.message));
+        dispatch(ALL_PRODUCT_FAIL(error.response.data.message));
       }
     };
 
