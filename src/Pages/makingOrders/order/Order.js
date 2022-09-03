@@ -4,7 +4,8 @@ import "./Order.css";
 import Navbar from "../../../Components/navbar/Navbar";
 import Footer from "../../../Components/footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
-import { MY_ORDER, CLEAR_ERRORS } from "../../../redux/order/myOrderApiCall";
+import { MY_ORDER } from "../../../redux/order/myOrderApiCall";
+import { CLEAR_ERROR } from "../../../redux/order/myOrderRedux";
 import Loading from "../../../Components/loading/Loading";
 import { Link } from "react-router-dom";
 import LaunchIcon from "@material-ui/icons/Launch";
@@ -75,7 +76,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (error) {
-      dispatch(CLEAR_ERRORS());
+      dispatch(CLEAR_ERROR());
     }
 
     dispatch(MY_ORDER());

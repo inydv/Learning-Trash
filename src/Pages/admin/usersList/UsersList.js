@@ -1,21 +1,19 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './UsersList.css'
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
-import MetaData from "../layout/MetaData";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import SideBar from "./Sidebar";
-import { getAllUsers, clearErrors, deleteUser } from "../../actions/userAction";
-import { DELETE_USER_RESET } from "../../constants/userConstants";
+import Sidebar from "../sidebar/Sidebar";
+import { GET_ALL_USER, DELETE_USER } from "../../../redux/user/userApiCall";
+import { CLEAR_ERROR } from "../../../redux/user/userRedux";
 import { DataGrid } from "@material-ui/data-grid";
+import {useNavigate} from "react-router-dom"
 
 export default function UsersList() {
   const dispatch = useDispatch();
-
-  const alert = useAlert();
+  const navigate = useNavigate();
 
   const { error, users } = useSelector((state) => state.allUsers);
 
@@ -26,28 +24,25 @@ export default function UsersList() {
   } = useSelector((state) => state.profile);
 
   const deleteUserHandler = (id) => {
-    dispatch(deleteUser(id));
+    dispatch(DELETE_USER(id));
   };
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERROR());
     }
 
     if (deleteError) {
-      alert.error(deleteError);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERROR());
     }
 
     if (isDeleted) {
-      alert.success(message);
-      history.push("/admin/users");
-      dispatch({ type: DELETE_USER_RESET });
+      navigate.push("/admin/users");
+      // dispatch({ type: DELETE_USER_RESET });
     }
 
-    dispatch(getAllUsers());
-  }, [dispatch, alert, error, deleteError, history, isDeleted, message]);
+    dispatch(GET_ALL_USER());
+  }, [dispatch, alert, error, deleteError, isDeleted, message]);
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },
@@ -87,7 +82,7 @@ export default function UsersList() {
       sortable: false,
       renderCell: (params) => {
         return (
-          <Fragment>
+          <div>
             <Link to={`/admin/user/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
@@ -99,7 +94,7 @@ export default function UsersList() {
             >
               <DeleteIcon />
             </Button>
-          </Fragment>
+          </div>
         );
       },
     },
@@ -118,7 +113,7 @@ export default function UsersList() {
     });
   return (
     <div className="dashboard">
-        <SideBar />
+        <Sidebar />
         <div className="productListContainer">
           <h1 id="productListHeading">ALL USERS</h1>
 

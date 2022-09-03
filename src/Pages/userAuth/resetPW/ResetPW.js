@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./ResetPW.css"
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useDispatch, useSelector } from "react-redux";
-import { FORGOT_PW, CLEAR_ERRORS } from "../../../redux/user/userApiCall";
+import { FORGOT_PW } from "../../../redux/user/userApiCall";
+import { CLEAR_ERROR } from "../../../redux/user/userRedux";
 import { useNavigate, Link } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
 
@@ -25,7 +26,7 @@ function ResetPW() {
 
   useEffect(() => {
     if (error) {
-      dispatch(CLEAR_ERRORS());
+      dispatch(CLEAR_ERROR());
     }
   }, [dispatch, error]);
 

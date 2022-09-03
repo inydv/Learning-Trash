@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./UpdatePassword.css"
 import { useDispatch, useSelector } from "react-redux";
-import { UPDATE_PW, ISUPDATED } from "../../../redux/user/userApiCall";
+import { UPDATE_PW } from "../../../redux/user/userApiCall";
+import { UPDATE_ISUPDATED } from '../../../redux/user/userRedux'
 import { useNavigate } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
 import Navbar from "../../../Components/navbar/Navbar";
@@ -38,7 +39,7 @@ function UpdatePassword() {
 
         if (isUpdated) {
             navigate("/account");
-            ISUPDATED(dispatch);
+            UPDATE_ISUPDATED(dispatch);
         }
     }, [dispatch, navigate, isUpdated]);
     return (

@@ -1,51 +1,44 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './OrderList.css';
 import { DataGrid } from "@material-ui/data-grid";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Sidebar from "../sidebar/Sidebar";
-import {
-  deleteOrder,
-  getAllOrders,
-  clearErrors,
-} from "../../actions/orderAction";
-import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
+import { DELETE_ORDER, ALL_ORDER } from "../../../redux/order/myOrderApiCall";
+import { CLEAR_ERROR } from "../../../redux/order/myOrderRedux";
 
 export default function OrderList() {
   const dispatch = useDispatch();
 
-  const alert = useAlert();
+  const Navigate = useNavigate();
 
   const { error, orders } = useSelector((state) => state.allOrders);
 
   const { error: deleteError, isDeleted } = useSelector((state) => state.order);
 
   const deleteOrderHandler = (id) => {
-    dispatch(deleteOrder(id));
+    dispatch(DELETE_ORDER(id));
   };
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERROR());
     }
 
     if (deleteError) {
-      alert.error(deleteError);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERROR());
     }
 
     if (isDeleted) {
-      alert.success("Order Deleted Successfully");
-      history.push("/admin/orders");
-      dispatch({ type: DELETE_ORDER_RESET });
+      Navigate("/admin/orders");
+      // dispatch({ type: DELETE_ORDER_RESET });
     }
 
-    dispatch(getAllOrders());
-  }, [dispatch, alert, error, deleteError, history, isDeleted]);
+    dispatch(ALL_ORDER());
+  }, [dispatch, error, deleteError, isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
@@ -86,7 +79,7 @@ export default function OrderList() {
       sortable: false,
       renderCell: (params) => {
         return (
-          <Fragment>
+          <div>
             <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
@@ -98,7 +91,7 @@ export default function OrderList() {
             >
               <DeleteIcon />
             </Button>
-          </Fragment>
+          </div>
         );
       },
     },
@@ -117,7 +110,7 @@ export default function OrderList() {
     });
   return (
     <div className="dashboard">
-        <SideBar />
+        <Sidebar />
         <div className="productListContainer">
           <h1 id="productListHeading">ALL ORDERS</h1>
 

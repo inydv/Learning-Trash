@@ -1,25 +1,22 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './UpdateProduct';
 import { useSelector, useDispatch } from "react-redux";
-import {
-  clearErrors,
-  updateProduct,
-  getProductDetails,
-} from "../../actions/productAction";
-import { useAlert } from "react-alert";
+import { UPDATE_PRODUCT, GET_PRODUCT_DETAIL } from "../../../redux/product/productsApiCall";
+import { CLEAR_ERROR } from "../../../redux/product/productsRedux";
 import { Button } from "@material-ui/core";
-import MetaData from "../layout/MetaData";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import DescriptionIcon from "@material-ui/icons/Description";
 import StorageIcon from "@material-ui/icons/Storage";
 import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
-import SideBar from "./Sidebar";
-import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
+import Sidebar from "../sidebar/Sidebar";
+import {useParams, useNavigate} from "react-router-dom";
 
 export default function UpdateProduct() {
   const dispatch = useDispatch();
-  const alert = useAlert();
+
+  const navigate = useNavigate();
+  const params = useParams();
 
   const { error, product } = useSelector((state) => state.productDetails);
 
@@ -48,11 +45,11 @@ export default function UpdateProduct() {
     "SmartPhones",
   ];
 
-  const productId = match.params.id;
+  const productId = params.id;
 
   useEffect(() => {
     if (product && product._id !== productId) {
-      dispatch(getProductDetails(productId));
+      dispatch(GET_PRODUCT_DETAIL(productId));
     } else {
       setName(product.name);
       setDescription(product.description);
@@ -62,25 +59,20 @@ export default function UpdateProduct() {
       setOldImages(product.images);
     }
     if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERROR());
     }
 
     if (updateError) {
-      alert.error(updateError);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERROR());
     }
 
     if (isUpdated) {
-      alert.success("Product Updated Successfully");
-      history.push("/admin/products");
-      dispatch({ type: UPDATE_PRODUCT_RESET });
+      navigate("/admin/products");
+      // dispatch({ type: UPDATE_PRODUCT_RESET });
     }
   }, [
     dispatch,
-    alert,
     error,
-    history,
     isUpdated,
     productId,
     product,
@@ -101,7 +93,7 @@ export default function UpdateProduct() {
     images.forEach((image) => {
       myForm.append("images", image);
     });
-    dispatch(updateProduct(productId, myForm));
+    dispatch(UPDATE_PRODUCT(productId, myForm));
   };
 
   const updateProductImagesChange = (e) => {
@@ -126,7 +118,7 @@ export default function UpdateProduct() {
   };
   return (
     <div className="dashboard">
-        <SideBar />
+        <Sidebar />
         <div className="newProductContainer">
           <form
             className="createProductForm"

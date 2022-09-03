@@ -1,23 +1,20 @@
-import React from 'react'
+import React, {useEffect,useState} from 'react'
 import './ProcessOrder.css';
-import { Link } from "react-router-dom";
-import { Typography } from "@material-ui/core";
-import SideBar from "./Sidebar";
-import {
-  getOrderDetails,
-  clearErrors,
-  updateOrder,
-} from "../../actions/orderAction";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Sidebar from "../sidebar/Sidebar";
+import { GETTING_ORDER, UPDATE_ORDER } from "../../../redux/order/myOrderApiCall";
+import { CLEAR_ERROR } from "../../../redux/order/myOrderRedux";
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "../layout/Loader/Loader";
-import { useAlert } from "react-alert";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { Button } from "@material-ui/core";
-import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
+import Loading from '../../../Components/loading/Loading';
 
 export default function ProcessOrder() {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
   const { error: updateError, isUpdated } = useSelector((state) => state.order);
+
+  const navigate = useNavigate();
+  const params = useParams();
 
   const updateOrderSubmitHandler = (e) => {
     e.preventDefault();
@@ -26,37 +23,33 @@ export default function ProcessOrder() {
 
     myForm.set("status", status);
 
-    dispatch(updateOrder(match.params.id, myForm));
+    dispatch(UPDATE_ORDER(params.id, myForm));
   };
 
   const dispatch = useDispatch();
-  const alert = useAlert();
 
   const [status, setStatus] = useState("");
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERROR());
     }
     if (updateError) {
-      alert.error(updateError);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERROR());
     }
     if (isUpdated) {
-      alert.success("Order Updated Successfully");
-      dispatch({ type: UPDATE_ORDER_RESET });
+      // dispatch({ type: UPDATE_ORDER_RESET });
     }
 
-    dispatch(getOrderDetails(match.params.id));
-  }, [dispatch, alert, error, match.params.id, isUpdated, updateError]);
+    dispatch(GETTING_ORDER(params.id));
+  }, [dispatch, error, params.id, isUpdated, updateError]);
 
   return (
     <div className="dashboard">
-        <SideBar />
+        <Sidebar />
         <div className="newProductContainer">
           {loading ? (
-            <Loader />
+            <Loading />
           ) : (
             <div
               className="confirmOrderPage"
@@ -66,7 +59,7 @@ export default function ProcessOrder() {
             >
               <div>
                 <div className="confirmshippingArea">
-                  <Typography>Shipping Info</Typography>
+                  <h1>Shipping Info</h1>
                   <div className="orderDetailsContainerBox">
                     <div>
                       <p>Name:</p>
@@ -87,7 +80,7 @@ export default function ProcessOrder() {
                     </div>
                   </div>
 
-                  <Typography>Payment</Typography>
+                  <h1>Payment</h1>
                   <div className="orderDetailsContainerBox">
                     <div>
                       <p
@@ -111,7 +104,7 @@ export default function ProcessOrder() {
                     </div>
                   </div>
 
-                  <Typography>Order Status</Typography>
+                  <h1>Order Status</h1>
                   <div className="orderDetailsContainerBox">
                     <div>
                       <p
@@ -127,7 +120,7 @@ export default function ProcessOrder() {
                   </div>
                 </div>
                 <div className="confirmCartItems">
-                  <Typography>Your Cart Items:</Typography>
+                  <h2>Your Cart Items:</h2>
                   <div className="confirmCartItemsContainer">
                     {order.orderItems &&
                       order.orderItems.map((item) => (

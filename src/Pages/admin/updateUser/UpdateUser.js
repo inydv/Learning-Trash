@@ -1,24 +1,20 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
 import './UpdateUser.css';
 import { useSelector, useDispatch } from "react-redux";
-import { useAlert } from "react-alert";
 import { Button } from "@material-ui/core";
-import MetaData from "../layout/MetaData";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import PersonIcon from "@material-ui/icons/Person";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
-import SideBar from "./Sidebar";
-import { UPDATE_USER_RESET } from "../../constants/userConstants";
-import {
-  getUserDetails,
-  updateUser,
-  clearErrors,
-} from "../../actions/userAction";
-import Loader from "../layout/Loader/Loader"
+import Sidebar from "../sidebar/Sidebar";
+import { GET_USER_DETAILS, UPDATE_USER } from "../../../redux/user/userApiCall";
+import { CLEAR_ERROR } from "../../../redux/user/userRedux";
+import Loading from "../../../Components/loading/Loading";
+import {useNavigate, useParams} from "react-router-dom";
 
 export default function UpdateUser() {
   const dispatch = useDispatch();
-  const alert = useAlert();
+  const navigate = useNavigate();
+  const params = useParams();
 
   const { loading, error, user } = useSelector((state) => state.userDetails);
 
@@ -32,32 +28,29 @@ export default function UpdateUser() {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
 
-  const userId = match.params.id;
+  const userId = params.id;
 
   useEffect(() => {
     if (user && user._id !== userId) {
-      dispatch(getUserDetails(userId));
+      dispatch(GET_USER_DETAILS(userId));
     } else {
       setName(user.name);
       setEmail(user.email);
       setRole(user.role);
     }
     if (error) {
-      alert.error(error);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERROR());
     }
 
     if (updateError) {
-      alert.error(updateError);
-      dispatch(clearErrors());
+      dispatch(CLEAR_ERROR());
     }
 
     if (isUpdated) {
-      alert.success("User Updated Successfully");
-      history.push("/admin/users");
-      dispatch({ type: UPDATE_USER_RESET });
+      navigate("/admin/users");
+      // dispatch({ type: UPDATE_USER_RESET });
     }
-  }, [dispatch, alert, error, history, isUpdated, updateError, user, userId]);
+  }, [dispatch, alert, error, isUpdated, updateError, user, userId]);
 
   const updateUserSubmitHandler = (e) => {
     e.preventDefault();
@@ -68,15 +61,15 @@ export default function UpdateUser() {
     myForm.set("email", email);
     myForm.set("role", role);
 
-    dispatch(updateUser(userId, myForm));
+    dispatch(UPDATE_USER(userId, myForm));
   };
 
   return (
     <div className="dashboard">
-        <SideBar />
+        <Sidebar />
         <div className="newProductContainer">
           {loading ? (
-            <Loader />
+            <Loading />
           ) : (
             <form
               className="createProductForm"

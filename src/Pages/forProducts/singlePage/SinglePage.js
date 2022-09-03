@@ -9,7 +9,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_PRODUCT_DETAIL } from "../../../redux/product/productsApiCall";
 import { ADD_ITEMS_TO_CART } from "../../../redux/cart/cartApiCall";
-import { NEW_REVIEW, CLEAR_ERROR} from '../../../redux/product/reviewApiCall';
+import { NEW_REVIEW} from '../../../redux/product/reviewApiCall';
+import { CLEAR_ERRORS} from '../../../redux/product/reviewRedux';
 import Carousel from "react-material-ui-carousel";
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button} from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
@@ -31,7 +32,7 @@ function SinglePage() {
     window.scrollTo(0, 0);
 
     if (reviewError) {
-      dispatch(CLEAR_ERROR());
+      dispatch(CLEAR_ERRORS());
     }
 
     // if (success) { // new review reset

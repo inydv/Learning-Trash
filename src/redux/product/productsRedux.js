@@ -109,6 +109,11 @@ const productsSlice = createSlice({
       state.error = action.payload;
       state.singleproduct = null;
     },
+
+    CLEAR_ERROR: (state) => {
+      state.isFetching = false;
+      state.error = false;
+    },
   },
 });
 
@@ -132,5 +137,6 @@ export const {
   PRODUCT_DETAILS_START,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
+  CLEAR_ERROR
 } = productsSlice.actions;
 export default productsSlice.reducer;

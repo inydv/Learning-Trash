@@ -67,7 +67,3 @@ export const GETTING_ORDER = (id) => async (dispatch) => {
     dispatch(ORDER_DETAILS_FAIL(error.response.data.message));
   }
 };
-
-export const CLEAR_ERRORS = () => async (dispatch) => {
-  dispatch(CLEAR_ERROR());
-};

@@ -2,7 +2,8 @@ import React, {useEffect} from 'react'
 import './OrderDetails.css'
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { GETTING_ORDER, CLEAR_ERRORS } from "../../../redux/order/myOrderApiCall";
+import { GETTING_ORDER } from "../../../redux/order/myOrderApiCall";
+import { CLEAR_ERROR } from "../../../redux/order/myOrderRedux";
 import Loading from "../../../Components/loading/Loading";
 
 function OrderDetails() {
@@ -13,7 +14,7 @@ function OrderDetails() {
 
   useEffect(() => {
     if (error) {
-      dispatch(CLEAR_ERRORS());
+      dispatch(CLEAR_ERROR());
     }
 
     dispatch(GETTING_ORDER(params.id));

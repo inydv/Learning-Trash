@@ -4,7 +4,8 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import FaceIcon from "@material-ui/icons/Face";
 import profileImage from "../../../Images/profileImage.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { UPDATE_PROFILE, ISUPDATED, LOAD_USER } from "../../../redux/user/userApiCall";
+import { UPDATE_PROFILE, LOAD_USER } from "../../../redux/user/userApiCall";
+import { UPDATE_ISUPDATED } from '../../../redux/user/userRedux'
 import Navbar from "../../../Components/navbar/Navbar";
 import Footer from "../../../Components/footer/Footer";
 import { useNavigate } from "react-router-dom"
@@ -62,7 +63,7 @@ const UpdateProfile = () => {
 
             navigate("/account");
 
-            ISUPDATED(dispatch);
+            UPDATE_ISUPDATED(dispatch);
         }
     }, [dispatch, navigate, user, isUpdated]);
 
