@@ -38,7 +38,7 @@ function Payment() {
   const payBtn = useRef(null);
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
-  const { user } = useSelector((state) => state.user.currentUser);
+  const { currentUser } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
 
   const paymentData = {
@@ -80,8 +80,8 @@ function Payment() {
         payment_method: {
           card: elements.getElement(CardNumberElement),
           billing_details: {
-            name: user.name,
-            email: user.email,
+            name: currentUser.name,
+            email: currentUser.email,
             address: {
               line1: shippingInfo.address,
               city: shippingInfo.city,
@@ -127,32 +127,32 @@ function Payment() {
   return (
     <div>
       <Navbar />
-        <CheckoutSteps activeStep={2} />
-        <div className="paymentContainer">
-          <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
-            <Typography>Card Info</Typography>
-            <div>
-              <CreditCardIcon />
-              <CardNumberElement className="paymentInput" />
-            </div>
-            <div>
-              <EventIcon />
-              <CardExpiryElement className="paymentInput" />
-            </div>
-            <div>
-              <VpnKeyIcon />
-              <CardCvcElement className="paymentInput" />
-            </div>
+      <CheckoutSteps activeStep={2} />
+      <div className="paymentContainer">
+        <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
+          <Typography>Card Info</Typography>
+          <div>
+            <CreditCardIcon />
+            <CardNumberElement className="paymentInput" />
+          </div>
+          <div>
+            <EventIcon />
+            <CardExpiryElement className="paymentInput" />
+          </div>
+          <div>
+            <VpnKeyIcon />
+            <CardCvcElement className="paymentInput" />
+          </div>
 
-            <input
-              type="submit"
-              value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
-              ref={payBtn}
-              className="paymentFormBtn"
-            />
-          </form>
-        </div>
-        <Footer />
+          <input
+            type="submit"
+            value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
+            ref={payBtn}
+            className="paymentFormBtn"
+          />
+        </form>
+      </div>
+      <Footer />
     </div>
   )
 }

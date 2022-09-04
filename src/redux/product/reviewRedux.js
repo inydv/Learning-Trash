@@ -32,7 +32,7 @@ const reviewsSlice = createSlice({
         },
         ALL_REVIEW_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.allReview = action.payload.review;
+            state.allReview = action.payload.reviews;
         },
         ALL_REVIEW_FAIL: (state, action) => {
             state.isFetching = false;
@@ -46,7 +46,7 @@ const reviewsSlice = createSlice({
         },
         DELETE_REVIEW_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.deleteReview = action.payload.review;
+            state.deleteReview = action.payload.deletedReview;
         },
         DELETE_REVIEW_FAIL: (state, action) => {
             state.isFetching = false;

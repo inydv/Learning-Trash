@@ -15,13 +15,7 @@ export default function UsersList() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { error, users } = useSelector((state) => state.allUsers);
-
-  const {
-    error: deleteError,
-    isDeleted,
-    message,
-  } = useSelector((state) => state.profile);
+  const { error, allUser: users, isFetching, deleteUser } = useSelector((state) => state.user);
 
   const deleteUserHandler = (id) => {
     dispatch(DELETE_USER(id));
@@ -32,17 +26,13 @@ export default function UsersList() {
       dispatch(CLEAR_ERROR());
     }
 
-    if (deleteError) {
-      dispatch(CLEAR_ERROR());
-    }
-
-    if (isDeleted) {
+    if (deleteUser) {
       navigate.push("/admin/users");
       // dispatch({ type: DELETE_USER_RESET });
     }
 
     dispatch(GET_ALL_USER());
-  }, [dispatch, alert, error, deleteError, isDeleted, message]);
+  }, [dispatch, alert, error, deleteUser]);
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },

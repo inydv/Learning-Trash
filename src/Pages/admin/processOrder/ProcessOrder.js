@@ -10,8 +10,7 @@ import { Button } from "@material-ui/core";
 import Loading from '../../../Components/loading/Loading';
 
 export default function ProcessOrder() {
-  const { order, error, loading } = useSelector((state) => state.orderDetails);
-  const { error: updateError, isUpdated } = useSelector((state) => state.order);
+  const { singleOrder: order, error, isFetching, updateOrder } = useSelector((state) => state.myOrders);
 
   const navigate = useNavigate();
   const params = useParams();
@@ -34,21 +33,19 @@ export default function ProcessOrder() {
     if (error) {
       dispatch(CLEAR_ERROR());
     }
-    if (updateError) {
-      dispatch(CLEAR_ERROR());
-    }
-    if (isUpdated) {
+
+    if (updateOrder) {
       // dispatch({ type: UPDATE_ORDER_RESET });
     }
 
     dispatch(GETTING_ORDER(params.id));
-  }, [dispatch, error, params.id, isUpdated, updateError]);
+  }, [dispatch, error, params.id, updateOrder]);
 
   return (
     <div className="dashboard">
         <Sidebar />
         <div className="newProductContainer">
-          {loading ? (
+          {isFetching ? (
             <Loading />
           ) : (
             <div
@@ -168,7 +165,7 @@ export default function ProcessOrder() {
                     id="createProductBtn"
                     type="submit"
                     disabled={
-                      loading ? true : false || status === "" ? true : false
+                      isFetching ? true : false || status === "" ? true : false
                     }
                   >
                     Process

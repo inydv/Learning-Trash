@@ -15,7 +15,7 @@ const UpdateProfile = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const user = useSelector((state) => state.user.currentUser.user);
+    const user = useSelector((state) => state.user.currentUser);
     const { isUpdated, isFetching } = useSelector((state) => state.user);
 
     const [username, setUsername] = useState("");

@@ -21,7 +21,7 @@ export default function ProductList() {
         dispatch(ADMIN_ALL_PRODUCT());
     }, [dispatch])
 
-    const {products, error} = useSelector((state) => state.products);
+    const {adminProducts: products, error, isFetching} = useSelector((state) => state.products);
 
     const deleteProductHandler = (id) => {
         dispatch(DELETE_PRODUCT(id))

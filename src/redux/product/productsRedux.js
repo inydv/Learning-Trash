@@ -55,7 +55,7 @@ const productsSlice = createSlice({
     },
     NEW_PRODUCT_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.newProduct = action.payload;
+      state.newProduct = action.payload.product;
     },
     NEW_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;
@@ -72,7 +72,7 @@ const productsSlice = createSlice({
     },
     DELETE_PRODUCT_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.deleteProduct = action.payload;
+      state.deleteProduct = action.payload.deletedProduct;
     },
     DELETE_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;
@@ -86,7 +86,7 @@ const productsSlice = createSlice({
     },
     UPDATE_PRODUCT_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.updateProduct = action.payload;
+      state.updateProduct = action.payload.updatedProduct;
     },
     UPDATE_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;

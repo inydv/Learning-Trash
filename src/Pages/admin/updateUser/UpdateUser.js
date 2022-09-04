@@ -16,13 +16,7 @@ export default function UpdateUser() {
   const navigate = useNavigate();
   const params = useParams();
 
-  const { loading, error, user } = useSelector((state) => state.userDetails);
-
-  const {
-    loading: updateLoading,
-    error: updateError,
-    isUpdated,
-  } = useSelector((state) => state.profile);
+  const { isFetching, error, singleUser: user, updateUser } = useSelector((state) => state.user);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -38,19 +32,16 @@ export default function UpdateUser() {
       setEmail(user.email);
       setRole(user.role);
     }
+
     if (error) {
       dispatch(CLEAR_ERROR());
     }
 
-    if (updateError) {
-      dispatch(CLEAR_ERROR());
-    }
-
-    if (isUpdated) {
+    if (updateUser) {
       navigate("/admin/users");
       // dispatch({ type: UPDATE_USER_RESET });
     }
-  }, [dispatch, alert, error, isUpdated, updateError, user, userId]);
+  }, [dispatch, error, updateUser, user, userId]);
 
   const updateUserSubmitHandler = (e) => {
     e.preventDefault();
@@ -68,7 +59,7 @@ export default function UpdateUser() {
     <div className="dashboard">
         <Sidebar />
         <div className="newProductContainer">
-          {loading ? (
+          {isFetching ? (
             <Loading />
           ) : (
             <form
@@ -111,7 +102,7 @@ export default function UpdateUser() {
                 id="createProductBtn"
                 type="submit"
                 disabled={
-                  updateLoading ? true : false || role === "" ? true : false
+                  isFetching ? true : false || role === "" ? true : false
                 }
               >
                 Update

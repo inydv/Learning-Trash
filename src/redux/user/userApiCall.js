@@ -8,6 +8,7 @@ import {
   LOAD_USER_START,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
+  LOGOUT_START,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   FORGOT_PASSWORD_START,
@@ -55,7 +56,7 @@ export const REGISTER = (userData) => async (dispatch) => {
     const config = { headers: { "content-Type": "multipart/form-data" } }
     const res = await publicRequest.post("/register", userData, config, { withCredentials: true });
     localStorage.setItem("time", res.data.TokenDate);
-    dispatch(REGISTER_SUCCESS());
+    dispatch(REGISTER_SUCCESS(res.data));
   } catch (error) {
     dispatch(REGISTER_FAIL(error.response.data.message));
   }
@@ -73,9 +74,10 @@ export const LOAD_USER = () => async (dispatch) => {
 };
 
 export const LOGOUT = () => async (dispatch) => {
+  dispatch(LOGOUT_START());
   try {
-    await axiosJWT.get('/logout')
-    dispatch(LOGOUT_SUCCESS());
+    const res = await axiosJWT.get('/logout')
+    dispatch(LOGOUT_SUCCESS(res.data.message));
   } catch (error) {
     dispatch(LOGOUT_FAIL());
   }
@@ -109,7 +111,7 @@ export const UPDATE_PROFILE = (userData) => async (dispatch) => {
   try {
     const config = { headers: { "Content-Type": "multipart/form-data" } };
     const res = await axiosJWT.put("/me/update", userData, config);
-    dispatch(UPDATE_PROFILE_SUCCESS(res.data));
+    dispatch(UPDATE_PROFILE_SUCCESS(res.data.message));
   } catch (error) {
     dispatch(UPDATE_PROFILE_FAIL(error.response.data.message));
   }
@@ -121,21 +123,17 @@ export const UPDATE_PW = (password) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await axiosJWT.put("/password/update", password, config);
     localStorage.setItem("time", res.data.TokenDate);
-    dispatch(UPDATE_PASSWORD_SUCCESS(res.data));
+    dispatch(UPDATE_PASSWORD_SUCCESS(res.data.message));
   } catch (error) {
     dispatch(UPDATE_PASSWORD_FAIL(error.response.data.message));
   }
 };
 
-// export const ISUPDATED = (dispatch) => {
-//   dispatch(UPDATE_ISUPDATED());
-// }
-
 export const GET_ALL_USER = () => async (dispatch) => {
   dispatch(ALL_USERS_START());
   try {
     const res = await axiosJWT.get("/admin/users");
-    dispatch(ALL_USERS_SUCCESS(res.data));
+    dispatch(ALL_USERS_SUCCESS(res.data.users));
   } catch (error) {
     dispatch(ALL_USERS_FAIL(error.response.data.message));
   }
@@ -145,7 +143,7 @@ export const GET_USER_DETAILS = (id) => async (dispatch) => {
   dispatch(USER_DETAILS_START());
   try {
     const res = await axiosJWT.get(`/admin/user/${id}`);
-    dispatch(USER_DETAILS_SUCCESS(res.data));
+    dispatch(USER_DETAILS_SUCCESS(res.data.user));
   } catch (error) {
     dispatch(USER_DETAILS_FAIL(error.response.data.message));
   }
@@ -155,7 +153,7 @@ export const UPDATE_USER = (id) => async (dispatch) => {
   dispatch(UPDATE_USER_START());
   try {
     const res = await axiosJWT.put(`/admin/user/${id}`);
-    dispatch(UPDATE_USER_SUCCESS(res.data));
+    dispatch(UPDATE_USER_SUCCESS(res.data.usered));
   } catch (error) {
     dispatch(UPDATE_USER_FAIL(error.response.data.message));
   }
@@ -165,7 +163,7 @@ export const DELETE_USER = (id) => async (dispatch) => {
   dispatch(DELETE_USER_START());
   try {
     const res = await axiosJWT.delete(`/admin/user/${id}`);
-    dispatch(DELETE_USER_SUCCESS(res.data));
+    dispatch(DELETE_USER_SUCCESS(res.data.deletedUser));
   } catch (error) {
     dispatch(DELETE_USER_FAIL(error.response.data.message));
   }

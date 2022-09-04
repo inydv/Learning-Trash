@@ -20,7 +20,7 @@ const userSlice = createSlice({
     },
     LOGIN_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.currentUser = action.payload;
+      state.currentUser = action.payload.user;
     },
     LOGIN_FAIL: (state, action) => {
       state.isFetching = false;
@@ -32,9 +32,9 @@ const userSlice = createSlice({
       state.isFetching = true;
       state.error = false;
     },
-    REGISTER_SUCCESS: (state) => {
+    REGISTER_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.currentUser = action.payload;
+      state.currentUser = action.payload.user;
     },
     REGISTER_FAIL: (state, action) => {
       state.isFetching = false;
@@ -48,7 +48,7 @@ const userSlice = createSlice({
     },
     LOAD_USER_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.currentUser = action.payload;
+      state.currentUser = action.payload.user;
     },
     LOAD_USER_FAIL: (state, action) => {
       state.isFetching = false;
@@ -60,10 +60,11 @@ const userSlice = createSlice({
       state.isFetching = true;
       state.error = false;
     },
-    LOGOUT_SUCCESS: (state) => {
+    LOGOUT_SUCCESS: (state, action) => {
       state.isFetching = false;
       state.error = false;
       state.currentUser = null;
+      state.message = action.payload;
     },
     LOGOUT_FAIL: (state, action) => {
       state.isFetching = false;
@@ -94,6 +95,7 @@ const userSlice = createSlice({
     RESET_PASSWORD_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
+      state.message = null;
     },
 
     UPDATE_PROFILE_START: (state) => {
@@ -101,13 +103,15 @@ const userSlice = createSlice({
       state.error = false;
       state.isUpdated = false;
     },
-    UPDATE_PROFILE_SUCCESS: (state) => {
+    UPDATE_PROFILE_SUCCESS: (state, action) => {
       state.isFetching = false;
       state.isUpdated = true;
+      state.message = action.payload;
     },
     UPDATE_PROFILE_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
+      state.message = null;
     },
 
     UPDATE_PASSWORD_START: (state) => {
@@ -115,20 +119,22 @@ const userSlice = createSlice({
       state.error = false;
       state.isUpdated = false;
     },
-    UPDATE_PASSWORD_SUCCESS: (state) => {
+    UPDATE_PASSWORD_SUCCESS: (state, action) => {
       state.isFetching = false;
       state.isUpdated = true;
+      state.message = action.payload;
     },
     UPDATE_PASSWORD_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
+      state.message = null;
     },
 
     UPDATE_ISUPDATED: (state) => {
       state.isUpdated = null;
     },
 
-    ALL_USERS_REQUEST: (state) => {
+    ALL_USERS_START: (state) => {
       state.isFetching = true;
       state.error = false;
     },
@@ -142,7 +148,7 @@ const userSlice = createSlice({
       state.allUser = null;
     },
 
-    USER_DETAILS_REQUEST: (state) => {
+    USER_DETAILS_START: (state) => {
       state.isFetching = true;
       state.error = false;
     },
@@ -201,6 +207,7 @@ export const {
   LOAD_USER_START,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
+  LOGOUT_START,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   FORGOT_PASSWORD_START,

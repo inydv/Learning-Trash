@@ -13,8 +13,8 @@ import LaunchIcon from "@material-ui/icons/Launch";
 const MyOrders = () => {
   const dispatch = useDispatch();
 
-  const { isFetching, error, orders } = useSelector((state) => state.myOrders);
-  const { user } = useSelector((state) => state.user.currentUser);
+  const { isFetching, error, myOrder: orders } = useSelector((state) => state.myOrders);
+  const { currentUser: user } = useSelector((state) => state.user);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },

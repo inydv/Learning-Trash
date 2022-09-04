@@ -15,13 +15,7 @@ export default function ProductReviews() {
 
   const Navigate = useNavigate();
 
-  const { error: deleteError, isDeleted } = useSelector(
-    (state) => state.review
-  );
-
-  const { error, reviews, loading } = useSelector(
-    (state) => state.productReviews
-  );
+  const { error, allReview: reviews, isFetching, deleteReview } = useSelector( (state) => state.review);
 
   const [productId, setProductId] = useState("");
 
@@ -42,15 +36,11 @@ export default function ProductReviews() {
       dispatch(CLEAR_ERRORS());
     }
 
-    if (deleteError) {
-      dispatch(CLEAR_ERRORS());
-    }
-
-    if (isDeleted) {
+    if (deleteReview) {
       Navigate("/admin/reviews");
       // dispatch({ type: DELETE_REVIEW_RESET });
     }
-  }, [dispatch, error, deleteError, isDeleted, productId]);
+  }, [dispatch, error, deleteReview, productId]);
 
   const columns = [
     { field: "id", headerName: "Review ID", minWidth: 200, flex: 0.5 },
@@ -142,7 +132,7 @@ export default function ProductReviews() {
               id="createProductBtn"
               type="submit"
               disabled={
-                loading ? true : false || productId === "" ? true : false
+                isFetching ? true : false || productId === "" ? true : false
               }
             >
               Search

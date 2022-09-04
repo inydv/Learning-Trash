@@ -3,6 +3,7 @@ import './NewProduct.css';
 import '../dashboard/Dashboard.css'
 import {useSelector, useDispatch} from "react-redux";
 import {NEW_PRODUCT} from "../../../redux/product/productsApiCall";
+import {CLEAR_ERROR} from "../../../redux/product/productsRedux";
 import { Button } from '@material-ui/core';
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import DescriptionIcon from "@material-ui/icons/Description";
@@ -16,7 +17,7 @@ export default function NewProduct() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isFetching, error, success } = useSelector((state) => state.products);
+  const { isFetching, error, newProduct } = useSelector((state) => state.products);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -31,18 +32,16 @@ export default function NewProduct() {
     "Women",
   ];
 
-  // useEffect(() => {
-  //   // if (error) {
-  //   //   alert.error(error);
-  //   //   dispatch(clearErrors());
-  //   // }
+  useEffect(() => {
+    if (error) {
+      dispatch(CLEAR_ERROR());
+    }
 
-  //   if (success) {
-  //     alert.success("Product Created Successfully");
-  //     history.push("/admin/dashboard");
-  //     dispatch({ type: NEW_PRODUCT_RESET });
-  //   }
-  // }, [dispatch, history, success]);
+    if (newProduct) {
+      navigate("/admin/dashboard");
+      // dispatch({ type: NEW_PRODUCT_RESET });
+    }
+  }, [dispatch, newProduct]);
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();

@@ -10,6 +10,7 @@ const myOrderSlice = createSlice({
         updateOrder: null,
         isFetching: false,
         error: null,
+        totalAmount: 0,
     },
     reducers: {
         My_ORDER_REQUEST: (state) => {
@@ -32,12 +33,14 @@ const myOrderSlice = createSlice({
         },
         ALL_ORDER_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.allOrders = action.payload;
+            state.allOrders = action.payload.orders;
+            state.totalAmount = action.payload.totalAmount;
         },
         ALL_ORDER_FAIL: (state, action) => {
             state.isFetching = false;
             state.error = action.payload;
             state.allOrders = null;
+            state.totalAmount = 0;
         },
 
         UPDATE_ORDER_REQUEST: (state) => {

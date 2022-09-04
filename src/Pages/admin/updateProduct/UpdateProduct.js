@@ -18,13 +18,7 @@ export default function UpdateProduct() {
   const navigate = useNavigate();
   const params = useParams();
 
-  const { error, product } = useSelector((state) => state.productDetails);
-
-  const {
-    loading,
-    error: updateError,
-    isUpdated,
-  } = useSelector((state) => state.product);
+  const { error, singleproduct: product, isFetching, updateProduct } = useSelector((state) => state.products);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -58,25 +52,21 @@ export default function UpdateProduct() {
       setStock(product.Stock);
       setOldImages(product.images);
     }
+
     if (error) {
       dispatch(CLEAR_ERROR());
     }
 
-    if (updateError) {
-      dispatch(CLEAR_ERROR());
-    }
-
-    if (isUpdated) {
+    if (updateProduct) {
       navigate("/admin/products");
       // dispatch({ type: UPDATE_PRODUCT_RESET });
     }
   }, [
     dispatch,
     error,
-    isUpdated,
     productId,
     product,
-    updateError,
+    updateProduct,
   ]);
 
   const updateProductSubmitHandler = (e) => {
@@ -212,7 +202,7 @@ export default function UpdateProduct() {
             <Button
               id="createProductBtn"
               type="submit"
-              disabled={loading ? true : false}
+              disabled={isFetching ? true : false}
             >
               Create
             </Button>

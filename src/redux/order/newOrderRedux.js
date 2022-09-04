@@ -14,7 +14,7 @@ const newOrderSlice = createSlice({
     },
     CREATE_ORDER_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.orders = action.payload;
+      state.orders = action.payload.order;
     },
     CREATE_ORDER_FAIL: (state, action) => {
       state.isFetching = false;

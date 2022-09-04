@@ -43,7 +43,7 @@ function SinglePage() {
   // const location = useLocation();
   // const id = location.pathname.split("/")[2];
 
-  const { product, isFetching, error } = useSelector(
+  const { singleproduct: product, isFetching, error } = useSelector(
     (state) => state.products
   );
 

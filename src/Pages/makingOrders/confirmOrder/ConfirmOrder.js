@@ -10,7 +10,7 @@ import CheckoutSteps from '../../../Components/checkoutSteps/CheckoutSteps';
 function ConfirmOrder() {
     const navigate = useNavigate();
     const { shippingInfo, cartItems } = useSelector((state) => state.cart);
-  const user = useSelector((state) => state.user.currentUser.user);
+  const user = useSelector((state) => state.user.currentUser);
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,

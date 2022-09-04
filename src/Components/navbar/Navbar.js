@@ -41,7 +41,7 @@ function Navbar() {
     });
   }
 
-  if (user && user.user.role === "admin") {
+  if (user && user.role === "admin") {
     option.unshift({
       icon: <DashboardIcon />,
       name: "Dashboard",
@@ -108,7 +108,7 @@ function Navbar() {
             icon={
               user ? (
                 <img
-                  src={user.user.avatar.url}
+                  src={user.avatar.url}
                   className="speedDialIcon"
                   alt="Profile"
                 />

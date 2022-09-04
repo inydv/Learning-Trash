@@ -15,9 +15,7 @@ export default function OrderList() {
 
   const Navigate = useNavigate();
 
-  const { error, orders } = useSelector((state) => state.allOrders);
-
-  const { error: deleteError, isDeleted } = useSelector((state) => state.order);
+  const { error, allOrders: orders, isFetching, deleteOrder } = useSelector((state) => state.myOrders);
 
   const deleteOrderHandler = (id) => {
     dispatch(DELETE_ORDER(id));
@@ -28,17 +26,13 @@ export default function OrderList() {
       dispatch(CLEAR_ERROR());
     }
 
-    if (deleteError) {
-      dispatch(CLEAR_ERROR());
-    }
-
-    if (isDeleted) {
+    if (deleteOrder) {
       Navigate("/admin/orders");
       // dispatch({ type: DELETE_ORDER_RESET });
     }
 
     dispatch(ALL_ORDER());
-  }, [dispatch, error, deleteError, isDeleted]);
+  }, [dispatch, error, deleteOrder]);
 
   const columns = [
     { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },

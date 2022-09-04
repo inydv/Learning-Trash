@@ -7,7 +7,7 @@ import { CLEAR_ERROR } from "../../../redux/order/myOrderRedux";
 import Loading from "../../../Components/loading/Loading";
 
 function OrderDetails() {
-  const { order, error, isFetching } = useSelector((state) => state.myOrders);
+  const { myOrder, error, isFetching } = useSelector((state) => state.myOrders);
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -28,25 +28,25 @@ function OrderDetails() {
           <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
               <h1 component="h1">
-                Order #{order && order._id}
+                Order #{myOrder && myOrder._id}
               </h1>
               <h1>Shipping Info</h1>
               <div className="orderDetailsContainerBox">
                 <div>
                   <p>Name:</p>
-                  <span>{order.user && order.user.name}</span>
+                  <span>{myOrder.user && myOrder.user.name}</span>
                 </div>
                 <div>
                   <p>Phone:</p>
                   <span>
-                    {order.shippingInfo && order.shippingInfo.phoneNo}
+                    {myOrder.shippingInfo && myOrder.shippingInfo.phoneNo}
                   </span>
                 </div>
                 <div>
                   <p>Address:</p>
                   <span>
-                    {order.shippingInfo &&
-                      `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
+                    {myOrder.shippingInfo &&
+                      `${myOrder.shippingInfo.address}, ${myOrder.shippingInfo.city}, ${myOrder.shippingInfo.state}, ${myOrder.shippingInfo.pinCode}, ${myOrder.shippingInfo.country}`}
                   </span>
                 </div>
               </div>
@@ -55,14 +55,14 @@ function OrderDetails() {
                 <div>
                   <p
                     className={
-                      order.paymentInfo &&
-                      order.paymentInfo.status === "succeeded"
+                      myOrder.paymentInfo &&
+                      myOrder.paymentInfo.status === "succeeded"
                         ? "greenColor"
                         : "redColor"
                     }
                   >
-                    {order.paymentInfo &&
-                    order.paymentInfo.status === "succeeded"
+                    {myOrder.paymentInfo &&
+                    myOrder.paymentInfo.status === "succeeded"
                       ? "PAID"
                       : "NOT PAID"}
                   </p>
@@ -70,7 +70,7 @@ function OrderDetails() {
 
                 <div>
                   <p>Amount:</p>
-                  <span>{order.totalPrice && order.totalPrice}</span>
+                  <span>{myOrder.totalPrice && myOrder.totalPrice}</span>
                 </div>
               </div>
 
@@ -79,12 +79,12 @@ function OrderDetails() {
                 <div>
                   <p
                     className={
-                      order.orderStatus && order.orderStatus === "Delivered"
+                      myOrder.orderStatus && myOrder.orderStatus === "Delivered"
                         ? "greenColor"
                         : "redColor"
                     }
                   >
-                    {order.orderStatus && order.orderStatus}
+                    {myOrder.orderStatus && myOrder.orderStatus}
                   </p>
                 </div>
               </div>
@@ -93,8 +93,8 @@ function OrderDetails() {
             <div className="orderDetailsCartItems">
               <h1>Order Items:</h1>
               <div className="orderDetailsCartItemsContainer">
-                {order.orderItems &&
-                  order.orderItems.map((item) => (
+                {myOrder.orderItems &&
+                  myOrder.orderItems.map((item) => (
                     <div key={item.product}>
                       <img src={item.image} alt="Product" />
                       <Link to={`/product/${item.product}`}>
