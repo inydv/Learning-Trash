@@ -13,7 +13,7 @@ import { NEW_REVIEW} from '../../../redux/product/reviewApiCall';
 import { CLEAR_ERRORS} from '../../../redux/product/reviewRedux';
 import Carousel from "react-material-ui-carousel";
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button} from "@material-ui/core";
-import { Rating } from "@material-ui/lab";
+import { Rating } from 'react-simple-star-rating';
 
 function SinglePage() {
   const dispatch = useDispatch();
@@ -67,15 +67,12 @@ function SinglePage() {
   }
 
   const options = {
-    // edit: false,
-    // color: "rgba(255, 255, 255,0.2)",
-    // activeColor: "tomato",
-    // size: window.innerWidth < 600 ? 20 : 25,
-    // value: product && product.ratings,
-    size: "large",
-    // value: product.ratings,
-    readOnly: true,
-    precision: 0.5,
+    size: window.innerWidth < 600 ? 20 : 25,
+    // readOnly: true,
+    ratingValue: 3,
+    initialValue: 3,
+    fillColor: "tomato",
+    emptyColor: "black"
   };
 
   const reviewSubmitHandler = () => {
@@ -136,7 +133,7 @@ function SinglePage() {
 
                         <div className="detailsBlock-2">
                           <Rating {...options} />
-                          <span> ({product.numOfReviews} Reviews)</span>
+                          <span> ({product.numofReviews} Reviews)</span>
                         </div>
 
                         <div className="detailsBlock-3">

@@ -1,5 +1,5 @@
 import React from "react";
-import ReactStars from "react-rating-stars-component";
+import { Rating } from 'react-simple-star-rating';
 import "./Reviews.css";
 
 function Reviews({ review }) {
@@ -19,7 +19,7 @@ function Reviews({ review }) {
         alt="user"
       />
       <p>{review.name}</p>
-      <ReactStars {...options} />
+      <Rating {...options} />
       <span>{review.comment}</span>
     </div>
   );

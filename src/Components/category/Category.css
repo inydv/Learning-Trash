@@ -45,7 +45,7 @@
 @media only screen and (max-width: 800px) {
   .category {
     padding-top: 10px;
-    height: 100vh;
+    height: auto;
     flex-direction: column;
   }
 

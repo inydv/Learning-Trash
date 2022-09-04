@@ -19,21 +19,21 @@ function Account() {
                     <div className="profileContainer">
                         <div>
                             <h1>My Profile</h1>
-                            <img src={currentUser.avatar.url} alt={currentUser.name} />
+                            <img src={currentUser && currentUser.avatar.url} alt={currentUser && currentUser.name} />
                             <Link to="/me/update">Edit Profile</Link>
                         </div>
                         <div>
                             <div>
                                 <h4>Full Name</h4>
-                                <p>{currentUser.username}</p>
+                                <p>{currentUser && currentUser.username}</p>
                             </div>
                             <div>
                                 <h4>Email</h4>
-                                <p>{currentUser.email}</p>
+                                <p>{currentUser && currentUser.email}</p>
                             </div>
                             <div>
                                 <h4>Joined On</h4>
-                                <p>{String(currentUser.createdAt).substr(0, 10)}</p>
+                                <p>{String(currentUser && currentUser.createdAt).substr(0, 10)}</p>
                             </div>
 
                             <div>

@@ -29,7 +29,7 @@ function NewsLetter() {
                 required
               />
               <button className="btn" type="submit">
-                Sign up
+                SIGN UP
               </button>
             </div>
           </form>

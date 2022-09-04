@@ -44,12 +44,6 @@
   cursor: pointer;
 }
 
-.navbar .center .shop {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
 .navbar .right {
   padding: 10px 30px;
   flex: 1;
@@ -58,16 +52,20 @@
   align-items: center;
 }
 
-.navbar .right .user {
-  cursor: pointer;
+.navbar .right .userImage {
   margin-right: 20px;
-  margin-top: 190px;
+  margin-top: 240px;
+}
+
+.navbar .right .userIcon {
+  margin-top: 72px;
 }
 
 .speedDialIcon {
   height: 40px;
   width: 40px;
   border-radius: 100%;
+  cursor: pointer;
 }
 
 .navbar .right .cart {
@@ -105,9 +103,13 @@
     padding: 5px 10px;
   }
 
-  .navbar .right .user {
-    margin-top: 185px;
-    margin-right: 0;
+  .navbar .right .userImage {
+    margin-right: 0px;
+    margin-top: 240px;
+  }
+  
+  .navbar .right .userIcon {
+    margin-top: 72px;
   }
 
   .speedDialIcon {
