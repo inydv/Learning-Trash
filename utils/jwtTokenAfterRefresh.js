@@ -32,7 +32,7 @@ const sendTokenAfterRefresh = async (user, statusCode, res) => {
     path: '/',
   };
 
-  const { password, verified, createdAt, updatedAt, refreshTokens, __v, ...others } = user._doc;
+  const { password, verified, updatedAt, refreshTokens, __v, ...others } = user._doc;
 
   user = others;
 
