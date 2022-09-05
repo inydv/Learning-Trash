@@ -84,11 +84,6 @@
   transition: all 0.5s;
 }
 
-.addReview > button:hover {
-  background-color: tomato;
-  transform: scale(1.1);
-}
-
 .review {
   display: flex;
   overflow: auto;

@@ -62,12 +62,15 @@ function Contact() {
               </div>
 
               <div className="btn">
-                <button type="submit">Submit</button>
+                <button type="submit">SUBMIT</button>
               </div>
             </form>
           </>
         ) : (
-          <h1 className="title">Thanks For Contacting Us...</h1>
+          <div className="afterSubmit">
+          <h1>Thanks For Contacting Us 😁</h1>
+          <p>Redirecting To Home Within 2 Seconds</p>
+          </div>
         )}
       </div>
       <Footer />

@@ -6,7 +6,7 @@
   margin: 10px;
   background-color: rgba(30, 30, 32, 0.281);
   height: 300px;
-  width: 250px;
+  width: 245px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@
   color: white;
   width: 7.5rem;
   height: 2.25rem;
-  background-color: rgba(255, 38, 0, 0.801);
+  background-color: rgb(58, 57, 57);
   border-radius: 10px;
   position: absolute;
   right: -1rem;

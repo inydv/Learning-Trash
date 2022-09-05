@@ -16,14 +16,9 @@
     align-items: center;
   }
   
-  .profileContainer > div:first-child > h1 {
-    color: white;
-    transform: translateX(-10vmax) translateY(-7vmax);
-  }
-  
   .profileContainer > div:first-child > img {
     width: 20vmax;
-    border-radius: 100%;
+    border-radius: 10%;
     transition: all 0.5s;
   }
   
@@ -44,7 +39,7 @@
   }
   
   .profileContainer > div:first-child > a:hover {
-    background-color: tomato;
+    transform: scale(1.1);
   }
   
   .profileContainer > div:last-child {
@@ -61,7 +56,6 @@
   
   .profileContainer > div:last-child > div > p {
     color: white;
-    font: 400 1vmax cursive;
     margin: 0.2vmax;
   }
   
@@ -84,7 +78,7 @@
   }
   
   .profileContainer > div:last-child > div:last-child > a:hover {
-    background-color: tomato;
+    transform: scale(1.1);
   }
   
   @media screen and (max-width: 600px) {

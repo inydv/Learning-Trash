@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./Account.css"
 import Loading from "../../../Components/loading/Loading";
 import Navbar from "../../../Components/navbar/Navbar";
@@ -9,6 +9,10 @@ import { useSelector } from "react-redux";
 function Account() {
     const { currentUser, isFetching } = useSelector((state) => state.user);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    },[]);
+
     return (
         <div>
             <Navbar />
@@ -18,7 +22,6 @@ function Account() {
                 <div>
                     <div className="profileContainer">
                         <div>
-                            <h1>My Profile</h1>
                             <img src={currentUser && currentUser.avatar.url} alt={currentUser && currentUser.name} />
                             <Link to="/me/update">Edit Profile</Link>
                         </div>
@@ -37,13 +40,13 @@ function Account() {
                             </div>
 
                             <div>
-                                <Link to="/orders">My Orders</Link>
+                                <Link to="/MyOrders">My Orders</Link>
                                 <Link to="/password/update">Change Password</Link>
                             </div>
                         </div>
                     </div>
                 </div>)}
-                <Footer />
+            <Footer />
         </div>
     )
 }

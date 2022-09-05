@@ -7,7 +7,7 @@ function Products({ product }) {
     <div className="flip" key={product._id}>
       <Link to={`/product/${product._id}`}>
         <div className="productsList">
-          <div class="product-card__promotion">
+          <div className="product-card__promotion">
             <p>{`₹ ${product.price}`}</p>
           </div>
 

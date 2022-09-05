@@ -13,7 +13,11 @@ import LaunchIcon from "@material-ui/icons/Launch";
 const MyOrders = () => {
   const dispatch = useDispatch();
 
-  const { isFetching, error, myOrder: orders } = useSelector((state) => state.myOrders);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+},[]);
+
+  const { isFetching, error, myOrders: orders } = useSelector((state) => state.myOrders);
   const { currentUser: user } = useSelector((state) => state.user);
 
   const columns = [
@@ -98,8 +102,7 @@ const MyOrders = () => {
             className="myOrdersTable"
             autoHeight
           />
-
-          <h1 id="myOrdersHeading">{user.username}'s Orders</h1>
+          <h6 id="myOrdersHeading">{user.username}'s Orders</h6>
         </div>
       )}
       <Footer />

@@ -27,8 +27,6 @@ function Home() {
     (state) => state.products
   );
 
-  const show = useSelector((state) => state.newsLetter.show);
-
   return (
     <>
       <Navbar />
@@ -55,7 +53,7 @@ function Home() {
           </>
         )}
       </div>
-      {show === true ? <NewsLetter /> : ""}
+      <NewsLetter />
       <Footer />
     </>
   );

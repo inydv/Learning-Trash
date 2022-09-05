@@ -12,6 +12,10 @@ import LockIcon from "@material-ui/icons/Lock"
 import VpnKeyIcon from "@material-ui/icons/VpnKey"
 
 function UpdatePassword() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    },[]);
+    
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -86,7 +90,7 @@ function UpdatePassword() {
                                 </div>
                                 <input
                                     type="submit"
-                                    value="change"
+                                    value="UPDATE"
                                     className="updatePasswordBtn"
                                 />
                             </form>

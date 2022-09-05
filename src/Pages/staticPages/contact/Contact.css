@@ -78,6 +78,19 @@
   cursor: pointer;
 }
 
+.afterSubmit {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.afterSubmit p {
+  font-size: 10px;
+  color: tomato;
+}
+
 @media only screen and (max-width: 800px) {
   .wrap {
     padding: 5px 10px;

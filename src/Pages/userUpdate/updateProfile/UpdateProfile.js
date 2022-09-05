@@ -15,6 +15,10 @@ const UpdateProfile = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    },[]);
+
     const user = useSelector((state) => state.user.currentUser);
     const { isUpdated, isFetching } = useSelector((state) => state.user);
 
