@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './ProductReviews';
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { useSelector, useDispatch } from "react-redux";
 import { ALL_REVIEW, DELETE_REVIEW } from "../../../redux/product/reviewApiCall";
 import { CLEAR_ERRORS } from "../../../redux/product/reviewRedux";

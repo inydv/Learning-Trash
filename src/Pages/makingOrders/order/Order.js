@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";  // make table auto, wehave to pass row and column only
+import { DataGrid } from "@mui/x-data-grid";  // make table auto, we have to pass row and column only
 import "./Order.css";
 import Navbar from "../../../Components/navbar/Navbar";
 import Footer from "../../../Components/footer/Footer";
@@ -21,12 +21,12 @@ const MyOrders = () => {
   const { currentUser: user } = useSelector((state) => state.user);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    { field: "id", headerName: "Order ID", flex: 1, },
 
     {
       field: "status",
       headerName: "Status",
-      minWidth: 150,
+      // minWidth: 150,
       flex: 0.5,
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Delivered"
@@ -38,7 +38,7 @@ const MyOrders = () => {
       field: "itemsQty",
       headerName: "Items Qty",
       type: "number",
-      minWidth: 150,
+      // minWidth: 150,
       flex: 0.3,
     },
 
@@ -46,7 +46,7 @@ const MyOrders = () => {
       field: "amount",
       headerName: "Amount",
       type: "number",
-      minWidth: 270,
+      // minWidth: 270,
       flex: 0.5,
     },
 
@@ -54,12 +54,12 @@ const MyOrders = () => {
       field: "actions",
       flex: 0.3,
       headerName: "Actions",
-      minWidth: 150,
-      type: "number",
+      // minWidth: 150,
+      type: "actions",
       sortable: false,
       renderCell: (params) => {
         return (
-          <Link to={`/order/${params.getValue(params.id, "id")}`}>
+          <Link to={`/order/${params.getValue(params.id, "id")}`} className="linkColor" >
             <LaunchIcon />
           </Link>
         );
@@ -97,12 +97,32 @@ const MyOrders = () => {
           <DataGrid
             rows={rows}
             columns={columns}
-            pageSize={10}
             disableSelectionOnClick
-            className="myOrdersTable"
             autoHeight
+            density="compact" // for making compact table
+            sx={{ // for borders
+              '.MuiDataGrid-columnSeparator': {
+                display: 'none',
+                border: 'none'
+              },
+              '.MuiDataGrid-rowSeparator': {
+                display: 'none',
+                border: 'none'
+              },
+              '&.MuiDataGrid-root': {
+                border: 'none',
+              },
+              '.MuiDataGrid-cell': {
+                border: 'none'
+              },
+
+              // height of table body
+
+             
+            }}
+            className="myOrdersTable"
           />
-          <h6 id="myOrdersHeading">{user.username}'s Orders</h6>
+          <h6 id="myOrdersHeading">{user && user.username}'s Orders</h6>
         </div>
       )}
       <Footer />

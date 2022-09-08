@@ -8,7 +8,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Sidebar from "../sidebar/Sidebar";
 import { GET_ALL_USER, DELETE_USER } from "../../../redux/user/userApiCall";
 import { CLEAR_ERROR } from "../../../redux/user/userRedux";
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import {useNavigate} from "react-router-dom"
 
 export default function UsersList() {

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import './OrderList.css';
-import { DataGrid } from "@material-ui/data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@material-ui/core";

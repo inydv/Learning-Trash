@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import './ProductList.css';
 import '../dashboard/Dashboard.css'
-import {DataGrid} from '@material-ui/data-grid';
+import {DataGrid} from '@mui/x-data-grid';
 import {useSelector, useDispatch} from "react-redux";
 import {ADMIN_ALL_PRODUCT, DELETE_PRODUCT} from '../../../redux/product/productsApiCall';
 import {Link} from "react-router-dom";
