@@ -2,28 +2,29 @@
     margin: auto;
     text-align: center;
     padding: 10vmax;
-    height: 50vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+
   .orderSuccess > svg {
     font-size: 7vmax;
-    color: tomato;
   }
+
   .orderSuccess > p {
     font-size: 2vmax;
   }
+
   .orderSuccess > a {
     background-color: rgb(51, 51, 51);
     color: white;
     border: none;
     padding: 1vmax 3vmax;
     cursor: pointer;
-    font: 400 1vmax ;
     text-decoration: none;
-    margin: 2vmax;
+    margin: 1vmax;
   }
   
   @media screen and (max-width: 600px) {
@@ -37,7 +38,7 @@
       font-size: 20vw;
     }
     .orderSuccess > p {
-      margin: 2vmax;
+      margin: 1vmax;
       font-size: 5vw;
     }
   }

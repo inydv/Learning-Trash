@@ -10,10 +10,12 @@ function OrderSuccess() {
     return (
         <div>
             <Navbar />
-            <CheckCircleIcon className="orderSuccess" />
+            <div className="orderSuccess">
+            <CheckCircleIcon />
 
             <Typography>Your Order has been Placed successfully </Typography>
-            <Link to="/orders">View Orders</Link>
+            <Link to="/MyOrders">View Orders</Link>
+            </div>
             <Footer />
         </div>
     )

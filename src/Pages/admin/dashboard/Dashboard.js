@@ -23,11 +23,11 @@ export default function Dashboard() {
     dispatch(GET_ALL_USER());
   }, [dispatch])
 
-  const { products } = useSelector((state) => state.products);
+  const { adminProducts } = useSelector((state) => state.products);
   const { allUser } = useSelector((state) => state.user);
   const { allOrders } = useSelector((state) => state.myOrders);
 
-  products && products.forEach((item) => {
+  adminProducts && adminProducts.forEach((item) => {
     if (item.Stock === 0) {
       outOfStock += 1;
     }
@@ -36,7 +36,7 @@ export default function Dashboard() {
   let totalAmount = 0;
 
   allOrders &&
-  allOrders.forEach((item) => {
+    allOrders.forEach((item) => {
       totalAmount += item.totalPrice;
     });
 
@@ -45,9 +45,11 @@ export default function Dashboard() {
     datasets: [
       {
         label: "TOTAL AMOUNT",
-        backgroundColor: ["tomato"],
+        backgroundColor: ["red"],
         hoverBackgroundColor: ["rgb(197, 72, 49"],
         data: [0, totalAmount],
+        borderColor: "white",
+        fill: true,
       }
     ]
   }
@@ -56,9 +58,9 @@ export default function Dashboard() {
     labels: ["Out of Stock", "InStock"],
     datasets: [
       {
-        backgroundColor: ["#00A6B4", "$6800B4"],
-        hoverBackgroundColor: ['#4B5000', '#35014F'],
-        data: [outOfStock, products && products.length - outOfStock],
+        backgroundColor: ["red", "blue"],
+        hoverBackgroundColor: ['red', 'blue'],
+        data: [outOfStock, adminProducts && adminProducts.length - outOfStock],
       }
     ]
   }
@@ -82,7 +84,7 @@ export default function Dashboard() {
             <div className="dashboardSummaryBox2">
               <Link to="/admin/products">
                 <p>Products</p>
-                <p>{products && products.length}</p>
+                <p>{adminProducts && adminProducts.length}</p>
               </Link>
               <Link to="/admin/orders">
                 <p>Orders</p>
@@ -95,14 +97,15 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="lineChart">
-            <Line data={lineState} />
-          </div>
+          <div className="charts">
+            <div className="lineChart">
+              <Line data={lineState} />
+            </div>
 
-          <div className="doughnutChart">
-            <Doughnut data={doughnutState} />
+            <div className="doughnutChart">
+              <Doughnut data={doughnutState} />
+            </div>
           </div>
-
         </div>
       </div>
 

@@ -17,16 +17,16 @@
 }
 
 .cartList > div > a {
-    color: tomato;
     text-decoration: none;
 }
 
-.cartList > div > span {
-    
+.cartList > div > p {
+    cursor: pointer;
+    transition: all 0.5s;
 }
 
-.cartList > div > p{
-    cursor: pointer;
+.cartList > div > p:hover {
+    color: red
 }
 
 @media screen and (max-width: 600px) {
@@ -41,16 +41,5 @@
 
     .cartList > div {
         margin: 1vmax 2vmax; 
-    }
-    
-    .cartList > div > a {
-
-    }
-    
-    .cartList > div > span {
-        
-    }
-    
-    .cartList > div > p{
     }
 }
