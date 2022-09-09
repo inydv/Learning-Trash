@@ -35,8 +35,8 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
 // Get Single Order
 exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.findById(req.params.id).populate(
-    "user", // not shot the user as given in DB... this go to user database
-    "name email" // and find this 2 then show it instead of userId
+    "user", // not show the user as given in DB... this go to user database
+    "username email" // and find this 2 then show it instead of userId
   );
 
   if (!order) {
