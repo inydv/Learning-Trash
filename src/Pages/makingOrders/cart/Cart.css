@@ -2,32 +2,34 @@
     margin: auto;
     text-align: center;
     padding: 10vmax;
-    height: 50vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+
   .emptyCart > svg {
     font-size: 5vmax;
-    color: rgb(58, 57, 57);
   }
+
   .emptyCart > p {
     font-size: 2vmax;
   }
+
   .emptyCart > a {
     background-color: rgb(51, 51, 51);
     color: white;
     border: none;
     padding: 1vmax 3vmax;
+    margin-top: 10px;
     cursor: pointer;
-    font: 400 1vmax ;
     text-decoration: none;
     transition: all 0.5s;
   }
 
   .emptyCart > a:hover {
-    background-color: tomato;
+    transform: scale(1.1);
   }
   
   .cartPage {

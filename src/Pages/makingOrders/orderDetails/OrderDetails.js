@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { GETTING_ORDER } from "../../../redux/order/myOrderApiCall";
 import { CLEAR_ERROR } from "../../../redux/order/myOrderRedux";
+import Navbar from "../../../Components/navbar/Navbar";
+import Footer from "../../../Components/footer/Footer";
 import Loading from "../../../Components/loading/Loading";
 
 function OrderDetails() {
-  const { myOrder, error, isFetching } = useSelector((state) => state.myOrders);
+  const { singleOrder, error, isFetching } = useSelector((state) => state.myOrders);
 
   const dispatch = useDispatch();
   const params = useParams();
@@ -19,34 +21,35 @@ function OrderDetails() {
 
     dispatch(GETTING_ORDER(params.id));
   }, [dispatch, error, params.id]);
+
   return (
     <div>
       {isFetching ? (
         <Loading />
       ) : (
         <div>
+          <Navbar />
           <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
               <h1 component="h1">
-                Order #{myOrder && myOrder._id}
+                Order #{singleOrder && singleOrder._id}
               </h1>
               <h1>Shipping Info</h1>
               <div className="orderDetailsContainerBox">
                 <div>
-                  <p>Name:</p>
-                  <span>{myOrder.user && myOrder.user.name}</span>
+                  <p>Name: </p>
+                  <span>{singleOrder && singleOrder.user.username}</span>
                 </div>
                 <div>
-                  <p>Phone:</p>
+                  <p>Phone: </p>
                   <span>
-                    {myOrder.shippingInfo && myOrder.shippingInfo.phoneNo}
+                    {singleOrder && singleOrder.shippingInfo.phoneNo}
                   </span>
                 </div>
                 <div>
-                  <p>Address:</p>
+                  <p>Address: </p>
                   <span>
-                    {myOrder.shippingInfo &&
-                      `${myOrder.shippingInfo.address}, ${myOrder.shippingInfo.city}, ${myOrder.shippingInfo.state}, ${myOrder.shippingInfo.pinCode}, ${myOrder.shippingInfo.country}`}
+                    {`${singleOrder && singleOrder.shippingInfo.address}, ${singleOrder && singleOrder.shippingInfo.city}, ${singleOrder && singleOrder.shippingInfo.state}, ${singleOrder && singleOrder.shippingInfo.pinCode}, ${singleOrder && singleOrder.shippingInfo.country}`}
                   </span>
                 </div>
               </div>
@@ -55,22 +58,22 @@ function OrderDetails() {
                 <div>
                   <p
                     className={
-                      myOrder.paymentInfo &&
-                      myOrder.paymentInfo.status === "succeeded"
+                      singleOrder &&
+                      singleOrder.paymentInfo.status === "succeeded"
                         ? "greenColor"
                         : "redColor"
                     }
                   >
-                    {myOrder.paymentInfo &&
-                    myOrder.paymentInfo.status === "succeeded"
+                    {singleOrder &&
+                    singleOrder.paymentInfo.status === "succeeded"
                       ? "PAID"
                       : "NOT PAID"}
                   </p>
                 </div>
 
                 <div>
-                  <p>Amount:</p>
-                  <span>{myOrder.totalPrice && myOrder.totalPrice}</span>
+                  <p>Amount: </p>
+                  <span>{singleOrder && singleOrder.totalPrice}</span>
                 </div>
               </div>
 
@@ -79,22 +82,22 @@ function OrderDetails() {
                 <div>
                   <p
                     className={
-                      myOrder.orderStatus && myOrder.orderStatus === "Delivered"
+                      singleOrder && singleOrder.orderStatus === "Delivered"
                         ? "greenColor"
                         : "redColor"
                     }
                   >
-                    {myOrder.orderStatus && myOrder.orderStatus}
+                    {singleOrder && singleOrder.orderStatus}
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="orderDetailsCartItems">
-              <h1>Order Items:</h1>
+              <h1>Order Items</h1>
               <div className="orderDetailsCartItemsContainer">
-                {myOrder.orderItems &&
-                  myOrder.orderItems.map((item) => (
+                {singleOrder &&
+                  singleOrder.orderItems.map((item) => (
                     <div key={item.product}>
                       <img src={item.image} alt="Product" />
                       <Link to={`/product/${item.product}`}>
@@ -109,6 +112,7 @@ function OrderDetails() {
               </div>
             </div>
           </div>
+          <Footer />
         </div>
       )}
     </div>
