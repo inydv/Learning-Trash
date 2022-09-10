@@ -1,7 +1,7 @@
 .newProductContainer {
     width: 100%;
     box-sizing: border-box;
-    background-color: white;
+    background-color: black;
     border-left: 1px solid white;
     display: flex;
     flex-direction: column;
@@ -10,6 +10,7 @@
   .newProductContainer h1 {
     color: white;
     text-align: center;
+    margin-bottom: 20px;
   }
   
   .createProductForm {
@@ -19,10 +20,10 @@
     margin: auto;
     padding: 3vmax;
     justify-content: space-evenly;
-    height: 70%;
-    width: 40vh;
-    background-color: white;
-    box-shadow: 0 0 10px white;
+    height: 80%;
+    width: 50vh;
+    background-color: black;
+    box-shadow: 0 0 10px black;
   }
   
   .createProductForm > div {
@@ -33,18 +34,21 @@
   .createProductForm > div > input,
   .createProductForm > div > select,
   .createProductForm > div > textarea {
-    padding: 1vmax 4vmax;
-    padding-right: 1vmax;
+    padding: 1vmax;
     width: 100%;
+    color: black;
     box-sizing: border-box;
     border: 1px solid white;
     border-radius: 4px;
     outline: none;
   }
+
+  .createProductForm > div > select > option {
+    color: black
+  }
   
   .createProductForm > div > svg {
-    position: absolute;
-    transform: translateX(1vmax);
+    margin-right: 5px;
     font-size: 1.6vmax;
     color: white;
   }
@@ -84,7 +88,6 @@
     border: none;
     background-color: tomato;
     color: white;
-    font: 300 0.9vmax "Roboto";
     width: 100%;
     padding: 0.8vmax;
     cursor: pointer;
@@ -99,18 +102,14 @@
   }
   
   @media screen and (max-width: 600px) {
-    .newProductContainer {
-      background-color: rgb(255, 255, 255);
-    }
     .createProductForm {
-      padding: 5vmax;
+      height: 100%;
     }
   
     .createProductForm > div > input,
     .createProductForm > div > select,
     .createProductForm > div > textarea {
       padding: 2.5vmax 5vmax;
-      font: 300 1.7vmax cursive;
     }
   
     .createProductForm > div > svg {
@@ -124,11 +123,9 @@
   
     #createProductFormFile > input::file-selector-button {
       height: 7vh;
-      font: 400 1.8vmax cursive;
     }
   
     #createProductBtn {
-      font: 300 1.9vmax "Roboto";
       padding: 1.8vmax;
     }
   }

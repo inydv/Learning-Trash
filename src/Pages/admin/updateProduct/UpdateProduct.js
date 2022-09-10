@@ -42,15 +42,15 @@ export default function UpdateProduct() {
   const productId = params.id;
 
   useEffect(() => {
-    if (product && product._id !== productId) {
+    if (!product) {
       dispatch(GET_PRODUCT_DETAIL(productId));
     } else {
-      setName(product.name);
-      setDescription(product.description);
+      setName(product.title);
+      setDescription(product.desc);
       setPrice(product.price);
-      setCategory(product.category);
-      setStock(product.Stock);
-      setOldImages(product.images);
+      setCategory(product.categories);
+      setStock(product.inStock);
+      setOldImages(product.img);
     }
 
     if (error) {

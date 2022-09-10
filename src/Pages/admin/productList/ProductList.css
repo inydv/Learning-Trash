@@ -1,3 +1,8 @@
+.MuiDataGrid-root .MuiDataGrid-columnHeader:focus,
+.MuiDataGrid-root .MuiDataGrid-cell:focus-within {
+  outline: none !important; /* remove inline outline */
+}
+
 .productListContainer {
     width: 100%;
     box-sizing: border-box;
@@ -9,11 +14,11 @@
   }
   
   #productListHeading {
-    padding: 0.5vmax;
+    padding: 0.5rem;
     box-sizing: border-box;
     color: white;
     transition: all 0.5s;
-    margin: 2rem;
+    margin: auto;
     text-align: center;
   }
   
@@ -33,18 +38,16 @@
     transition: all 0.5s;
   }
   
-  .productListTable a:hover {
-    color: tomato;
-  }
-  
-  .productListTable button:hover {
-    color: rgb(236, 30, 30);
-  }
-  
   .MuiDataGrid-columnHeader div {
     color: white;
   }
   
+  .tableIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   @media screen and (max-width: 600px) {
     .productListTable div {
       

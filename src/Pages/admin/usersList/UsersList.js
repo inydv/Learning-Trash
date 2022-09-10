@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react'
-import './UsersList.css'
+import React, { useEffect } from 'react'
+import "../productList/ProductList.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
@@ -9,7 +9,7 @@ import Sidebar from "../sidebar/Sidebar";
 import { GET_ALL_USER, DELETE_USER } from "../../../redux/user/userApiCall";
 import { CLEAR_ERROR } from "../../../redux/user/userRedux";
 import { DataGrid } from "@mui/x-data-grid";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export default function UsersList() {
   const dispatch = useDispatch();
@@ -72,7 +72,7 @@ export default function UsersList() {
       sortable: false,
       renderCell: (params) => {
         return (
-          <div>
+          <div className='tableIcon'>
             <Link to={`/admin/user/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
@@ -103,19 +103,35 @@ export default function UsersList() {
     });
   return (
     <div className="dashboard">
-        <Sidebar />
-        <div className="productListContainer">
-          <h1 id="productListHeading">ALL USERS</h1>
+      <Sidebar />
+      <div className="productListContainer">
+        <h1 id="productListHeading">ALL USERS</h1>
 
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className="productListTable"
-            autoHeight
-          />
-        </div>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          disableSelectionOnClick
+          className="productListTable"
+          autoHeight
+          density="compact" // for making compact table
+          sx={{ // for borders
+            '.MuiDataGrid-columnSeparator': {
+              display: 'none',
+              border: 'none'
+            },
+            '.MuiDataGrid-rowSeparator': {
+              display: 'none',
+              border: 'none'
+            },
+            '&.MuiDataGrid-root': {
+              border: 'none',
+            },
+            '.MuiDataGrid-cell': {
+              border: 'none'
+            },
+          }}
+        />
       </div>
+    </div>
   )
 }

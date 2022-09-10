@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import './UpdateUser.css';
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@material-ui/core";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
@@ -25,10 +24,10 @@ export default function UpdateUser() {
   const userId = params.id;
 
   useEffect(() => {
-    if (user && user._id !== userId) {
+    if (!user) {
       dispatch(GET_USER_DETAILS(userId));
     } else {
-      setName(user.name);
+      setName(user.username);
       setEmail(user.email);
       setRole(user.role);
     }

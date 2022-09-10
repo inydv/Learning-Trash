@@ -34,11 +34,10 @@ export default function ProductList() {
         {field: "actions", headerName: "Actions", type: "action", minWidth: 150, flex: 0.3, sortable: false,
         renderCell: (params) => {
             return (
-                <div>
+                <div className='tableIcon'>
                     <Link to={`/admin/product/${params.getValue(params.id, "id")}`}>
                         <EditIcon />
                     </Link>
-
                     <Button onClick={() => deleteProductHandler(params.getValue(params.id, "id"))}>
                         <DeleteIcon />
                     </Button>
@@ -68,10 +67,27 @@ export default function ProductList() {
                 <DataGrid
                 rows={rows}
                 columns={columns}
-                pageSize={10}
                 disableSelectionOnClick
                 className="productListTable"
-                autoHeight />
+                autoHeight 
+                density="compact" // for making compact table
+                sx={{ // for borders
+                  '.MuiDataGrid-columnSeparator': {
+                    display: 'none',
+                    border: 'none'
+                  },
+                  '.MuiDataGrid-rowSeparator': {
+                    display: 'none',
+                    border: 'none'
+                  },
+                  '&.MuiDataGrid-root': {
+                    border: 'none',
+                  },
+                  '.MuiDataGrid-cell': {
+                    border: 'none'
+                  },             
+                }}
+                />
             </div>
         </div>
       

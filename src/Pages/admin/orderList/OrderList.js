@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
+import "../productList/ProductList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -72,7 +73,7 @@ export default function OrderList() {
       sortable: false,
       renderCell: (params) => {
         return (
-          <div>
+          <div className='tableIcon'>
             <Link to={`/admin/order/${params.getValue(params.id, "id")}`}>
               <EditIcon />
             </Link>
@@ -103,19 +104,35 @@ export default function OrderList() {
     });
   return (
     <div className="dashboard">
-        <Sidebar />
-        <div className="productListContainer">
-          <h1 id="productListHeading">ALL ORDERS</h1>
+      <Sidebar />
+      <div className="productListContainer">
+        <h1 id="productListHeading">ALL ORDERS</h1>
 
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className="productListTable"
-            autoHeight
-          />
-        </div>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          disableSelectionOnClick
+          className="productListTable"
+          autoHeight
+          density="compact" // for making compact table
+          sx={{ // for borders
+            '.MuiDataGrid-columnSeparator': {
+              display: 'none',
+              border: 'none'
+            },
+            '.MuiDataGrid-rowSeparator': {
+              display: 'none',
+              border: 'none'
+            },
+            '&.MuiDataGrid-root': {
+              border: 'none',
+            },
+            '.MuiDataGrid-cell': {
+              border: 'none'
+            },
+          }}
+        />
       </div>
+    </div>
   )
 }

@@ -110,11 +110,7 @@ const MyOrders = () => {
               },
               '.MuiDataGrid-cell': {
                 border: 'none'
-              },
-
-              // height of table body
-
-             
+              },             
             }}
             className="myOrdersTable"
           />
