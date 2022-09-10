@@ -98,7 +98,7 @@ export default function UsersList() {
         id: item._id,
         role: item.role,
         email: item.email,
-        name: item.name,
+        name: item.username,
       });
     });
   return (

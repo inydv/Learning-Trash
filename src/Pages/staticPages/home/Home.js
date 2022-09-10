@@ -4,8 +4,6 @@ import Category from "../../../Components/category/Category";
 import Products from "../../../Components/productList/Products";
 import Slider from "../../../Components/slider/Slider";
 import Loading from "../../../Components/loading/Loading";
-import Navbar from "../../../Components/navbar/Navbar";
-import Footer from "../../../Components/footer/Footer";
 import NewsLetter from "../../../Components/newsLetter/NewsLetter";
 import { useDispatch, useSelector } from "react-redux";
 import { FETCHING_ALL_PRODUCT } from "../../../redux/product/productsApiCall"
@@ -29,7 +27,7 @@ function Home() {
 
   return (
     <>
-      <Navbar />
+      
       <div className="home">
         {isFetching ? (
           <Loading />
@@ -54,7 +52,7 @@ function Home() {
         )}
       </div>
       <NewsLetter />
-      <Footer />
+      
     </>
   );
 }

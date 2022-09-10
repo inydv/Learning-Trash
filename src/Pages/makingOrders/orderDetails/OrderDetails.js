@@ -4,8 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { GETTING_ORDER } from "../../../redux/order/myOrderApiCall";
 import { CLEAR_ERROR } from "../../../redux/order/myOrderRedux";
-import Navbar from "../../../Components/navbar/Navbar";
-import Footer from "../../../Components/footer/Footer";
 import Loading from "../../../Components/loading/Loading";
 
 function OrderDetails() {
@@ -28,7 +26,6 @@ function OrderDetails() {
         <Loading />
       ) : (
         <div>
-          <Navbar />
           <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
               <h1 component="h1">
@@ -112,7 +109,6 @@ function OrderDetails() {
               </div>
             </div>
           </div>
-          <Footer />
         </div>
       )}
     </div>

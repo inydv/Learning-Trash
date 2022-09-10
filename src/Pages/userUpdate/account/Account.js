@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 import "./Account.css"
 import Loading from "../../../Components/loading/Loading";
-import Navbar from "../../../Components/navbar/Navbar";
-import Footer from "../../../Components/footer/Footer";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -15,7 +13,6 @@ function Account() {
 
     return (
         <div>
-            <Navbar />
             {isFetching ? (
                 <Loading />
             ) : (
@@ -46,7 +43,6 @@ function Account() {
                         </div>
                     </div>
                 </div>)}
-            <Footer />
         </div>
     )
 }

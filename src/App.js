@@ -31,6 +31,8 @@ import ProcessOrder from "./Pages/admin/processOrder/ProcessOrder";
 import UsersList from "./Pages/admin/usersList/UsersList";
 import UpdateUser from "./Pages/admin/updateUser/UpdateUser";
 import ProductReviews from "./Pages/admin/productReviews/ProductReviews";
+import Navbar from "./Components/navbar/Navbar";
+import Footer from "./Components/footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -72,8 +74,8 @@ function App() {
 
   return (
     <div className="app">
+      <Navbar />
       <Routes>
-
         <Route exact path="/register" element={<Auth />} />
         <Route exact path="/password/forgot" element={<ResetPW />} />
         <Route exact path="/password/reset/:token" element={<PWReset />} />
@@ -113,6 +115,7 @@ function App() {
         <Route exact path="/admin/reviews" element={<ProductReviews />} />
 
       </Routes>
+      <Footer />
     </div>
   );
 }

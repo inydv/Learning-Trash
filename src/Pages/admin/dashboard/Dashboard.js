@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 import "./Dashboard.css";
-import Navbar from '../../../Components/navbar/Navbar';
-import Footer from '../../../Components/footer/Footer';
 import Sidebar from '../sidebar/Sidebar';
 import { useSelector, useDispatch } from "react-redux";
 import { ADMIN_ALL_PRODUCT } from '../../../redux/product/productsApiCall';
@@ -66,9 +64,6 @@ export default function Dashboard() {
   }
 
   return (
-    <div>
-      <Navbar />
-
       <div className="dashboard">
         <Sidebar />
 
@@ -108,8 +103,5 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-
-      {/* <Footer /> */}
-    </div>
   )
 }

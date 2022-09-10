@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import "./Cart.css";
 import CartList from "../../../Components/cartList/CartList";
-import Navbar from "../../../Components/navbar/Navbar";
-import Footer from "../../../Components/footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { ADD_ITEMS_TO_CART, REMOVE_ITEMS_FROM_CART } from "../../../redux/cart/cartApiCall";
 import { Typography } from "@material-ui/core";
@@ -44,7 +42,6 @@ function Cart() {
 
   return (
     <>
-    <Navbar />
     <div className="cart">
       {cartItems.length === 0 ? (
         <div className="emptyCart">
@@ -114,7 +111,6 @@ function Cart() {
         </>
       )}
     </div>
-    <Footer />
     </>
   );
 }

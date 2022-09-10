@@ -19,7 +19,8 @@ export default function Sidebar() {
           <DashboardIcon /> Dashboard
         </p>
       </Link>
-      
+
+      <a>
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ImportExportIcon />}
@@ -34,7 +35,8 @@ export default function Sidebar() {
             </Link>
           </TreeItem>
         </TreeView>
-      
+      </a>
+
       <Link to="/admin/orders">
         <p>
           <ListAltIcon />

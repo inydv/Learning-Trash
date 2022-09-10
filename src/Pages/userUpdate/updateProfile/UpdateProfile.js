@@ -6,8 +6,6 @@ import profileImage from "../../../Images/profileImage.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_PROFILE, LOAD_USER } from "../../../redux/user/userApiCall";
 import { UPDATE_ISUPDATED } from '../../../redux/user/userRedux'
-import Navbar from "../../../Components/navbar/Navbar";
-import Footer from "../../../Components/footer/Footer";
 import { useNavigate } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
 
@@ -73,7 +71,6 @@ const UpdateProfile = () => {
 
     return (
         <div>
-            <Navbar />
             {isFetching ? (
                 <Loading />
             ) : (
@@ -129,7 +126,6 @@ const UpdateProfile = () => {
                     </div>
                 </div>
             )}
-            <Footer />
         </div>
     );
 };

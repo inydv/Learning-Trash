@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./SinglePage.css";
 import Reviews from "../../../Components/reviews/Reviews";
 import Loading from "../../../Components/loading/Loading";
-import Navbar from "../../../Components/navbar/Navbar";
-import Footer from "../../../Components/footer/Footer";
 // import { useLocation } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -89,7 +87,6 @@ function SinglePage() {
 
   return (
     <>
-    <Navbar />
       {product ? (
         <>
           {
@@ -217,9 +214,6 @@ function SinglePage() {
           }
         </>
       ) : ""}
-
-          <Footer />
-
     </>
   );
 }

@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";  // make table auto, we have to pass row and column only
 import "./Order.css";
-import Navbar from "../../../Components/navbar/Navbar";
-import Footer from "../../../Components/footer/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { MY_ORDER } from "../../../redux/order/myOrderApiCall";
 import { CLEAR_ERROR } from "../../../redux/order/myOrderRedux";
@@ -88,8 +86,6 @@ const MyOrders = () => {
 
   return (
     <div>
-      <Navbar />
-
       {isFetching ? (
         <Loading />
       ) : (
@@ -125,7 +121,6 @@ const MyOrders = () => {
           <h6 id="myOrdersHeading">{user && user.username}'s Orders</h6>
         </div>
       )}
-      <Footer />
     </div>
   );
 };

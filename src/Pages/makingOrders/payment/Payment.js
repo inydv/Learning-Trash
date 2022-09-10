@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import './Payment.css'
-import Navbar from "../../../Components/navbar/Navbar";
-import Footer from "../../../Components/footer/Footer";
 import CheckoutSteps from "../../../Components/checkoutSteps/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
 import { Typography } from "@material-ui/core";
@@ -126,7 +124,6 @@ function Payment() {
 
   return (
     <div>
-      <Navbar />
       <CheckoutSteps activeStep={2} />
       <div className="paymentContainer">
         <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
@@ -152,7 +149,6 @@ function Payment() {
           />
         </form>
       </div>
-      <Footer />
     </div>
   )
 }
