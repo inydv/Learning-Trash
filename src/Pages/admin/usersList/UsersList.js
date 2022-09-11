@@ -35,7 +35,7 @@ export default function UsersList() {
   }, [dispatch, alert, error, deleteUser]);
 
   const columns = [
-    { field: "id", headerName: "User ID", minWidth: 180, flex: 0.8 },
+    { field: "id", headerName: "User ID", minWidth: 250, flex: 0.8 },
 
     {
       field: "email",
@@ -54,7 +54,7 @@ export default function UsersList() {
       field: "role",
       headerName: "Role",
       type: "number",
-      minWidth: 150,
+      minWidth: 100,
       flex: 0.3,
       cellClassName: (params) => {
         return params.getValue(params.id, "role") === "admin"
@@ -67,8 +67,8 @@ export default function UsersList() {
       field: "actions",
       flex: 0.3,
       headerName: "Actions",
-      minWidth: 150,
-      type: "number",
+      minWidth: 100,
+      type: "action",
       sortable: false,
       renderCell: (params) => {
         return (

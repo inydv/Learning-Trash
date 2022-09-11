@@ -79,6 +79,13 @@
     width: 15vmax;
     margin: auto;
   }
+
+  @media screen and (max-width: 1200px) {
+    .dashboardSummaryBox2 > a {
+      width: 15vmax;
+      height: 10vmax;
+    }
+  }
   
   @media screen and (max-width: 600px) {
     .dashboard {
@@ -87,6 +94,7 @@
   
     .dashboardContainer {
       border-left: none;
+      border-top: 1px solid white;
     }
   
     .dashboardSummary > div > p {

@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import './ProductReviews';
+import React, { useState, useEffect } from 'react'
+import './ProductReviews.css';
 import { DataGrid } from "@mui/x-data-grid";
 import { useSelector, useDispatch } from "react-redux";
 import { ALL_REVIEW, DELETE_REVIEW } from "../../../redux/product/reviewApiCall";
@@ -15,7 +15,7 @@ export default function ProductReviews() {
 
   const Navigate = useNavigate();
 
-  const { error, allReview: reviews, isFetching, deleteReview } = useSelector( (state) => state.review);
+  const { error, allReview: reviews, isFetching, deleteReview } = useSelector((state) => state.review);
 
   const [productId, setProductId] = useState("");
 
@@ -43,7 +43,7 @@ export default function ProductReviews() {
   }, [dispatch, error, deleteReview, productId]);
 
   const columns = [
-    { field: "id", headerName: "Review ID", minWidth: 200, flex: 0.5 },
+    { field: "id", headerName: "Review ID", minWidth: 250, flex: 0.5 },
 
     {
       field: "user",
@@ -63,7 +63,7 @@ export default function ProductReviews() {
       field: "rating",
       headerName: "Rating",
       type: "number",
-      minWidth: 180,
+      minWidth: 100,
       flex: 0.4,
 
       cellClassName: (params) => {
@@ -77,8 +77,8 @@ export default function ProductReviews() {
       field: "actions",
       flex: 0.3,
       headerName: "Actions",
-      minWidth: 150,
-      type: "number",
+      minWidth: 100,
+      type: "action",
       sortable: false,
       renderCell: (params) => {
         return (
@@ -109,49 +109,66 @@ export default function ProductReviews() {
     });
   return (
     <div className="dashboard">
-        <Sidebar />
-        <div className="productReviewsContainer">
-          <form
-            className="productReviewsForm"
-            onSubmit={productReviewsSubmitHandler}
-          >
-            <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
+      <Sidebar />
+      <div className="productReviewsContainer">
+        <form
+          className="productReviewsForm"
+          onSubmit={productReviewsSubmitHandler}
+        >
+          <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
 
-            <div>
-              <Star />
-              <input
-                type="text"
-                placeholder="Product Id"
-                required
-                value={productId}
-                onChange={(e) => setProductId(e.target.value)}
-              />
-            </div>
-
-            <Button
-              id="createProductBtn"
-              type="submit"
-              disabled={
-                isFetching ? true : false || productId === "" ? true : false
-              }
-            >
-              Search
-            </Button>
-          </form>
-
-          {reviews && reviews.length > 0 ? (
-            <DataGrid
-              rows={rows}
-              columns={columns}
-              pageSize={10}
-              disableSelectionOnClick
-              className="productListTable"
-              autoHeight
+          <div>
+            <Star />
+            <input
+              type="text"
+              placeholder="Product Id"
+              required
+              value={productId}
+              onChange={(e) => setProductId(e.target.value)}
             />
-          ) : (
-            <h1 className="productReviewsFormHeading">No Reviews Found</h1>
-          )}
-        </div>
+          </div>
+
+          <Button
+            id="createProductBtn"
+            type="submit"
+            disabled={
+              isFetching ? true : false || productId === "" ? true : false
+            }
+          >
+            Search
+          </Button>
+        </form>
+
+        {reviews && reviews.length > 0 ? (
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={10}
+            disableSelectionOnClick
+            className="productListTable"
+            autoHeight
+            density="compact" // for making compact table
+            sx={{ // for borders
+              '.MuiDataGrid-columnSeparator': {
+                display: 'none',
+                border: 'none'
+              },
+              '.MuiDataGrid-rowSeparator': {
+                display: 'none',
+                border: 'none'
+              },
+              '&.MuiDataGrid-root': {
+                border: 'none',
+              },
+              '.MuiDataGrid-cell': {
+                border: 'none'
+              },
+            }}
+          />
+        ) : (
+          <h1 className="productReviewsFormHeading">No Reviews Found</h1>
+        )}
       </div>
+    </div>
   )
 }

@@ -35,12 +35,12 @@ export default function OrderList() {
   }, [dispatch, error, deleteOrder]);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    { field: "id", headerName: "Order ID", minWidth: 250, flex: 1 },
 
     {
       field: "status",
       headerName: "Status",
-      minWidth: 150,
+      minWidth: 100,
       flex: 0.5,
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Delivered"
@@ -52,7 +52,7 @@ export default function OrderList() {
       field: "itemsQty",
       headerName: "Items Qty",
       type: "number",
-      minWidth: 150,
+      minWidth: 100,
       flex: 0.4,
     },
 
@@ -60,7 +60,7 @@ export default function OrderList() {
       field: "amount",
       headerName: "Amount",
       type: "number",
-      minWidth: 270,
+      minWidth: 150,
       flex: 0.5,
     },
 
@@ -68,8 +68,8 @@ export default function OrderList() {
       field: "actions",
       flex: 0.3,
       headerName: "Actions",
-      minWidth: 150,
-      type: "number",
+      minWidth: 100,
+      type: "action",
       sortable: false,
       renderCell: (params) => {
         return (
