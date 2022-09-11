@@ -26,13 +26,8 @@ export default function UsersList() {
       dispatch(CLEAR_ERROR());
     }
 
-    if (deleteUser) {
-      navigate.push("/admin/users");
-      // dispatch({ type: DELETE_USER_RESET });
-    }
-
     dispatch(GET_ALL_USER());
-  }, [dispatch, alert, error, deleteUser]);
+  }, [dispatch, error, deleteUser]);
 
   const columns = [
     { field: "id", headerName: "User ID", minWidth: 250, flex: 0.8 },

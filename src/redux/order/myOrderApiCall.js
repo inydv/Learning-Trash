@@ -37,10 +37,10 @@ export const ALL_ORDER = () => async (dispatch) => {
   }
 };
 
-export const UPDATE_ORDER = (id) => async (dispatch) => {
+export const UPDATE_ORDER = (id, myForm) => async (dispatch) => {
   dispatch(UPDATE_ORDER_REQUEST());
   try {
-    const { data } = await axiosJWT.put(`/admin/order/${id}`);
+    const { data } = await axiosJWT.put(`/admin/order/${id}`, myForm);
     dispatch(UPDATE_ORDER_SUCCESS(data.updatedOrder));
   } catch (error) {
     dispatch(UPDATE_ORDER_FAIL(error.response.data.message));

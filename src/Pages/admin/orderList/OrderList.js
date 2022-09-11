@@ -26,11 +26,6 @@ export default function OrderList() {
       dispatch(CLEAR_ERROR());
     }
 
-    if (deleteOrder) {
-      Navigate("/admin/orders");
-      // dispatch({ type: DELETE_ORDER_RESET });
-    }
-
     dispatch(ALL_ORDER());
   }, [dispatch, error, deleteOrder]);
 

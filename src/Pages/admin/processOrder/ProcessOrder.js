@@ -34,10 +34,6 @@ export default function ProcessOrder() {
       dispatch(CLEAR_ERROR());
     }
 
-    if (updateOrder) {
-      // dispatch({ type: UPDATE_ORDER_RESET });
-    }
-
     dispatch(GETTING_ORDER(params.id));
   }, [dispatch, error, params.id, updateOrder]);
 
