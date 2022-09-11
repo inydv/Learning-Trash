@@ -73,7 +73,7 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Update Order orders -- Admin
+// Update orders -- Admin
 exports.UpdateOrders = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
 

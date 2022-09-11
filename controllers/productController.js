@@ -149,8 +149,8 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   }
 
   if (images !== undefined) {
-    for (let i = 0; i < product.images.length; i++) {
-      await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+    for (let i = 0; i < product.img.length; i++) {
+      await cloudinary.v2.uploader.destroy(product.img[i].public_id);
     }
 
     for (let i = 0; i < images.length; i++) {
@@ -187,8 +187,8 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHander("Product not found", 404));
   }
 
-  for (let i = 0; i< product.images.length; i++) {
-    await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+  for (let i = 0; i < product.img.length; i++) {
+    await cloudinary.v2.uploader.destroy(product.img[i].public_id);
   }
 
   const deletedProduct = await product.remove();

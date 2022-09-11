@@ -7,7 +7,7 @@ module.exports = (err, req, res, next) => {
   // Validation Error
   if (err.name === "ValidationError") {
     const message = Object.values(err.errors).map(val => val.message).join(", ");
-    err = new ErrorResponse(message, 400);
+    err = new ErrorHandler(message, 400);
   }
 
   // wrong MongoDB id Error
