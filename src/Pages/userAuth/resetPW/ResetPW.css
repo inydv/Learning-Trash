@@ -73,15 +73,14 @@
     transition: all 0.5s;
     border-radius: 4px;
     outline: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
   }
   
   .forgotPasswordBtn:hover {
-    background-color: tomato;
+    transform: scale(1.1);
   }
   
   .authError {
-    color: tomato;
+    color: red;
   }
 
   .forgotPasswordForm > a {
@@ -93,7 +92,7 @@
   }
   
   .forgotPasswordForm > a:hover {
-    color: tomato;
+    color: red;
   }
   
   @media screen and (max-width: 600px) {

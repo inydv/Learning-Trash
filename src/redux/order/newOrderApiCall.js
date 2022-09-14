@@ -16,6 +16,7 @@ export const CREATE_ORDER = (order) => async (dispatch) => {
     };
     const { data } = await axiosJWT.post("/order/new", order, config);
     dispatch(CREATE_ORDER_SUCCESS(data));
+    localStorage.getItem("cartItems") && localStorage.removeItem("cartItems");
   } catch (error) {
     dispatch(CREATE_ORDER_FAIL(error.response.data.message));
   }

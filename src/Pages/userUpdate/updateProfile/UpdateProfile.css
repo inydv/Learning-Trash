@@ -101,7 +101,6 @@
   transition: all 0.5s;
   border-radius: 4px;
   outline: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
 }
 
 .updateProfileBtn:hover {
@@ -109,7 +108,7 @@
 }
 
 .authError {
-  color: tomato;
+  color: red;
 }
 
 @media screen and (max-width: 600px) {

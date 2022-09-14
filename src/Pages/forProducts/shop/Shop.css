@@ -29,7 +29,7 @@
 }
 
 .category-link:hover {
-  color: tomato;
+  color: red;
 }
 
 .filterBox > fieldset {
@@ -84,7 +84,7 @@
 }
 
 .page-item:hover .page-link {
-  color: tomato;
+  color: red;
 }
 
 .pageItemActive {
@@ -96,7 +96,7 @@
 }
 
 .error {
-  color: tomato;
+  color: red;
 }
 
 @media only screen and (max-width: 800px) {

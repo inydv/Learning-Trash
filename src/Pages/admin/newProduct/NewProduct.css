@@ -24,7 +24,6 @@
     height: 80%;
     width: 50vh;
     background-color: black;
-    box-shadow: 0 0 10px black;
   }
   
   .createProductForm > div {
@@ -69,11 +68,11 @@
     transition: all 0.5s;
     padding: 0 1vmax;
     color: white;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
   }
   
   #createProductFormFile > input::file-selector-button:hover {
-    background-color: black;
+    background-color: rgb(235, 235, 235);
   }
   
   #createProductFormImage {
@@ -98,7 +97,7 @@
   }
   
   #createProductBtn:hover {
-    background-color: tomato;
+    transform: scale(1.1);
   }
   
   @media screen and (max-width: 600px) {

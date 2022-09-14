@@ -49,7 +49,7 @@
 
 .detailsBlock-6 > button:hover,
 .addToCart > button:hover {
-  background-color: rgba(58, 57, 57, 0.5);
+  transform: scale(1.1);
 }
 
 .detailsBlock-6 > input {

@@ -38,7 +38,7 @@
   width: 100%;
 }
 .login_signUp_toggle > p:hover {
-  color: tomato;
+  color: red;
 }
 
 .LoginSignUpBox > div > button {
@@ -101,7 +101,7 @@
 }
 
 .loginForm > a:hover {
-  color: tomato;
+  color: red;
 }
 
 #registerImage > img {
@@ -141,12 +141,12 @@
   transition: all 0.5s;
   border-radius: 4px;
   outline: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
 }
 
 .loginBtn:hover,
 .signUpBtn:hover {
-  background-color: tomato;
+  transform: scale(1.1);
+
 }
 
 .shiftToLeft {

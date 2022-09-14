@@ -25,10 +25,18 @@ function Navbar() {
   };
 
   const option = [
-    { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
   ];
 
+  if (!user) {
+    option.unshift(
+      { icon: <ExitToAppIcon />, name: "Register", func: logoutUser }
+    )
+  }
+
   if (user) {
+    option.unshift(
+      { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser }
+    )
     option.unshift({
       icon: <ListAltIcon />,
       name: "My Orders",
@@ -95,7 +103,7 @@ function Navbar() {
       </div>
 
       <div className="right">
-        {user? <div className="userImage">
+        {user ? <div className="userImage">
           <Backdrop open={open} style={{ zIndex: "9" }} />
 
           <SpeedDial
@@ -106,11 +114,11 @@ function Navbar() {
             onClick={handleOpen}
             direction="down"
             FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }}
-            icon={ <img
-                  src={user.avatar.url}
-                  className="speedDialIcon"
-                  alt="Profile"
-                />
+            icon={<img
+              src={user.avatar.url}
+              className="speedDialIcon"
+              alt="Profile"
+            />
             }
           >
             {option.map((item) => (
@@ -135,7 +143,7 @@ function Navbar() {
             direction="down"
             FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }}
             icon={
-                <AccountCircleIcon className="icon" />
+              <AccountCircleIcon className="icon" />
             }
           >
             {option.map((item) => (
@@ -148,8 +156,8 @@ function Navbar() {
               /> // tooltipOpen -- usefull in phones
             ))}
           </SpeedDial>
-        </div> }
-        
+        </div>}
+
         <div className="cart">
           <Link to="/cart">
             <Badge badgeContent={cart.length} overlap="rectangular" color="primary">

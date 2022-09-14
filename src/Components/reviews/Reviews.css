@@ -1,6 +1,5 @@
 .reviewCard {
     /* flex: none; */
-    box-shadow: 0 0 5px whitesmoke;
     border: 1px solid white;
     width: 30vmax;
     display: flex;

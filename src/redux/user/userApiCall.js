@@ -12,7 +12,7 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   FORGOT_PASSWORD_START,
-  FORGOT_PASSWORD_SUCESS,
+  FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAIL,
   RESET_PASSWORD_START,
   RESET_PASSWORD_SUCCESS,
@@ -69,7 +69,7 @@ export const LOAD_USER = () => async (dispatch) => {
     localStorage.setItem("time", res.data.TokenDate);
     dispatch(LOAD_USER_SUCCESS(res.data));
   } catch (error) {
-    dispatch(LOAD_USER_FAIL(error.response.data.message));
+    dispatch(LOAD_USER_FAIL());
   }
 };
 
@@ -88,7 +88,7 @@ export const FORGOT_PW = (email) => async (dispatch) => {
   try {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await publicRequest.post("/password/forgot", email, config);
-    dispatch(FORGOT_PASSWORD_SUCESS(res.data.message));
+    dispatch(FORGOT_PASSWORD_SUCCESS(res.data.message));
   } catch (error) {
     dispatch(FORGOT_PASSWORD_FAIL(error.response.data.message));
   }

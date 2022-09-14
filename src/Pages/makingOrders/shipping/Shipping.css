@@ -63,7 +63,7 @@
   
   .shippingBtn {
     border: none;
-    background-color: tomato;
+    background-color: rgb(58, 57, 57);
     color: white;
     width: 100%;
     padding: 1vmax;
@@ -74,7 +74,7 @@
   }
   
   .shippingBtn:hover {
-    background-color: tomato;
+    transform: scale(1.1);
   }
   
   @media screen and (max-width: 600px) {

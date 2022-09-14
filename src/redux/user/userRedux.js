@@ -50,9 +50,8 @@ const userSlice = createSlice({
       state.isFetching = false;
       state.currentUser = action.payload.user;
     },
-    LOAD_USER_FAIL: (state, action) => {
+    LOAD_USER_FAIL: (state) => {
       state.isFetching = false;
-      state.error = action.payload;
       state.currentUser = null;
     },
 
@@ -75,7 +74,7 @@ const userSlice = createSlice({
       state.isFetching = true;
       state.error = false;
     },
-    FORGOT_PASSWORD_SUCESS: (state, action) => {
+    FORGOT_PASSWORD_SUCCESS: (state, action) => {
       state.isFetching = false;
       state.message = action.payload;
     },
@@ -211,7 +210,7 @@ export const {
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   FORGOT_PASSWORD_START,
-  FORGOT_PASSWORD_SUCESS,
+  FORGOT_PASSWORD_SUCCESS,
   FORGOT_PASSWORD_FAIL,
   RESET_PASSWORD_START,
   RESET_PASSWORD_SUCCESS,
