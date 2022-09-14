@@ -47,7 +47,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res) => {
 
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
       folder: "avatars",
-      width: 250,
+      // width: 250,
       crop: "scale"
     })
 

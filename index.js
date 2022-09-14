@@ -75,7 +75,7 @@ app.use(errorMiddleware);
 
 
 // LISTEN SERVER
-app.listen(process.env.PORT || 5000, () => {
+let server = app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is running!");
 });
 
@@ -84,7 +84,7 @@ process.on("unhandledRejection", (err) => {
   console.log(`Error: ${err.message}`);
   console.log("shutting down the server");
 
-  app.close(() => {
+  server.close(() => {
     process.exit(1);
   });
 });
