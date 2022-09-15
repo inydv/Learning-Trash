@@ -32,28 +32,12 @@
   color: white;
 }
 
-/* .linkColor {
-  color: tomato !important;
-  transition: all 0.5s;
-}
-
-.linkColor:hover {
-  color: tomato !important;
-} */
-
 .MuiDataGrid-columnHeader {
   background-color: rgb(22, 22, 22);
   padding: 1vmax !important;
 }
 
-/* .MuiDataGrid-columnHeader div {
+.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input,
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
   color: white !important;
-} */
-
-/* .MuiDataGrid-iconSeparator {
-  display: none !important;
-} */
-
-/* @media screen and (max-width: 600px) {
-
-} */
+}

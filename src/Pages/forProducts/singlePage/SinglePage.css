@@ -31,7 +31,7 @@
 
 .detailsBlock-6 > button {
   border: none;
-  padding: 0.5vmax;
+  padding: 0.3vmax 0.5vmax;
   cursor: pointer;
   color: white;
   background-color: rgb(58, 57, 57);
@@ -47,15 +47,14 @@
   transition: all 0.5s;
 }
 
-.detailsBlock-6 > button:hover,
 .addToCart > button:hover {
   transform: scale(1.1);
 }
 
 .detailsBlock-6 > input {
   border: none;
-  padding: 0.5vmax;
-  width: 1vmax;
+  padding: 0.3vmax;
+  width: 2vmax;
   text-align: center;
   outline: none;
   color: black;
@@ -67,12 +66,12 @@
   padding: 1vmax;
   width: 20vmax;
   margin: auto;
-  margin-bottom: 4vmax;
+  margin-bottom: 2vmax;
   margin-top: 2vmax;
 }
 
 .addReview {
-  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .addReview > button {
@@ -87,7 +86,7 @@
 .review {
   display: flex;
   overflow: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .noReviews {
@@ -107,7 +106,7 @@
   margin: 1vmax 0;
   outline: none;
   padding: 1rem;
-  font: 300 1rem "Roboto";
+  color: black;
 }
 
 @media only screen and (max-width: 800px) {
@@ -126,12 +125,12 @@
   }
 
   .detailsBlock-6 > button {
-    padding: 6px;
+    padding: 0.5vmax 1.1vmax;
   }
 
   .detailsBlock-6 > input {
-    padding: 6px;
-    width: 15px;
+    padding: 0.5vmax;
+    width: 4vmax;
   }
 
   .reviewsHeading {

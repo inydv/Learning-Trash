@@ -4,53 +4,58 @@
 }
 
 .productListContainer {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: black;
-    border-left: 1px solid white;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  #productListHeading {
-    padding: 0.5rem;
-    box-sizing: border-box;
-    color: white;
-    transition: all 0.5s;
-    margin: auto;
-    text-align: center;
-  }
-  
-  .productListTable {
-    background-color: black;
-    border: none !important;
-  }
-  
-  .productListTable div {
-    color: white;
-    border: none !important;
-  }
-  
-  .productListTable a,
-  .productListTable button {
-    color: white;
-    transition: all 0.5s;
-  }
-  
-  .MuiDataGrid-columnHeader div {
-    color: white;
-  }
-  
-  .tableIcon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  width: 100%;
+  box-sizing: border-box;
+  background-color: black;
+  border-left: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 
-  @media screen and (max-width: 600px) {
-    .productListContainer {
-      border-left: none;
-      border-top: 1px solid white;
-    }
+#productListHeading {
+  padding: 0.5rem;
+  box-sizing: border-box;
+  color: white;
+  transition: all 0.5s;
+  margin: auto;
+  text-align: center;
+}
+
+.productListTable {
+  background-color: black;
+  border: none !important;
+}
+
+.productListTable div {
+  color: white;
+  border: none !important;
+}
+
+.productListTable a,
+.productListTable button {
+  color: white;
+  transition: all 0.5s;
+}
+
+.MuiDataGrid-columnHeader div {
+  color: white;
+}
+
+.tableIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .productListContainer {
+    border-left: none;
+    border-top: 1px solid white;
   }
+}
+
+.css-1dmqq7i-MuiNativeSelect-select-MuiInputBase-input-MuiInput-input,
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  color: white !important;
+}
