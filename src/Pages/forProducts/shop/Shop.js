@@ -5,7 +5,7 @@ import Loading from "../../../Components/loading/Loading";
 import Search from "../../../Components/search/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { FETCHING_ALL_PRODUCT } from "../../../redux/product/productsApiCall";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
@@ -21,13 +21,17 @@ function Shop() {
 
   const dispatch = useDispatch();
   const keyword = useParams();
+  const query = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (query.search) {
+      setCategory(query.search.split("=")[1])
+    }
     dispatch(
       FETCHING_ALL_PRODUCT(keyword.keyword, currentPage, price, category, ratings, sort)
     );
-  }, [dispatch, keyword, currentPage, price, category, ratings, sort]);
+  }, [dispatch, keyword, currentPage, price, category, ratings, sort, query.search]);
 
   const { products, isFetching, error, productsCount, resultPerPage } =
     useSelector((state) => state.products);

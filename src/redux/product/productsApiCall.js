@@ -35,7 +35,7 @@ export const FETCHING_ALL_PRODUCT =
         let link = `/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&sort=${sort}`;
 
         if (category) {
-          link = `/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}}&ratings[gte]=${ratings}&sort=${sort}`;
+          link = `/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}&sort=${sort}`;
         }
 
         const { data } = await axiosJWT.get(link);

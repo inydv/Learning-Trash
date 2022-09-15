@@ -25,6 +25,14 @@ function SinglePage() {
     open ? setOpen(false) : setOpen(true);
   }
 
+  const { singleproduct: product, isFetching, error } = useSelector(
+    (state) => state.products
+  );
+
+  const { error: reviewError } = useSelector(
+    (state) => state.review
+  )
+
   useEffect(() => {
     dispatch(GET_PRODUCT_DETAIL(id.id));
     window.scrollTo(0, 0);
@@ -36,19 +44,12 @@ function SinglePage() {
     // if (success) { // new review reset
     //   dispatch(NEW_REVIEW)
     // }
-  }, [dispatch, id.id]);
+  }, [dispatch, id.id, reviewError]);
 
   // const location = useLocation();
   // const id = location.pathname.split("/")[2];
 
-  const { singleproduct: product, isFetching, error } = useSelector(
-    (state) => state.products
-  );
-
-  const { error: reviewError } = useSelector(
-    (state) => state.review
-  )
-
+  
   const [quantity, setQuantity] = useState(1);
 
   const inc = () => {
