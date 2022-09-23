@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Products({ product }) {
   return (
-    <div className="flip" key={product._id}>
+    <div key={product._id}>
       <Link to={`/product/${product._id}`}>
         <div className="productsList">
           <div className="product-card__promotion">

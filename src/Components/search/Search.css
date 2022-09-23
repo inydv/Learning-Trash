@@ -1,12 +1,16 @@
 .search {
   display: flex;
+  align-items: center;
+  border: 0.1px solid rgba(255, 255, 255, 0.255);
 }
 
 .searchInput {
   outline: none;
-  color: black;
+  color: white;
+  background-color: black;
   padding: 5px 10px;
-  height: 10px;
+  height: auto;
+  border: none;
 }
 
 .searchIcon {

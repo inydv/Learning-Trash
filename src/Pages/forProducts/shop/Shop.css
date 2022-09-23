@@ -1,5 +1,6 @@
 .shop {
   padding: 10px 30px;
+  min-height: 100vh;
 }
 
 .topThings {
@@ -52,7 +53,8 @@
 }
 
 .products {
-  padding: 0px 250px;
+  padding-left: 250px;
+  padding-right: 20px;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;

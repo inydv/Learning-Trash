@@ -89,7 +89,7 @@ function Navbar() {
         <div className="home">
           <Link to="/">Home</Link>
         </div>
-        <div className="shop">
+        <div className="shop-nav">
           <div className="name">
             <Link to="/shop">Shop</Link>
           </div>
