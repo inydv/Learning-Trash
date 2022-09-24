@@ -33,6 +33,7 @@ import UpdateUser from "./Pages/admin/updateUser/UpdateUser";
 import ProductReviews from "./Pages/admin/productReviews/ProductReviews";
 import Navbar from "./Components/navbar/Navbar";
 import Footer from "./Components/footer/Footer";
+import NotFound from "./Pages/staticPages/404 Not Found/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -113,6 +114,8 @@ function App() {
         <Route exact path="/admin/users" element={<UsersList />} />
         <Route exact path="/admin/user/:id" element={<UpdateUser />} />
         <Route exact path="/admin/reviews" element={<ProductReviews />} />
+
+        <Route exact path="/notfound" element={<NotFound />} />
 
       </Routes>
       <Footer />
