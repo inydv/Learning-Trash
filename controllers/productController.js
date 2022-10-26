@@ -45,7 +45,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
     .filter()
     .pagination(resultPerPage);
 
-    let products = await apiFeature.query;
+  let products = await apiFeature.query;
 
   // const productsCount = await Product.countDocuments();
 
@@ -124,7 +124,7 @@ exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
 
   if (!product) {
-    return next(new ErrorHander("Product not found", 404));
+    return next(new ErrorHander("Product Not Found", 404));
   }
 
   res.status(200).json({
@@ -137,7 +137,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
 
   if (!product) {
-    return next(new ErrorHander("Product not found", 404));
+    return next(new ErrorHander("Product Not Found", 404));
   }
 
   let images = [];
@@ -157,7 +157,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
       const result = await cloudinary.v2.uploader.upload(images[i], {
         folder: "products",
       });
-  
+
       imagesLink.push({
         public_id: result.public_id,
         url: result.secure_url
@@ -184,7 +184,7 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.params.id);
 
   if (!product) {
-    return next(new ErrorHander("Product not found", 404));
+    return next(new ErrorHander("Product Not Found", 404));
   }
 
   for (let i = 0; i < product.img.length; i++) {
@@ -246,7 +246,7 @@ exports.getProductReviews = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.query.id);
 
   if (!product) {
-    return next(new ErrorHander("Product not found", 404));
+    return next(new ErrorHander("Product Not Found", 404));
   }
 
   res.status(200).json({
@@ -259,7 +259,7 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
   const product = await Product.findById(req.query.productId);
 
   if (!product) {
-    return next(new ErrorHander("Product not found", 404));
+    return next(new ErrorHander("Product Not Found", 404));
   }
 
   const reviews = product.reviews.filter(
@@ -288,7 +288,7 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
   });
 
   res.status(200).json({
-    message: "Review deleted successfully",
+    message: "Review Deleted Successfully",
     deletedReview
   });
 });

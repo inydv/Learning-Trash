@@ -40,7 +40,7 @@ exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
   );
 
   if (!order) {
-    return next(new ErrorHander("Order not found with this Id", 404));
+    return next(new ErrorHander("Order Not Found With This Id", 404));
   }
 
   res.status(200).json({
@@ -78,11 +78,11 @@ exports.UpdateOrders = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
 
   if (!order) {
-    return next(new ErrorHander("Order not found with this Id", 404));
+    return next(new ErrorHander("Order Not Found With This Id", 404));
   }
 
   if (order.orderStatus === "Delivered") {
-    return next(new ErrorHander("You have already Delivered this Order", 400));
+    return next(new ErrorHander("You Have Already Delivered This Order", 400));
   }
 
   if (req.body.status === 'Shipped') {
@@ -99,7 +99,7 @@ exports.UpdateOrders = catchAsyncErrors(async (req, res, next) => {
   const updatedOrder = await order.save();
 
   res.status(200).json({
-    message: "updation Complete",
+    message: "Updation Completed",
     updatedOrder
   });
 });
@@ -117,13 +117,13 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
 
   if (!order) {
-    return next(new ErrorHander("Order not found with this Id", 404));
+    return next(new ErrorHander("Order Not Found With This Id", 404));
   }
 
   const deletedOrder = await order.remove();
 
   res.status(200).json({
-    message: "Deletion Complete",
+    message: "Deletion Completed",
     deletedOrder
   });
 });

@@ -18,11 +18,11 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
   const isPasswordMatched = user.comparePassword(req.body.oldPassword);
 
   if (!isPasswordMatched) {
-    return next(new ErrorHandler("Old password is incorrect", 401));
+    return next(new ErrorHandler("Old Password is Incorrect", 401));
   }
 
   if (req.body.newPassword !== req.body.confirmPassword) {
-    return next(new ErrorHandler("Password does not match", 401));
+    return next(new ErrorHandler("Password Does Not Match", 401));
   }
 
   user.password = req.body.newPassword;
@@ -66,7 +66,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res) => {
   );
 
   res.status(200).json({
-    message: "changes Done",
+    message: "Changes Done",
     user
   });
 });
@@ -83,7 +83,7 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
 
   if (!usered) {
     return next(
-      new ErrorHandler(`user does not exist with Id: ${req.params.id}`, 400)
+      new ErrorHandler(`User Does Not Exist With Id: ${req.params.id}`, 400)
     );
   }
 
@@ -95,7 +95,7 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
 
 
   res.status(200).json({
-    message: "changes Done",
+    message: "Changes Done",
     usered
   });
 });
@@ -106,12 +106,12 @@ exports.deleteUserProfile = catchAsyncErrors(async (req, res, next) => {
 
   if (!user) {
     return next(
-      new ErrorHandler(`user does not exist with Id: ${req.params.id}`, 400)
+      new ErrorHandler(`User Does Not Exist With Id: ${req.params.id}`, 400)
     );
   }
 
   const imageId = user.avatar.public_id;
-    await cloudinary.v2.uploader.destroy(imageId);
+  await cloudinary.v2.uploader.destroy(imageId);
 
   const deletedUser = await user.remove();
 
@@ -138,7 +138,7 @@ exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
 
   if (!user) {
     return next(
-      new ErrorHandler(`User does not exist with Id: ${req.params.id}`)
+      new ErrorHandler(`User Does Not Exist With Id: ${req.params.id}`)
     );
   }
 
