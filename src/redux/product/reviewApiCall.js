@@ -2,6 +2,7 @@ import {
   NEW_REVIEW_REQUEST,
   NEW_REVIEW_SUCCESS,
   NEW_REVIEW_FAIL,
+  NEW_REVIEW_RESET,
   ALL_REVIEW_REQUEST,
   ALL_REVIEW_SUCCESS,
   ALL_REVIEW_FAIL,
@@ -22,6 +23,10 @@ export const NEW_REVIEW = (reviewData) => async (dispatch) => {
   } catch (error) {
     dispatch(NEW_REVIEW_FAIL(error.response.data.message));
   }
+};
+
+export const RESET_NEW_REVIEW = () => async (dispatch) => {
+  dispatch(NEW_REVIEW_RESET());
 };
 
 export const ALL_REVIEW = (id) => async (dispatch) => {

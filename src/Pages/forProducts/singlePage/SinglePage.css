@@ -88,6 +88,18 @@
   display: flex;
   overflow: auto;
   margin-bottom: 10px;
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.review::-webkit-scrollbar {
+  display: none;
+}
+
+.reviews {
+  display: flex;
 }
 
 .noReviews {
@@ -108,6 +120,14 @@
   outline: none;
   padding: 1rem;
   color: black;
+}
+
+.react-simple-star-rating .empty-icons svg.star-svg path {
+  color: gray;
+}
+
+.react-simple-star-rating .filled-icons svg.star-svg path {
+  color: red;
 }
 
 @media only screen and (max-width: 800px) {

@@ -10,7 +10,7 @@ import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 
-const categories = ["FootWear", "Bottom", "Tops"];
+const categories = ["mens", "womens"];
 
 function Shop() {
   const [currentPage, setCurrentPage] = useState(1);

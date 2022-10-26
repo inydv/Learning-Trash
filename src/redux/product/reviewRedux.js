@@ -16,14 +16,14 @@ const reviewsSlice = createSlice({
         },
         NEW_REVIEW_SUCCESS: (state, action) => {
             state.isFetching = false;
-            state.review = action.payload.review;
+            state.newReview = action.payload.message;
         },
         NEW_REVIEW_FAIL: (state, action) => {
             state.isFetching = false;
             state.error = action.payload;
         },
         NEW_REVIEW_RESET: (state) => {
-            state.review = null;
+            state.newReview = null;
         },
 
         ALL_REVIEW_REQUEST: (state) => {
@@ -61,16 +61,16 @@ const reviewsSlice = createSlice({
 });
 
 export const {
-    NEW_REVIEW_REQUEST, 
-    NEW_REVIEW_SUCCESS, 
-    NEW_REVIEW_FAIL, 
-    NEW_REVIEW_RESET, 
-    ALL_REVIEW_REQUEST, 
-    ALL_REVIEW_SUCCESS, 
-    ALL_REVIEW_FAIL, 
-    DELETE_REVIEW_REQUEST, 
-    DELETE_REVIEW_SUCCESS, 
-    DELETE_REVIEW_FAIL, 
+    NEW_REVIEW_REQUEST,
+    NEW_REVIEW_SUCCESS,
+    NEW_REVIEW_FAIL,
+    NEW_REVIEW_RESET,
+    ALL_REVIEW_REQUEST,
+    ALL_REVIEW_SUCCESS,
+    ALL_REVIEW_FAIL,
+    DELETE_REVIEW_REQUEST,
+    DELETE_REVIEW_SUCCESS,
+    DELETE_REVIEW_FAIL,
     CLEAR_ERRORS
 } = reviewsSlice.actions;
 export default reviewsSlice.reducer;

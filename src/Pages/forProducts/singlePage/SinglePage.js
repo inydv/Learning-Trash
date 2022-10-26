@@ -7,11 +7,12 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_PRODUCT_DETAIL } from "../../../redux/product/productsApiCall";
 import { ADD_ITEMS_TO_CART } from "../../../redux/cart/cartApiCall";
-import { NEW_REVIEW } from '../../../redux/product/reviewApiCall';
+import { NEW_REVIEW, RESET_NEW_REVIEW } from '../../../redux/product/reviewApiCall';
 import { CLEAR_ERRORS } from '../../../redux/product/reviewRedux';
 import Carousel from "react-material-ui-carousel";
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from "@material-ui/core";
 import { Rating } from 'react-simple-star-rating';
+import { sanitize } from 'dompurify';
 
 function SinglePage() {
   const dispatch = useDispatch();
@@ -29,27 +30,28 @@ function SinglePage() {
     (state) => state.products
   );
 
-  const { error: reviewError } = useSelector(
+  const { error: reviewError, newReview } = useSelector(
     (state) => state.review
   )
 
   useEffect(() => {
-    dispatch(GET_PRODUCT_DETAIL(id.id));
     window.scrollTo(0, 0);
 
     if (reviewError) {
       dispatch(CLEAR_ERRORS());
     }
 
-    // if (success) { // new review reset
-    //   dispatch(NEW_REVIEW)
-    // }
-  }, [dispatch, id.id, reviewError]);
+    if (newReview) {
+      dispatch(RESET_NEW_REVIEW())
+    }
+
+    dispatch(GET_PRODUCT_DETAIL(id.id));
+  }, [dispatch, id.id, reviewError, newReview]);
 
   // const location = useLocation();
   // const id = location.pathname.split("/")[2];
 
-  
+
   const [quantity, setQuantity] = useState(1);
 
   const inc = () => {
@@ -65,19 +67,22 @@ function SinglePage() {
     dispatch(ADD_ITEMS_TO_CART(id.id, quantity));
   }
 
-  const options = {
+  const options1 = {
     size: window.innerWidth < 600 ? 20 : 25,
-    // readOnly: true,
-    ratingValue: 3,
-    initialValue: 3,
-    fillColor: "tomato",
-    emptyColor: "black"
+    readonly: true,
+    allowFraction: true
   };
+
+  const options2 = {
+    size: window.innerWidth < 600 ? 20 : 25,
+  };
+
+  const handleRating = (rate) => setRating(rate);
 
   const reviewSubmitHandler = () => {
     const myForm = new FormData();
 
-    myForm.set("rating", rating);
+    myForm.set("rating", rating / 20);
     myForm.set("comment", comment);
     myForm.set("productId", id.id);
 
@@ -130,7 +135,7 @@ function SinglePage() {
                         </div>
 
                         <div className="detailsBlock-2">
-                          <Rating {...options} />
+                          <Rating {...options1} initialValue={product.ratings} />
                           <span> ({product.numofReviews} Reviews)</span>
                         </div>
 
@@ -140,7 +145,7 @@ function SinglePage() {
 
                         <div className="detailsBlock-4">
                           <b>Description:</b>
-                          <p dangerouslySetInnerHTML={{ __html: `${product.desc}` }}></p>
+                          <p dangerouslySetInnerHTML={{ __html: sanitize(product.desc) }} ></p>
                         </div>
 
                         <div className="detailsBlock-5">
@@ -174,33 +179,33 @@ function SinglePage() {
                     <h1 className="reviewsHeading">REVIEWS</h1>
 
                     <Dialog aria-labelledby="simple-dialog-title"
-                        open={open}
-                        onClose={submitReviewToggle} >
-                        <DialogTitle>Submit Review</DialogTitle>
+                      open={open}
+                      onClose={submitReviewToggle} >
+                      <DialogTitle>Submit Review</DialogTitle>
 
-                        <DialogContent className="submitDialog">
-                        <Rating {...options} onChange={(e) => setRating(e.target.value)} />
+                      <DialogContent className="submitDialog">
+                        <Rating {...options2} onClick={handleRating} />
 
-                          <textarea
-                            className="submitDialogTextArea"
-                            cols="30"
-                            rows="5"
-                            value={comment}
-                            onChange={(e) => setComment(e.target.value)}
-                          ></textarea>
-                        </DialogContent>
+                        <textarea
+                          className="submitDialogTextArea"
+                          cols="30"
+                          rows="5"
+                          value={comment}
+                          onChange={(e) => setComment(e.target.value)}
+                        ></textarea>
+                      </DialogContent>
 
-                        <DialogActions>
-                          <Button onClick={submitReviewToggle}>Cancel</Button>
-                          <Button onClick={reviewSubmitHandler}>Submit</Button>
-                        </DialogActions>
-                      </Dialog>
+                      <DialogActions>
+                        <Button onClick={submitReviewToggle}>Cancel</Button>
+                        <Button onClick={reviewSubmitHandler}>Submit</Button>
+                      </DialogActions>
+                    </Dialog>
 
                     <div className="review">
                       {product.reviews && product.reviews[0] ?
                         (<div className="reviews">
                           {
-                            product.reviews && product.reviews.map((review) => <Reviews review={review} />)
+                            product.reviews && product.reviews.map((review) => <Reviews key={review._id} review={review} />)
                           }
                         </div>) : (
                           <p className="noReviews">No Reviews Yet</p>
