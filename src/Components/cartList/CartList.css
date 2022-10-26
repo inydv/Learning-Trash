@@ -1,45 +1,42 @@
 .cartList {
-    display: flex;
-    padding: 1vmax;
-    height: 8vmax;
-    align-items: flex-start;
-    box-sizing: border-box;
+  display: flex;
+  padding: 1vmax;
+  height: 8vmax;
+  align-items: flex-start;
+  box-sizing: border-box;
 }
 
 .cartList > img {
-    width: 5vmax;
+  width: 5vmax;
 }
 
 .cartList > div {
-    display: flex;
-    flex-direction: column;
-    margin: 0.3vmax 1vmax; 
+  display: flex;
+  flex-direction: column;
+  margin: 0.3vmax 1vmax;
 }
 
 .cartList > div > a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .cartList > div > p {
-    cursor: pointer;
-    transition: all 0.5s;
-}
-
-.cartList > div > p:hover {
-    color: red
+  cursor: pointer;
+  transition: all 0.5s;
+  color: red;
 }
 
 @media screen and (max-width: 600px) {
-    .cartList {
-        padding: 3vmax;
-        height: 25vmax;
-    }
+  .cartList {
+    padding: 3vmax;
+    height: 25vmax;
+  }
 
-    .cartList > img {
-        width: 10vmax;
-    }
+  .cartList > img {
+    width: 10vmax;
+  }
 
-    .cartList > div {
-        margin: 1vmax 2vmax; 
-    }
+  .cartList > div {
+    margin: 1vmax 2vmax;
+  }
 }

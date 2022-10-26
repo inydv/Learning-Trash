@@ -2,7 +2,7 @@ body {
   background-color: black;
   overflow-y: scroll;
   overflow-x: none;
-  cursor: url("./Images/cursor.png");
+  cursor: url("./Images/cursor.png"), auto;
 }
 
 body::-webkit-scrollbar {

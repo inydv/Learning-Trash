@@ -1,44 +1,44 @@
 .orderSuccess {
-    margin: auto;
-    text-align: center;
-    padding: 10vmax;
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  margin: auto;
+  text-align: center;
+  padding: 10vmax;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderSuccess > svg {
+  font-size: 7vmax;
+}
+
+.orderSuccess > p {
+  font-size: 2vmax;
+}
+
+.orderSuccess > a {
+  background-color: rgb(51, 51, 51);
+  color: white;
+  border: none;
+  padding: 1vmax 3vmax;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 1vmax;
+}
+
+@media screen and (max-width: 600px) {
+  .orderSuccess > a {
+    padding: 3vw 6vw;
+    font: 400 4vw;
+    margin: 2vmax;
   }
 
   .orderSuccess > svg {
-    font-size: 7vmax;
+    font-size: 20vw;
   }
-
   .orderSuccess > p {
-    font-size: 2vmax;
-  }
-
-  .orderSuccess > a {
-    background-color: rgb(51, 51, 51);
-    color: white;
-    border: none;
-    padding: 1vmax 3vmax;
-    cursor: pointer;
-    text-decoration: none;
     margin: 1vmax;
+    font-size: 5vw;
   }
-  
-  @media screen and (max-width: 600px) {
-    .orderSuccess > a {
-      padding: 3vw 6vw;
-      font: 400 4vw ;
-      margin: 2vmax;
-    }
-  
-    .orderSuccess > svg {
-      font-size: 20vw;
-    }
-    .orderSuccess > p {
-      margin: 1vmax;
-      font-size: 5vw;
-    }
-  }
+}

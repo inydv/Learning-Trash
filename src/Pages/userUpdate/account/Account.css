@@ -1,6 +1,6 @@
 .profileContainer {
     display: flex;
-    height: 100vh;
+    min-height: 80vh;
     width: 100vw;
     max-width: 100%;
     background-color: rgb(0, 0, 0);

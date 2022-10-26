@@ -1,5 +1,9 @@
 .wrap {
   padding: 10px 30px;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .wrap .title {
@@ -76,10 +80,14 @@
   background-color: rgb(58, 57, 57);
   border: 0;
   cursor: pointer;
+  transition: all 0.5s;
+}
+
+.wrap .form .btn button:hover {
+  transform: scale(1.1);
 }
 
 .afterSubmit {
-  height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;

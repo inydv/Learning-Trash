@@ -41,6 +41,11 @@
   cursor: pointer;
   background-color: rgb(58, 57, 57);
   border: none;
+  transition: all 0.5s;
+}
+
+.newsLetter .inputContainer .btn:hover {
+  transform: scale(1.1);
 }
 
 @media only screen and (max-width: 800px) {

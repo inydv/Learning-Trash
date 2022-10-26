@@ -32,6 +32,9 @@ const cartSlice = createSlice({
         SAVE_SHIPPING_DETAIL: (state, action) => {
             state.shippingInfo = action.payload
         },
+        CART_CLEAR: (state) => {
+            state.cartItems = []
+        }
     },
 });
 
@@ -39,5 +42,6 @@ export const {
     ADD_TO_CART,
     REMOVE_CART_ITEM,
     SAVE_SHIPPING_DETAIL,
+    CART_CLEAR
 } = cartSlice.actions;
 export default cartSlice.reducer;

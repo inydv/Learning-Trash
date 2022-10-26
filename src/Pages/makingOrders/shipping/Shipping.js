@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import "./Shipping.css"
 import { useSelector, useDispatch } from "react-redux";
 import PinDropIcon from "@material-ui/icons/PinDrop";
@@ -8,7 +8,7 @@ import PublicIcon from "@material-ui/icons/Public";
 import PhoneIcon from "@material-ui/icons/Phone";
 import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
 import { Country, State } from "country-state-city";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import CheckoutSteps from '../../../Components/checkoutSteps/CheckoutSteps';
 import { SAVE_SHIPPING_DETAIL } from '../../../redux/cart/cartRedux';
 
@@ -23,12 +23,13 @@ function Shipping() {
     const [country, setCountry] = useState(shippingInfo.country);
     const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
     const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
+    const [error, setError] = useState(null);
 
     const shippingSubmit = (e) => {
         e.preventDefault();
 
         if (phoneNo.length < 10 || phoneNo.length > 10) {
-            // alert.error("Phone Number should be 10 digits Long");
+            setError("Phone Number Should Be 10 Digits Long");
             return;
         }
         dispatch(
@@ -132,6 +133,8 @@ function Shipping() {
                                 </select>
                             </div>
                         )}
+
+                        {error && <p className='error'>{error}</p>}
 
                         <input
                             type="submit"

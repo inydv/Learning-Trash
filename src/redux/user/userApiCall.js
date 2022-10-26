@@ -35,6 +35,7 @@ import {
   DELETE_USER_START,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
+  CLEAR_ERROR
 } from "./userRedux";
 import { publicRequest, axiosJWT } from "../../requestMethods";
 
@@ -170,6 +171,6 @@ export const DELETE_USER = (id) => async (dispatch) => {
 };
 
 // CALLING BY DIFFERENT METHOD
-// export const CLEAR_ERRORS = (dispatch) => {
-//   dispatch(CLEAR_ERROR());
-// }
+export const CLEAR_ERRORS = (dispatch) => {
+  dispatch(CLEAR_ERROR());
+}

@@ -103,7 +103,7 @@ function Navbar() {
       </div>
 
       <div className="right">
-        {user ? <div className="userImage">
+        <div className={!user ? "userIcon" : user.role === "admin" ? "userImageForAdmin" : "userImageForUser"}>
           <Backdrop open={open} style={{ zIndex: "9" }} />
 
           <SpeedDial
@@ -114,11 +114,11 @@ function Navbar() {
             onClick={handleOpen}
             direction="down"
             FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }}
-            icon={<img
+            icon={user ? <img
               src={user.avatar.url}
               className="speedDialIcon"
               alt="Profile"
-            />
+            /> : <AccountCircleIcon className="icon" />
             }
           >
             {option.map((item) => (
@@ -131,32 +131,7 @@ function Navbar() {
               /> // tooltipOpen -- usefull in phones
             ))}
           </SpeedDial>
-        </div> : <div className="userIcon">
-          <Backdrop open={open} style={{ zIndex: "9" }} />
-
-          <SpeedDial
-            ariaLabel="SpeedDial tooltip example"
-            // onClose={() => setOpen(false)}
-            // onOpen={() => setOpen(true)}
-            open={open}
-            onClick={handleOpen}
-            direction="down"
-            FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }}
-            icon={
-              <AccountCircleIcon className="icon" />
-            }
-          >
-            {option.map((item) => (
-              <SpeedDialAction
-                FabProps={{ style: { backgroundColor: "black", zIndex: "10" } }}
-                key={item.name}
-                icon={item.icon}
-                tooltipTitle={item.name}
-                onClick={item.func}
-              /> // tooltipOpen -- usefull in phones
-            ))}
-          </SpeedDial>
-        </div>}
+        </div>
 
         <div className="cart">
           <Link to="/cart">

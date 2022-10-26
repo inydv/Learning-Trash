@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Payment.css'
 import CheckoutSteps from "../../../Components/checkoutSteps/CheckoutSteps";
 import { useSelector, useDispatch } from "react-redux";
@@ -17,7 +17,8 @@ import {
 import { axiosJWT } from '../../../requestMethods';
 import { useNavigate } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js"
+import { loadStripe } from "@stripe/stripe-js";
+import { CLEAR_CART } from "../../../redux/cart/cartApiCall"
 
 const Wrapper = ({ stripeApiKey }) => (
   <Elements stripe={loadStripe(stripeApiKey)}>
@@ -52,10 +53,14 @@ function Payment() {
     totalPrice: orderInfo.totalPrice,
   };
 
+  const [err, setErr] = useState(null);
+  const [btnLoad, setBtnLoad] = useState(false);
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
     payBtn.current.disabled = true;
+    setBtnLoad(true);
 
     try {
       const config = {
@@ -93,8 +98,9 @@ function Payment() {
 
       if (result.error) {
         payBtn.current.disabled = false;
+        setBtnLoad(false);
 
-        // alert.error(result.error.message);
+        setErr(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
           order.paymentInfo = {
@@ -104,20 +110,22 @@ function Payment() {
 
           dispatch(CREATE_ORDER(order));
 
+          dispatch(CLEAR_CART());
+
           navigate("/success");
         } else {
-          // alert.error("There's some issue while processing payment ");
+          setErr("There's Some Issue While Processing Payment ");
         }
       }
     } catch (error) {
       payBtn.current.disabled = false;
-      // alert.error(error.response.data.message);
+      setBtnLoad(false);
+      setErr(error.response.data.message);
     }
   };
 
   useEffect(() => {
     if (error) {
-      // alert.error(error);
       dispatch(CLEAR_ERRORS());
     }
   }, [dispatch, error]);
@@ -141,11 +149,13 @@ function Payment() {
             <CardCvcElement className="paymentInput" />
           </div>
 
+          {err && <p className='err'>{err}</p>}
+
           <input
             type="submit"
             value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
             ref={payBtn}
-            className="paymentFormBtn"
+            className={btnLoad ? "btnLoading btnSpinner" : "paymentFormBtn"}
           />
         </form>
       </div>

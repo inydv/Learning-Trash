@@ -1,189 +1,180 @@
 .emptyCart {
-    margin: auto;
-    text-align: center;
-    padding: 10vmax;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  margin: auto;
+  text-align: center;
+  padding: 10vmax;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .emptyCart > svg {
-    font-size: 5vmax;
-  }
+.emptyCart > svg {
+  font-size: 5vmax;
+}
 
-  .emptyCart > p {
-    font-size: 2vmax;
-  }
+.emptyCart > p {
+  font-size: 2vmax;
+}
 
-  .emptyCart > a {
-    background-color: rgb(51, 51, 51);
-    color: white;
-    border: none;
-    padding: 1vmax 3vmax;
-    margin-top: 10px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.5s;
-  }
+.emptyCart > a {
+  background-color: rgb(51, 51, 51);
+  color: white;
+  border: none;
+  padding: 1vmax 3vmax;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.5s;
+}
 
-  .emptyCart > a:hover {
-    transform: scale(1.1);
-  }
-  
+.emptyCart > a:hover {
+  transform: scale(1.1);
+}
+
+.cartPage {
+  padding: 10px 30px;
+  margin-bottom: 20px;
+  min-height: 80vh;
+}
+
+.cartHeader {
+  background-color: rgb(58, 57, 57);
+  width: 100%;
+  box-sizing: border-box;
+  margin: auto;
+  color: white;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+}
+
+.cartHeader > p {
+  margin: 10px;
+}
+
+.cartHeader > p:last-child {
+  text-align: end;
+}
+
+.cartContainer {
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+}
+
+.cartInput {
+  display: flex;
+  align-items: center;
+  height: 8vmax;
+}
+
+.cartInput > button {
+  border: none;
+  background-color: rgb(58, 57, 57);
+  padding: 0.5vmax;
+  cursor: pointer;
+  color: white;
+}
+
+.cartInput > input {
+  border: none;
+  padding: 0.5vmax;
+  width: 2vmax;
+  text-align: center;
+  outline: none;
+  color: black;
+}
+
+.cartSubtotal {
+  display: flex;
+  padding: 0.5vmax;
+  height: 8vmax;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: flex-end;
+  color: white;
+}
+
+.cartGrossProfit {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.cartGrossProfitBox {
+  border-top: 3px solid rgb(58, 57, 57);
+  margin: 1vmax 0vmax;
+  box-sizing: border-box;
+  padding: 2vmax 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkOutBtn {
+  display: flex;
+  justify-content: flex-end;
+}
+.checkOutBtn > button {
+  background-color: rgb(58, 57, 57);
+  color: white;
+  border: none;
+  padding: 0.8vmax 4vmax;
+  width: 50%;
+  margin: 1vmax 0vmax;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.5s;
+}
+
+.checkOutBtn > button:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 600px) {
   .cartPage {
-    padding: 10px 30px;
-    margin-bottom: 20px;
-    min-height: 60vh;
+    padding: 0;
+    min-height: 40vh;
   }
-  
+
   .cartHeader {
-    background-color: rgb(58, 57, 57);
     width: 100%;
-    box-sizing: border-box;
-    margin: auto;
-    color: white;
-    display: grid;
-    grid-template-columns: 4fr 1fr 1fr;
-    font: 300 0.7vmax ;
+    grid-template-columns: 3fr 1fr 1fr;
   }
 
-  .cartHeader > p {
-    margin: 10px;
-  }
-
-  .cartHeader > p:last-child {
-    text-align: end;
-  }
-  
   .cartContainer {
     width: 100%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 4fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr;
   }
-  
+
   .cartInput {
-    display: flex;
-    align-items: center;
-    height: 8vmax;
+    height: 20vmax;
   }
-  
+
   .cartInput > button {
-    border: none;
-    background-color: rgb(58, 57, 57);
-    padding: 0.5vmax;
-    cursor: pointer;
-    color: white;
-    transition: all 0.5s;
+    padding: 1.5vmax;
   }
-  .cartInput > button:hover {
-    transform: scale(1.1);
-  }
-  
+
   .cartInput > input {
-    border: none;
-    padding: 0.5vmax;
-    width: 1vmax;
-    text-align: center;
-    outline: none;
-    font: 400 0.8vmax ;
-    color: black;
+    width: 2vmax;
+    padding: 1.5vmax;
   }
-  
+
   .cartSubtotal {
-    display: flex;
-    padding: 0.5vmax;
-    height: 8vmax;
-    align-items: center;
-    box-sizing: border-box;
-    font: 300 1vmax cursive;
-    justify-content: flex-end;
-    color: white;
+    padding: 1.5vmax;
+    height: 20vmax;
   }
-  
+
   .cartGrossProfit {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 0fr 2fr;
   }
-  
+
   .cartGrossProfitBox {
-    border-top: 3px solid rgb(58, 57, 57);
-    margin: 1vmax 0vmax;
-    box-sizing: border-box;
-    padding: 2vmax 0;
-    font: 300 1vmax ;
-    display: flex;
-    justify-content: space-between;
+    padding: 2vmax;
   }
-  
-  .checkOutBtn {
-    display: flex;
-    justify-content: flex-end;
-  }
+
   .checkOutBtn > button {
-    background-color: rgb(58, 57, 57);
-    color: white;
-    border: none;
-    padding: 0.8vmax 4vmax;
-    width: 50%;
-    font: 300 0.8vmax ;
-    margin: 1vmax 0vmax;
-    cursor: pointer;
-    border-radius: 30px;
+    padding: 2vmax 4vmax;
+    width: 100%;
   }
-  
-  @media screen and (max-width: 600px) {
-    .cartPage {
-      padding: 0;
-      min-height: 40vh;
-    }
-  
-    .cartHeader {
-      width: 100%;
-      font: 300 1.7vmax ;
-      grid-template-columns: 3fr 1fr 1fr;
-    }
-  
-    .cartContainer {
-      width: 100%;
-      grid-template-columns: 3fr 1fr 1fr;
-    }
-  
-    .cartInput {
-      height: 20vmax;
-    }
-  
-    .cartInput > button {
-      padding: 1.5vmax;
-    }
-  
-    .cartInput > input {
-      width: 2vmax;
-      padding: 1.5vmax;
-      font: 400 1.8vmax ;
-    }
-  
-    .cartSubtotal {
-      padding: 1.5vmax;
-      height: 20vmax;
-      font: 300 2vmax ;
-    }
-  
-    .cartGrossProfit {
-      display: grid;
-      grid-template-columns: 0fr 2fr;
-    }
-  
-    .cartGrossProfitBox {
-      padding: 2vmax;
-      font: 300 2vmax ;
-    }
-  
-    .checkOutBtn > button {
-      padding: 2vmax 4vmax;
-      width: 100%;
-      font: 300 2vmax;
-    }
-  }
+}

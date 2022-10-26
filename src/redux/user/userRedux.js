@@ -9,14 +9,14 @@ const userSlice = createSlice({
     updateUser: null,
     deleteUser: null,
     isFetching: false,
-    error: false,
+    error: null,
     message: null,
     isUpdated: false,
   },
   reducers: {
     LOGIN_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
     },
     LOGIN_SUCCESS: (state, action) => {
       state.isFetching = false;
@@ -30,7 +30,7 @@ const userSlice = createSlice({
 
     REGISTER_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
     },
     REGISTER_SUCCESS: (state, action) => {
       state.isFetching = false;
@@ -44,7 +44,7 @@ const userSlice = createSlice({
 
     LOAD_USER_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
     },
     LOAD_USER_SUCCESS: (state, action) => {
       state.isFetching = false;
@@ -57,11 +57,11 @@ const userSlice = createSlice({
 
     LOGOUT_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
     },
     LOGOUT_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.error = false;
+      state.error = null;
       state.currentUser = null;
       state.message = action.payload;
     },
@@ -72,7 +72,7 @@ const userSlice = createSlice({
 
     FORGOT_PASSWORD_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
     },
     FORGOT_PASSWORD_SUCCESS: (state, action) => {
       state.isFetching = false;
@@ -85,7 +85,7 @@ const userSlice = createSlice({
 
     RESET_PASSWORD_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
     },
     RESET_PASSWORD_SUCCESS: (state, action) => {
       state.isFetching = false;
@@ -99,7 +99,7 @@ const userSlice = createSlice({
 
     UPDATE_PROFILE_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
       state.isUpdated = false;
     },
     UPDATE_PROFILE_SUCCESS: (state, action) => {
@@ -115,7 +115,7 @@ const userSlice = createSlice({
 
     UPDATE_PASSWORD_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
       state.isUpdated = false;
     },
     UPDATE_PASSWORD_SUCCESS: (state, action) => {
@@ -135,7 +135,7 @@ const userSlice = createSlice({
 
     ALL_USERS_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
     },
     ALL_USERS_SUCCESS: (state, action) => {
       state.isFetching = false;
@@ -149,7 +149,7 @@ const userSlice = createSlice({
 
     USER_DETAILS_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
     },
     USER_DETAILS_SUCCESS: (state, action) => {
       state.isFetching = false;
@@ -163,7 +163,7 @@ const userSlice = createSlice({
 
     UPDATE_USER_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
     },
     UPDATE_USER_SUCCESS: (state, action) => {
       state.isFetching = false;
@@ -177,7 +177,7 @@ const userSlice = createSlice({
 
     DELETE_USER_START: (state) => {
       state.isFetching = true;
-      state.error = false;
+      state.error = null;
     },
     DELETE_USER_SUCCESS: (state, action) => {
       state.isFetching = false;
@@ -191,7 +191,7 @@ const userSlice = createSlice({
 
     CLEAR_ERROR: (state) => {
       state.isFetching = false;
-      state.error = false;
+      state.error = null;
     },
   },
 });

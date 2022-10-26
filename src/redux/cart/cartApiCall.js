@@ -2,6 +2,7 @@ import {
   ADD_TO_CART,
   REMOVE_CART_ITEM,
   SAVE_SHIPPING_DETAIL,
+  CART_CLEAR
 } from "./cartRedux";
 import { axiosJWT } from "../../requestMethods";
 
@@ -29,3 +30,7 @@ export const SAVE_SHIPPING_INFO = (data) => async (dispatch) => {
   dispatch(SAVE_SHIPPING_DETAIL(data));
   localStorage.setItem("shippingInfo", JSON.stringify(data));
 };
+
+export const CLEAR_CART = () => async (dispatch) => {
+  dispatch(CART_CLEAR());
+}

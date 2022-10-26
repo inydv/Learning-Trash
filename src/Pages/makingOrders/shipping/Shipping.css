@@ -1,106 +1,110 @@
 .shippingContainer {
-    width: 100vw;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  
+  width: 100vw;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.shippingBox {
+  background-color: black;
+  width: 25vw;
+  height: 80vh;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.shippingHeading {
+  text-align: center;
+  color: white;
+  font: 400 1.3vmax;
+  padding: 1.3vmax;
+  border-bottom: 1px solid whitesmoke;
+  width: 70%;
+  margin: auto;
+}
+
+.shippingForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 1vmax;
+  justify-content: space-evenly;
+  height: 80%;
+  transition: all 0.5s;
+}
+
+.shippingForm > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.shippingForm > div > input,
+.shippingForm > div > select {
+  padding: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 4px;
+  outline: none;
+  color: black;
+}
+
+.shippingForm > div > select > option {
+  color: black;
+}
+
+.shippingForm > div > svg {
+  transform: translateX(-0.5vmax);
+}
+
+.shippingBtn {
+  border: none;
+  background-color: rgb(58, 57, 57);
+  color: white;
+  width: 100%;
+  padding: 1vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+  outline: none;
+  margin: 2vmax;
+}
+
+.shippingBtn:hover {
+  transform: scale(1.1);
+}
+
+.error {
+  color: red;
+}
+
+@media screen and (max-width: 600px) {
   .shippingBox {
-    background-color: black;
-    width: 25vw;
-    height: 80vh;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-  
-  .shippingHeading {
-    text-align: center;
-    color: white;
-    font: 400 1.3vmax ;
-    padding: 1.3vmax;
-    border-bottom: 1px solid whitesmoke;
-    width: 70%;
-    margin: auto;
-  }
-  
-  .shippingForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    padding: 1vmax;
-    justify-content: space-evenly;
-    height: 80%;
-    transition: all 0.5s;
-  }
-  
-  .shippingForm > div {
-    display: flex;
-    width: 100%;
-    align-items: center;
-  }
-  
-  .shippingForm > div > input,
-  .shippingForm > div > select {
-    padding: 1vmax;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid black;
-    border-radius: 4px;
-    outline: none;
-    color: black;
+    width: 100vw;
+    height: 95vh;
   }
 
-  .shippingForm > div > select > option {
-    color: black;
+  .shippingHeading {
+    padding: 5vw;
   }
-  
+
+  .shippingForm {
+    padding: 11vw;
+  }
+
+  .shippingForm > div > input,
+  .shippingForm > div > select {
+    padding: 5vw 10vw;
+  }
+
   .shippingForm > div > svg {
-    transform: translateX(-0.5vmax);
+    transform: translateX(-3vw);
   }
-  
+
   .shippingBtn {
-    border: none;
-    background-color: rgb(58, 57, 57);
-    color: white;
-    width: 100%;
-    padding: 1vmax;
-    cursor: pointer;
-    transition: all 0.5s;
-    outline: none;
-    margin: 2vmax;
+    padding: 4vw;
   }
-  
-  .shippingBtn:hover {
-    transform: scale(1.1);
-  }
-  
-  @media screen and (max-width: 600px) {
-    .shippingBox {
-      width: 100vw;
-      height: 95vh;
-    }
-  
-    .shippingHeading {
-      padding: 5vw;
-    }
-  
-    .shippingForm {
-      padding: 11vw;
-    }
-  
-    .shippingForm > div > input,
-    .shippingForm > div > select {
-      padding: 5vw 10vw;
-    }
-  
-    .shippingForm > div > svg {
-      transform: translateX(-3vw);
-    }
-  
-    .shippingBtn {
-      padding: 4vw;
-    }
-  }
+}
