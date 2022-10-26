@@ -53,12 +53,15 @@ const ProductSchema = new mongoose.Schema(
           ref: "User",
           required: true,
         },
+        image: {
+          type: String,
+        },
         name: {
           type: String,
           required: true,
         },
         rating: {
-          type: String,
+          type: Number,
           required: true,
         },
         comment: {

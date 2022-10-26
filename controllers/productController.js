@@ -1,4 +1,5 @@
 const Product = require("../models/productModel");
+const User = require("../models/UserModel");
 const ErrorHander = require("../utils/errorhandler");
 const catchAsyncErrors = require("../middleware/catchAsyncError");
 const ApiFeatures = require("../utils/apifeatures");
@@ -203,8 +204,12 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
   const { rating, comment, productId } = req.body;
 
+  const avatar = await User.findById({ _id: req.user._id }, { avatar: 1, _id: 0 });
+
+
   const review = {
     user: req.user._id,
+    image: avatar.url,
     name: req.user.username,
     rating: Number(rating),
     comment,
@@ -218,7 +223,7 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
 
   if (isReviewed) {
     product.reviews.forEach((rev) => {
-      if ((rev) => rev.user.toString() === req.user._id.toString())
+      if (rev.user.toString() === req.user._id.toString())
         (rev.rating = rating), (rev.comment = comment);
     });
   } else {
