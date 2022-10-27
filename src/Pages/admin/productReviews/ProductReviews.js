@@ -2,19 +2,16 @@ import React, { useState, useEffect } from 'react'
 import './ProductReviews.css';
 import { DataGrid } from "@mui/x-data-grid";
 import { useSelector, useDispatch } from "react-redux";
-import { ALL_REVIEW, DELETE_REVIEW } from "../../../redux/product/reviewApiCall";
+import { ALL_REVIEW, DELETE_REVIEW, RESET_DELETE_REVIEW } from "../../../redux/product/reviewApiCall";
 import { CLEAR_ERRORS } from "../../../redux/product/reviewRedux";
 import { Button } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Star from "@material-ui/icons/Star";
 import Sidebar from "../sidebar/Sidebar";
-import { useNavigate } from 'react-router-dom';
 import Loading from "../../../Components/loading/Loading";
 
 export default function ProductReviews() {
   const dispatch = useDispatch();
-
-  const Navigate = useNavigate();
 
   const { error, allReview: reviews, isFetching, deleteReview } = useSelector((state) => state.review);
 
@@ -30,16 +27,13 @@ export default function ProductReviews() {
   };
 
   useEffect(() => {
-    if (productId.length === 24) {
-      dispatch(ALL_REVIEW(productId));
-    }
     if (error) {
       dispatch(CLEAR_ERRORS());
     }
 
     if (deleteReview) {
-      Navigate("/admin/reviews");
-      // dispatch({ type: DELETE_REVIEW_RESET });
+      dispatch(RESET_DELETE_REVIEW());
+      dispatch(ALL_REVIEW(productId));
     }
   }, [dispatch, error, deleteReview, productId]);
 
@@ -111,65 +105,69 @@ export default function ProductReviews() {
   return (
     <div className="dashboard">
       <Sidebar />
-      <div className="productReviewsContainer">
-        <form
-          className="productReviewsForm"
-          onSubmit={productReviewsSubmitHandler}
-        >
-          <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
 
-          <div>
-            <Star />
-            <input
-              type="text"
-              placeholder="Product Id"
-              required
-              value={productId}
-              onChange={(e) => setProductId(e.target.value)}
-            />
-          </div>
-
-          <Button
-            id="createProductBtn"
-            type="submit"
-            disabled={
-              isFetching ? true : false || productId === "" ? true : false
-            }
+      {isFetching ? (
+        <Loading />
+      ) : (
+        <div className="productReviewsContainer">
+          <form
+            className="productReviewsForm"
+            onSubmit={productReviewsSubmitHandler}
           >
-            Search
-          </Button>
-        </form>
+            <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
 
-        {reviews && reviews.length > 0 ? (
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className="productListTable"
-            autoHeight
-            density="compact" // for making compact table
-            sx={{ // for borders
-              '.MuiDataGrid-columnSeparator': {
-                display: 'none',
-                border: 'none'
-              },
-              '.MuiDataGrid-rowSeparator': {
-                display: 'none',
-                border: 'none'
-              },
-              '&.MuiDataGrid-root': {
-                border: 'none',
-              },
-              '.MuiDataGrid-cell': {
-                border: 'none'
-              },
-            }}
-          />
-        ) : (
-          <h1 className="productReviewsFormHeading">No Reviews Found</h1>
-        )}
-      </div>
+            <div>
+              <Star />
+              <input
+                type="text"
+                placeholder="Product Id"
+                required
+                value={productId}
+                onChange={(e) => setProductId(e.target.value)}
+              />
+            </div>
+
+            <Button
+              id="createProductBtn"
+              type="submit"
+              disabled={
+                isFetching ? true : false || productId === "" ? true : false
+              }
+            >
+              Search
+            </Button>
+          </form>
+
+          {reviews && reviews.length > 0 ? (
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={10}
+              disableSelectionOnClick
+              className="productListTable"
+              autoHeight
+              density="compact" // for making compact table
+              sx={{ // for borders
+                '.MuiDataGrid-columnSeparator': {
+                  display: 'none',
+                  border: 'none'
+                },
+                '.MuiDataGrid-rowSeparator': {
+                  display: 'none',
+                  border: 'none'
+                },
+                '&.MuiDataGrid-root': {
+                  border: 'none',
+                },
+                '.MuiDataGrid-cell': {
+                  border: 'none'
+                },
+              }}
+            />
+          ) : (
+            <h1 className="productReviewsFormHeading">No Reviews Found</h1>
+          )}
+        </div>)}
     </div>
   )
 }

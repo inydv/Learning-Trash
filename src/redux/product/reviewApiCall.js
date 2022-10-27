@@ -9,6 +9,7 @@ import {
   DELETE_REVIEW_REQUEST,
   DELETE_REVIEW_SUCCESS,
   DELETE_REVIEW_FAIL,
+  DELETE_REVIEW_RESET
 } from "./reviewRedux";
 import { axiosJWT } from "../../requestMethods";
 
@@ -47,4 +48,8 @@ export const DELETE_REVIEW = (reviewId, productId) => async (dispatch) => {
   } catch (error) {
     dispatch(DELETE_REVIEW_FAIL(error.response.data.message));
   }
+};
+
+export const RESET_DELETE_REVIEW = () => async (dispatch) => {
+  dispatch(DELETE_REVIEW_RESET());
 };

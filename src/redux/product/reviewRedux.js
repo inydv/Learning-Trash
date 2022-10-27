@@ -53,6 +53,11 @@ const reviewsSlice = createSlice({
             state.error = action.payload;
             state.deleteReview = null;
         },
+        DELETE_REVIEW_RESET: (state, action) => {
+            state.isFetching = false;
+            state.error = null;
+            state.deleteReview = null;
+        },
 
         CLEAR_ERRORS: (state) => {
             state.error = null;
@@ -71,6 +76,7 @@ export const {
     DELETE_REVIEW_REQUEST,
     DELETE_REVIEW_SUCCESS,
     DELETE_REVIEW_FAIL,
+    DELETE_REVIEW_RESET,
     CLEAR_ERRORS
 } = reviewsSlice.actions;
 export default reviewsSlice.reducer;
