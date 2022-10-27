@@ -272,7 +272,7 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
   );
 
   let avg = 0;
-  reviews.reviews.forEach((rev) => {
+  reviews.forEach((rev) => {
     avg = avg + rev.rating;
   });
 
