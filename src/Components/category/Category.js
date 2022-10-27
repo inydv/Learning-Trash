@@ -16,7 +16,7 @@ function Category() {
         </Link>
       </div>
       <div className="women">
-        <Link to="/shop?category=womens">
+        <Link to="/shop?category=women">
           <div className="imageContainer">
             <img src={WomenCollection} alt="" className="image" />
           </div>

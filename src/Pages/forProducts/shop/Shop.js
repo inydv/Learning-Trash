@@ -10,7 +10,7 @@ import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
 
-const categories = ["mens", "womens"];
+const categories = ["men", "women"];
 
 function Shop() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,12 +25,15 @@ function Shop() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
     if (query.search) {
-      setCategory(query.search.split("=")[1])
+      setCategory(query.search.split("=")[1]);
     }
+
     dispatch(
       FETCHING_ALL_PRODUCT(keyword.keyword, currentPage, price, category, ratings, sort)
     );
+
   }, [dispatch, keyword, currentPage, price, category, ratings, sort, query.search]);
 
   const { products, isFetching, error, productsCount, resultPerPage } =

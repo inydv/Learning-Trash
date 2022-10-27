@@ -34,6 +34,8 @@ import ProductReviews from "./Pages/admin/productReviews/ProductReviews";
 import Navbar from "./Components/navbar/Navbar";
 import Footer from "./Components/footer/Footer";
 import NotFound from "./Pages/staticPages/404 Not Found/NotFound";
+import ProtectedRoute_Admin from "./utils/ProtectedRoute_Admin";
+import ProtectedRoute_User from "./utils/ProtectedRoute_User"
 
 function App() {
   const dispatch = useDispatch();
@@ -91,32 +93,37 @@ function App() {
         <Route path="/shop/:keyword" element={<Shop />} />
         <Route exact path="/product/:id" element={<SinglePage />} />
 
-        <Route exact path="/account" element={<Account />} />
-        <Route exact path="/me/update" element={<UpdateProfile />} />
-        <Route exact path="/password/update" element={<UpdatePassword />} />
-
-        <Route exact path="/MyOrders" element={<Order />} />
-        <Route exact path="/order/:id" element={<OrderDetails />} />
-
         <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/shipping" element={<Shipping />} />
-        <Route exact path="/order/confirm" element={<ConfirmOrder />} />
-        {stripeApiKey && (
-          <Route exact path="/process/payment" element={<Wrapper stripeApiKey={stripeApiKey} />} />
-        )}
-        <Route exact path="/success" element={<OrderSuccess />} />
 
-        <Route exact path="/admin/dashboard" element={<Dashboard />} />
-        <Route exact path="/admin/products" element={<ProductList />} />
-        <Route exact path="/admin/product" element={<NewProduct />} />
-        <Route exact path="//admin/product/:id" element={<UpdateProduct />} />
-        <Route exact path="/admin/orders" element={<OrderList />} />
-        <Route exact path="/admin/order/:id" element={<ProcessOrder />} />
-        <Route exact path="/admin/users" element={<UsersList />} />
-        <Route exact path="/admin/user/:id" element={<UpdateUser />} />
-        <Route exact path="/admin/reviews" element={<ProductReviews />} />
+        <Route element={<ProtectedRoute_User />} >
+          <Route exact path="/account" element={<Account />} />
+          <Route exact path="/me/update" element={<UpdateProfile />} />
+          <Route exact path="/password/update" element={<UpdatePassword />} />
 
-        <Route exact path="/notfound" element={<NotFound />} />
+          <Route exact path="/MyOrders" element={<Order />} />
+          <Route exact path="/order/:id" element={<OrderDetails />} />
+
+          <Route exact path="/shipping" element={<Shipping />} />
+          <Route exact path="/order/confirm" element={<ConfirmOrder />} />
+          {stripeApiKey && (
+            <Route exact path="/process/payment" element={<Wrapper stripeApiKey={stripeApiKey} />} />
+          )}
+          <Route exact path="/success" element={<OrderSuccess />} />
+        </Route>
+
+        <Route element={<ProtectedRoute_Admin />} >
+          <Route exact path="/admin/dashboard" element={<Dashboard />} />
+          <Route exact path="/admin/products" element={<ProductList />} />
+          <Route exact path="/admin/product" element={<NewProduct />} />
+          <Route exact path="/admin/product/:id" element={<UpdateProduct />} />
+          <Route exact path="/admin/orders" element={<OrderList />} />
+          <Route exact path="/admin/order/:id" element={<ProcessOrder />} />
+          <Route exact path="/admin/users" element={<UsersList />} />
+          <Route exact path="/admin/user/:id" element={<UpdateUser />} />
+          <Route exact path="/admin/reviews" element={<ProductReviews />} />
+        </Route>
+
+        <Route path="*" element={<NotFound />} />
 
       </Routes>
       <Footer />

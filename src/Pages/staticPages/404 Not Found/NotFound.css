@@ -1,0 +1,29 @@
+.notFound {
+  min-height: 80vh;
+}
+
+.four-zero-four-bg {
+  background-color: white;
+  background-image: url("../../../Images/notFound.gif");
+  height: 45vh;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.content_box_404 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.link_404 {
+  color: white;
+  padding: 10px 20px;
+  background: rgb(58, 57, 57);
+  margin-top: 20px;
+  display: inline-block;
+  transition: all 0.5s;
+}
+
+.link_404:hover {
+  transform: scale(1.1);
+}

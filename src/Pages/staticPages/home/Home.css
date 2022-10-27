@@ -1,11 +1,11 @@
 .product {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .error {
-    margin: 20px;
-    color: tomato;
-  }
+  margin: 20px;
+  color: tomato;
+}

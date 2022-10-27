@@ -21,10 +21,10 @@ function Footer() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/shop?category=mens">Men</Link>
+            <Link to="/shop?category=men">Men</Link>
           </li>
           <li>
-            <Link to="/shop?category=womens">Women</Link>
+            <Link to="/shop?category=women">Women</Link>
           </li>
           <li>
             <Link to="/shop">Shop</Link>
@@ -47,7 +47,7 @@ function Footer() {
         <h4 className="address">ADDRESS</h4>
         <p className="addressDetail">
           826 Kapashera New Delhi, 110037 <br /><a href="mailto:im.nydv@gmail.com">im.nydv@gmail.com</a><br /><a href="tel:7303405787">Tel:
-          7303405787 </a>
+            7303405787 </a>
         </p>
         <div className="icons">
           <div className="facebook">
