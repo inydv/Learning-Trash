@@ -34,8 +34,8 @@ import ProductReviews from "./Pages/admin/productReviews/ProductReviews";
 import Navbar from "./Components/navbar/Navbar";
 import Footer from "./Components/footer/Footer";
 import NotFound from "./Pages/staticPages/404 Not Found/NotFound";
-import ProtectedRoute_Admin from "./utils/ProtectedRoute_Admin";
-import ProtectedRoute_User from "./utils/ProtectedRoute_User"
+import ProtectedRouteAdmin from "./utils/ProtectedRouteAdmin";
+import ProtectedRouteUser from "./utils/ProtectedRouteUser"
 
 function App() {
   const dispatch = useDispatch();
@@ -95,7 +95,7 @@ function App() {
 
         <Route exact path="/cart" element={<Cart />} />
 
-        <Route element={<ProtectedRoute_User />} >
+        <Route element={<ProtectedRouteUser />} >
           <Route exact path="/account" element={<Account />} />
           <Route exact path="/me/update" element={<UpdateProfile />} />
           <Route exact path="/password/update" element={<UpdatePassword />} />
@@ -111,7 +111,7 @@ function App() {
           <Route exact path="/success" element={<OrderSuccess />} />
         </Route>
 
-        <Route element={<ProtectedRoute_Admin />} >
+        <Route element={<ProtectedRouteAdmin />} >
           <Route exact path="/admin/dashboard" element={<Dashboard />} />
           <Route exact path="/admin/products" element={<ProductList />} />
           <Route exact path="/admin/product" element={<NewProduct />} />

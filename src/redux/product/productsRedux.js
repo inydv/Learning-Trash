@@ -64,6 +64,8 @@ const productsSlice = createSlice({
     },
     NEW_PRODUCT_RESET: (state) => {
       state.newProduct = null;
+      state.isFetching = false;
+      state.error = null;
     },
 
     DELETE_PRODUCT_REQUEST: (state) => {
@@ -79,6 +81,11 @@ const productsSlice = createSlice({
       state.error = action.payload;
       state.deleteProduct = null;
     },
+    DELETE_PRODUCT_RESET: (state) => {
+      state.isFetching = false;
+      state.error = null;
+      state.deleteProduct = null;
+    },
 
     UPDATE_PRODUCT_REQUEST: (state) => {
       state.isFetching = true;
@@ -91,6 +98,11 @@ const productsSlice = createSlice({
     UPDATE_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
+      state.updateProduct = null;
+    },
+    UPDATE_PRODUCT_RESET: (state) => {
+      state.isFetching = false;
+      state.error = null;
       state.updateProduct = null;
     },
 
@@ -124,16 +136,18 @@ export const {
   ADMIN_PRODUCT_START,
   ADMIN_PRODUCT_SUCCESS,
   ADMIN_PRODUCT_FAIL,
-  NEW_PRODUCT_REQUEST, 
-  NEW_PRODUCT_SUCCESS, 
-  NEW_PRODUCT_FAIL, 
+  NEW_PRODUCT_REQUEST,
+  NEW_PRODUCT_SUCCESS,
+  NEW_PRODUCT_FAIL,
   NEW_PRODUCT_RESET,
   DELETE_PRODUCT_REQUEST,
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAIL,
+  DELETE_PRODUCT_RESET,
   UPDATE_PRODUCT_REQUEST,
   UPDATE_PRODUCT_SUCCESS,
   UPDATE_PRODUCT_FAIL,
+  UPDATE_PRODUCT_RESET,
   PRODUCT_DETAILS_START,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,

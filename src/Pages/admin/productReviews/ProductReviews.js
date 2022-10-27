@@ -9,6 +9,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Star from "@material-ui/icons/Star";
 import Sidebar from "../sidebar/Sidebar";
 import { useNavigate } from 'react-router-dom';
+import Loading from "../../../Components/loading/Loading";
 
 export default function ProductReviews() {
   const dispatch = useDispatch();

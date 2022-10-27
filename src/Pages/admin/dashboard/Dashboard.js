@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Doughnut, Line } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';
+import Loading from "../../../Components/loading/Loading";
+
 Chart.register(...registerables);
 
 export default function Dashboard() {
@@ -19,9 +21,9 @@ export default function Dashboard() {
     dispatch(GET_ALL_USER());
   }, [dispatch])
 
-  const { adminProducts } = useSelector((state) => state.products);
-  const { allUser } = useSelector((state) => state.user);
-  const { allOrders } = useSelector((state) => state.myOrders);
+  const { adminProducts, isFetching } = useSelector((state) => state.products);
+  const { allUser, isFetching: isFetching1 } = useSelector((state) => state.user);
+  const { allOrders, isFetching: isFetching2 } = useSelector((state) => state.myOrders);
 
   let outOfStock = 0;
 
@@ -67,41 +69,44 @@ export default function Dashboard() {
     <div className="dashboard">
       <Sidebar />
 
-      <div className="dashboardContainer">
-        <h1>Dashboard</h1>
+      {isFetching || isFetching1 || isFetching2 ? (
+        <Loading />
+      ) : (
+        <div className="dashboardContainer">
+          <h1>Dashboard</h1>
 
-        <div className="dashboardSummary">
-          <div>
-            <p>
-              Total Amount <br /> ₹{totalAmount}
-            </p>
-          </div>
-          <div className="dashboardSummaryBox2">
-            <Link to="/admin/products">
-              <p>Products</p>
-              <p>{adminProducts && adminProducts.length}</p>
-            </Link>
-            <Link to="/admin/orders">
-              <p>Orders</p>
-              <p>{allOrders && allOrders.length}</p>
-            </Link>
-            <Link to="/admin/users">
-              <p>Users</p>
-              <p>{allUser && allUser.length}</p>
-            </Link>
-          </div>
-        </div>
-
-        <div className="charts">
-          <div className="lineChart">
-            <Line data={lineState} />
+          <div className="dashboardSummary">
+            <div>
+              <p>
+                Total Amount <br /> ₹{totalAmount}
+              </p>
+            </div>
+            <div className="dashboardSummaryBox2">
+              <Link to="/admin/products">
+                <p>Products</p>
+                <p>{adminProducts && adminProducts.length}</p>
+              </Link>
+              <Link to="/admin/orders">
+                <p>Orders</p>
+                <p>{allOrders && allOrders.length}</p>
+              </Link>
+              <Link to="/admin/users">
+                <p>Users</p>
+                <p>{allUser && allUser.length}</p>
+              </Link>
+            </div>
           </div>
 
-          <div className="doughnutChart">
-            <Doughnut data={doughnutState} />
+          <div className="charts">
+            <div className="lineChart">
+              <Line data={lineState} />
+            </div>
+
+            <div className="doughnutChart">
+              <Doughnut data={doughnutState} />
+            </div>
           </div>
-        </div>
-      </div>
+        </div>)}
     </div>
   )
 }

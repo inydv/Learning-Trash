@@ -8,12 +8,15 @@ import {
   NEW_PRODUCT_REQUEST,
   NEW_PRODUCT_SUCCESS,
   NEW_PRODUCT_FAIL,
+  NEW_PRODUCT_RESET,
   DELETE_PRODUCT_REQUEST,
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_FAIL,
+  DELETE_PRODUCT_RESET,
   UPDATE_PRODUCT_REQUEST,
   UPDATE_PRODUCT_SUCCESS,
   UPDATE_PRODUCT_FAIL,
+  UPDATE_PRODUCT_RESET,
   PRODUCT_DETAILS_START,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
@@ -68,6 +71,10 @@ export const NEW_PRODUCT = (productData) => async (dispatch) => {
   }
 };
 
+export const RESET_NEW_PRODUCT = () => async (dispatch) => {
+  dispatch(NEW_PRODUCT_RESET());
+};
+
 export const DELETE_PRODUCT = (id) => async (dispatch) => {
   dispatch(DELETE_PRODUCT_REQUEST());
   try {
@@ -78,6 +85,10 @@ export const DELETE_PRODUCT = (id) => async (dispatch) => {
   }
 };
 
+export const RESET_DELETE_PRODUCT = () => async (dispatch) => {
+  dispatch(DELETE_PRODUCT_RESET());
+};
+
 export const UPDATE_PRODUCT = (id) => async (dispatch) => {
   dispatch(UPDATE_PRODUCT_REQUEST());
   try {
@@ -86,6 +97,10 @@ export const UPDATE_PRODUCT = (id) => async (dispatch) => {
   } catch (error) {
     dispatch(UPDATE_PRODUCT_FAIL(error.response.data.message));
   }
+};
+
+export const RESET_UPDATE_PRODUCT = () => async (dispatch) => {
+  dispatch(UPDATE_PRODUCT_RESET());
 };
 
 export const GET_PRODUCT_DETAIL = (id) => async (dispatch) => {

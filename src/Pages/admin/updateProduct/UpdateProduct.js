@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './UpdateProduct';
 import { useSelector, useDispatch } from "react-redux";
-import { UPDATE_PRODUCT, GET_PRODUCT_DETAIL } from "../../../redux/product/productsApiCall";
+import { UPDATE_PRODUCT, GET_PRODUCT_DETAIL, RESET_UPDATE_PRODUCT } from "../../../redux/product/productsApiCall";
 import { CLEAR_ERROR } from "../../../redux/product/productsRedux";
 import { Button } from "@material-ui/core";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
@@ -10,7 +10,8 @@ import StorageIcon from "@material-ui/icons/Storage";
 import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import Sidebar from "../sidebar/Sidebar";
-import {useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import Loading from "../../../Components/loading/Loading";
 
 export default function UpdateProduct() {
   const dispatch = useDispatch();
@@ -58,8 +59,8 @@ export default function UpdateProduct() {
     }
 
     if (updateProduct) {
+      dispatch(RESET_UPDATE_PRODUCT());
       navigate("/admin/products");
-      // dispatch({ type: UPDATE_PRODUCT_RESET });
     }
   }, [
     dispatch,
@@ -67,6 +68,7 @@ export default function UpdateProduct() {
     productId,
     product,
     updateProduct,
+    navigate
   ]);
 
   const updateProductSubmitHandler = (e) => {
@@ -108,7 +110,11 @@ export default function UpdateProduct() {
   };
   return (
     <div className="dashboard">
-        <Sidebar />
+      <Sidebar />
+
+      {isFetching ? (
+        <Loading />
+      ) : (
         <div className="newProductContainer">
           <form
             className="createProductForm"
@@ -207,7 +213,7 @@ export default function UpdateProduct() {
               Create
             </Button>
           </form>
-        </div>
-      </div>
+        </div>)}
+    </div>
   )
 }

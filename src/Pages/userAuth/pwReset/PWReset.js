@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./PWReset.css";
 import { useDispatch, useSelector } from "react-redux";
-import { RESET_PW } from "../../../redux/user/userApiCall";
+import { RESET_PW, RESET_MESSAGE } from "../../../redux/user/userApiCall";
+import { CLEAR_ERROR } from "../../../redux/user/userRedux";
 import { useNavigate, useParams } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
 import LockOpenIcon from "@material-ui/icons/LockOpen";
@@ -12,7 +13,7 @@ function PWReset() {
     const navigate = useNavigate();
     const token = useParams();
 
-    const { isUpdated, isFetching } = useSelector((state) => state.user);
+    const { isUpdated, isFetching, error } = useSelector((state) => state.user);
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -28,14 +29,16 @@ function PWReset() {
     };
 
     useEffect(() => {
-        // if (error) {
-        //   dispatch(clearErrors());
-        // }
+        if (error) {
+            dispatch(CLEAR_ERROR());
+        }
 
         if (isUpdated) {
             navigate("/login");
         }
-    }, [dispatch, navigate, isUpdated]);
+
+        dispatch(RESET_MESSAGE());
+    }, [dispatch, navigate, isUpdated, error]);
     return (
         <div>
             {isFetching ? (

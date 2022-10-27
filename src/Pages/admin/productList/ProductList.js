@@ -2,12 +2,14 @@ import React, { useEffect } from 'react'
 import './ProductList.css';
 import { DataGrid } from '@mui/x-data-grid';
 import { useSelector, useDispatch } from "react-redux";
-import { ADMIN_ALL_PRODUCT, DELETE_PRODUCT } from '../../../redux/product/productsApiCall';
+import { ADMIN_ALL_PRODUCT, DELETE_PRODUCT, RESET_DELETE_PRODUCT } from '../../../redux/product/productsApiCall';
+import { CLEAR_ERROR } from '../../../redux/product/productsRedux';
 import { Link } from "react-router-dom";
 import { Button } from '@material-ui/core';
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Sidebar from "../sidebar/Sidebar";
+import Loading from "../../../Components/loading/Loading";
 
 export default function ProductList() {
   const dispatch = useDispatch();
@@ -15,15 +17,18 @@ export default function ProductList() {
   const { adminProducts: products, error, isFetching, deleteProduct } = useSelector((state) => state.products);
 
   useEffect(() => {
-    // if (error) {
-    //     dispatch(clearErrors())
-    // }
+    if (error) {
+      dispatch(CLEAR_ERROR());
+    }
+
+    if (deleteProduct) {
+      dispatch(RESET_DELETE_PRODUCT())
+    }
 
     dispatch(ADMIN_ALL_PRODUCT());
   }, [dispatch, error, deleteProduct])
 
   const deleteProductHandler = (id) => {
-    console.log("here")
     dispatch(DELETE_PRODUCT(id))
   }
 
@@ -64,33 +69,37 @@ export default function ProductList() {
     <div>
       <div className="dashboard">
         <Sidebar />
-        <div className="productListContainer">
-          <h1 id="productListHeading">ALL PRODUCTS</h1>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            disableSelectionOnClick
-            className="productListTable"
-            autoHeight
-            density="compact" // for making compact table
-            sx={{ // for borders
-              '.MuiDataGrid-columnSeparator': {
-                display: 'none',
-                border: 'none'
-              },
-              '.MuiDataGrid-rowSeparator': {
-                display: 'none',
-                border: 'none'
-              },
-              '&.MuiDataGrid-root': {
-                border: 'none',
-              },
-              '.MuiDataGrid-cell': {
-                border: 'none'
-              },
-            }}
-          />
-        </div>
+
+        {isFetching ? (
+          <Loading />
+        ) : (
+          <div className="productListContainer">
+            <h1 id="productListHeading">ALL PRODUCTS</h1>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              disableSelectionOnClick
+              className="productListTable"
+              autoHeight
+              density="compact" // for making compact table
+              sx={{ // for borders
+                '.MuiDataGrid-columnSeparator': {
+                  display: 'none',
+                  border: 'none'
+                },
+                '.MuiDataGrid-rowSeparator': {
+                  display: 'none',
+                  border: 'none'
+                },
+                '&.MuiDataGrid-root': {
+                  border: 'none',
+                },
+                '.MuiDataGrid-cell': {
+                  border: 'none'
+                },
+              }}
+            />
+          </div>)}
       </div>
 
     </div>

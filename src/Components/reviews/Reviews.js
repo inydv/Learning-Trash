@@ -18,7 +18,7 @@ function Reviews({ review }) {
           currentTarget.onerror = null; // prevents looping
           currentTarget.src = "https://play-lh.googleusercontent.com/I-Yd5tJnxw7Ks8FUhUiFr8I4kohd9phv5sRFHG_-nSX9AAD6Rcy570NBZVFJBKpepmc=w240-h480-rw";
         }}
-        alt="User Image"
+        alt="Error While Loading"
       />
       <p>{review.name}</p>
       <Rating {...options} />

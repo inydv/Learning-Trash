@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Outlet } from "react-router-dom";
 import { LOGOUT } from "../redux/user/userApiCall";
 
-export default function ProtectedRoute_Admin() {
+export default function ProtectedRouteAdmin() {
     const { isFetching, currentUser } = useSelector((state) => state.user);
     const navigate = useNavigate();
     const dispatch = useDispatch();

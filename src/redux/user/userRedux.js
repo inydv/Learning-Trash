@@ -174,6 +174,11 @@ const userSlice = createSlice({
       state.error = action.payload;
       state.updateUser = null;
     },
+    UPDATE_USER_RESET: (state) => {
+      state.isFetching = false;
+      state.error = null;
+      state.updateUser = null;
+    },
 
     DELETE_USER_START: (state) => {
       state.isFetching = true;
@@ -188,11 +193,20 @@ const userSlice = createSlice({
       state.error = action.payload;
       state.deleteUser = null;
     },
+    DELETE_USER_RESET: (state) => {
+      state.isFetching = false;
+      state.error = null;
+      state.deleteUser = null;
+    },
 
     CLEAR_ERROR: (state) => {
       state.isFetching = false;
       state.error = null;
     },
+
+    MESSAGE_RESET: (state) => {
+      state.message = null;
+    }
   },
 });
 
@@ -231,9 +245,12 @@ export const {
   UPDATE_USER_START,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAIL,
+  UPDATE_USER_RESET,
   DELETE_USER_START,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
+  DELETE_USER_RESET,
   CLEAR_ERROR,
+  MESSAGE_RESET
 } = userSlice.actions;
 export default userSlice.reducer;

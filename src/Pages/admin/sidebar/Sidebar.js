@@ -20,7 +20,7 @@ export default function Sidebar() {
         </p>
       </Link>
 
-      <a>
+      <a href='#0'>
         <TreeView
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ImportExportIcon />}

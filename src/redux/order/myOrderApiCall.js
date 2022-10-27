@@ -8,9 +8,11 @@ import {
   UPDATE_ORDER_FAIL,
   UPDATE_ORDER_REQUEST,
   UPDATE_ORDER_SUCCESS,
+  UPDATE_ORDER_RESET,
   DELETE_ORDER_FAIL,
   DELETE_ORDER_REQUEST,
   DELETE_ORDER_SUCCESS,
+  DELETE_ORDER_RESET,
   ORDER_DETAILS_START,
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_SUCCESS,
@@ -47,6 +49,10 @@ export const UPDATE_ORDER = (id, myForm) => async (dispatch) => {
   }
 };
 
+export const RESET_UPDATE_ORDER = () => async (dispatch) => {
+  dispatch(UPDATE_ORDER_RESET());
+};
+
 export const DELETE_ORDER = (id) => async (dispatch) => {
   dispatch(DELETE_ORDER_REQUEST());
   try {
@@ -55,6 +61,10 @@ export const DELETE_ORDER = (id) => async (dispatch) => {
   } catch (error) {
     dispatch(DELETE_ORDER_FAIL(error.response.data.message));
   }
+};
+
+export const RESET_DELETE_ORDER = () => async (dispatch) => {
+  dispatch(DELETE_ORDER_RESET());
 };
 
 export const GETTING_ORDER = (id) => async (dispatch) => {

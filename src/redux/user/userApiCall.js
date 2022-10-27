@@ -32,10 +32,13 @@ import {
   UPDATE_USER_START,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_FAIL,
+  UPDATE_USER_RESET,
   DELETE_USER_START,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
-  CLEAR_ERROR
+  DELETE_USER_RESET,
+  CLEAR_ERROR,
+  MESSAGE_RESET
 } from "./userRedux";
 import { publicRequest, axiosJWT } from "../../requestMethods";
 
@@ -160,6 +163,10 @@ export const UPDATE_USER = (id) => async (dispatch) => {
   }
 };
 
+export const RESET_UPDATE_USER = () => async (dispatch) => {
+  dispatch(UPDATE_USER_RESET());
+};
+
 export const DELETE_USER = (id) => async (dispatch) => {
   dispatch(DELETE_USER_START());
   try {
@@ -170,7 +177,15 @@ export const DELETE_USER = (id) => async (dispatch) => {
   }
 };
 
+export const RESET_DELETE_USER = () => async (dispatch) => {
+  dispatch(DELETE_USER_RESET());
+};
+
 // CALLING BY DIFFERENT METHOD
 export const CLEAR_ERRORS = (dispatch) => {
   dispatch(CLEAR_ERROR());
+}
+
+export const RESET_MESSAGE = (dispatch) => {
+  dispatch(MESSAGE_RESET());
 }

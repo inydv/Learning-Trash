@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import './NewProduct.css';
 import '../dashboard/Dashboard.css'
-import {useSelector, useDispatch} from "react-redux";
-import {NEW_PRODUCT} from "../../../redux/product/productsApiCall";
-import {CLEAR_ERROR} from "../../../redux/product/productsRedux";
+import { useSelector, useDispatch } from "react-redux";
+import { NEW_PRODUCT, RESET_NEW_PRODUCT } from "../../../redux/product/productsApiCall";
+import { CLEAR_ERROR } from "../../../redux/product/productsRedux";
 import { Button } from '@material-ui/core';
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import DescriptionIcon from "@material-ui/icons/Description";
@@ -12,6 +12,7 @@ import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import Sidebar from "../sidebar/Sidebar";
 import { useNavigate } from 'react-router-dom';
+import Loading from "../../../Components/loading/Loading";
 
 export default function NewProduct() {
   const dispatch = useDispatch();
@@ -38,10 +39,10 @@ export default function NewProduct() {
     }
 
     if (newProduct) {
+      dispatch(RESET_NEW_PRODUCT());
       navigate("/admin/dashboard");
-      // dispatch({ type: NEW_PRODUCT_RESET });
     }
-  }, [dispatch, newProduct]);
+  }, [dispatch, newProduct, error, navigate]);
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -84,6 +85,10 @@ export default function NewProduct() {
   return (
     <div className='dashboard'>
       <Sidebar />
+
+      {isFetching ? (
+        <Loading />
+      ) : (
         <div className="newProductContainer">
           <form
             className="createProductForm"
@@ -170,7 +175,7 @@ export default function NewProduct() {
               Create
             </Button>
           </form>
-        </div>
+        </div>)}
     </div>
   )
 }

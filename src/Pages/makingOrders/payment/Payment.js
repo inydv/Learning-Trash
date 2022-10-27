@@ -18,7 +18,8 @@ import { axiosJWT } from '../../../requestMethods';
 import { useNavigate } from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { CLEAR_CART } from "../../../redux/cart/cartApiCall"
+import { CLEAR_CART } from "../../../redux/cart/cartApiCall";
+import Loading from "../../../Components/loading/Loading"
 
 const Wrapper = ({ stripeApiKey }) => (
   <Elements stripe={loadStripe(stripeApiKey)}>
@@ -37,7 +38,7 @@ function Payment() {
   const payBtn = useRef(null);
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, isFetching } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
 
   const paymentData = {
@@ -131,35 +132,40 @@ function Payment() {
   }, [dispatch, error]);
 
   return (
-    <div>
-      <CheckoutSteps activeStep={2} />
-      <div className="paymentContainer">
-        <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
-          <Typography>Card Info</Typography>
-          <div>
-            <CreditCardIcon />
-            <CardNumberElement className="paymentInput" />
-          </div>
-          <div>
-            <EventIcon />
-            <CardExpiryElement className="paymentInput" />
-          </div>
-          <div>
-            <VpnKeyIcon />
-            <CardCvcElement className="paymentInput" />
-          </div>
+    <>
+      {isFetching ? (
+        <Loading />
+      ) : (
+        <div>
+          <CheckoutSteps activeStep={2} />
+          <div className="paymentContainer">
+            <form className="paymentForm" onSubmit={(e) => submitHandler(e)}>
+              <Typography>Card Info</Typography>
+              <div>
+                <CreditCardIcon />
+                <CardNumberElement className="paymentInput" />
+              </div>
+              <div>
+                <EventIcon />
+                <CardExpiryElement className="paymentInput" />
+              </div>
+              <div>
+                <VpnKeyIcon />
+                <CardCvcElement className="paymentInput" />
+              </div>
 
-          {err && <p className='err'>{err}</p>}
+              {err && <p className='err'>{err}</p>}
 
-          <input
-            type="submit"
-            value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
-            ref={payBtn}
-            className={btnLoad ? "btnLoading btnSpinner" : "paymentFormBtn"}
-          />
-        </form>
-      </div>
-    </div>
+              <input
+                type="submit"
+                value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
+                ref={payBtn}
+                className={btnLoad ? "btnLoading btnSpinner" : "paymentFormBtn"}
+              />
+            </form>
+          </div>
+        </div>)}
+    </>
   )
 }
 

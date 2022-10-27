@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './ProcessOrder.css';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Sidebar from "../sidebar/Sidebar";
-import { GETTING_ORDER, UPDATE_ORDER } from "../../../redux/order/myOrderApiCall";
-import { CLEAR_ERROR, ORDER_DETAILS_SUCCESS } from "../../../redux/order/myOrderRedux";
+import { GETTING_ORDER, UPDATE_ORDER, RESET_UPDATE_ORDER } from "../../../redux/order/myOrderApiCall";
+import { CLEAR_ERROR } from "../../../redux/order/myOrderRedux";
 import { useSelector, useDispatch } from "react-redux";
 import AccountTreeIcon from "@material-ui/icons/AccountTree";
 import { Button } from "@material-ui/core";
@@ -12,7 +12,6 @@ import Loading from '../../../Components/loading/Loading';
 export default function ProcessOrder() {
   const { singleOrder: order, error, isFetching, updateOrder } = useSelector((state) => state.myOrders);
 
-  const navigate = useNavigate();
   const params = useParams();
 
   const updateOrderSubmitHandler = (e) => {
@@ -32,6 +31,10 @@ export default function ProcessOrder() {
   useEffect(() => {
     if (error) {
       dispatch(CLEAR_ERROR());
+    }
+
+    if (updateOrder) {
+      dispatch(RESET_UPDATE_ORDER());
     }
 
     dispatch(GETTING_ORDER(params.id));

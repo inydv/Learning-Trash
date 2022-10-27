@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./ResetPW.css"
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useDispatch, useSelector } from "react-redux";
-import { FORGOT_PW } from "../../../redux/user/userApiCall";
+import { FORGOT_PW, RESET_MESSAGE } from "../../../redux/user/userApiCall";
 import { CLEAR_ERROR } from "../../../redux/user/userRedux";
-import { useNavigate, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
 
 function ResetPW() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { error, isFetching, message } = useSelector((state) => state.user);
 
@@ -28,6 +27,8 @@ function ResetPW() {
     if (error) {
       dispatch(CLEAR_ERROR());
     }
+
+    dispatch(RESET_MESSAGE());
   }, [dispatch, error]);
 
   return (
@@ -58,6 +59,9 @@ function ResetPW() {
                 </div>
 
                 <Link to="/register">Back To LogIn ?</Link>
+
+                {error && (<p className="authError">{error}</p>)}
+                {message && (<p className="authError">{message}</p>)}
 
                 <input
                   type="submit"
