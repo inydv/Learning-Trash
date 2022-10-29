@@ -27,5 +27,3 @@ router
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUserProfile);
 
 module.exports = router;
-
-// user_id auth

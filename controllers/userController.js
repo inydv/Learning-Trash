@@ -115,7 +115,7 @@ exports.deleteUserProfile = catchAsyncErrors(async (req, res, next) => {
 
   const deletedUser = await user.remove();
 
-  // we will remove cloudinary later
+  // TODO we will remove cloudinary later
 
   res.status(200).json({
     message: "User Deleted Successfully",
@@ -146,27 +146,3 @@ exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
     user,
   });
 });
-
-// router.get("/", verifyAdmin, async (req, res) => {
-//   const query = req.query.new; // if there is a query new then give 5 new user
-//   try {
-//     const users = query
-//       ? await User.find().sort({ _id: -1 }).limit(5)
-//       : await User.find();
-//     const { password, ...others } = users._doc;
-//     return res.status(200).json(others);
-//   } catch (err) {
-//     return res.status(500).json(err);
-//   }
-// });
-
-// // Get One User
-// router.get("/:id", verifyAdmin, async (req, res) => {
-//   try {
-//     const user = await User.findById(req.params.id);
-//     const { password, ...others } = user._doc;
-//     return res.status(200).json(others);
-//   } catch (err) {
-//     return res.status(500).json(err);
-//   }
-// });

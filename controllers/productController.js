@@ -37,78 +37,28 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Get All products -- User
+// Get All products
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
   const resultPerPage = 8;
 
+  const productsCount = await Product.countDocuments();
+
   const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
-    .filter()
-    .pagination(resultPerPage);
+    .filterForDigits()
+    .filterForAlphabet();
 
   let products = await apiFeature.query;
 
-  // const productsCount = await Product.countDocuments();
+  let filteredProductsCount = products.length;
 
-  // console.log(req.cookies)
+  apiFeature.pagination(resultPerPage);
 
-  // let products = await Product.find();
-
-  // const queries = req.query;
-
-  // const currentPage = Number(queries.page) || 1;
-  // const skip = resultPerPage * (currentPage - 1);
-
-  // if (queries.keyword) {
-  //   products = await Product.find({
-  //     title: {
-  //       $regex: queries.keyword, // given query sam then it can also find the product with names samosa
-  //       $options: "i", // case insensitive
-  //     },
-  //   })
-  //     .limit(resultPerPage)
-  //     .skip(skip);
-  // }
-
-  // if (queries.category) {
-  //   products = await Product.find({
-  //     categories: queries.category,
-  //     // categories: {
-  //     //   $in: [queries.Category],
-  //     // },
-  //   })
-  //     .limit(resultPerPage)
-  //     .skip(skip);
-  // }
-
-  // if (queries.price) {
-  //   let queryStr = JSON.stringify(queries.price);
-  //   queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
-  //   products = await Product.find({ price: JSON.parse(queryStr) })
-  //     .limit(resultPerPage)
-  //     .skip(skip);
-  // }
-
-  // if (queries.sort) {
-  //   const sortingName = queries.sort;
-  //   if (sortingName === "newest") {
-  //     products = await Product.find()
-  //       .sort({ createdAt: -1 })
-  //       .limit(resultPerPage)
-  //       .skip(skip);
-  //   } else if (sortingName === "oldest") {
-  //     products = await Product.find()
-  //       .sort({ createdAt: 1 })
-  //       .limit(resultPerPage)
-  //       .skip(skip);
-  //   }
-  // }
-
-  const productsCount = products.length;
+  products = await apiFeature.query.clone();
 
   res
     .status(200)
-    .json({ products, productsCount, resultPerPage });
+    .json({ products, productsCount, filteredProductsCount, resultPerPage });
 });
 
 // Get All products -- Admin

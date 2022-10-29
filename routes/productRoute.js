@@ -12,7 +12,7 @@ const {
   deleteReview,
 } = require("../controllers/productController");
 
-router.route("/products").get( getAllProducts);
+router.route("/products").get(getAllProducts);
 
 router.route("/admin/products").get(isAuthenticatedUser, authorizeRoles("admin"), getAdminProducts);
 
@@ -26,7 +26,7 @@ router.
   .get(isAuthenticatedUser, getProductReviews)
   .delete(isAuthenticatedUser, deleteReview);
 
-router.route("/product/:id").get( getProductDetails);
+router.route("/product/:id").get(getProductDetails);
 
 router
   .route("/admin/product/:id")
@@ -34,5 +34,3 @@ router
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct);
 
 module.exports = router;
-
-// reviews
