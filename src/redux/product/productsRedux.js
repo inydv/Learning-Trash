@@ -13,6 +13,7 @@ const productsSlice = createSlice({
     error: null,
     productsCount: 0,
     resultPerPage: 0,
+    filteredProductsCount: 0
   },
   reducers: {
     ALL_PRODUCT_START: (state) => {
@@ -24,6 +25,7 @@ const productsSlice = createSlice({
       state.products = action.payload.products;
       state.productsCount = action.payload.productsCount;
       state.resultPerPage = action.payload.resultPerPage;
+      state.filteredProductsCount = action.payload.filteredProductsCount;
     },
     ALL_PRODUCT_FAIL: (state, action) => {
       state.isFetching = false;
@@ -31,6 +33,7 @@ const productsSlice = createSlice({
       state.products = null;
       state.productsCount = 0;
       state.resultPerPage = 0;
+      state.filteredProductsCount = 0;
     },
 
     ADMIN_PRODUCT_START: (state) => {

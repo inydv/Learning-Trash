@@ -26,11 +26,6 @@
 .category-link {
   margin: 5px 20px;
   cursor: pointer;
-  transition: all 0.5s;
-}
-
-.category-link:hover {
-  color: red;
 }
 
 .filterBox > fieldset {
@@ -98,7 +93,17 @@
 }
 
 .error {
+  padding-left: 250px;
   color: red;
+}
+
+.MuiSlider-valueLabel > span {
+  height: 40px;
+  width: 40px;
+}
+
+.MuiSlider-valueLabel span span {
+  color: black;
 }
 
 @media only screen and (max-width: 800px) {
@@ -114,6 +119,9 @@
     width: 150px;
     position: relative;
     top: 0;
+    margin: auto;
+    left: 0;
+    right: 0;
   }
 
   .forCategories {
@@ -136,6 +144,11 @@
   }
 
   .products {
+    padding: 20px 0;
+  }
+
+  .error {
+    font-size: 20px;
     padding: 20px 0;
   }
 }

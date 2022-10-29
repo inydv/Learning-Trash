@@ -12,13 +12,13 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      const keyword = ""
-      const currentPage = 1
-      const price = [0, 25000]
-      const category = ""
-      const ratings = 0
-      const sort = "oldest"
-      dispatch(FETCHING_ALL_PRODUCT(keyword, currentPage, price, category, ratings, sort))
+    const keyword = ""
+    const currentPage = 1
+    const price = [0, 25000]
+    const category = ""
+    const ratings = 5
+    const sort = "oldest"
+    dispatch(FETCHING_ALL_PRODUCT(keyword, currentPage, price, category, ratings, sort))
   }, [dispatch]);
 
   const { products, isFetching, error } = useSelector(
@@ -27,7 +27,7 @@ function Home() {
 
   return (
     <>
-      
+
       <div className="home">
         {isFetching ? (
           <Loading />
@@ -52,7 +52,7 @@ function Home() {
         )}
       </div>
       <NewsLetter />
-      
+
     </>
   );
 }
