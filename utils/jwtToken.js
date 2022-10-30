@@ -43,7 +43,7 @@ const sendToken = async (user, statusCode, res) => {
   TokenDate = TokenDate.getTime();
 
   const hashedToken = CryptoJS.AES.encrypt(token, process.env.CRYPTO_KEY).toString()
-  const hashedRefreshToken = CryptoJS.AES.decrypt(refreshToken, process.env.CRYPTO_KEY).toString()
+  const hashedRefreshToken = CryptoJS.AES.encrypt(refreshToken, process.env.CRYPTO_KEY).toString()
 
   res.cookie("token", hashedToken, options1).cookie("refreshToken", hashedRefreshToken, options2).status(statusCode).json({
     user, TokenDate

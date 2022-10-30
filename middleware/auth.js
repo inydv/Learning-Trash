@@ -46,7 +46,7 @@ exports.checkForRefreshToken = catchAsyncError(async (req, res, next) => {
     );
   }
 
-  if (req.user.refreshTokens !== refreshToken) {
+  if (req.user.refreshTokens !== unhashedRefreshToken) {
     return next(
       new ErrorHandler(`Refresh token is not valid!`, 400)
     );
