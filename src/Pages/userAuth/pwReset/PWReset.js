@@ -14,7 +14,7 @@ function PWReset() {
     const navigate = useNavigate();
     const token = useParams();
 
-    const { isUpdated, isFetching, error } = useSelector((state) => state.user);
+    const { isUpdated, isFetching, error, currentUser } = useSelector((state) => state.user);
 
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -32,6 +32,10 @@ function PWReset() {
     };
 
     useEffect(() => {
+        if (currentUser) {
+            navigate(`/`)
+        }
+
         dispatch(CLEAR_ERROR());
 
         if (isUpdated) {
@@ -39,7 +43,7 @@ function PWReset() {
         }
 
         dispatch(RESET_MESSAGE());
-    }, [dispatch, navigate, isUpdated]);
+    }, [dispatch, navigate, isUpdated, currentUser]);
 
     return (
         <div>

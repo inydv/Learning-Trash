@@ -159,7 +159,7 @@ function SinglePage() {
 
                         <div className="detailsBlock-6">
                           <button onClick={dec}>-</button>
-                          <input type="number" value={quantity} />
+                          <input type="number" defaultValue={quantity} />
                           <button onClick={inc}>+</button>
                         </div>
 

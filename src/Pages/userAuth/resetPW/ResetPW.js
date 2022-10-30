@@ -4,13 +4,13 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useDispatch, useSelector } from "react-redux";
 import { FORGOT_PW, RESET_MESSAGE } from "../../../redux/user/userApiCall";
 import { CLEAR_ERROR } from "../../../redux/user/userRedux";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
 
 function ResetPW() {
   const dispatch = useDispatch();
 
-  const { error, isFetching, message } = useSelector((state) => state.user);
+  const { error, isFetching, message, currentUser } = useSelector((state) => state.user);
 
   const [email, setEmail] = useState("")
 
@@ -23,11 +23,17 @@ function ResetPW() {
     dispatch(FORGOT_PW(myForm));
   };
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    if (currentUser) {
+      navigate(`/`)
+    }
+
     dispatch(CLEAR_ERROR());
 
     dispatch(RESET_MESSAGE());
-  }, [dispatch]);
+  }, [dispatch, currentUser, navigate]);
 
   return (
     <div>
