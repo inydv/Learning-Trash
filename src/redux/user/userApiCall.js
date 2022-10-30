@@ -38,7 +38,8 @@ import {
   DELETE_USER_FAIL,
   DELETE_USER_RESET,
   CLEAR_ERROR,
-  MESSAGE_RESET
+  MESSAGE_RESET,
+  CHANGE_TOKEN_TIME
 } from "./userRedux";
 import { publicRequest, axiosJWT } from "../../requestMethods";
 
@@ -47,7 +48,6 @@ export const LOGIN = (email, password) => async (dispatch) => {
   try {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await publicRequest.post("/login", { email, password }, config);
-    localStorage.setItem("time", res.data.TokenDate);
     dispatch(LOGIN_SUCCESS(res.data));
   } catch (error) {
     dispatch(LOGIN_FAIL(error.response.data.message));
@@ -59,7 +59,6 @@ export const REGISTER = (userData) => async (dispatch) => {
   try {
     const config = { headers: { "content-Type": "multipart/form-data" } }
     const res = await publicRequest.post("/register", userData, config, { withCredentials: true });
-    localStorage.setItem("time", res.data.TokenDate);
     dispatch(REGISTER_SUCCESS(res.data));
   } catch (error) {
     dispatch(REGISTER_FAIL(error.response.data.message));
@@ -70,7 +69,6 @@ export const LOAD_USER = () => async (dispatch) => {
   dispatch(LOAD_USER_START());
   try {
     const res = await axiosJWT.get("/me");
-    localStorage.setItem("time", res.data.TokenDate);
     dispatch(LOAD_USER_SUCCESS(res.data));
   } catch (error) {
     dispatch(LOAD_USER_FAIL());
@@ -103,8 +101,7 @@ export const RESET_PW = (token, myForm) => async (dispatch) => {
   try {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await publicRequest.put(`/password/reset/${token}`, myForm, config);
-    localStorage.setItem("time", res.data.TokenDate);
-    dispatch(RESET_PASSWORD_SUCCESS(res.data.message));
+    dispatch(RESET_PASSWORD_SUCCESS(res.data));
   } catch (error) {
     dispatch(RESET_PASSWORD_FAIL(error.response.data.message));
   }
@@ -126,8 +123,7 @@ export const UPDATE_PW = (password) => async (dispatch) => {
   try {
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await axiosJWT.put("/password/update", password, config);
-    localStorage.setItem("time", res.data.TokenDate);
-    dispatch(UPDATE_PASSWORD_SUCCESS(res.data.message));
+    dispatch(UPDATE_PASSWORD_SUCCESS(res.data));
   } catch (error) {
     dispatch(UPDATE_PASSWORD_FAIL(error.response.data.message));
   }
@@ -188,4 +184,8 @@ export const CLEAR_ERRORS = (dispatch) => {
 
 export const RESET_MESSAGE = () => (dispatch) => {
   dispatch(MESSAGE_RESET());
+}
+
+export const CHANGE_TOKENTIME = (time) => (dispatch) => {
+  dispatch(CHANGE_TOKEN_TIME(time))
 }

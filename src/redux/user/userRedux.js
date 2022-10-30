@@ -12,6 +12,7 @@ const userSlice = createSlice({
     error: null,
     message: null,
     isUpdated: false,
+    tokenTime: null,
   },
   reducers: {
     LOGIN_START: (state) => {
@@ -21,11 +22,13 @@ const userSlice = createSlice({
     LOGIN_SUCCESS: (state, action) => {
       state.isFetching = false;
       state.currentUser = action.payload.user;
+      state.tokenTime = action.payload.TokenDate;
     },
     LOGIN_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
       state.currentUser = null;
+      state.tokenTime = null;
     },
 
     REGISTER_START: (state) => {
@@ -35,11 +38,13 @@ const userSlice = createSlice({
     REGISTER_SUCCESS: (state, action) => {
       state.isFetching = false;
       state.currentUser = action.payload.user;
+      state.tokenTime = action.payload.TokenDate;
     },
     REGISTER_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
       state.currentUser = null;
+      state.tokenTime = null;
     },
 
     LOAD_USER_START: (state) => {
@@ -49,10 +54,12 @@ const userSlice = createSlice({
     LOAD_USER_SUCCESS: (state, action) => {
       state.isFetching = false;
       state.currentUser = action.payload.user;
+      state.tokenTime = action.payload.TokenDate;
     },
     LOAD_USER_FAIL: (state) => {
       state.isFetching = false;
       state.currentUser = null;
+      state.tokenTime = null;
     },
 
     LOGOUT_START: (state) => {
@@ -64,6 +71,7 @@ const userSlice = createSlice({
       state.error = null;
       state.currentUser = null;
       state.message = action.payload;
+      state.tokenTime = null;
     },
     LOGOUT_FAIL: (state, action) => {
       state.isFetching = false;
@@ -89,12 +97,15 @@ const userSlice = createSlice({
     },
     RESET_PASSWORD_SUCCESS: (state, action) => {
       state.isFetching = false;
-      state.message = action.payload;
+      state.message = action.payload.message;
+      state.tokenTime = action.payload.TokenDate;
     },
     RESET_PASSWORD_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
       state.message = null;
+      state.tokenTime = null;
+
     },
 
     UPDATE_PROFILE_START: (state) => {
@@ -121,12 +132,14 @@ const userSlice = createSlice({
     UPDATE_PASSWORD_SUCCESS: (state, action) => {
       state.isFetching = false;
       state.isUpdated = true;
-      state.message = action.payload;
+      state.message = action.payload.message;
+      state.tokenTime = action.payload.TokenDate;
     },
     UPDATE_PASSWORD_FAIL: (state, action) => {
       state.isFetching = false;
       state.error = action.payload;
       state.message = null;
+      state.tokenTime = null;
     },
 
     UPDATE_ISUPDATED: (state) => {
@@ -206,6 +219,10 @@ const userSlice = createSlice({
 
     MESSAGE_RESET: (state) => {
       state.message = null;
+    },
+
+    CHANGE_TOKEN_TIME: (state, action) => {
+      state.tokenTime = action.payload;
     }
   },
 });
@@ -251,6 +268,7 @@ export const {
   DELETE_USER_FAIL,
   DELETE_USER_RESET,
   CLEAR_ERROR,
-  MESSAGE_RESET
+  MESSAGE_RESET,
+  CHANGE_TOKEN_TIME
 } = userSlice.actions;
 export default userSlice.reducer;

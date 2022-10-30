@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { axiosJWT, publicRequest } from "./requestMethods";
+import { axiosJWT } from "./requestMethods";
 import Home from "./Pages/staticPages/home/Home";
 import Contact from "./Pages/staticPages/contact/Contact";
 import About from "./Pages/staticPages/about/About";
@@ -36,25 +36,12 @@ import Footer from "./Components/footer/Footer";
 import NotFound from "./Pages/staticPages/404 Not Found/NotFound";
 import ProtectedRouteAdmin from "./utils/ProtectedRouteAdmin";
 import ProtectedRouteUser from "./utils/ProtectedRouteUser"
+import Interceptor from "./Interceptor";
 
 function App() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user.currentUser);
-
-  axiosJWT.interceptors.request.use(
-    async (config) => {
-      let currentDate = new Date(Date.now());
-      if (localStorage.getItem("time") <= currentDate.getTime()) {
-        const res = await publicRequest.post("/refresh");
-        localStorage.setItem("time", res.data.TokenDate);
-      }
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
 
   const [stripeApiKey, setStripeApiKey] = useState("")
 
@@ -78,6 +65,7 @@ function App() {
 
   return (
     <div className="app">
+      <Interceptor />
       <Navbar />
       <Routes>
         <Route exact path="/register" element={<Auth />} />
