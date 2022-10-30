@@ -10,7 +10,7 @@ function Interceptor() {
     axiosJWT.interceptors.request.use(
         async (config) => {
             let currentDate = new Date(Date.now());
-            if (tokenTime <= currentDate.getTime() && currentUser) {
+            if (tokenTime < currentDate.getTime() && currentUser) {
                 const res = await publicRequest.post("/refresh");
                 dispatch(CHANGE_TOKENTIME(res.data.TokenDate));
             }
