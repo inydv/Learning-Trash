@@ -6,6 +6,7 @@ const {
   forgotPassword,
   refreshToken,
   resetPassword,
+  verifyAccount
 } = require("../controllers/authenticationController");
 const { checkForRefreshToken } = require('../middleware/auth')
 
@@ -20,5 +21,7 @@ router.route("/password/forgot").post(forgotPassword);
 router.route("/refresh").post(checkForRefreshToken, refreshToken);
 
 router.route("/password/reset/:token").put(resetPassword);
+
+router.route("/verify/:token").get(verifyAccount);
 
 module.exports = router;

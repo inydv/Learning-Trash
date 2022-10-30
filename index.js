@@ -56,6 +56,13 @@ app.use(cors({
 //   next();
 // });
 
+// EXPRESS HANDLEBARS
+const handlebars = require('express-handlebars');
+
+app.engine('handlebars', handlebars.engine())
+app.set('view engine', 'handlebars');
+app.set('views', './views')
+
 // LOCAL REQUIRES FILES
 const user = require("./routes/userRoute");
 const auth = require("./routes/authRoute");

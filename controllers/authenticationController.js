@@ -30,6 +30,22 @@ exports.registerUser = catchAsyncErrors(async (req, res) => {
     },
   });
 
+  const verificationURL = `${req.protocol}://${req.get(
+    "host"
+  )}/api/verify/sjdgsjd`;
+
+  const link = verificationURL;
+
+  await sendEmail({
+    email: email,
+    subject: `Verify Your The Little Things Account`,
+    link,
+  });
+
+  res.status(200).json({
+    message: `Email Sent To ${email} Successfully`,
+  });
+
   sendToken(user, 201, res);
 });
 
@@ -91,13 +107,13 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     "host"
   )}/password/reset/${resetToken}`;
 
-  const message = `Your password reset token is -- \n\n ${resetPasswordUrl} \n\n If you have not requested this email then, Please ignore it`;
+  const link = resetPasswordUrl;
 
   try {
     await sendEmail({
       email: user.email,
-      subject: `Ecommerce Password Recovery`,
-      message,
+      subject: `Reset Your The Little Things Password`,
+      link,
     });
 
     res.status(200).json({
@@ -154,4 +170,9 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 // refresh Token
 exports.refreshToken = catchAsyncErrors(async (req, res) => {
   sendTokenAfterRefresh(req.user, 201, res);
+})
+
+// verifyAccount
+exports.verifyAccount = catchAsyncErrors(async (req, res) => {
+  res.render('verifyTemplate')
 })
