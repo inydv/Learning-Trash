@@ -26,16 +26,34 @@ cloudinary.config({
 const express = require("express");
 const app = express();
 
-// For using Json
-app.use(express.json());
+// Cross-site scripting - Sets security-related HTTP response headers to protect against some well-known web vulnerabilities.
+const helmet = require("helmet");
+app.use(helmet());
+
+// XSS ATTACK - Sanitizes user input coming from POST request body (req.body), GET request query (req.query) and URL parameters (req.params)
+const xss = require('xss-clean');
+app.use(xss())
+
+// DoS Attack - Puts the array parameters in req.query and/or req.body asides and just selects the last parameter value to avoid HTTP Parameter Pollution attacks.
+const hpp = require('hpp');
+app.use(hpp());
+
+// Searches for any keys in objects that begin with a $ sign or contain a . from req.body, req.query or req.params and either removes such keys and data or replaces the prohibited characters with another allowed character
+const mongoSanitize = require('express-mongo-sanitize');
+app.use(mongoSanitize());
 
 // cookie-parser is a middleware which parses cookies attached to the client request object
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
+// Limit -- for DoS attack
+
+// For using Json
+app.use(express.json({ limit: '15kb' }));
+
 // With express version => 4.16.0 the body-parser middleware was added back under the methods express.urlencoded() 
 // In order to get access to the post data we have to use body-parser . Basically what the body-parser is which allows express to read the body and then parse that into a Json object that we can understand.
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ limit: '25mb', extended: true }));
 
 // for Uploading
 const fileUpload = require("express-fileupload");
@@ -63,6 +81,14 @@ app.engine('handlebars', handlebars.engine())
 app.set('view engine', 'handlebars');
 app.set('views', './views')
 
+// DDoS Attack - Used to limit IP addresses from making repeated requests to API endpoints.
+const expressRate = require('express-rate-limit');
+
+const apiLimiter = expressRate.rateLimit({
+  windowMS: 15 * 60 * 1000,  // 15 minutes
+  max: 200
+})
+
 // LOCAL REQUIRES FILES
 const user = require("./routes/userRoute");
 const auth = require("./routes/authRoute");
@@ -70,7 +96,7 @@ const Product = require("./routes/productRoute");
 const Order = require("./routes/orderRoute");
 const payment = require("./routes/paymentRoute");
 
-app.use("/api", auth);
+app.use("/api", apiLimiter, auth);
 app.use("/api", user);
 app.use("/api", Product);
 app.use("/api", Order);
