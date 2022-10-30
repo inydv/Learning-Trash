@@ -151,12 +151,12 @@
   }
 
   .cartInput > button {
-    padding: 1.5vmax;
+    padding: 0.5vmax;
   }
 
   .cartInput > input {
-    width: 2vmax;
-    padding: 1.5vmax;
+    width: 3vmax;
+    padding: 0.5vmax;
   }
 
   .cartSubtotal {

@@ -2,11 +2,16 @@ import React from "react";
 import "./NewsLetter.css";
 
 function NewsLetter() {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="newsLetter">
       <h1 className="heading">The Latest</h1>
       <p className="para">Sign up to receive news and updates.</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="inputContainer">
           <input
             type="email"

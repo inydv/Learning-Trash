@@ -92,7 +92,7 @@ function SinglePage() {
   }
 
   return (
-    <>
+    <div className="singlePage-head">
       {product ? (
         <>
           {
@@ -219,8 +219,10 @@ function SinglePage() {
             </>)
           }
         </>
-      ) : ""}
-    </>
+      ) : <div>
+        <h1 className="error">Oops!! Seems To Be Offline</h1>
+      </div>}
+    </div>
   );
 }
 

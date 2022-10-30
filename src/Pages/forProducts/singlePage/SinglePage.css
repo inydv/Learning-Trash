@@ -1,3 +1,7 @@
+.singlePage-head {
+  min-height: 80vh;
+}
+
 .singlePage {
   width: 100vw;
   max-width: 100%;

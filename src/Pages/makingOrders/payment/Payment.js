@@ -153,6 +153,11 @@ function Payment() {
                 <VpnKeyIcon />
                 <CardCvcElement className="paymentInput" />
               </div>
+              <p style={{
+                fontSize: "10px",
+                marginBottom: "5px",
+                textAlign: "center"
+              }}>NOTE: USE 4242 4242 4242 4242 AS CARD NUMBER</p>
 
               {err && <p className='err'>{err}</p>}
 
