@@ -9,6 +9,9 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import Typography from "@material-ui/core/Typography";
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 const categories = ["men", "women"];
 
@@ -57,6 +60,90 @@ function Shop() {
     }
   }
 
+  function filter_Func() {
+    return (
+      <div className="filterBox">
+        <Typography>Price</Typography>
+        <Slider
+          value={price}
+          onChange={priceHandler}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+          min={0}
+          max={25000}
+        />
+
+        <div className="forCategories">
+          <Typography>Categories</Typography>
+          <ul className="categoryBox">
+            {categories.map((category) => (
+              <li
+                className="category-link"
+                key={category}
+                onClick={() => setCategoryFunc(category)}
+                style={{
+                  color: query.search.split("=")[1] === category ? "red" : "white"
+                }}
+              >
+                {category}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <fieldset>
+          <Typography component="legend">Ratings Above</Typography>
+          <Slider
+            value={ratings}
+            onChange={(e, newRating) => {
+              setRatings(newRating);
+            }}
+            aria-labelledby="continuous-slider"
+            min={0}
+            max={5}
+          />
+        </fieldset>
+
+        <div className="sort">
+          <Typography component="legend">Sort</Typography>
+          <select className="select" onChange={(e) => setSort(e.target.value)}>
+            <option className="option" value="oldest">
+              Oldest
+            </option>
+            <option className="option" value="newest">
+              Newest
+            </option>
+          </select>
+        </div>
+      </div>
+    )
+  }
+
+  const [state, setState] = React.useState({
+    top: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <Box
+      sx={{ width: 'auto' }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+      style={{
+        padding: "30px 10px"
+      }}
+    >
+      {filter_Func()}
+    </Box>)
+
   return (
     <>
       <div className="shop">
@@ -71,60 +158,28 @@ function Shop() {
 
         <div className="lineSketch"></div>
 
-        <div className="filterBox">
-          <Typography>Price</Typography>
-          <Slider
-            value={price}
-            onChange={priceHandler}
-            valueLabelDisplay="auto"
-            aria-labelledby="range-slider"
-            min={0}
-            max={25000}
-          />
-
-          <div className="forCategories">
-            <Typography>Categories</Typography>
-            <ul className="categoryBox">
-              {categories.map((category) => (
-                <li
-                  className="category-link"
-                  key={category}
-                  onClick={() => setCategoryFunc(category)}
+        {
+          window.innerWidth <= 800 ? (
+            <>
+              <Typography align='center'>
+                <Button
                   style={{
-                    color: query.search.split("=")[1] === category ? "red" : "white"
+                    color: "white",
+                    backgroundColor: "gray"
                   }}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-          </div>
+                  onClick={toggleDrawer('top', true)}>Filter</Button>
+              </Typography>
 
-          <fieldset>
-            <Typography component="legend">Ratings Above</Typography>
-            <Slider
-              value={ratings}
-              onChange={(e, newRating) => {
-                setRatings(newRating);
-              }}
-              aria-labelledby="continuous-slider"
-              min={0}
-              max={5}
-            />
-          </fieldset>
-
-          <div className="sort">
-            <Typography component="legend">Sort</Typography>
-            <select className="select" onChange={(e) => setSort(e.target.value)}>
-              <option className="option" value="oldest">
-                Oldest
-              </option>
-              <option className="option" value="newest">
-                Newest
-              </option>
-            </select>
-          </div>
-        </div>
+              <Drawer
+                anchor='top'
+                open={state['top']}
+                onClose={toggleDrawer('top', false)}
+              >
+                {list('top')}
+              </Drawer>
+            </>
+          ) : filter_Func()
+        }
 
         <div className="lineSketch"></div>
 
@@ -136,7 +191,7 @@ function Shop() {
           </div>
         ) : (
           <div className="products">
-            {products.length === 0 ? <h1 style={{ color: "red" }}>Oops! Not Any Related Products</h1> : products &&
+            {products && products.length === 0 ? <h1 style={{ color: "red" }}>Oops! Not Any Related Products</h1> : products &&
               products.map((product) => (
                 <Products product={product} key={product._id} />
               ))}
