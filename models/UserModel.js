@@ -44,7 +44,7 @@ const UserSchema = new mongoose.Schema(
     },
     isVerifiedToken: String,
     isVerifiedTokenExpire: Date,
-    refreshTokens: String,
+    refreshToken: String,
     resetPasswordToken: String,
     resetPasswordExpire: Date,
   },
@@ -74,7 +74,7 @@ UserSchema.pre("save", async function (next) {
     .update(token)
     .digest("hex");
 
-  this.isVerifiedTokenExpire = Date.now() + 1000 * 60 * 60 * 24 * 1;
+  this.isVerifiedTokenExpire = Date.now() + 1000 * 60 * 60 * 24 * process.env.MAIL_EXPIRE;
 });
 
 // JWT TOKEN
@@ -86,7 +86,7 @@ UserSchema.methods.getJWTToken = function () {
 
 // Get Refresh JWT Token
 UserSchema.methods.getRefreshJWTToken = function () {
-  return this.refreshTokens = jwt.sign({ id: this._id }, process.env.JWT_SEC, {
+  return this.refreshToken = jwt.sign({ id: this._id }, process.env.JWT_SEC, {
     expiresIn: process.env.REFRESH_JWT_EXPIRE,
   });
 }
@@ -116,7 +116,7 @@ UserSchema.methods.getResetPasswordToken = function () {
     .update(resetToken)
     .digest("hex");
 
-  this.resetPasswordExpire = Date.now() + 1000 * 60 * 60 * 24 * 1;
+  this.resetPasswordExpire = Date.now() + 1000 * 60 * 60 * 24 * process.env.MAIL_EXPIRE;
 
   return resetToken;
 };

@@ -4,12 +4,12 @@ const CryptoJS = require("crypto-js");
 // Create Token And Save in Cookie
 const sendToken = async (user, statusCode, res) => {
   const token = user.getJWTToken();
-  const refreshToken = user.getRefreshJWTToken();
+  const refresh_Token = user.getRefreshJWTToken();
 
   user = await User.findByIdAndUpdate(
     user._id,
     {
-      refreshTokens: refreshToken,
+      refreshToken: refresh_Token,
     },
     { new: true }
   );
@@ -36,7 +36,7 @@ const sendToken = async (user, statusCode, res) => {
     path: '/',
   };
 
-  const { password, verified, updatedAt, refreshTokens, __v, ...others } = user._doc;
+  const { password, verified, updatedAt, refreshToken, __v, ...others } = user._doc;
 
   user = others;
 

@@ -89,7 +89,7 @@ exports.logout = catchAsyncErrors(async (req, res) => {
     httpOnly: true,
   });
 
-  res.cookie("refreshTokens", null, {
+  res.cookie("refreshToken", null, {
     httpOnly: true,
   });
 
