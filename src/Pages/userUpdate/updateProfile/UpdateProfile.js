@@ -4,7 +4,7 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import FaceIcon from "@material-ui/icons/Face";
 import profileImage from "../../../Images/profileImage.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { UPDATE_PROFILE, LOAD_USER } from "../../../redux/user/userApiCall";
+import { UPDATE_PROFILE, LOAD_USER, CLEAR_ERRORS } from "../../../redux/user/userApiCall";
 import { UPDATE_ISUPDATED } from '../../../redux/user/userRedux'
 import { useNavigate } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
@@ -15,10 +15,9 @@ const UpdateProfile = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    },[]);
+    }, []);
 
-    const user = useSelector((state) => state.user.currentUser);
-    const { isUpdated, isFetching } = useSelector((state) => state.user);
+    const { isUpdated, isFetching, error, currentUser: user } = useSelector((state) => state.user);
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -56,9 +55,9 @@ const UpdateProfile = () => {
             setAvatarPreview(user.avatar.url);
         }
 
-        // if (error) {
-        //   dispatch(clearErrors());
-        // }
+        if (error) {
+            dispatch(CLEAR_ERRORS());
+        }
 
         if (isUpdated) {
             dispatch(LOAD_USER());
@@ -67,7 +66,7 @@ const UpdateProfile = () => {
 
             UPDATE_ISUPDATED(dispatch);
         }
-    }, [dispatch, navigate, user, isUpdated]);
+    }, [dispatch, navigate, user, isUpdated, error]);
 
     return (
         <div>

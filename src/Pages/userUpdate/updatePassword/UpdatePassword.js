@@ -3,21 +3,19 @@ import "./UpdatePassword.css"
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_PW } from "../../../redux/user/userApiCall";
 import { UPDATE_ISUPDATED } from '../../../redux/user/userRedux'
+import { CLEAR_ERRORS } from "../../../redux/user/userApiCall";
 import { useNavigate } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockIcon from "@material-ui/icons/Lock"
 import VpnKeyIcon from "@material-ui/icons/VpnKey"
+import CryptoJS from "crypto-js";
 
 function UpdatePassword() {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    },[]);
-    
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { isUpdated, isFetching } = useSelector((state) => state.user);
+    const { isUpdated, isFetching, error } = useSelector((state) => state.user);
 
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -26,24 +24,30 @@ function UpdatePassword() {
     const updatePasswordSubmit = (e) => {
         e.preventDefault();
 
-        const myForm = new FormData();
+        const hashedOPW = CryptoJS.AES.encrypt(oldPassword, process.env.REACT_APP_CRYPTO_KEY).toString();
+        const hashedNPW = CryptoJS.AES.encrypt(newPassword, process.env.REACT_APP_CRYPTO_KEY).toString();
+        const hashedCPW = CryptoJS.AES.encrypt(confirmPassword, process.env.REACT_APP_CRYPTO_KEY).toString();
 
-        myForm.set("oldPassword", oldPassword);
-        myForm.set("newPassword", newPassword);
-        myForm.set("confirmPassword", confirmPassword);
+        const myForm = new FormData();
+        myForm.set("oldPassword", hashedOPW);
+        myForm.set("newPassword", hashedNPW);
+        myForm.set("confirmPassword", hashedCPW);
         dispatch(UPDATE_PW(myForm));
     };
 
     useEffect(() => {
-        // if (error) {
-        //   dispatch(clearErrors());
-        // }
+        window.scrollTo(0, 0);
+
+        if (error) {
+            dispatch(CLEAR_ERRORS());
+        }
 
         if (isUpdated) {
             navigate("/account");
             UPDATE_ISUPDATED(dispatch);
         }
-    }, [dispatch, navigate, isUpdated]);
+    }, [dispatch, navigate, isUpdated, error]);
+
     return (
         <div>
             {isFetching ? (

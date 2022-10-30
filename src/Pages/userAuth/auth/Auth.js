@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MailIcon from '@material-ui/icons/Mail';
 import LockIcon from '@material-ui/icons/Lock';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import CryptoJS from "crypto-js";
 
 function Auth() {
   const dispatch = useDispatch();
@@ -33,7 +34,8 @@ function Auth() {
 
   const loginSubmit = async (e) => {
     e.preventDefault();
-    dispatch(LOGIN(loginEmail, loginPassword))
+    const hashedPW = CryptoJS.AES.encrypt(loginPassword, process.env.REACT_APP_CRYPTO_KEY).toString();
+    dispatch(LOGIN(loginEmail, hashedPW))
   };
 
   const [user, setUser] = useState({
@@ -49,10 +51,13 @@ function Auth() {
 
   const registerSubmit = (e) => {
     e.preventDefault();
+
+    const hashedPW = CryptoJS.AES.encrypt(password, process.env.REACT_APP_CRYPTO_KEY).toString();
+
     const myForm = new FormData();
     myForm.set("username", username);
     myForm.set("email", email);
-    myForm.set("password", password);
+    myForm.set("password", hashedPW);
     myForm.set("avatar", avatar);
 
     dispatch(REGISTER(myForm))

@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import Loading from "../../../Components/loading/Loading"
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockIcon from "@material-ui/icons/Lock"
+import CryptoJS from "crypto-js";
 
 function PWReset() {
     const dispatch = useDispatch();
@@ -21,10 +22,12 @@ function PWReset() {
     const resetPasswordSubmit = (e) => {
         e.preventDefault();
 
-        const myForm = new FormData();
+        const hashedPW = CryptoJS.AES.encrypt(password, process.env.REACT_APP_CRYPTO_KEY).toString();
+        const hashedCPW = CryptoJS.AES.encrypt(confirmPassword, process.env.REACT_APP_CRYPTO_KEY).toString();
 
-        myForm.set("password", password);
-        myForm.set("confirmPassword", confirmPassword);
+        const myForm = new FormData();
+        myForm.set("password", hashedPW);
+        myForm.set("confirmPassword", hashedCPW);
         dispatch(RESET_PW(token.token, myForm));
     };
 
@@ -39,6 +42,7 @@ function PWReset() {
 
         dispatch(RESET_MESSAGE());
     }, [dispatch, navigate, isUpdated, error]);
+
     return (
         <div>
             {isFetching ? (
