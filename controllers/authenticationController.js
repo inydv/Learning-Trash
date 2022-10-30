@@ -7,6 +7,7 @@ const sendTokenAfterRefresh = require("../utils/jwtTokenAfterRefresh");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
 const CryptoJS = require("crypto-js");
+const cron = require("node-cron");
 
 // Register
 exports.registerUser = catchAsyncErrors(async (req, res) => {
@@ -30,9 +31,12 @@ exports.registerUser = catchAsyncErrors(async (req, res) => {
     },
   });
 
+  // Get Verification Token
+  const token = user.getVerificationToken();
+
   const verificationURL = `${req.protocol}://${req.get(
     "host"
-  )}/api/verify/sjdgsjd`;
+  )}/api/verify/${token}`;
 
   const link = verificationURL;
 
@@ -61,6 +65,10 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 
   if (!user) {
     return next(new ErrorHandler("Invalid Email Or Password", 401));
+  }
+
+  if (!user.isVerified) {
+    return next(new ErrorHandler("Account Is Not Verified", 401));
   }
 
   const unhashedPW = CryptoJS.AES.decrypt(password, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)
@@ -96,6 +104,10 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
   if (!user) {
     return next(new ErrorHandler("User Not Found", 404));
+  }
+
+  if (!user.isVerified) {
+    return next(new ErrorHandler("Account Is Not Verified", 401));
   }
 
   // Get resetPW Token
@@ -174,5 +186,29 @@ exports.refreshToken = catchAsyncErrors(async (req, res) => {
 
 // verifyAccount
 exports.verifyAccount = catchAsyncErrors(async (req, res) => {
-  res.render('verifyTemplate')
+  const isVerifiedToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+
+  const user = await User.findOne({
+    isVerifiedToken,
+    isVerifiedTokenExpire: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    res.render('unverifyTemplate')
+  } else {
+    user.isVerified = true;
+    user.isVerifiedToken = undefined;
+    user.isVerifiedTokenExpire = undefined;
+
+    await user.save();
+
+    res.render('verifyTemplate')
+  }
 })
+
+cron.schedule("0 */1 * * *", function () {
+  User.deleteMany({ isVerifiedTokenExpire: { $gt: Date.now() } })
+});

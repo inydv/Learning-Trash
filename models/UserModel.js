@@ -38,6 +38,12 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "user",
     },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+    isVerifiedToken: String,
+    isVerifiedTokenExpire: Date,
     refreshTokens: String,
     resetPasswordToken: String,
     resetPasswordExpire: Date,
@@ -48,6 +54,7 @@ const UserSchema = new mongoose.Schema(
 );
 
 UserSchema.pre("save", async function (next) {
+  // Password
   if (!this.isModified("password")) {
     // let we only change username and email (not PW) then this condition run
     next();
@@ -57,6 +64,17 @@ UserSchema.pre("save", async function (next) {
     this.password,
     process.env.PASS_SEC
   ).toString();
+
+  // Generating Token
+  const token = crypto.randomBytes(20).toString("hex");
+
+  // Hashing and add to userSchema
+  this.isVerifiedToken = crypto
+    .createHash("sha256")
+    .update(token)
+    .digest("hex");
+
+  this.isVerifiedTokenExpire = Date.now() + 1000 * 60 * 60 * 24 * 1;
 });
 
 // JWT TOKEN
@@ -70,7 +88,7 @@ UserSchema.methods.getJWTToken = function () {
 UserSchema.methods.getRefreshJWTToken = function () {
   return this.refreshTokens = jwt.sign({ id: this._id }, process.env.JWT_SEC, {
     expiresIn: process.env.REFRESH_JWT_EXPIRE,
-  }); 
+  });
 }
 
 // Compare Password
@@ -98,9 +116,14 @@ UserSchema.methods.getResetPasswordToken = function () {
     .update(resetToken)
     .digest("hex");
 
-  this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+  this.resetPasswordExpire = Date.now() + 1000 * 60 * 60 * 24 * 1;
 
   return resetToken;
+};
+
+// Generating Verification Token
+UserSchema.methods.getVerificationToken = function () {
+  return this.isVerifiedTokenExpire;
 };
 
 module.exports = mongoose.model("User", UserSchema);

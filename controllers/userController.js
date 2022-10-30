@@ -119,8 +119,6 @@ exports.deleteUserProfile = catchAsyncErrors(async (req, res, next) => {
 
   const deletedUser = await user.remove();
 
-  // TODO we will remove cloudinary later
-
   res.status(200).json({
     message: "User Deleted Successfully",
     deletedUser
