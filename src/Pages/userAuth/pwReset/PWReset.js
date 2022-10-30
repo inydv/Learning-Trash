@@ -32,16 +32,14 @@ function PWReset() {
     };
 
     useEffect(() => {
-        if (error) {
-            dispatch(CLEAR_ERROR());
-        }
+        dispatch(CLEAR_ERROR());
 
         if (isUpdated) {
             navigate("/login");
         }
 
         dispatch(RESET_MESSAGE());
-    }, [dispatch, navigate, isUpdated, error]);
+    }, [dispatch, navigate, isUpdated]);
 
     return (
         <div>
@@ -76,6 +74,9 @@ function PWReset() {
                                         onChange={(e) => setConfirmPassword(e.target.value)}
                                     />
                                 </div>
+
+                                {error && (<p className="authError">{error}</p>)}
+
                                 <input
                                     type="submit"
                                     value="Update"

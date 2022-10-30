@@ -24,12 +24,10 @@ function ResetPW() {
   };
 
   useEffect(() => {
-    if (error) {
-      dispatch(CLEAR_ERROR());
-    }
+    dispatch(CLEAR_ERROR());
 
     dispatch(RESET_MESSAGE());
-  }, [dispatch, error]);
+  }, [dispatch]);
 
   return (
     <div>

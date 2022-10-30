@@ -186,6 +186,6 @@ export const CLEAR_ERRORS = (dispatch) => {
   dispatch(CLEAR_ERROR());
 }
 
-export const RESET_MESSAGE = (dispatch) => {
+export const RESET_MESSAGE = () => (dispatch) => {
   dispatch(MESSAGE_RESET());
 }
