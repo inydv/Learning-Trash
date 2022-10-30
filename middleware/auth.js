@@ -10,7 +10,9 @@ exports.isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("please Login", 401));
   }
 
-  const decodedData = jwt.verify(token, process.env.JWT_SEC);
+  const unhashedToken = CryptoJS.AES.decrypt(token, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)
+
+  const decodedData = jwt.verify(unhashedToken, process.env.JWT_SEC);
 
   req.user = await User.findById(decodedData.id);
 
@@ -30,7 +32,10 @@ exports.checkForRefreshToken = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("You are not authenticated!", 401));
   }
 
-  const decodedData = jwt.verify(refreshToken, process.env.JWT_SEC);
+  const unhashedRefreshToken = CryptoJS.AES.decrypt(refreshToken, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)
+
+
+  const decodedData = jwt.verify(unhashedRefreshToken, process.env.JWT_SEC);
 
   req.user = await User.findById(decodedData.id);
 

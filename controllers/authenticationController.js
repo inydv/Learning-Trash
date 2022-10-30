@@ -6,6 +6,7 @@ const sendToken = require("../utils/jwtToken");
 const sendTokenAfterRefresh = require("../utils/jwtTokenAfterRefresh");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
+const CryptoJS = require("crypto-js");
 
 // Register
 exports.registerUser = catchAsyncErrors(async (req, res) => {
@@ -17,10 +18,12 @@ exports.registerUser = catchAsyncErrors(async (req, res) => {
 
   const { username, email, password } = req.body;
 
+  const unhashedPW = CryptoJS.AES.decrypt(password, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)
+
   const user = await User.create({
     username,
     email,
-    password,
+    password: unhashedPW,
     avatar: {
       public_id: myCloud.public_id,
       url: myCloud.secure_url,
@@ -44,7 +47,9 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Invalid Email Or Password", 401));
   }
 
-  const isPasswordMatched = user.comparePassword(password);
+  const unhashedPW = CryptoJS.AES.decrypt(password, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)
+
+  const isPasswordMatched = user.comparePassword(unhashedPW);
 
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Invalid Email Or Password", 401));
@@ -130,7 +135,10 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
     );
   }
 
-  if (req.body.password !== req.body.confirmPassword) {
+  const unhashedPW = CryptoJS.AES.decrypt(req.body.password, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)
+  const unhashedCPW = CryptoJS.AES.decrypt(req.body.confirmPassword, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)
+
+  if (unhashedPW !== unhashedCPW) {
     return next(new ErrorHandler("Password Does Not Match", 400));
   }
 

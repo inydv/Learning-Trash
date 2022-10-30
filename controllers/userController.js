@@ -15,17 +15,21 @@ exports.getUserDetails = catchAsyncErrors(async (req, res) => {
 exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
 
-  const isPasswordMatched = user.comparePassword(req.body.oldPassword);
+  const unhashedOPW = CryptoJS.AES.decrypt(req.body.oldPassword, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)
+  const unhashedNPW = CryptoJS.AES.decrypt(req.body.newPassword, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)
+  const unhashedCPW = CryptoJS.AES.decrypt(req.body.confirmPassword, process.env.CRYPTO_KEY).toString(CryptoJS.enc.Utf8)
+
+  const isPasswordMatched = user.comparePassword(unhashedOPW);
 
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Old Password is Incorrect", 401));
   }
 
-  if (req.body.newPassword !== req.body.confirmPassword) {
+  if (unhashedNPW !== unhashedCPW) {
     return next(new ErrorHandler("Password Does Not Match", 401));
   }
 
-  user.password = req.body.newPassword;
+  user.password = unhashedNPW;
 
   await user.save();
 
